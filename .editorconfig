@@ -1,0 +1,11 @@
+# 官网：https://editorconfig.org/
+root = true # 表示最顶层的 EditorConfig 文件，即停止向上找，直接使用该配置文件
+
+[*] # 匹配所有文件
+charset = utf-8 # 控制字符集
+indent_style = space # 缩进方式 (tabl | space)
+indent_size = 2 # 缩进大小
+
+end_of_line = lf # 设置换行符的类型。可选值为 lf（Unix 风格）、cr（Mac 风格）或 crlf（Windows 风格）。
+insert_final_newline = true # 是否在文件末尾插入一个空行，以确保文件总是以换行符结尾
+trim_trailing_whitespace = true # 是否保存文件时删除行尾的空白字符

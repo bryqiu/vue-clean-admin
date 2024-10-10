@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "Vue.volar",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "editorconfig.editorconfig",
+    "bradlc.vscode-tailwindcss",
+    "vitaliymaz.vscode-svg-previewer"
+  ]
+}

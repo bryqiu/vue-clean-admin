@@ -1,0 +1,18 @@
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-down-enter-from,
+.slide-down-leave-to {
+  filter: blur(2px);
+  opacity: 0;
+}
+
+.slide-down-enter-from {
+  transform: translateY(-20px);
+}
+
+.slide-down-leave-to {
+  transform: translateY(20px);
+}

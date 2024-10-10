@@ -1,0 +1,99 @@
+@mixin menu-item($gap: 8px, $margin: 0 8px 4px) {
+  gap: $gap;
+  margin: $margin;
+  border-radius: var(--app-round-base);
+}
+
+ul.el-menu {
+  // 菜单Item项-高度
+  --menu-base-size: 42px;
+  --el-menu-item-height: var(--menu-base-size);
+  --el-menu-sub-item-height: var(--menu-base-size);
+  --el-menu-base-level-padding: calc(var(--menu-base-size) - var(--el-menu-level-padding));
+
+  // 子菜单
+  .el-sub-menu {
+    &__title {
+      @include menu-item;
+    }
+
+    // 菜单Item项
+    & ul.el-menu {
+      li.el-menu-item {
+        @include menu-item;
+      }
+    }
+
+    // 子菜单选中状态
+    &.is-active {
+      .el-sub-menu__title {
+        color: var(--el-menu-active-color);
+      }
+
+      ul.el-menu {
+        li.el-menu-item.is-active {
+          background-color: var(--el-color-primary-light-9);
+        }
+      }
+    }
+
+    // 子菜单展开状态
+    &.is-opened {
+      .el-sub-menu__title {
+        .el-icon.el-sub-menu__icon-arrow {
+          transform: rotateX(180deg) !important;
+        }
+      }
+    }
+  }
+
+  div .el-menu-item {
+    @include menu-item;
+
+    &.is-active {
+      background-color: var(--el-color-primary-light-9);
+    }
+  }
+
+  // 垂直菜单
+  // &--vertical{}
+
+  // 水平菜单
+  // &--horizontal{}
+
+  // 收缩菜单
+  &--collapse {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    // width: calc(var(--el-aside-width) - 8px);
+    width: 48px;
+    margin: 8px;
+
+    .el-sub-menu {
+      border-radius: var(--app-round-base);
+
+      div.el-sub-menu__title {
+        @include menu-item(0, 0);
+
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
+
+      &.is-active {
+        background-color: var(--el-color-primary-light-9);
+      }
+    }
+
+    div .el-menu-item {
+      @include menu-item(0, 0);
+    }
+  }
+
+  // 弹窗
+  &--popup {
+    border-radius: var(--app-round-base);
+  }
+}

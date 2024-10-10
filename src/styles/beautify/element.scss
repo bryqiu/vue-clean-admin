@@ -1,0 +1,15 @@
+/* 针对Element Plus组件样式的重写、美化 */
+
+.el-popper {
+  --el-popper-border-radius: 8px;
+}
+
+ul.el-menu {
+  border-right: none;
+}
+
+div.el-card {
+  --el-card-padding: 12px;
+
+  border-radius: var(--app-round-base);
+}

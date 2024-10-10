@@ -1,0 +1,83 @@
+{
+  // 文件折叠
+  "explorer.fileNesting.enabled": false,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.env": ".env.*",
+    "eslint.config.js": ".prettierrc.*, stylelint.*, .editorconfig, .prettierignore, .stylelintignore"
+  },
+
+  // eslint
+  "eslint.useFlatConfig": true, // vscode-eslint >= v3.0.10，确保扁平化配置开启
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit", // eslint自动修复
+    "source.fixAll.stylelint": "explicit" // stylelint自动修复
+  },
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml"
+  ],
+  "stylelint.validate": ["css", "scss", "sass", "postcss", "vue"],
+  // editor
+  "editor.formatOnSave": true, // 保存时自动格式化
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "search.exclude": {
+    "**/*.snap": true,
+    "**/*.svg": true,
+    "**/.git": true,
+    "**/.github": false,
+    "**/.nuxt": true,
+    "**/.output": true,
+    "**/.pnpm": true,
+    "**/.vscode": true,
+    "**/.yarn": true,
+    "**/assets": true,
+    "**/bower_components": true,
+    "**/dist/**": true,
+    "**/logs": true,
+    "**/node_modules": true,
+    "**/out/**": true,
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
+    "**/public": true,
+    "**/temp": true,
+    "**/yarn.lock": true,
+    "**/CHANGELOG*": true,
+    "**/LICENSE*": true
+  },
+
+  // 鼠标平滑效果
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "workbench.list.smoothScrolling": true,
+
+  // 单词拼写
+  "cSpell.userWords": [
+    "iconify",
+    "Pinia",
+    "vueuse",
+    "Sider",
+    "nprogress",
+    "mingcute",
+    "tailwindcss",
+    "persistedstate",
+    "echarts",
+    "VITE",
+    "Cascader",
+    "brotli"
+  ],
+  "css.customData": [".vscode/tailwind.json"]
+}
