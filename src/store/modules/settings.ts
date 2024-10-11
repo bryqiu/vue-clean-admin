@@ -1,4 +1,4 @@
-import { computed, reactive, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { store } from '../init';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { defaultSettings } from '@/config';
