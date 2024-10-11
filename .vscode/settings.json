@@ -77,7 +77,22 @@
     "echarts",
     "VITE",
     "Cascader",
-    "brotli"
+    "brotli",
+    "commitlint",
+    "stylelint",
+    "unplugin",
+    "mockjs"
   ],
+  // 忽略的文件
+  "cSpell.ignorePaths": [
+    "package-lock.yaml",
+    "**/*.{svg,log}",
+    "dist/**",
+    "public/**",
+    "node_modules/**",
+    "eslint.config.*",
+    "stylelint.config.*"
+  ],
+
   "css.customData": [".vscode/tailwind.json"]
 }
