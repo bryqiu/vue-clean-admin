@@ -16,3 +16,24 @@
 .slide-down-leave-to {
   transform: translateY(20px);
 }
+
+// logo文本的显隐动画
+
+.logo-text-enter-active,
+.logo-text-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.logo-text-enter-from,
+.logo-text-leave-to {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.logo-text-enter-to,
+.logo-text-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
