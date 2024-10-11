@@ -1,12 +1,14 @@
 {
   "recommendations": [
     "Vue.volar",
-    "streetsidesoftware.code-spell-checker",
-    "dbaeumer.vscode-eslint",
+    "antfu.iconify",
+    "mikestead.dotenv",
     "esbenp.prettier-vscode",
-    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "bradlc.vscode-tailwindcss",
-    "vitaliymaz.vscode-svg-previewer"
+    "stylelint.vscode-stylelint",
+    "vitaliymaz.vscode-svg-previewer",
+    "streetsidesoftware.code-spell-checker"
   ]
 }
