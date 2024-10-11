@@ -6,8 +6,13 @@ defineOptions({
 
 const settingsStore = useSettingsStore();
 
+/** 菜单折叠 */
+const isMenuCollapse = computed(() => {
+  return settingsStore.appSettings.layout.isMenuCollapse;
+});
+
 const tipsInfo = computed(() => {
-  return settingsStore.isMenuCollapse
+  return isMenuCollapse.value
     ? { icon: 'line-md:menu-fold-right', tipsContent: '展开侧边栏' }
     : { icon: 'line-md:menu-fold-left', tipsContent: '折叠侧边栏' };
 });
