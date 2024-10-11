@@ -3,7 +3,7 @@ import { store } from '../init';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { defaultSettings } from '@/config';
 
-export const createSettingsStore = defineStore('settings', () => {
+const createSettingsStore = defineStore('settings', () => {
   const appSettings = ref({ ...defaultSettings });
 
   const count = ref(0);

@@ -2,7 +2,7 @@ import { ref } from 'vue';
 import { store } from '../init';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 
-export const createUserStore = defineStore('user', () => {
+const createUserStore = defineStore('user', () => {
   const count = ref(0);
   return { count };
 });
