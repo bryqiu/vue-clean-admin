@@ -24,6 +24,7 @@ const isTextContent = computed(() => {
   return isEmpty(props.text);
 });
 
+/** 元素间隔 */
 const spaceStyle = computed(() => {
   return isTextContent.value ? 'wh-full' : 'space-x-1';
 });

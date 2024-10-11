@@ -11,6 +11,7 @@ defineOptions({
  * popper.js 配置
  * TODO: https://popper.js.org/docs/v2/modifiers/offset/
  */
+
 const popperOptions = { modifiers: [{ name: 'offset', options: { offset: [0, 5] } }] };
 </script>
 
@@ -27,7 +28,7 @@ const popperOptions = { modifiers: [{ name: 'offset', options: { offset: [0, 5] 
         <ElImage
           fit="cover"
           :src="UserPicture"
-          class="w-8 h-8 rounded-[var(--el-border-radius-base)]"
+          class="size-8 rounded-[var(--el-border-radius-base)]"
           alt="用户信息"
         />
         <div class="h-full flex flex-col justify-between">
