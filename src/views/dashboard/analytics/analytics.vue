@@ -22,9 +22,7 @@ defineOptions({
             <div>分段控制器</div>
           </div>
           <!--内容-数据汇总-->
-          <div
-            class="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-xs:grid-cols-1 gap-2"
-          >
+          <div class="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 gap-2">
             <BoardItem
               v-for="(item, index) in boardData"
               :key="index"
