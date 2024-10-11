@@ -27,6 +27,7 @@ export default [
         RegisterComponentList: 'readonly',
         useIcon: true,
         useRouterPath: true,
+        useSettingsStore: true,
       },
     },
   },

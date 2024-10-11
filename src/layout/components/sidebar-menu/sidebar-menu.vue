@@ -3,7 +3,6 @@ import { computed, ref } from 'vue';
 import { ElMenu, ElScrollbar } from 'element-plus';
 import { MenuSubItem } from './components/index';
 import { menuRoutes } from '@/router';
-import { useSettingsStore } from '@/store';
 
 defineOptions({
   name: 'SidebarMenu',
