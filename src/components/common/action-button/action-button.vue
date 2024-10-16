@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { ElTooltip } from 'element-plus';
 import { ActionButtonProps } from './typing';
 import { ThemeModeEnum } from '@/enums';
-import { isEmpty } from 'lodash-es';
+import { isEmpty } from '@/utils';
 
 defineOptions({
   name: 'ActionButton',
@@ -12,21 +12,17 @@ defineOptions({
 const props = withDefaults(defineProps<ActionButtonProps>(), {
   tipsPlacement: 'bottom',
   themeMode: ThemeModeEnum.LIGHT,
-});
-
-/** 是否传入tips内容 */
-const isTipsContent = computed(() => {
-  return isEmpty(props.tipsContent);
-});
-
-/** 是否传入文本内容 */
-const isTextContent = computed(() => {
-  return isEmpty(props.text);
+  isActive: false,
 });
 
 /** 元素间隔 */
 const spaceStyle = computed(() => {
-  return isTextContent.value ? 'wh-full' : 'space-x-1';
+  return isEmpty(props.text) ? 'wh-full' : 'gap-1';
+});
+
+/** 选中按钮时样式 */
+const activeStyle = computed(() => {
+  return props.isActive ? '!bg-[var(--el-border-color-dark)]' : '';
 });
 </script>
 
@@ -34,14 +30,14 @@ const spaceStyle = computed(() => {
   <ElTooltip
     :content="tipsContent"
     :placement="tipsPlacement"
-    :disabled="isTipsContent"
+    :disabled="isEmpty(tipsContent) || tipsDisabled"
     :effect="themeMode"
   >
-    <ElButton text bg v-bind="$attrs">
+    <ElButton text bg v-bind="$attrs" :class="activeStyle">
       <template #default>
         <span :class="['flex-c-c', spaceStyle]">
           <AppIcon :icon="icon" />
-          <span v-if="!isTextContent">{{ text }}</span>
+          <span v-if="!isEmpty(text)">{{ text }}</span>
         </span>
       </template>
     </ElButton>
@@ -49,8 +45,14 @@ const spaceStyle = computed(() => {
 </template>
 
 <style scoped lang="scss">
-.el-button,
-.el-button.is-round {
-  padding: 8px;
+.el-button {
+  &,
+  &.is-round {
+    padding: 8px;
+  }
+
+  &.is-text {
+    color: var(--el-text-color-primary);
+  }
 }
 </style>

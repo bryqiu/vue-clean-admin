@@ -11,6 +11,11 @@ export interface ActionButtonProps {
    * @default bottom
    */
   tipsPlacement?: PlacementType;
+  /**
+   * 手动禁用提示
+   * @default false
+   */
+  tipsDisabled?: boolean;
 
   /**
    * 主题模式
@@ -25,4 +30,9 @@ export interface ActionButtonProps {
    * 文本
    */
   text?: string;
+  /**
+   * 是否选中按钮
+   * @default false
+   */
+  isActive?: boolean;
 }
