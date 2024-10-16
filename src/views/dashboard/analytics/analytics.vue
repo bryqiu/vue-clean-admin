@@ -1,27 +1,50 @@
 <script setup lang="ts">
-import { ElCard } from 'element-plus';
+import { ref } from 'vue';
+import { ElCard, ElSegmented } from 'element-plus';
 import { BoardItem } from './components';
-import { boardData } from './data';
+import {
+  boardData,
+  dashboardOption,
+  histogramOption,
+  pieChartsOption,
+  segmentedOptions,
+  userVisitOption,
+} from './data';
 
 defineOptions({
   name: 'Home',
 });
+
+const segmentedValue = ref('all');
+
+const userInstance = ref<NullType<HTMLDivElement>>(null);
+useEcharts(userInstance, userVisitOption);
+
+const dashboardInstance = ref<NullType<HTMLDivElement>>(null);
+useEcharts(dashboardInstance, dashboardOption);
+
+const histogramInstance = ref<NullType<HTMLDivElement>>(null);
+useEcharts(histogramInstance, histogramOption);
+
+const pieChartsInstance = ref<NullType<HTMLDivElement>>(null);
+useEcharts(pieChartsInstance, pieChartsOption);
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <div>
-      <ElCard shadow="never">
-        <div class="flex flex-col gap-4">
-          <!--顶部文本-->
+  <div class="flex flex-col gap-4">
+    <div class="grid grid-cols-6 gap-4">
+      <!--顶部左侧-->
+      <ElCard shadow="never" class="col-span-6 lg:col-span-4">
+        <div class="flex flex-col gap-6">
           <div class="flex-b-c">
             <div class="flex items-center gap-2">
               <span class="app-h5">数据总览</span
               ><span class="app-h8 max-sm:hidden">更新时间：2024-329-3223</span>
             </div>
-            <div>分段控制器</div>
+            <div>
+              <ElSegmented v-model="segmentedValue" :options="segmentedOptions" class="simple" />
+            </div>
           </div>
-          <!--内容-数据汇总-->
           <div class="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 gap-2">
             <BoardItem
               v-for="(item, index) in boardData"
@@ -31,15 +54,34 @@ defineOptions({
               :icon="item.icon"
             />
           </div>
-          <!--底部-数据可视化-->
-          <div>
-            <div>图表</div>
+          <div class="wh-full">
+            <span class="app-h6">用户访问量折现图</span>
+            <div ref="userInstance" class="w-full h-72" />
           </div>
         </div>
       </ElCard>
+      <!--顶部-右侧-->
+      <div class="col-span-6 lg:col-span-2 flex flex-col gap-4">
+        <ElCard shadow="never" class="h-1/3">
+          <span class="app-h6">公告栏</span>
+          <div>公告内容</div>
+        </ElCard>
+        <ElCard shadow="never" class="h-72 lg:h-2/3">
+          <span class="app-h6">仪表盘</span>
+          <div ref="dashboardInstance" class="wh-full" />
+        </ElCard>
+      </div>
     </div>
     <!--中间-->
-    <div>中间</div>
+    <div class="w-full h-80 grid grid-cols-12 gap-4">
+      <ElCard shadow="never" class="col-span-6">
+        <div ref="pieChartsInstance" class="wh-full" />
+      </ElCard>
+      <ElCard shadow="never" class="col-span-6">
+        <div ref="histogramInstance" class="wh-full" />
+      </ElCard>
+      <!-- <ElCard shadow="never" class="col-span-4">3</ElCard> -->
+    </div>
   </div>
 </template>
 
