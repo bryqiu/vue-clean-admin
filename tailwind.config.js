@@ -4,7 +4,6 @@ import { addDynamicIconSelectors } from '@iconify/tailwind';
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   mode: 'jit',
-  darkMode: false,
   theme: {
     extend: {
       fontSize: {},
