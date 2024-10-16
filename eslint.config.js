@@ -28,6 +28,7 @@ export default [
         useIcon: true,
         useRouterPath: true,
         useSettingsStore: true,
+        useEcharts: true,
       },
     },
   },

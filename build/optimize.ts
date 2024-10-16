@@ -8,6 +8,11 @@ export const getOptimize = (): DepOptimizationOptions => {
     '@vueuse/core',
     'nprogress',
     'lodash-es',
+    'echarts/core',
+    'echarts/charts',
+    'echarts/components',
+    'echarts/renderers',
+    'echarts/features',
     ...getElStylePaths(),
   ];
   const exclude: string[] = [
