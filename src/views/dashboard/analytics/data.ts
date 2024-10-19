@@ -24,6 +24,30 @@ export const boardData: BoardProps[] = [
   },
 ];
 
+interface ProjectAboutTYpe {
+  tagName: string;
+  text: string;
+  link?: string;
+}
+
+export const projectAbout: ProjectAboutTYpe[] = [
+  {
+    tagName: '源码',
+    text: 'Clean Admin项目开源了！(点我查看源码)',
+    link: 'https://github.com/QFifteen/vue-clean-admin',
+  },
+  // {
+  //   tagName: '文档',
+  //   text: 'Admin 配套文档上线了',
+  //   link: 'URL_ADDRESS',
+  // },
+  // {
+  //   tagName: '文档',
+  //   text: 'Admin 配套文档上线了',
+  //   link: 'URL_ADDRESS',
+  // },
+];
+
 export const segmentedOptions = [
   {
     label: '全部',
@@ -433,7 +457,7 @@ export const histogramOption: echarts.EChartsCoreOption = {
     {
       name: '',
       type: 'bar',
-      barMaxWidth: 30,
+      barMaxWidth: 15,
       zlevel: 10,
       // barGap: '100%',
       data: [90, 60, 65, 70, 85],
