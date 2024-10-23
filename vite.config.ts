@@ -16,7 +16,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     resolve: {
       alias: {
         '@': pathResolve('src'),
-        '#': pathResolve('typings'),
+        '#': pathResolve('src/typings'),
       },
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
     },
