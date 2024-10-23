@@ -29,6 +29,7 @@ export default [
         useRouterPath: true,
         useSettingsStore: true,
         useEcharts: true,
+        useLayoutSettings: true,
       },
     },
   },

@@ -5,11 +5,7 @@ defineOptions({
 });
 
 const settingsStore = useSettingsStore();
-
-/** 菜单折叠 */
-const isMenuCollapse = computed(() => {
-  return settingsStore.appSettings.layout.isMenuCollapse;
-});
+const { isMenuCollapse } = useLayoutSettings();
 
 const tipsInfo = computed(() => {
   return isMenuCollapse.value
@@ -22,6 +18,7 @@ const tipsInfo = computed(() => {
   <ActionButton
     :icon="tipsInfo.icon"
     :tips-content="tipsInfo.tipsContent"
+    :tips-disabled="isMenuCollapse"
     tips-placement="right"
     @click="settingsStore.toggleMenuCollapse"
   />

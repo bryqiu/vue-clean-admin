@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { ElMenu, ElScrollbar } from 'element-plus';
 import { MenuSubItem } from './components/index';
 import { menuRoutes } from '@/router';
@@ -8,7 +8,8 @@ defineOptions({
   name: 'SidebarMenu',
 });
 
-const settingsStore = useSettingsStore();
+const { isMenuCollapse, isMenuAccordion } = useLayoutSettings();
+
 const { currentRoute } = useRouterPath();
 
 /** 当前选中菜单 */
@@ -19,7 +20,12 @@ const activeMenu = computed(() => {
 
 <template>
   <ElScrollbar>
-    <ElMenu :default-active="activeMenu" :collapse="settingsStore.isMenuCollapse">
+    <ElMenu
+      :default-active="activeMenu"
+      :collapse="isMenuCollapse"
+      :collapse-transition="false"
+      :unique-opened="isMenuAccordion"
+    >
       <template v-for="menu in menuRoutes" :key="menu.meta.menuKey">
         <MenuSubItem v-if="!menu.meta.isHideMenu" :menu :parent-path="menu.path" />
       </template>

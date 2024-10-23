@@ -7,6 +7,7 @@ export const autoImportPluginConfig = () => {
     imports: [
       {
         '@/store/modules/settings': ['useSettingsStore'],
+        '@/store/hooks/use-layout-settings': ['useLayoutSettings'],
       },
     ],
     dirs: [`${pathResolve('src/hooks')}`],
