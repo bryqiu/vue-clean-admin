@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { initStore } from '@/store/init';
 import { initRouter } from '@/router/init';
-import { initElementPlus, initIcons } from '@/plugins/index';
+import { initGlobalModules, initIcons } from '@/plugins';
 import '@/styles/index.scss';
 import '@/plugins/resource';
 
@@ -12,7 +12,7 @@ async function bootstrapApp() {
   initStore(app);
   initRouter(app);
   initIcons();
-  initElementPlus(app);
+  initGlobalModules(app);
   app.mount('#app');
 }
 bootstrapApp();

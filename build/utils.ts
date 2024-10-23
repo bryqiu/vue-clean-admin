@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { elStyleKeys } from '../src/config/global/components-optimize';
+import { elStyleKeys } from '../src/config/element-optimize';
 
 /** 获取当前工作目录的路径 */
 const root: string = process.cwd();
