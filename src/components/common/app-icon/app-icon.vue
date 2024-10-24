@@ -17,10 +17,5 @@ const isIconify = computed(() => props.type === 'iconify');
 </script>
 
 <template>
-  <component
-    :is="isIconify ? IconifyIcon : SvgIcon"
-    :icon="icon"
-    v-bind="$attrs"
-    class="text-base"
-  />
+  <component :is="isIconify ? IconifyIcon : SvgIcon" :icon="icon" v-bind="$attrs" />
 </template>
