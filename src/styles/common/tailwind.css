@@ -43,7 +43,7 @@
   }
 
   .app-h6 {
-    @apply text-base; /* 16px */
+    @apply text-base font-bold; /* 16px */
   }
 
   .app-h7 {

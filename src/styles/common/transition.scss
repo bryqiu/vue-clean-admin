@@ -1,39 +1,26 @@
-.slide-down-enter-active,
-.slide-down-leave-active {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+$transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-duration: 300ms;
 
-.slide-down-enter-from,
-.slide-down-leave-to {
-  filter: blur(2px);
-  opacity: 0;
-}
+.route-fade {
+  &-enter-active,
+  &-leave-active {
+    transition:
+      opacity $transition-duration $transition-timing,
+      transform $transition-duration $transition-timing;
+  }
 
-.slide-down-enter-from {
-  transform: translateY(-20px);
-}
+  &-enter-from,
+  &-leave-to {
+    filter: blur(2px);
+  }
 
-.slide-down-leave-to {
-  transform: translateY(20px);
-}
+  &-enter-from {
+    opacity: 0;
+    transform: translate3d(0, -1rem, 0);
+  }
 
-// logo文本的显隐动画
-
-.logo-text-enter-active,
-.logo-text-leave-active {
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-}
-
-.logo-text-enter-from,
-.logo-text-leave-to {
-  opacity: 0;
-  transform: translateX(-10px);
-}
-
-.logo-text-enter-to,
-.logo-text-leave-from {
-  opacity: 1;
-  transform: translateX(0);
+  &-leave-to {
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0);
+  }
 }

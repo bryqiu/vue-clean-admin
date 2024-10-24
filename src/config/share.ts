@@ -7,4 +7,5 @@ export const ROOT_REDIRECT = '/dashboard';
 
 /** ======================== store ======================== */
 
+/** 持久化存储-前缀 */
 export const STORE_PREFIX: string = 'app';

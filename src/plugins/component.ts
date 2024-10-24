@@ -2,8 +2,8 @@ import type { App } from 'vue';
 import { globalCompList, globalPluginList } from '@/config';
 
 /**
- * 全局注册组件
- * @param app 程序实例
+ * 注册全局组件
+ * @param app Vue应用实例
  */
 const registerGlobalComp = (app: App<Element>) => {
   if (globalCompList.length === 0) return;
@@ -13,8 +13,8 @@ const registerGlobalComp = (app: App<Element>) => {
 };
 
 /**
- * 全局注册插件
- * @param app 程序实例
+ * 注册全局插件
+ * @param app Vue应用实例
  */
 const registerGlobalPlugin = (app: App<Element>) => {
   globalPluginList.forEach((plugin) => {
@@ -24,7 +24,7 @@ const registerGlobalPlugin = (app: App<Element>) => {
 
 // const initGlobalDirective = (app: App<Element>)
 
-export const initElementPlus = (app: App<Element>) => {
+export const initGlobalModules = (app: App<Element>) => {
   registerGlobalComp(app);
   registerGlobalPlugin(app);
 };
