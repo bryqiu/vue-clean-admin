@@ -1,6 +1,5 @@
-import { LAYOUT } from '@/constants/index';
-import { ROOT_REDIRECT } from '@/constants';
-
+import { LAYOUT } from '@/config';
+import { ROOT_REDIRECT } from '@/config';
 const dashboard: CustomRouteRecordRaw = {
   path: ROOT_REDIRECT,
   redirect: `${ROOT_REDIRECT}/analytics`,

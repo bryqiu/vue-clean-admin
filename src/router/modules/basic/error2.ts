@@ -1,4 +1,4 @@
-import { LAYOUT } from '@/constants/index';
+import { LAYOUT } from '@/config';
 
 const root: CustomRouteRecordRaw = {
   path: '/error2',

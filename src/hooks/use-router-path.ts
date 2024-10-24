@@ -5,8 +5,7 @@ import {
   useRoute,
   useRouter,
 } from 'vue-router';
-import { ROOT_REDIRECT } from '@/constants';
-
+import { ROOT_REDIRECT } from '@/config';
 export const useRouterPath = () => {
   const currentRouter = useRouter();
   const currentRoute = useRoute();

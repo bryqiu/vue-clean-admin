@@ -1,5 +1,4 @@
-import { ROOT_REDIRECT } from '@/constants';
-
+import { ROOT_REDIRECT } from '@/config';
 const root: CustomRouteRecordRaw = {
   path: '/',
   redirect: ROOT_REDIRECT,
