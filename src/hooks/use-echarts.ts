@@ -26,10 +26,20 @@ interface configOptions {
    */
   autoResize?: boolean;
   /**
-   * 防抖时间
+   * 防抖时间(ms)
    * @default 150
    */
   resizeDebounceWait?: number;
+  /**
+   * 是否开启过渡动画
+   * @default true
+   */
+  animation?: boolean;
+  /**
+   * 过渡动画持续时间(ms)
+   * @default 300
+   */
+  animationDuration?: number;
 }
 
 /** 默认配置 */
@@ -44,24 +54,22 @@ export const useEcharts = (
   options: echarts.EChartsCoreOption,
   config: configOptions = defaultConfig,
 ) => {
-  const { EchartsInitOpts, autoResize, resizeDebounceWait } = config;
+  const {
+    EchartsInitOpts,
+    autoResize,
+    resizeDebounceWait,
+    animation = true,
+    animationDuration = 300,
+  } = config;
 
   /**
    *  图表实例
    */
   let chartInstance: NullType<echarts.ECharts> = null;
 
+  let resizeObserver: ReturnType<typeof useResizeObserver> | null = null;
+
   const chartOptions = ref(options);
-
-  /**
-   * 初始化图表
-   */
-  const initChart = () => {
-    if (!el.value) return;
-    chartInstance = echarts.init(el.value, null, EchartsInitOpts);
-
-    chartInstance.setOption(chartOptions.value);
-  };
 
   /**
    * 响应式图表尺寸
@@ -70,10 +78,30 @@ export const useEcharts = (
     if (!chartInstance) return;
     chartInstance.resize({
       animation: {
-        duration: 300,
+        duration: animation ? animationDuration : 0,
       },
     });
   }, resizeDebounceWait);
+
+  /**
+   * 初始化图表
+   */
+  const initChart = () => {
+    if (!el.value) return;
+
+    // 检查是否已经初始化过
+    if (echarts.getInstanceByDom(el.value)) {
+      return;
+    }
+
+    chartInstance = echarts.init(el.value, null, EchartsInitOpts);
+
+    chartInstance.setOption(chartOptions.value);
+
+    if (autoResize) {
+      resizeObserver = useResizeObserver(el, resizeChart);
+    }
+  };
 
   /**
    * 更新图表配置项
@@ -100,9 +128,10 @@ export const useEcharts = (
   /**
    * 销毁图表实例
    */
-  const destroy = () => {
+  const destroyChart = () => {
     if (!chartInstance) return;
 
+    resizeObserver?.stop();
     chartInstance?.dispose();
     chartInstance = null;
   };
@@ -115,22 +144,20 @@ export const useEcharts = (
   onMounted(async () => {
     await nextTick();
     initChart();
-
-    autoResize && useResizeObserver(el, resizeChart);
   });
 
   onActivated(() => {
+    destroyChart();
     initChart();
-    resizeChart();
   });
 
   onDeactivated(() => {
-    destroy();
+    destroyChart();
   });
 
   onBeforeUnmount(() => {
-    destroy();
+    destroyChart();
   });
 
-  return { getInstance, updateOptions, destroy };
+  return { getInstance, updateOptions, destroyChart };
 };
