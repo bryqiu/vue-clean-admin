@@ -1,4 +1,7 @@
 import { IconFlipEnum } from '@/enums';
+import type { IconProps as IconifyProps } from '@iconify/vue';
+import type { CSSProperties } from 'vue';
+
 export type AppIconType = 'iconify' | 'local';
 
 export interface SvgIconProps {
@@ -16,16 +19,18 @@ export interface SvgIconProps {
    */
   icon: string;
   /**
-   * svg图标的大小
+   * 图标大小，为规范和协调化，iconify和SvgIcon统一使用height
    * @default 16
+   * @see https://iconify.design/docs/icon-components/vue2/dimensions.html#setting-only-width-or-height
    */
-  size?: number | string;
+  height?: IconifyProps['height'];
+  // width?: IconifyProps['width'];
   /**
    * 图标颜色
    */
   color?: string;
   /**
-   * 旋转角度（可以是字符串形式，比如60deg，但不推荐）
+   * 旋转角度
    * @default 0
    */
   rotate?: number | string;
@@ -35,12 +40,26 @@ export interface SvgIconProps {
    */
   flip?: IconFlipEnum;
   /**
+   * 垂直翻转图标
+   * @default false
+   */
+  verticalFlip?: boolean;
+  /**
+   * 水平翻转图标
+   * @default false
+   */
+  horizontalFlip?: boolean;
+  /**
    * 自定义样式
    */
-  style?: string | object;
+  style?: string | CSSProperties;
 }
+/**
+ * PS:inline - 默认开启垂直对齐
+ * @see https://iconify.design/docs/icon-components/vue/inline.html#inline-attribute
+ */
 
-export interface AppIconProps extends SvgIconProps {
+export interface AppIconProps {
   /**
    * 图标类型
    * @default iconify

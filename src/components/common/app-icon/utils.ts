@@ -2,18 +2,14 @@ import { isString } from '@/utils';
 import { SvgIconProps } from './share-typing';
 import { IconFlipEnum } from '@/enums';
 
-export const getSizeStyle = (size: SvgIconProps['size'] = 16) => {
-  if (isString(size)) {
-    return size;
-  }
-  return `${size}px`;
+export const getSizeStyle = (size: number | string | undefined | null, defaultSize = 16) => {
+  if (size === undefined) return `${defaultSize}px`;
+  return isString(size) ? size : `${size}px`;
 };
 
 export const getRotateStyle = (rotate: SvgIconProps['rotate']) => {
-  if (isString(rotate)) {
-    return `transform: rotate(${rotate});`;
-  }
-  return `transform: rotate(${rotate}deg);`;
+  const rotateValue = isString(rotate) ? rotate : `${rotate}deg`;
+  return `transform: rotate(${rotateValue});`;
 };
 
 export const getFlipStyle = (flip?: SvgIconProps['flip']) => {

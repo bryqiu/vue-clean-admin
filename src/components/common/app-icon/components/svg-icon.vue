@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { SvgIconProps } from '../share-typing';
-import { isEmpty, isString, isUndefined } from '@/utils';
+import { isBoolean, isString } from '@/utils';
 import { getFlipStyle, getRotateStyle, getSizeStyle } from '../utils';
+import { IconFlipEnum } from '@/enums';
 
 defineOptions({
   name: 'SvgIcon',
@@ -10,7 +11,10 @@ defineOptions({
 
 const props = withDefaults(defineProps<SvgIconProps>(), {
   prefix: 'icon',
-  size: 16,
+  height: 16,
+  horizontalFlip: false,
+  verticalFlip: false,
+  rotate: 0,
 });
 
 /** 获取图标类名 */
@@ -28,12 +32,11 @@ const symbolId = computed(() => `#${props.prefix}-${props.icon}`);
 
 // 获取整体style样式
 const getIconStyle = computed(() => {
-  const { size, rotate, flip, color, style } = props;
+  const { height, rotate, flip, color, style, horizontalFlip, verticalFlip } = props;
   const styles: string[] = [];
 
-  // 处理尺寸
-  const sizeStyle = getSizeStyle(size);
-  styles.push(`width: ${sizeStyle}; height: ${sizeStyle};`);
+  const size = getSizeStyle(height);
+  styles.push(`width: ${size}; height: ${size};`);
 
   // 处理颜色
   if (color) {
@@ -47,6 +50,16 @@ const getIconStyle = computed(() => {
   }
 
   // 处理翻转
+  if (isBoolean(horizontalFlip) && horizontalFlip) {
+    const horizontalFlipStyle = getFlipStyle(IconFlipEnum.HORIZONTAL);
+    styles.push(horizontalFlipStyle);
+  }
+
+  if (isBoolean(verticalFlip) && verticalFlip) {
+    const verticalFlipStyle = getFlipStyle(IconFlipEnum.VERTICAL);
+    styles.push(verticalFlipStyle);
+  }
+  // flip优先级比verticalFlip、horizontalFlip高
   const flipStyle = getFlipStyle(flip);
   if (flipStyle) {
     styles.push(flipStyle);
