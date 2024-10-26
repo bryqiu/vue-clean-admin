@@ -4,6 +4,9 @@ import type { CSSProperties } from 'vue';
 
 export type AppIconType = 'iconify' | 'local';
 
+export type rotateRangeNumber = 90 | 180 | 270;
+export type rotateRangeString = '90' | '180' | '270';
+
 export interface SvgIconProps {
   /**
    * 唯一ID自定义前缀
@@ -30,10 +33,10 @@ export interface SvgIconProps {
    */
   color?: string;
   /**
-   * 旋转角度
+   * 旋转角度(使用Css方式，非 SVG 内部转换)
    * @default 0
    */
-  rotate?: number | string;
+  rotate?: rotateRangeNumber | rotateRangeString;
   /**
    * 是否翻转，与iconify保持一致
    * @see https://iconify.design/docs/icon-components/vue/transform.html

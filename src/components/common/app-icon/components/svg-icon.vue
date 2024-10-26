@@ -14,7 +14,6 @@ const props = withDefaults(defineProps<SvgIconProps>(), {
   height: 16,
   horizontalFlip: false,
   verticalFlip: false,
-  rotate: 0,
 });
 
 /** 获取图标类名 */

@@ -8,6 +8,11 @@ export const getSizeStyle = (size: number | string | undefined | null, defaultSi
 };
 
 export const getRotateStyle = (rotate: SvgIconProps['rotate']) => {
+  const rotateRange = [90, 180, 270, '90deg', '180deg', '270deg'];
+
+  if (!rotate || !rotateRange.includes(rotate)) {
+    return '';
+  }
   const rotateValue = isString(rotate) ? rotate : `${rotate}deg`;
   return `transform: rotate(${rotateValue});`;
 };
