@@ -13,6 +13,8 @@ import pluginJsdoc from 'eslint-plugin-jsdoc';
 
 import pluginCheckFile from 'eslint-plugin-check-file';
 
+import * as regexpPlugin from 'eslint-plugin-regexp';
+
 /** @type {import('eslint').Linter.Config} */
 export default [
   {
@@ -373,6 +375,16 @@ export default [
           '{src,build,mock}/**/': 'KEBAB_CASE',
         },
       ],
+    },
+  },
+
+  // 正则表达式配置
+  {
+    plugins: {
+      regexp: regexpPlugin,
+    },
+    rules: {
+      ...regexpPlugin.configs['flat/recommended'].rules,
     },
   },
 
