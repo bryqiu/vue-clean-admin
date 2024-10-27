@@ -9,4 +9,9 @@ declare global {
   type PropType<T> = propType<T>;
 
   type RegisterComponentList = { name: string; component: Component | DefineComponent }[];
+
+  interface BaseOptions<T = string> {
+    label: string;
+    value: T;
+  }
 }
