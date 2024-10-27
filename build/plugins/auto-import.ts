@@ -7,10 +7,9 @@ export const autoImportPluginConfig = () => {
     imports: [
       {
         '@/store/modules/settings': ['useSettingsStore'],
-        '@/store/hooks/use-layout-settings': ['useLayoutSettings'],
       },
     ],
-    dirs: [`${pathResolve('src/hooks')}`],
+    dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/store/hooks')}`],
     dts: `src/typings/auto-imports.d.ts`, // 生成相应.d.ts文件的文件路径
   });
 };

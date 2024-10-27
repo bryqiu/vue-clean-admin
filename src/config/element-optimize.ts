@@ -46,6 +46,8 @@ export const elStyleKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElCard',
   'ElImage',
   'ElSegmented',
+  'ElTag',
+  'ElText',
   /* ======================== 导航 ======================== */
   'ElDropdown',
   'ElDropdownMenu',
@@ -53,9 +55,12 @@ export const elStyleKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElMenu',
   'ElSubMenu',
   'ElMenuItem',
+  'ElTabs',
+  'ElTabPane',
   /* ======================== 反馈组件 ======================== */
   'ElTooltip',
   'ElAlert',
+  'ElDrawer',
   /* ======================== 其他 ======================== */
   'ElDivider',
 ];
