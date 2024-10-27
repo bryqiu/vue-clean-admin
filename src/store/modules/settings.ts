@@ -10,6 +10,10 @@ const createSettingsStore = defineStore('settings', () => {
     return appSettings.value.layout;
   });
 
+  const getSundriesSettings = computed(() => {
+    return appSettings.value.sundries;
+  });
+
   /** 切换菜单伸缩状态，true 折叠 | false 展开 */
   const toggleMenuCollapse = () => {
     appSettings.value.layout.isMenuCollapse = !unref(getLayoutSettings).isMenuCollapse;
@@ -20,7 +24,13 @@ const createSettingsStore = defineStore('settings', () => {
     appSettings.value.layout.isMenuAccordion = !unref(getLayoutSettings).isMenuAccordion;
   };
 
-  return { appSettings, getLayoutSettings, toggleMenuCollapse, toggleMenuAccordion };
+  return {
+    appSettings,
+    getLayoutSettings,
+    getSundriesSettings,
+    toggleMenuCollapse,
+    toggleMenuAccordion,
+  };
 });
 
 import.meta.hot && import.meta.hot.accept(acceptHMRUpdate(createSettingsStore, import.meta.hot));

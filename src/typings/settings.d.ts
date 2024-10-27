@@ -37,3 +37,17 @@ export interface LayoutSettingsType {
    */
   sidebarCollapseWidth: number;
 }
+
+export interface SundriesSettingsType {
+  /**
+   * 是否有水印
+   * @default false
+   */
+  hasWatermark: boolean;
+}
+
+export interface SettingsType {
+  theme: ThemeSettingsType;
+  layout: LayoutSettingsType;
+  sundries: SundriesSettingsType;
+}

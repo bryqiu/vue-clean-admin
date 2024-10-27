@@ -3,6 +3,7 @@ import { ElDivider, ElHeader } from 'element-plus';
 import { FullScreen } from '../components/full-screen';
 import { UserMenu } from '../components/user-menu';
 import { Notice } from '../components/notice';
+import { SettingsAction } from '../components/settings';
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import { Notice } from '../components/notice';
         <div class="flex items-center space-x-3">
           <Notice />
           <FullScreen />
+          <SettingsAction />
         </div>
         <ElDivider direction="vertical" class="header-divider" />
         <UserMenu />

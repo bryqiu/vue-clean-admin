@@ -1,10 +1,10 @@
-import { LayoutSettingsType, ThemeSettingsType } from '#/settings';
+import type {
+  LayoutSettingsType,
+  SettingsType,
+  SundriesSettingsType,
+  ThemeSettingsType,
+} from '#/settings';
 import { TransitionEnum } from '@/enums/index';
-
-interface SettingsType {
-  theme: ThemeSettingsType;
-  layout: LayoutSettingsType;
-}
 
 /** 默认主题设置 */
 const DEFAULT_THEME_SETTINGS: ThemeSettingsType = {
@@ -20,11 +20,16 @@ const DEFAULT_LAYOUT_SETTINGS: LayoutSettingsType = {
   isMenuAccordion: false, // 控制菜单是否使用手风琴模式
 };
 
+/** 默认其他设置 */
+const DEFAULT_SUNDRIES_SETTINGS: SundriesSettingsType = {
+  hasWatermark: false,
+};
+
 /** 默认设置 */
 const DEFAULT_SETTINGS: SettingsType = {
   theme: { ...DEFAULT_THEME_SETTINGS },
   layout: { ...DEFAULT_LAYOUT_SETTINGS },
+  sundries: { ...DEFAULT_SUNDRIES_SETTINGS },
 };
 
 export { DEFAULT_SETTINGS };
-export type { SettingsType };
