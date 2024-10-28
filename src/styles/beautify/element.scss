@@ -24,10 +24,17 @@ div.el-card {
 // 简约风格，在使用时加上simple类名，class="simple"
 .simple.el-segmented {
   --el-segmented-item-selected-color: var(--el-text-color-primary);
-  --el-segmented-item-selected-bg-color: var(--el-fill-color-blank);
-  --el-border-radius-base: 8px;
+  --el-segmented-item-selected-bg-color: var(--el-bg-color);
+  --el-segmented-item-selected-disabled-bg-color: var(--el-bg-color);
+  --el-border-radius-base: var(--app-round-base);
 
-  label.el-segmented__item.is-selected {
-    box-shadow: var(--el-box-shadow-lighter);
+  label.el-segmented__item {
+    &.is-selected {
+      box-shadow: var(--el-box-shadow-lighter);
+    }
+
+    &.is-disabled {
+      color: var(--el-text-color-disabled);
+    }
   }
 }
