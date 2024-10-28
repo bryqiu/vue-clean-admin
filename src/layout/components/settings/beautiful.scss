@@ -1,0 +1,33 @@
+div.settings-drawer.el-drawer {
+  --el-drawer-padding-primary: 0px;
+
+  border-top-left-radius: var(--app-round-base);
+  border-bottom-left-radius: var(--app-round-base);
+}
+
+.settingTabs {
+  height: 100%;
+
+  .el-tabs {
+    --el-tabs-header-height: 40px;
+
+    &__header {
+      margin-right: 0 !important;
+      background-color: var(--el-bg-color);
+    }
+
+    &__nav-wrap {
+      padding: 10px;
+    }
+
+    &__item {
+      padding: 0 1rem;
+      border-radius: var(--app-round-base);
+
+      &.is-left.is-active {
+        background-color: var(--el-fill-color);
+        border-color: transparent !important;
+      }
+    }
+  }
+}
