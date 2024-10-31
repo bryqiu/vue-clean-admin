@@ -47,6 +47,8 @@ const defaultConfig: configOptions = {
   theme: ThemeModeEnum.LIGHT,
   autoResize: true,
   resizeDebounceWait: 150,
+  animation: true,
+  animationDuration: 300,
 };
 
 export const useEcharts = (
@@ -54,13 +56,7 @@ export const useEcharts = (
   options: echarts.EChartsCoreOption,
   config: configOptions = defaultConfig,
 ) => {
-  const {
-    EchartsInitOpts,
-    autoResize,
-    resizeDebounceWait,
-    animation = true,
-    animationDuration = 300,
-  } = config;
+  const { EchartsInitOpts, autoResize, resizeDebounceWait, animation, animationDuration } = config;
 
   /**
    *  图表实例

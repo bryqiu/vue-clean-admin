@@ -18,8 +18,8 @@ const { isMenuCollapse } = useLayoutSettings();
 /** 左侧边栏宽度 */
 const sidebarWidth = computed(() => {
   return isMenuCollapse.value
-    ? `${settingsStore.appSettings.layout.sidebarCollapseWidth}px`
-    : `${settingsStore.appSettings.layout.sidebarOpenedWidth}px`;
+    ? `${settingsStore.getLayoutSettings.sidebarCollapseWidth}px`
+    : `${settingsStore.getLayoutSettings.sidebarOpenedWidth}px`;
 });
 </script>
 

@@ -40,7 +40,6 @@ const finalPath = computed(() => {
 
 /** 单击子菜单 */
 const onClickMenuItem = () => {
-  console.log(finalPath.value);
   push(finalPath.value);
 };
 

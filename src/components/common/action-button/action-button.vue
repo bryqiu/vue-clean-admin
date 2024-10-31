@@ -35,7 +35,7 @@ const activeStyle = computed(() => {
   >
     <ElButton text bg v-bind="$attrs" :class="activeStyle">
       <template #default>
-        <span :class="['flex-c-c', spaceStyle]">
+        <span :class="['flex-c-c', 'text-base', spaceStyle]">
           <AppIcon :icon="icon" />
           <span v-if="!isEmpty(text)">{{ text }}</span>
         </span>
