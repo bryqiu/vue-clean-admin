@@ -1,1 +1,1 @@
-export { default as ToggleBox } from './toggle-box.vue';
+export { default as SectionContainer } from './section-container.vue';
