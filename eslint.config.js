@@ -27,11 +27,13 @@ export default [
         NullType: 'readonly',
         PropType: 'readonly',
         RegisterComponentList: 'readonly',
+        BaseOptions: 'readonly',
         useIcon: true,
         useRouterPath: true,
         useSettingsStore: true,
         useEcharts: true,
         useLayoutSettings: true,
+        useSundriesSettings: true,
       },
     },
   },
@@ -73,7 +75,14 @@ export default [
           math: 'always',
         },
       ],
-
+      'vue/component-name-in-template-casing': [
+        'error',
+        'PascalCase',
+        {
+          registeredComponentsOnly: false,
+          ignores: [],
+        },
+      ],
       // 格式化规则
       'vue/max-attributes-per-line': 'off',
       'vue/singleline-html-element-content-newline': 'off',
