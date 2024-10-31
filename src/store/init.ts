@@ -9,7 +9,6 @@ const store = createPinia();
 store.use(
   createPersistedState({
     key: (id) => `__${STORE_PREFIX}__${id}__`.toUpperCase(),
-    auto: true, // 启用所有 Store 默认持久化，如不需要，显式配置 persist:false
   }),
 );
 
