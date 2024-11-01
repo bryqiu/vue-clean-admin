@@ -34,6 +34,7 @@ export default [
         useEcharts: true,
         useLayoutSettings: true,
         useSundriesSettings: true,
+        useProgress: true,
       },
     },
   },

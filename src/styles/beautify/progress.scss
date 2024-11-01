@@ -1,0 +1,85 @@
+/* 使点击事件穿透进度条 */
+#nprogress {
+  pointer-events: none;
+}
+
+/* 主进度条 */
+#nprogress .bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1031;
+  width: 100%;
+  height: 3px;
+  background: var(--el-color-primary);
+  background-image: linear-gradient(to right, rgb(255 255 255 / 20%), rgb(255 255 255 / 50%));
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* 进度条末端发光效果 */
+#nprogress .peg {
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 120px;
+  height: 100%;
+  box-shadow:
+    0 0 10px var(--el-color-primary),
+    0 0 5px var(--el-color-primary);
+  opacity: 1;
+  transform: rotate(3deg) translate(0, -4px);
+}
+
+/* 加载动画图标 */
+#nprogress .spinner {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1031;
+  display: block;
+}
+
+#nprogress .spinner-icon {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: solid 2px transparent;
+  border-top-color: var(--el-color-primary);
+  border-left-color: var(--el-color-primary);
+  border-radius: 50%;
+  animation: nprogress-spinner 400ms ease-in-out infinite;
+}
+
+/* 容器样式 */
+.nprogress-custom-parent {
+  position: relative;
+  overflow: hidden;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+/* 旋转动画 */
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 进度条闪光动画 */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
