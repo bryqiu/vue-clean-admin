@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ElDivider } from 'element-plus';
 defineOptions({
-  name: 'SectionContainer',
+  name: 'SegmentContainer',
 });
 
-interface SectionContainerProps {
+interface SegmentContainerProps {
   title?: string;
   /**
    * 图标
@@ -13,7 +13,7 @@ interface SectionContainerProps {
   icon?: string;
 }
 
-const props = withDefaults(defineProps<SectionContainerProps>(), {
+withDefaults(defineProps<SegmentContainerProps>(), {
   title: '标题',
   icon: 'ri:arrow-down-s-fill',
 });

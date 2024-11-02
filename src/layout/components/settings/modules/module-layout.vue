@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ToggleBox } from '../components/settings-box';
 import { whetherOptions } from './options';
-import { SectionContainer } from '../components';
+import { SegmentContainer } from '../components';
 
 defineOptions({
   name: 'ModuleLayout',
@@ -12,7 +12,7 @@ const { toggleMenuCollapse, toggleMenuAccordion } = useSettingsStore();
 
 <template>
   <div>
-    <SectionContainer title="Menu 菜单">
+    <SegmentContainer title="Menu 菜单">
       <ToggleBox
         v-model="isMenuCollapse"
         text="是否折叠菜单"
@@ -25,7 +25,7 @@ const { toggleMenuCollapse, toggleMenuAccordion } = useSettingsStore();
         :options="whetherOptions"
         @segment-change="toggleMenuAccordion"
       />
-    </SectionContainer>
+    </SegmentContainer>
   </div>
 </template>
 

@@ -1,1 +1,1 @@
-export { default as SectionContainer } from './section-container.vue';
+export { default as SegmentContainer } from './segment-container.vue';
