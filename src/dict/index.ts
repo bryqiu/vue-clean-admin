@@ -1,1 +1,1 @@
-// 数据字典
+export * from './global';

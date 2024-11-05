@@ -1,26 +1,206 @@
-$transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
-$transition-duration: 300ms;
+/**
+*/
+$base-duration: 300ms;
+$base-timing: cubic-bezier(0.4, 0, 0.2, 1);
+$base-delay: 50ms;
 
-.route-fade {
+/* ======================== 淡入淡出效果(基础、上滑动、下滑动、右滑动) ======================== */
+
+@mixin translate-direction($direction, $offset: 15px) {
+  @if $direction == up {
+    transform: translate3d(0, $offset, 0);
+  } @else if $direction == down {
+    transform: translate3d(0, -$offset, 0);
+  } @else if $direction == left {
+    transform: translate3d($offset, 0, 0);
+  } @else if $direction == right {
+    transform: translate3d(-$offset, 0, 0);
+  }
+}
+
+$fade-direction: (base, up, down, right);
+
+@each $animation-name in $fade-direction {
+  .fade-#{$animation-name} {
+    &-enter-active,
+    &-leave-active {
+      transition:
+        opacity $base-duration $base-timing,
+        transform $base-duration $base-timing;
+    }
+
+    &-enter-from,
+    &-leave-to {
+      filter: blur(1px);
+    }
+
+    &-enter-from {
+      opacity: 0;
+
+      @if $animation-name != base {
+        @include translate-direction($animation-name);
+      }
+    }
+
+    &-leave-to {
+      opacity: 0;
+
+      @if $animation-name == up {
+        @include translate-direction(down);
+      }
+
+      @if $animation-name == down {
+        @include translate-direction(up);
+      }
+
+      // @if $animation-name == left {
+      //   @include translate-direction(right);
+      // }
+
+      @if $animation-name == right {
+        @include translate-direction(left);
+      }
+    }
+  }
+
+  @keyframes fade-#{$animation-name}-view {
+    0% {
+      opacity: 0;
+
+      @if $animation-name != base {
+        @include translate-direction($animation-name, 0);
+      }
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+
+      @if $animation-name != base {
+        @include translate-direction($animation-name, -40px);
+      }
+    }
+  }
+}
+
+/* ======================== 缩放效果(基础、顶部、底部) ======================== */
+
+$scale-direction: (base, up, down);
+
+@each $animation-name in $scale-direction {
+  .scale-#{$animation-name} {
+    &-enter-active,
+    &-leave-active {
+      transition:
+        opacity $base-duration $base-timing,
+        transform $base-duration $base-timing;
+
+      @if $animation-name == up {
+        transform-origin: top;
+      } @else if $animation-name == down {
+        transform-origin: bottom;
+      }
+    }
+
+    &-enter-from,
+    &-leave-to {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+
+  @keyframes scale-#{$animation-name}-view {
+    0% {
+      opacity: 0;
+      transform: scale(0.6);
+
+      @if $animation-name == up {
+        transform-origin: top;
+      } @else if $animation-name == down {
+        transform-origin: bottom;
+      }
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+}
+
+/* ======================== 基础旋转效果 ======================== */
+
+.rotate-base {
   &-enter-active,
   &-leave-active {
     transition:
-      opacity $transition-duration $transition-timing,
-      transform $transition-duration $transition-timing;
+      opacity $base-duration $base-timing,
+      transform $base-duration $base-timing;
   }
 
   &-enter-from,
   &-leave-to {
-    filter: blur(2px);
-  }
-
-  &-enter-from {
     opacity: 0;
-    transform: translate3d(0, -1rem, 0);
+    transform: rotate3d(0, 1, 0.5, 15deg);
+  }
+}
+
+@keyframes rotate-base-view {
+  0% {
+    opacity: 0;
   }
 
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate3d(0, 1, 0.5, 35deg);
+  }
+}
+
+/* ======================== 基础卡片翻转效果 ======================== */
+
+.flip-base {
+  &-enter-active {
+    transition:
+      opacity $base-duration $base-timing,
+      transform $base-duration $base-timing;
+    transition-delay: $base-delay;
+  }
+
+  &-leave-active {
+    transition:
+      opacity $base-duration $base-timing,
+      transform $base-duration $base-timing;
+  }
+
+  &-enter-from,
   &-leave-to {
     opacity: 0;
-    transform: translate3d(0, 1rem, 0);
+    transform: perspective(800px) rotate3d(1, 0, 0, 60deg);
+  }
+}
+
+@keyframes flip-base-view {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: perspective(800px) rotate3d(1, 0, 0, 60deg);
   }
 }

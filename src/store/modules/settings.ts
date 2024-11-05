@@ -2,6 +2,7 @@ import { computed, ref, unref } from 'vue';
 import { store } from '../init';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { DEFAULT_SETTINGS } from '@/config';
+import type { PageTransitionEnum } from '@/enums';
 
 const createSettingsStore = defineStore(
   'settings',
@@ -10,6 +11,10 @@ const createSettingsStore = defineStore(
 
     const getLayoutSettings = computed(() => {
       return appSettings.value.layout;
+    });
+
+    const getThemeSettings = computed(() => {
+      return appSettings.value.theme;
     });
 
     const getSundriesSettings = computed(() => {
@@ -26,12 +31,19 @@ const createSettingsStore = defineStore(
       appSettings.value.layout.isMenuAccordion = !unref(getLayoutSettings).isMenuAccordion;
     };
 
+    /** 切换页面过渡动画 */
+    const togglePageTransition = (name: PageTransitionEnum) => {
+      unref(getThemeSettings).pageTransitionName = name;
+    };
+
     return {
       appSettings,
       getLayoutSettings,
+      getThemeSettings,
       getSundriesSettings,
       toggleMenuCollapse,
       toggleMenuAccordion,
+      togglePageTransition,
     };
   },
   { persist: true },

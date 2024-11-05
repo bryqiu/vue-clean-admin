@@ -4,12 +4,12 @@ import type {
   SundriesSettingsType,
   ThemeSettingsType,
 } from '#/settings';
-import { TransitionEnum } from '@/enums/index';
+import { PageTransitionEnum } from '@/enums/index';
 
 /** 默认主题设置 */
 const DEFAULT_THEME_SETTINGS: ThemeSettingsType = {
   primaryColor: '#0d9fea', // 主题色
-  transitionName: TransitionEnum.SLIDE_DOWN, // 组件切换动画
+  pageTransitionName: PageTransitionEnum.FADE_DOWN, // 路由切换动画
 };
 
 /** 默认布局设置 */
