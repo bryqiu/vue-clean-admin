@@ -1,4 +1,4 @@
-import { TransitionEnum } from '@/enums/index';
+import { PageTransitionEnum } from '@/enums/index';
 
 export interface ThemeSettingsType {
   /**
@@ -8,9 +8,9 @@ export interface ThemeSettingsType {
   primaryColor: string;
   /**
    * 组件切换动画
-   * @default slide-down (始终从下淡入淡出)
+   * @default fade-down
    */
-  transitionName: TransitionEnum;
+  pageTransitionName: PageTransitionEnum;
 }
 
 export interface LayoutSettingsType {
