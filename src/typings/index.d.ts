@@ -14,4 +14,6 @@ declare global {
     label: string;
     value: T;
   }
+
+  type DisplayMode = 'horizontal' | 'vertical';
 }

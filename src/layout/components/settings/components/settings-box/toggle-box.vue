@@ -66,6 +66,7 @@ const isVertical = computed(() => {
           <slot name="segmented" :item />
         </template>
       </ElSegmented>
+      <slot v-if="$slots.content" name="content" />
     </ElScrollbar>
   </BaseBox>
 </template>

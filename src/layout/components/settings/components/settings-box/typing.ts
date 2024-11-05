@@ -10,7 +10,7 @@ export interface BaseBoxProps {
    * 显示模式
    * @default horizontal
    */
-  mode?: DisplayModeEnum;
+  mode?: DisplayModeEnum | DisplayMode;
   /**
    * 提示内容
    */
