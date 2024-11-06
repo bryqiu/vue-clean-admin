@@ -19,6 +19,7 @@ export const getOptimize = (): DepOptimizationOptions => {
   const exclude: string[] = [
     '@iconify-json/ic',
     '@iconify-json/material-symbols',
+    '@iconify-json/mdi',
     '@iconify-json/mingcute',
     '@iconify-json/ri',
     '@iconify-json/line-md',
