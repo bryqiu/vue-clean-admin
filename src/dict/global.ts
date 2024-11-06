@@ -23,17 +23,21 @@ export const whetherOptions: (BaseOptions<boolean> & { disabled?: boolean })[] =
 ];
 
 type PageTransition = {
-  label: string;
+  label?: string;
   options: BaseOptions<PageTransitionEnum>[];
 };
 export const PageTransitionOptions: PageTransition[] = [
   {
-    label: '淡入淡出效果',
     options: [
       {
         label: '无动画',
         value: PageTransitionEnum.NONE,
       },
+    ],
+  },
+  {
+    label: '淡入淡出效果',
+    options: [
       {
         label: '淡出淡出(基础)',
         value: PageTransitionEnum.FADE_BASE,
