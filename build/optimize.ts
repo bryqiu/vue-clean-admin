@@ -17,8 +17,6 @@ export const getOptimize = (): DepOptimizationOptions => {
     ...getElStylePaths(),
   ];
   const exclude: string[] = [
-    '@iconify-json/ic',
-    '@iconify-json/material-symbols',
     '@iconify-json/mdi',
     '@iconify-json/mingcute',
     '@iconify-json/ri',
