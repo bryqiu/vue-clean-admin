@@ -38,7 +38,7 @@ export const isArray = (value: unknown) => {
  * @param value 需要判断的值
  * @returns 如果 value 是 Object，则返回 true，否则返回 false
  */
-export const isObject = (value: unknown) => {
+export const isObject = (value: unknown): value is object => {
   return judgeType(value, 'Object');
 };
 
