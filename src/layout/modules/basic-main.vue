@@ -8,7 +8,7 @@ const { pageTransitionName } = useThemeSettings();
   >
     <RouterView v-slot="{ Component, route }">
       <Transition :name="pageTransitionName" mode="out-in" appear>
-        <KeepAlive>
+        <KeepAlive :include="[]">
           <component :is="Component" :key="route.path" />
         </KeepAlive>
       </Transition>

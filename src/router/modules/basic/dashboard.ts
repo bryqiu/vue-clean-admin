@@ -8,7 +8,7 @@ const dashboard: CustomRouteRecordRaw = {
   meta: {
     title: '仪表盘',
     sort: 1,
-    icon: 'ri:dashboard-2-line',
+    icon: 'ri:dashboard-3-line',
   },
   children: [
     {
@@ -17,7 +17,7 @@ const dashboard: CustomRouteRecordRaw = {
       component: () => import('@/views/dashboard/analytics/analytics.vue'),
       meta: {
         title: '可视化',
-        icon: 'ri:bar-chart-2-line',
+        icon: 'ri:donut-chart-fill',
       },
     },
     {
@@ -26,7 +26,7 @@ const dashboard: CustomRouteRecordRaw = {
       component: () => import('@/views/dashboard/workbench/workbench.vue'),
       meta: {
         title: '工作台',
-        icon: 'ic:round-desktop-windows',
+        icon: 'ri:computer-line',
       },
     },
   ],
