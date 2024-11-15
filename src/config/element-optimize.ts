@@ -38,6 +38,8 @@ export const elStyleKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElRadioButton',
   'ElRate',
   'ElSelect',
+  'ElOption',
+  'ElOptionGroup',
   'ElSlider',
   'ElSwitch',
   'ElTimePicker',

@@ -81,7 +81,8 @@
     "commitlint",
     "stylelint",
     "unplugin",
-    "mockjs"
+    "mockjs",
+    "numbro"
   ],
   // 忽略的文件
   "cSpell.ignorePaths": [
