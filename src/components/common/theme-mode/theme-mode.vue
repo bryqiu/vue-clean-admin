@@ -1,23 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { ElSegmented } from 'element-plus';
-import { ThemeModeEnum } from '@/enums';
-import { isObject } from 'lodash-es';
-import { modeOptions } from './data';
+import { isObject } from '@/utils';
+import { themeModeOptions } from '@/dict';
 
 defineOptions({
   name: 'ThemeMode',
 });
 
-const modeValue = ref<ThemeModeEnum>(ThemeModeEnum.LIGHT);
+const { currentThemeMode } = useThemeSettings();
 </script>
 
 <template>
-  <ElSegmented v-model="modeValue" :options="modeOptions" block>
+  <ElSegmented v-model="currentThemeMode" :options="themeModeOptions" block class="simple">
     <template #default="{ item }">
-      <div class="flex-c-c space-x-1 p-2">
-        <AppIcon :icon="isObject(item) && item.icon" class="text-lgl" />
-        <div>{{ isObject(item) && item.label }}</div>
+      <div class="flex flex-col gap-1 p-2">
+        <div><AppIcon :icon="isObject(item) && item.icon" class="text-xl" /></div>
+        <div class="font-semibold">{{ isObject(item) && item.label }}</div>
       </div>
     </template>
   </ElSegmented>

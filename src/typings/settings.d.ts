@@ -1,6 +1,11 @@
-import { PageTransitionEnum } from '@/enums/index';
+import { PageTransitionEnum, ThemeModeEnum } from '@/enums/index';
 
 export interface ThemeSettingsType {
+  /**
+   * 主题模式
+   * @default light
+   */
+  currentThemeMode: ThemeModeEnum;
   /**
    * 主题色
    * @default #0d9fea

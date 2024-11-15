@@ -47,5 +47,6 @@ export interface ToggleBoxProps extends BaseBoxProps {
 }
 
 export type ToggleBoxEmits = {
+  'update:modelValue': [value: ValueType];
   segmentChange: [value: any];
 };

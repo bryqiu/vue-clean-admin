@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { BaseBox } from './index';
+import { BasicBox } from './index';
 import { ElScrollbar, ElSegmented } from 'element-plus';
 import { DisplayModeEnum } from '@/enums';
 import { isArray } from '@/utils';
-import type { ToggleBoxEmits, ToggleBoxProps, ValueType } from './typing';
+import type { ToggleBoxEmits, ToggleBoxProps, ValueType } from './box-typing';
 
 defineOptions({
   name: 'ToggleBox',
@@ -31,7 +31,7 @@ watch(
 
 /** 分段选中项变化时 */
 const handleChange = (value: ValueType) => {
-  emits('segmentChange', value);
+  emits('update:modelValue', value);
 };
 
 /** 展示模式的值 */
@@ -52,7 +52,7 @@ const isVertical = computed(() => {
 </script>
 
 <template>
-  <BaseBox :text :mode="modeValue" :tips-content>
+  <BasicBox :text :mode="modeValue" :tips-content>
     <ElScrollbar>
       <ElSegmented
         v-model="segmentedActive"
@@ -68,7 +68,7 @@ const isVertical = computed(() => {
       </ElSegmented>
       <slot v-if="$slots.content" name="content" />
     </ElScrollbar>
-  </BaseBox>
+  </BasicBox>
 </template>
 
 <style scoped lang="scss"></style>

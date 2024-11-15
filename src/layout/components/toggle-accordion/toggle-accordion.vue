@@ -4,21 +4,16 @@ defineOptions({
   name: 'ToggleAccordion',
 });
 
-const settingsStore = useSettingsStore();
-
-/** 是否选中按钮 */
-const isActiveBtn = computed(() => {
-  return settingsStore.appSettings.layout.isMenuAccordion;
-});
+const { isMenuAccordion } = useLayoutSettings();
 </script>
 
 <template>
   <ActionButton
     icon="line-md:chevron-small-double-up"
-    :is-active="isActiveBtn"
+    :is-active="isMenuAccordion"
     tips-content="是否只保持一个子菜单的展开"
     tips-placement="right"
-    @click="settingsStore.toggleMenuAccordion"
+    @click="isMenuAccordion = !isMenuAccordion"
   />
 </template>
 

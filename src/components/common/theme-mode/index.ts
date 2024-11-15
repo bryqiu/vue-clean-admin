@@ -1,1 +1,1 @@
-export { default as themeMode } from './theme-mode.vue';
+export { default as ThemeMode } from './theme-mode.vue';

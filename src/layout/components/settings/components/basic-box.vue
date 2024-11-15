@@ -3,10 +3,10 @@ import { computed } from 'vue';
 import { ElScrollbar, ElText, ElTooltip } from 'element-plus';
 import { DisplayModeEnum } from '@/enums';
 import { isEmpty } from '@/utils';
-import type { BaseBoxProps } from './typing';
+import type { BaseBoxProps } from './box-typing';
 
 defineOptions({
-  name: 'BaseSettingsBox',
+  name: 'BasicBox',
 });
 
 const props = withDefaults(defineProps<BaseBoxProps>(), {

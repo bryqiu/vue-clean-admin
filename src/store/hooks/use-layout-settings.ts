@@ -1,22 +1,20 @@
-import { computed } from 'vue';
+import { computed, unref } from 'vue';
 import { useSettingsStore } from '../index';
 
 export const useLayoutSettings = () => {
-  const settingsStore = useSettingsStore();
-  const layoutSettings = settingsStore.getLayoutSettings;
+  const { getLayoutSettings, toggleMenuCollapse, toggleMenuAccordion } = useSettingsStore();
 
-  /* ======================== 布局设置的独立 computed  ======================== */
   /** 菜单折叠 */
-  const isMenuCollapse = computed(() => {
-    return layoutSettings.isMenuCollapse;
+  const isMenuCollapse = computed({
+    get: () => unref(getLayoutSettings).isMenuCollapse,
+    set: (val) => toggleMenuCollapse(val),
   });
 
   /** 手风琴模式 */
-  const isMenuAccordion = computed(() => {
-    return layoutSettings.isMenuAccordion;
+  const isMenuAccordion = computed({
+    get: () => unref(getLayoutSettings).isMenuAccordion,
+    set: (val) => toggleMenuAccordion(val),
   });
-
-  /* ======================== 具体业务相关的方法  ======================== */
 
   return { isMenuCollapse, isMenuAccordion };
 };

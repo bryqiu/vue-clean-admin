@@ -1,14 +1,14 @@
-import { computed } from 'vue';
+import { computed, unref } from 'vue';
 import { useSettingsStore } from '../index';
-import { PageTransitionEnum } from '@/enums';
+import { PageTransitionEnum, ThemeModeEnum } from '@/enums';
 
 export const useThemeSettings = () => {
-  const settingsStore = useSettingsStore();
-  const themeSettings = settingsStore.getThemeSettings;
+  const { getThemeSettings, togglePageTransition, toggleThemeMode } = useSettingsStore();
 
   /** 路由动画 */
-  const pageTransitionName = computed(() => {
-    return themeSettings.pageTransitionName;
+  const pageTransitionName = computed({
+    get: () => unref(getThemeSettings).pageTransitionName,
+    set: (val: PageTransitionEnum) => togglePageTransition(val),
   });
 
   /** 是否有路由动画 */
@@ -16,5 +16,15 @@ export const useThemeSettings = () => {
     return pageTransitionName.value !== PageTransitionEnum.NONE;
   });
 
-  return { pageTransitionName, hasPageTransition };
+  /** 主题模式 */
+  const currentThemeMode = computed({
+    get: () => unref(getThemeSettings).currentThemeMode,
+    set: (val: ThemeModeEnum) => toggleThemeMode(val),
+  });
+
+  const isSystemMode = computed(() => {
+    return currentThemeMode.value === ThemeModeEnum.SYSTEM;
+  });
+
+  return { pageTransitionName, hasPageTransition, currentThemeMode, isSystemMode };
 };

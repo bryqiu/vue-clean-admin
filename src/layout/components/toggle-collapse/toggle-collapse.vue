@@ -4,7 +4,6 @@ defineOptions({
   name: 'ToggleCollapse',
 });
 
-const settingsStore = useSettingsStore();
 const { isMenuCollapse } = useLayoutSettings();
 
 const tipsInfo = computed(() => {
@@ -20,7 +19,7 @@ const tipsInfo = computed(() => {
     :tips-content="tipsInfo.tipsContent"
     :tips-disabled="isMenuCollapse"
     tips-placement="right"
-    @click="settingsStore.toggleMenuCollapse"
+    @click="isMenuCollapse = !isMenuCollapse"
   />
 </template>
 

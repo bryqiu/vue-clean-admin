@@ -5,7 +5,6 @@ import { Logo } from '@/components/common/logo';
 import { SidebarMenu } from '../components/sidebar-menu/index';
 import { ToggleCollapse } from '../components/toggle-collapse';
 import { ToggleAccordion } from '../components/toggle-accordion';
-import { themeMode } from '@/components/common/theme-mode';
 import { computed } from 'vue';
 
 defineOptions({
@@ -34,7 +33,6 @@ const sidebarWidth = computed(() => {
     <div :class="['h-14', 'p-2', 'flex-b-c', isMenuCollapse && 'justify-center']">
       <ToggleCollapse />
       <ToggleAccordion v-if="!isMenuCollapse" />
-      <!-- <themeMode /> -->
     </div>
   </ElAside>
 </template>
