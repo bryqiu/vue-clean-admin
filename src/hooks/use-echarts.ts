@@ -1,25 +1,26 @@
-import {
-  type Ref,
-  nextTick,
-  onActivated,
-  onBeforeUnmount,
-  onDeactivated,
-  onMounted,
-  ref,
-  watch,
-} from 'vue';
+import { Ref, computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { echarts } from '@/plugins/echarts';
-import type { EChartsInitOpts } from 'echarts/core';
-import { useDebounceFn, useResizeObserver } from '@vueuse/core';
-import { ThemeModeEnum } from '@/enums';
+import { useDark, useDebounceFn, useResizeObserver } from '@vueuse/core';
+import type { UseResizeObserverReturn } from '@vueuse/core';
+import type { Color, EChartsCoreOption, EChartsInitOpts, SetOptionOpts } from 'echarts';
+import { downloadFile, isNull } from '@/utils';
 
-interface configOptions {
-  EchartsInitOpts?: EChartsInitOpts;
+interface ConfigProps {
   /**
-   * 主题模式
-   * @default light
+   * init函数基本配置
+   * @see https://echarts.apache.org/zh/api.html#echarts.init
    */
-  theme?: ThemeModeEnum;
+  echartsInitOpts?: EChartsInitOpts;
+  /**
+   * 是否开启过渡动画
+   * @default true
+   */
+  animation?: boolean;
+  /**
+   * 过渡动画持续时间(ms)
+   * @default 300
+   */
+  animationDuration?: number;
   /**
    * 是否自动调整大小
    * @default true
@@ -31,129 +32,197 @@ interface configOptions {
    */
   resizeDebounceWait?: number;
   /**
-   * 是否开启过渡动画
-   * @default true
+   * 最大防抖时间(ms)
+   * @default 500
    */
-  animation?: boolean;
+  maxResizeDebounceWait?: number;
   /**
-   * 过渡动画持续时间(ms)
-   * @default 300
+   * 主题模式
    */
-  animationDuration?: number;
+  themeMode?: 'dark' | string | null;
+}
+
+interface DataURLOptions {
+  /**
+   * 导出的格式，可选 png, jpg, svg
+   * @default png
+   */
+  type?: 'png' | 'jpeg' | 'svg';
+  /**
+   * 导出的图片分辨率比例
+   * @default 1
+   */
+  pixelRatio?: number;
+  /**
+   * 导出的图片背景色
+   * @default #fff
+   */
+  backgroundColor?: Color;
+  /**
+   * 导出的图片排除的列表
+   */
+  excludeComponents?: string[];
 }
 
 /** 默认配置 */
-const defaultConfig: configOptions = {
-  theme: ThemeModeEnum.LIGHT,
-  autoResize: true,
-  resizeDebounceWait: 150,
+const DEFAULT_CONFIG: ConfigProps = {
   animation: true,
   animationDuration: 300,
+  autoResize: true,
+  resizeDebounceWait: 300,
+  maxResizeDebounceWait: 500,
+};
+
+/** 导出文件默认配置 */
+const DEFAULT_EXPORT_OPTIONS: DataURLOptions = {
+  type: 'png',
+  pixelRatio: 1,
+  backgroundColor: '#fff',
+  excludeComponents: [],
 };
 
 export const useEcharts = (
-  el: Ref<NullType<HTMLDivElement>>,
-  options: echarts.EChartsCoreOption,
-  config: configOptions = defaultConfig,
+  dom: Ref<HTMLDivElement | HTMLCanvasElement | null>,
+  config?: ConfigProps,
 ) => {
-  const { EchartsInitOpts, autoResize, resizeDebounceWait, animation, animationDuration } = config;
+  const {
+    echartsInitOpts,
+    animation,
+    animationDuration,
+    autoResize,
+    resizeDebounceWait,
+    maxResizeDebounceWait,
+    themeMode,
+  } = { ...DEFAULT_CONFIG, ...config };
 
-  /**
-   *  图表实例
-   */
+  /** 图表实例 */
   let chartInstance: NullType<echarts.ECharts> = null;
 
-  let resizeObserver: ReturnType<typeof useResizeObserver> | null = null;
+  /** 图表尺寸变化监听 */
+  let resizeObserver: NullType<UseResizeObserverReturn> = null;
 
-  const chartOptions = ref(options);
+  /** 图表配置项 */
+  const chartOptions = ref<NullType<EChartsCoreOption>>(null);
+
+  const isDark = useDark();
+
+  /** 当前主题 */
+  const currentTheme = computed(() => {
+    // 如果设置了自定义主题模式，优先使用
+    if (themeMode || isNull(themeMode)) {
+      return themeMode;
+    }
+
+    // 否则根据系统主题自动切换
+    return isDark.value ? 'dark' : null;
+  });
+
+  /** Loading 状态控制 */
+  const toggleLoading = (show: boolean) => {
+    if (!chartInstance) return;
+    show ? chartInstance.showLoading('default') : chartInstance.hideLoading();
+  };
+
+  /** 图表初始化 */
+  const initChart = async () => {
+    if (!dom.value || echarts.getInstanceByDom(dom.value)) return;
+    chartInstance = echarts.init(dom.value, currentTheme.value, echartsInitOpts);
+    toggleLoading(true);
+  };
+
+  /** 图表销毁 */
+  const destroyChart = () => {
+    if (autoResize && resizeObserver) {
+      resizeObserver.stop();
+      resizeObserver = null;
+    }
+
+    if (chartInstance) {
+      chartInstance.dispose();
+      chartInstance = null;
+    }
+  };
 
   /**
-   * 响应式图表尺寸
+   * 图表渲染
+   * @param options 图表数据集
+   * @param opts 图表配置项
    */
-  const resizeChart = useDebounceFn(() => {
+  const renderChart = (options: EChartsCoreOption, opts: SetOptionOpts = { notMerge: true }) => {
+    if (!chartInstance) return;
+    const finalOptions = { ...options, backgroundColor: 'transparent' };
+    chartInstance.setOption(finalOptions, opts);
+    chartOptions.value = finalOptions;
+    toggleLoading(false);
+  };
+
+  /** 调整图表尺寸 */
+  const resize = () => {
     if (!chartInstance) return;
     chartInstance.resize({
       animation: {
         duration: animation ? animationDuration : 0,
       },
     });
-  }, resizeDebounceWait);
+  };
 
-  /**
-   * 初始化图表
-   */
-  const initChart = () => {
-    if (!el.value) return;
+  /** 防抖处理的resize */
+  const resizeDebounceHandler = useDebounceFn(resize, resizeDebounceWait, {
+    maxWait: maxResizeDebounceWait,
+  });
 
-    // 检查是否已经初始化过
-    if (echarts.getInstanceByDom(el.value)) {
-      return;
+  /** 重置图表 */
+  const resetChart = () => {
+    if (!chartInstance) return;
+    chartInstance.clear();
+  };
+
+  /** 下载图表文件 */
+  const downloadImage = (fileName: string, options?: DataURLOptions) => {
+    if (!chartInstance) return;
+    const baseOptions: DataURLOptions = {
+      ...DEFAULT_EXPORT_OPTIONS,
+      ...options,
+    };
+    const dataURL = chartInstance.getDataURL(baseOptions);
+
+    const finalFileName = /^[a-z0-9]+$/i.test(fileName.trim())
+      ? fileName
+      : `${fileName.trim()}.${baseOptions.type}`;
+
+    downloadFile(dataURL, finalFileName);
+  };
+
+  // 监听主题变化，自动重新初始化图表
+  watch(currentTheme, async () => {
+    if (!chartInstance) return;
+    destroyChart();
+    await initChart();
+
+    if (chartOptions.value) {
+      renderChart(chartOptions.value);
     }
+  });
 
-    chartInstance = echarts.init(el.value, null, EchartsInitOpts);
-
-    chartInstance.setOption(chartOptions.value);
-
+  onMounted(() => {
+    initChart();
     if (autoResize) {
-      resizeObserver = useResizeObserver(el, resizeChart);
+      resizeObserver = useResizeObserver(dom, resizeDebounceHandler);
     }
-  };
-
-  /**
-   * 更新图表配置项
-   */
-  const updateOptions = (options: echarts.EChartsCoreOption) => {
-    if (!chartInstance) return;
-
-    chartInstance.setOption(options, { notMerge: true });
-    // 更新完配置后，重新渲染一次
-    resizeChart();
-  };
-
-  // 监听配置项的更改
-  watch(
-    () => chartOptions.value,
-    (newValue) => {
-      updateOptions(newValue);
-    },
-    {
-      deep: true,
-    },
-  );
-
-  /**
-   * 销毁图表实例
-   */
-  const destroyChart = () => {
-    if (!chartInstance) return;
-
-    resizeObserver?.stop();
-    chartInstance?.dispose();
-    chartInstance = null;
-  };
-
-  /**
-   * 获取图表实例
-   */
-  const getInstance = () => chartInstance;
-
-  onMounted(async () => {
-    await nextTick();
-    initChart();
   });
 
-  onActivated(() => {
-    destroyChart();
-    initChart();
-  });
+  /** 获取图表实例 */
+  const getChartInstance = () => chartInstance;
 
-  onDeactivated(() => {
+  onUnmounted(() => {
     destroyChart();
   });
 
-  onBeforeUnmount(() => {
-    destroyChart();
-  });
-
-  return { getInstance, updateOptions, destroyChart };
+  return {
+    getChartInstance,
+    renderChart,
+    resetChart,
+    toggleLoading,
+    downloadImage,
+  };
 };

@@ -68,7 +68,6 @@ export const segmentedOptions = [
 ];
 
 export const userVisitOption: echarts.EChartsCoreOption = {
-  backgroundColor: '#fff',
   tooltip: {
     trigger: 'axis',
     axisPointer: {
@@ -86,7 +85,6 @@ export const userVisitOption: echarts.EChartsCoreOption = {
     right: 'center',
     textStyle: {
       fontSize: 12,
-      color: '#333',
     },
   },
   grid: {
@@ -231,10 +229,8 @@ const textStyle = {
   textAlign: 'center',
   fontSize: 16,
   lineHeight: 24,
-  color: '#333',
   rich: {
     a: {
-      color: '#333',
       fontSize: 16,
       fontWeight: 'bold',
       lineHeight: 24,
@@ -382,7 +378,6 @@ export const histogramOption: echarts.EChartsCoreOption = {
         show: false, // 是否显示坐标轴轴线
       },
       axisLabel: {
-        color: '#000',
         fontSize: 14,
         formatter(params: string) {
           let str = ''; // 最终拼接成的字符串

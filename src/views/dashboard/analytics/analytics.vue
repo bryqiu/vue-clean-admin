@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { ElCard, ElLink, ElScrollbar, ElSegmented, ElTag, ElText } from 'element-plus';
 import { BoardItem } from './components';
 import {
@@ -19,16 +19,27 @@ defineOptions({
 const segmentedValue = ref('all');
 
 const userInstance = ref<NullType<HTMLDivElement>>(null);
-useEcharts(userInstance, userVisitOption);
+const { renderChart: userVisitChart } = useEcharts(userInstance);
 
 const dashboardInstance = ref<NullType<HTMLDivElement>>(null);
-useEcharts(dashboardInstance, dashboardOption);
+const { renderChart: dashboardChart } = useEcharts(dashboardInstance);
 
 const histogramInstance = ref<NullType<HTMLDivElement>>(null);
-useEcharts(histogramInstance, histogramOption);
+const { renderChart: histogramChart } = useEcharts(histogramInstance);
 
 const pieChartsInstance = ref<NullType<HTMLDivElement>>(null);
-useEcharts(pieChartsInstance, pieChartsOption);
+const { renderChart: pieChartsChart } = useEcharts(pieChartsInstance);
+
+const loadOptions = () => {
+  userVisitChart(userVisitOption);
+  dashboardChart(dashboardOption);
+  histogramChart(histogramOption);
+  pieChartsChart(pieChartsOption);
+};
+
+onMounted(() => {
+  loadOptions();
+});
 </script>
 
 <template>
@@ -102,7 +113,6 @@ useEcharts(pieChartsInstance, pieChartsOption);
       <ElCard shadow="never" class="col-span-6">
         <div ref="histogramInstance" class="wh-full" />
       </ElCard>
-      <!-- <ElCard shadow="never" class="col-span-4">3</ElCard> -->
     </div>
   </div>
 </template>
