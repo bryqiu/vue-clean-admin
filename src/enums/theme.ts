@@ -3,4 +3,6 @@ export enum ThemeModeEnum {
   LIGHT = 'light',
   /** 暗黑模式 */
   DARK = 'dark',
+  /** 跟随系统 */
+  SYSTEM = 'system',
 }
