@@ -26,7 +26,7 @@ const activeMenu = computed(() => {
       :collapse-transition="false"
       :unique-opened="isMenuAccordion"
     >
-      <template v-for="menu in menuRoutes" :key="menu.meta.menuKey">
+      <template v-for="menu in menuRoutes" :key="menu.path">
         <MenuSubItem v-if="!menu.meta.isHideMenu" :menu :parent-path="menu.path" />
       </template>
     </ElMenu>

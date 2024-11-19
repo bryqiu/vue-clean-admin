@@ -1,4 +1,4 @@
-import { addMenuKey, extractRoutes, generateSortRouter } from '@/utils/index';
+import { extractRoutes, generateSortRouter } from '@/utils/index';
 import { SortModeEnum } from '@/enums/index';
 
 /** 基础路由 */
@@ -16,14 +16,10 @@ const globalRoutes: Record<string, any> = import.meta.glob(['./modules/global/**
 });
 
 // 菜单路由表
-export const menuRoutes = addMenuKey(
-  generateSortRouter(
-    [...extractRoutes(basicRoutes), ...extractRoutes(dynamicRoutes)],
-    SortModeEnum.ASC,
-  ),
+export const menuRoutes = generateSortRouter(
+  [...extractRoutes(basicRoutes), ...extractRoutes(dynamicRoutes)],
+  SortModeEnum.ASC,
 );
-
-console.log(menuRoutes);
 
 /** 整体路由表 */
 export const routes = [...extractRoutes(globalRoutes), ...menuRoutes];

@@ -15,7 +15,6 @@ declare module 'vue-router' {
     /** 排序 */
     sort?: number;
     /** 唯一秘钥 */
-    menuKey?: string;
   }
 }
 
