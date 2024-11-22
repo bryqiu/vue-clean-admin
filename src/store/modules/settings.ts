@@ -39,6 +39,21 @@ const createSettingsStore = defineStore(
       unref(getThemeSettings).pageTransitionName = name;
     };
 
+    /** 切换面包屑显示状态 */
+    const toggleBreadcrumb = (val: boolean) => {
+      unref(getSundriesSettings).showBreadcrumb = val;
+    };
+
+    /** 切换面包屑图标状态 */
+    const toggleBreadcrumbIcon = (val: boolean) => {
+      unref(getSundriesSettings).showBreadcrumbIcon = val;
+    };
+
+    /** 切换面包屑样式类型 */
+    const toggleBreadcrumbStyleType = (val: BreadcrumbStyleType) => {
+      unref(getSundriesSettings).breadcrumbStyleType = val;
+    };
+
     const isDark = useDark({
       disableTransition: false,
       valueDark: ThemeModeEnum.DARK,
@@ -91,6 +106,9 @@ const createSettingsStore = defineStore(
       toggleMenuAccordion,
       togglePageTransition,
       toggleThemeMode,
+      toggleBreadcrumb,
+      toggleBreadcrumbIcon,
+      toggleBreadcrumbStyleType,
     };
   },
   { persist: true },

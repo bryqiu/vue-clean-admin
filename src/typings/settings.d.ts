@@ -43,7 +43,26 @@ export interface LayoutSettingsType {
   sidebarCollapseWidth: number;
 }
 
-export interface SundriesSettingsType {
+// 面包屑
+interface BreadcrumbConfig {
+  /**
+   * 是否展示面包屑
+   * @default true
+   */
+  showBreadcrumb: boolean;
+  /**
+   * 是否显示面包屑图标
+   * @default true
+   */
+  showBreadcrumbIcon: boolean;
+  /**
+   * 面包屑样式
+   * @default arrow
+   */
+  breadcrumbStyleType: BreadcrumbStyleType;
+}
+
+export interface SundriesSettingsType extends BreadcrumbConfig {
   /**
    * 是否有水印
    * @default false

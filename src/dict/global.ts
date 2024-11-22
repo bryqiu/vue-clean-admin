@@ -19,3 +19,18 @@ export const whetherOptions: (BaseOptions<boolean> & { disabled?: boolean })[] =
     value: false,
   },
 ];
+
+export const breadcrumbStyleOptions: BaseOptions<BreadcrumbStyleType>[] = [
+  {
+    label: '默认',
+    value: 'default',
+  },
+  {
+    label: '箭头',
+    value: 'arrow',
+  },
+  {
+    label: '平行四边形',
+    value: 'parallelogram',
+  },
+];

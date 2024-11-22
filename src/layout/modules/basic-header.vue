@@ -7,9 +7,7 @@ import { SettingsAction } from '../components/settings';
 import { Breadcrumb } from '../components/breadcrumb';
 import type { RouteLocationMatched } from 'vue-router';
 
-const getBreadcrumbItemInfo = (item: RouteLocationMatched) => {
-  console.log(item);
-};
+const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useSundriesSettings();
 </script>
 
 <template>
@@ -17,7 +15,11 @@ const getBreadcrumbItemInfo = (item: RouteLocationMatched) => {
     <div class="wh-full flex justify-between items-center">
       <!-- 头部-左侧 -->
       <div>
-        <Breadcrumb type="arrow" />
+        <Breadcrumb
+          v-if="showBreadcrumb"
+          :is-show-icon="showBreadcrumbIcon"
+          :type="breadcrumbStyleType"
+        />
       </div>
       <!--头部-右侧-->
       <div class="flex-c-c h-full">

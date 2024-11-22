@@ -1,11 +1,26 @@
-import { computed } from 'vue';
+import { computed, unref } from 'vue';
 
 export const useSundriesSettings = () => {
-  const settingsStore = useSettingsStore();
-  const sundriesSettings = settingsStore.getSundriesSettings;
+  const { getSundriesSettings, toggleBreadcrumb, toggleBreadcrumbIcon, toggleBreadcrumbStyleType } =
+    useSettingsStore();
 
   const hasWatermark = computed(() => {
-    return sundriesSettings.hasWatermark;
+    return unref(getSundriesSettings).hasWatermark;
   });
-  return { hasWatermark };
+
+  const showBreadcrumb = computed({
+    get: () => unref(getSundriesSettings).showBreadcrumb,
+    set: (val) => toggleBreadcrumb(val),
+  });
+
+  const showBreadcrumbIcon = computed({
+    get: () => unref(getSundriesSettings).showBreadcrumbIcon,
+    set: (val) => toggleBreadcrumbIcon(val),
+  });
+
+  const breadcrumbStyleType = computed({
+    get: () => unref(getSundriesSettings).breadcrumbStyleType,
+    set: (val) => toggleBreadcrumbStyleType(val),
+  });
+  return { hasWatermark, showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType };
 };

@@ -24,6 +24,9 @@ const DEFAULT_LAYOUT_SETTINGS: LayoutSettingsType = {
 /** 默认其他设置 */
 const DEFAULT_SUNDRIES_SETTINGS: SundriesSettingsType = {
   hasWatermark: false,
+  showBreadcrumb: true,
+  showBreadcrumbIcon: true,
+  breadcrumbStyleType: 'arrow',
 };
 
 /** 默认设置 */

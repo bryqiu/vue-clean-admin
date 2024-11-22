@@ -2,7 +2,7 @@
 import { ElDrawer, ElScrollbar, ElTabPane, ElTabs } from 'element-plus';
 import { computed, ref } from 'vue';
 import type { SettingsDrawerEmits, SettingsDrawerProps, TabOptions } from './typing';
-import { ModuleLayout, ModuleTheme } from './modules';
+import { ModuleLayout, ModuleSundries, ModuleTheme } from './modules';
 
 defineOptions({
   name: 'SettingsDrawer',
@@ -36,6 +36,11 @@ const tabsOptions: TabOptions[] = [
     label: '主题',
     value: '2',
     component: ModuleTheme,
+  },
+  {
+    label: '其他',
+    value: '3',
+    component: ModuleSundries,
   },
 ];
 
