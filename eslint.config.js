@@ -29,6 +29,7 @@ export default [
         RegisterComponentList: 'readonly',
         BaseOptions: 'readonly',
         DisplayMode: 'readonly',
+        BreadcrumbStyleType: 'readonly',
         useIcon: true,
         useRouterPath: true,
         useSettingsStore: true,

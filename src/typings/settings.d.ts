@@ -1,4 +1,5 @@
 import { PageTransitionEnum, ThemeModeEnum } from '@/enums/index';
+/* ======================== 主题 ======================== */
 
 export interface ThemeSettingsType {
   /**
@@ -17,6 +18,8 @@ export interface ThemeSettingsType {
    */
   pageTransitionName: PageTransitionEnum;
 }
+
+/* ======================== 布局 ======================== */
 
 export interface LayoutSettingsType {
   /**
@@ -43,6 +46,7 @@ export interface LayoutSettingsType {
   sidebarCollapseWidth: number;
 }
 
+/* ======================== 杂项 ======================== */
 // 面包屑
 interface BreadcrumbConfig {
   /**
