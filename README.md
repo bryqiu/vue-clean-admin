@@ -1,9 +1,59 @@
-# vue-clean-admin
+<div align="center">
+<a href="https://github.com/QFifteen/vue-clean-admin">
+ <img src="https://github.com/user-attachments/assets/1553457d-43e4-4e31-9282-b719cb1158f6" alt="Logo" width="100" height="100" >
+</a>
+<h1> Vue Clean Admin </h1>
 
-一套基于 Vue3 + Vite + TypeScript + Element Plus 构建的中后台系统模板
+</div>
 
-### ⚠️注意
+本项目是一套基于 Vue3 + Vite + TypeScript + Element Plus 构建的企业级后台管理系统，为开发者提供开箱即用的模板
+
+- 技术栈先进，打造高性能、高质量的前端开发体系
+- 遵循严格的代码规范、编码风格和工程最佳实践，提供清晰的目录结构
+- 不算太丑的样式，尽可能美观、统一、专业
+
+## ⚠️注意
 
 项目处于前期开发中，在写项目的同时也在持续写[系列文章](https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F)，所以项目开发周期会不断拉长。
 
 如果你有兴趣，欢迎给我提 issue 或 pr
+
+## 在本地运行
+
+克隆项目到你的本地
+
+```bash
+git clone https://github.com/QFifteen/vue-clean-admin
+```
+
+前往项目目录
+
+```bash
+cd vue-clean-admin
+```
+
+安装依赖
+
+```bash
+pnpm i
+```
+
+启动服务器
+
+```bash
+pnpm dev
+```
+
+## 维护者
+
+- [@Fifteen](https://github.com/QFifteen)
+
+## 如何贡献
+
+我们非常欢迎任何形式的反馈及贡献！[提一个 issue](https://github.com/QFifteen/vue-clean-admin/issues/new) 或者 Pull Request
+
+你可以先阅读 [如何向开源社区提问题](https://github.com/seajs/seajs/issues/545)、[如何优雅地在github上贡献代码](https://segmentfault.com/a/1190000000736629)
+
+## 使用许可
+
+[MIT](https://github.com/QFifteen/vue-clean-admin/blob/main/LICENSE)
