@@ -1,8 +1,7 @@
 import type { RouteLocationMatched } from 'vue-router';
 
-export type BreadcrumbStyle = 'default' | 'arrow' | 'parallelogram';
 export type BreadcrumbStyleObj = {
-  [key in BreadcrumbStyle]: string;
+  [key in BreadcrumbStyleType]: string;
 };
 
 export interface BreadcrumbProps {
@@ -14,15 +13,15 @@ export interface BreadcrumbProps {
   replace?: boolean;
 
   /**
-   * 是否隐藏面包屑图标
-   * @default false
+   * 是否显示面包屑图标
+   * @default true
    */
-  isHideIcon?: boolean;
+  isShowIcon?: boolean;
   /**
    * 面包屑样式
    * @default default
    */
-  type?: BreadcrumbStyle;
+  type?: BreadcrumbStyleType;
 }
 
 export type BreadcrumbEmits = {

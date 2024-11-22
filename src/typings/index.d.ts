@@ -16,4 +16,5 @@ declare global {
   }
 
   type DisplayMode = 'horizontal' | 'vertical';
+  type BreadcrumbStyleType = 'default' | 'arrow' | 'parallelogram';
 }

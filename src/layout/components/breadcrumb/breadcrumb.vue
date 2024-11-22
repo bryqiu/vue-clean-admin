@@ -34,7 +34,7 @@ const getPath = (item: RouteLocationMatched): string | Object => {
 
 /** 渲染图标 */
 const renderIcon = (item: RouteLocationMatched) => {
-  if (props.isHideIcon || !item.meta.icon) return null;
+  if (!props.isShowIcon || !item.meta.icon) return null;
   return h(AppIcon, { icon: item.meta.icon });
 };
 
