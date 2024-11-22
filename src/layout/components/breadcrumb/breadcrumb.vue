@@ -70,7 +70,7 @@ const breadcrumbClassName = computed(() => {
 <style scoped lang="scss">
 $height: 24px;
 
-@mixin breadcrumb__inner($padding: 0 4px 0 12px, $bgColor: var(--el-fill-color-light)) {
+@mixin breadcrumb__inner($padding: 0 4px 0 16px, $bgColor: var(--el-fill-color-light)) {
   position: relative;
   z-index: 1;
   display: inline-flex;
