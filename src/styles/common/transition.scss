@@ -204,3 +204,15 @@ $scale-direction: (base, up, down);
     transform: perspective(800px) rotate3d(1, 0, 0, 60deg);
   }
 }
+
+/* ======================== 面包屑切换动画(基础动画) ======================== */
+
+.breadcrumb-basic-enter-active {
+  transition: all 0.25s;
+}
+
+.breadcrumb-basic-enter-from,
+.breadcrumb-basic-leave-active {
+  opacity: 0;
+  transform: translateX(20px) skewX(-20deg);
+}

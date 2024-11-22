@@ -59,6 +59,8 @@ export const elStyleKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElMenuItem',
   'ElTabs',
   'ElTabPane',
+  'ElBreadcrumb',
+  'ElBreadcrumbItem',
   /* ======================== 反馈组件 ======================== */
   'ElTooltip',
   'ElAlert',

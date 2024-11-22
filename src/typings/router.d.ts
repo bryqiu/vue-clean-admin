@@ -14,7 +14,11 @@ declare module 'vue-router' {
     isHideMenu?: boolean;
     /** 排序 */
     sort?: number;
-    /** 唯一秘钥 */
+
+    /** 是否隐藏面包屑 */
+    isHideBreadcrumb?: boolean;
+    /** 是否只读面包屑 */
+    isReadonlyBreadcrumb?: boolean;
   }
 }
 

@@ -4,6 +4,12 @@ import { FullScreen } from '../components/full-screen';
 import { UserMenu } from '../components/user-menu';
 import { Notice } from '../components/notice';
 import { SettingsAction } from '../components/settings';
+import { Breadcrumb } from '../components/breadcrumb';
+import type { RouteLocationMatched } from 'vue-router';
+
+const getBreadcrumbItemInfo = (item: RouteLocationMatched) => {
+  console.log(item);
+};
 </script>
 
 <template>
@@ -11,7 +17,7 @@ import { SettingsAction } from '../components/settings';
     <div class="wh-full flex justify-between items-center">
       <!-- 头部-左侧 -->
       <div>
-        <AppIcon icon="ri:search-2-fill" class="text-lg" />
+        <Breadcrumb type="arrow" />
       </div>
       <!--头部-右侧-->
       <div class="flex-c-c h-full">
