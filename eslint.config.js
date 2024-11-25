@@ -15,7 +15,7 @@ import pluginCheckFile from 'eslint-plugin-check-file';
 
 import * as regexpPlugin from 'eslint-plugin-regexp';
 
-/** @type {import('eslint').Linter.Config} */
+/** @type {import('eslint').Linter.Config[]} */
 export default [
   {
     languageOptions: {
