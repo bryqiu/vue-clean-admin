@@ -1,16 +1,18 @@
 <div align="center">
 <a href="https://github.com/QFifteen/vue-clean-admin">
- <img src="https://github.com/user-attachments/assets/1553457d-43e4-4e31-9282-b719cb1158f6" alt="Logo" width="100" height="100" >
+ <img src="https://github.com/user-attachments/assets/1553457d-43e4-4e31-9282-b719cb1158f6" alt="Logo" width="150" height="150" />
 </a>
 <h1> Vue Clean Admin </h1>
 
+基于 Vue3 + Vite + TypeScript + Element Plus 构建的企业级后台管理系统
+
+<a href="https://github.com/QFifteen/vue-clean-admin/blob/main/LICENSE"><img alt="MIT" src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square"/></a>
+<a href="https://github.com/Qfifteen/vue-clean-admin/stargazers"><img alt="stars" src="https://img.shields.io/github/stars/Qfifteen/vue-clean-admin"/></a>
+
+[在本地运行](#在本地运行) ▪
+[如何贡献](#如何贡献)
+
 </div>
-
-本项目是一套基于 Vue3 + Vite + TypeScript + Element Plus 构建的企业级后台管理系统，为开发者提供开箱即用的模板
-
-- 技术栈先进，打造高性能、高质量的前端开发体系
-- 遵循严格的代码规范、编码风格和工程最佳实践，提供清晰的目录结构
-- 不算太丑的样式，尽可能美观、统一、专业
 
 ## ⚠️注意
 
