@@ -4,4 +4,12 @@
   overflow-x: hidden;
 }
 
-/* ======================== layout ======================== */
+/* 灰色模式 */
+.gray-mode {
+  filter: grayscale(1);
+}
+
+/* 色弱模式 */
+.weak-mode {
+  filter: invert(80%);
+}
