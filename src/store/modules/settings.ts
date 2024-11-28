@@ -2,8 +2,9 @@ import { computed, ref, unref, watch } from 'vue';
 import { store } from '../init';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { DEFAULT_SETTINGS } from '@/config';
-import { PageTransitionEnum, ThemeModeEnum } from '@/enums';
-import { useDark, usePreferredDark } from '@vueuse/core';
+import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
+import { usePreferredDark } from '@vueuse/core';
+import { visualModeOptions } from '@/dict';
 
 const createSettingsStore = defineStore(
   'settings',
@@ -54,27 +55,16 @@ const createSettingsStore = defineStore(
       unref(getSundriesSettings).breadcrumbStyleType = val;
     };
 
-    const isDark = useDark({
-      disableTransition: false,
-      valueDark: ThemeModeEnum.DARK,
-      valueLight: ThemeModeEnum.LIGHT,
-    });
-    const systemDark = usePreferredDark();
+    const { setThemeMode, addVisualStyle } = useMode();
 
-    /** 设置主题 */
-    const setThemeMode = (mode: ThemeModeEnum) => {
-      switch (mode) {
-        case ThemeModeEnum.DARK:
-          isDark.value = true;
-          break;
-        case ThemeModeEnum.LIGHT:
-          isDark.value = false;
-          break;
-        case ThemeModeEnum.SYSTEM:
-          isDark.value = systemDark.value;
-          break;
-      }
+    /** 设置当前视觉模式 */
+    const setVisualMode = (val: VisualModeEnum) => {
+      addVisualStyle(val);
+      unref(getSundriesSettings).visualMode = val;
     };
+
+    /** 系统主题 */
+    const systemDark = usePreferredDark();
 
     /** 切换主题模式 */
     const toggleThemeMode = (mode: ThemeModeEnum) => {
@@ -97,6 +87,15 @@ const createSettingsStore = defineStore(
       { immediate: true },
     );
 
+    // 初始化视觉模式
+    watch(
+      () => unref(getSundriesSettings).visualMode,
+      (mode) => {
+        setVisualMode(mode);
+      },
+      { immediate: true },
+    );
+
     return {
       appSettings,
       getLayoutSettings,
@@ -109,6 +108,7 @@ const createSettingsStore = defineStore(
       toggleBreadcrumb,
       toggleBreadcrumbIcon,
       toggleBreadcrumbStyleType,
+      setVisualMode,
     };
   },
   { persist: true },
