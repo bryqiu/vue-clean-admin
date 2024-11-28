@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed } from 'vue';
 import { BasicBox } from './index';
 import { ElScrollbar, ElSegmented } from 'element-plus';
 import { DisplayModeEnum } from '@/enums';
 import { isArray } from '@/utils';
-import type { ToggleBoxEmits, ToggleBoxProps, ValueType } from './box-typing';
+import type { BasicBoxProps, ToggleBoxEmits, ToggleBoxProps } from './box-typing';
 
 defineOptions({
   name: 'ToggleBox',
@@ -14,33 +14,30 @@ const props = withDefaults(defineProps<ToggleBoxProps>(), {
   auto: true,
   maxLength: 3,
   disabled: false,
+  showBorder: true,
 });
 
 const emits = defineEmits<ToggleBoxEmits>();
 
-// 选中项
-const segmentedActive = ref(props.modelValue);
-
-watch(
-  () => props.modelValue,
-  (newVal) => {
-    segmentedActive.value = newVal;
+const segmentedActive = computed({
+  get() {
+    return props.modelValue;
   },
-  { immediate: true },
-);
-
-/** 分段选中项变化时 */
-const handleChange = (value: ValueType) => {
-  emits('update:modelValue', value);
-};
+  set(newValue) {
+    emits('update:modelValue', newValue);
+  },
+});
 
 /** 展示模式的值 */
 const modeValue = computed(() => {
   const { mode, auto, options, maxLength } = props;
-  /** PS：显式设置mode属性优先级比auto属性高 */
+
+  /** 显式设置mode属性优先级比auto属性高 */
   if (mode === DisplayModeEnum.HORIZONTAL) return DisplayModeEnum.HORIZONTAL;
   if (mode === DisplayModeEnum.VERTICAL) return DisplayModeEnum.VERTICAL;
+
   if (!auto) return mode;
+
   const optionsLength = isArray(options) ? options.length : 0;
   return optionsLength >= maxLength ? DisplayModeEnum.VERTICAL : mode;
 });
@@ -49,10 +46,20 @@ const modeValue = computed(() => {
 const isVertical = computed(() => {
   return modeValue.value === DisplayModeEnum.VERTICAL;
 });
+
+// 计算 BasicBox 的属性
+const basicBoxProps = computed<BasicBoxProps>(() => {
+  return {
+    text: props.text,
+    mode: modeValue.value,
+    tipsContent: props.tipsContent,
+    showBorder: props.showBorder,
+  };
+});
 </script>
 
 <template>
-  <BasicBox :text :mode="modeValue" :tips-content>
+  <BasicBox v-bind="basicBoxProps">
     <ElScrollbar>
       <ElSegmented
         v-model="segmentedActive"
@@ -60,7 +67,6 @@ const isVertical = computed(() => {
         :options="options"
         :block="isVertical"
         :disabled="disabled"
-        @change="handleChange"
       >
         <template #default="{ item }">
           <slot name="segmented" :item />

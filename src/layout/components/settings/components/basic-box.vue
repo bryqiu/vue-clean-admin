@@ -3,15 +3,16 @@ import { computed } from 'vue';
 import { ElScrollbar, ElText, ElTooltip } from 'element-plus';
 import { DisplayModeEnum } from '@/enums';
 import { isEmpty } from '@/utils';
-import type { BaseBoxProps } from './box-typing';
+import type { BasicBoxProps } from './box-typing';
 
 defineOptions({
   name: 'BasicBox',
 });
 
-const props = withDefaults(defineProps<BaseBoxProps>(), {
+const props = withDefaults(defineProps<BasicBoxProps>(), {
   text: '--',
   mode: DisplayModeEnum.HORIZONTAL,
+  showBorder: true,
 });
 
 /** 是否垂直模式 */
@@ -20,19 +21,19 @@ const isVertical = computed(() => {
   return mode === DisplayModeEnum.VERTICAL;
 });
 
-/** 垂直模式样式 */
-const verticalStyle = computed(() => {
+/** 条件样式 */
+const conditionStyle = computed(() => {
   return {
-    'flex-col': isVertical.value,
-    'justify-start': isVertical.value,
+    'flex-col justify-start': isVertical.value,
+    'border border-[var(--el-border-color-light)]': props.showBorder,
   };
 });
 </script>
 
 <template>
   <div
-    class="flex gap-2 justify-between p-2 border border-[var(--el-border-color-light)] rounded-[var(--app-round-base)]"
-    :class="verticalStyle"
+    class="flex gap-2 justify-between p-2 rounded-[var(--app-round-base)]"
+    :class="conditionStyle"
   >
     <div class="flex items-center gap-0.5">
       <ElText truncated>{{ text }}</ElText>

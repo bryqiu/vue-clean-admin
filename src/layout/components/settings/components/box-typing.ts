@@ -1,6 +1,6 @@
 import { DisplayModeEnum } from '@/enums';
 
-export interface BaseBoxProps {
+export interface BasicBoxProps {
   /**
    * 文本内容
    * @default --
@@ -15,12 +15,17 @@ export interface BaseBoxProps {
    * 提示内容
    */
   tipsContent?: string;
+  /**
+   * 是否显示边框
+   * @default true
+   */
+  showBorder?: boolean;
 }
 
 export type ValueType = string | number | boolean;
 type Option = (BaseOptions<ValueType> & { disabled?: boolean; [key: string]: any }) | string;
 
-export interface ToggleBoxProps extends BaseBoxProps {
+export interface ToggleBoxProps extends BasicBoxProps {
   /**
    * 选中项
    */
