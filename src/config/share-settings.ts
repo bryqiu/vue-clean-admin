@@ -4,7 +4,7 @@ import type {
   SundriesSettingsType,
   ThemeSettingsType,
 } from '#/settings';
-import { PageTransitionEnum, ThemeModeEnum } from '@/enums/index';
+import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
 
 /** 默认主题设置 */
 const DEFAULT_THEME_SETTINGS: ThemeSettingsType = {
@@ -27,6 +27,7 @@ const DEFAULT_SUNDRIES_SETTINGS: SundriesSettingsType = {
   showBreadcrumb: true,
   showBreadcrumbIcon: true,
   breadcrumbStyleType: 'arrow',
+  visualMode: VisualModeEnum.NORMAL,
 };
 
 /** 默认设置 */

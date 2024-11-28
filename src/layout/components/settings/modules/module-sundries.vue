@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ToggleBox } from '../components';
-import { breadcrumbStyleOptions, whetherOptions } from '@/dict';
+import { breadcrumbStyleOptions, visualModeOptions, whetherOptions } from '@/dict';
 import { SegmentContainer } from '../components';
 
 defineOptions({
   name: 'ModuleSundries',
 });
 
-const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useSundriesSettings();
+const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType, currentVisualMode } =
+  useSundriesSettings();
 </script>
 
 <template>
@@ -27,6 +28,9 @@ const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useSundriesS
         :options="breadcrumbStyleOptions"
         :disabled="!showBreadcrumb"
       />
+    </SegmentContainer>
+    <SegmentContainer title="视觉模式">
+      <ToggleBox v-model="currentVisualMode" text="切换视觉模式" :options="visualModeOptions" />
     </SegmentContainer>
   </div>
 </template>

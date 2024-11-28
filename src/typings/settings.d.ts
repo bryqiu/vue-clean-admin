@@ -1,4 +1,4 @@
-import { PageTransitionEnum, ThemeModeEnum } from '@/enums/index';
+import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
 /* ======================== 主题 ======================== */
 
 export interface ThemeSettingsType {
@@ -72,6 +72,12 @@ export interface SundriesSettingsType extends BreadcrumbConfig {
    * @default false
    */
   hasWatermark: boolean;
+
+  /**
+   * 视觉模式
+   * @default ''
+   */
+  visualMode: VisualModeEnum;
 }
 
 export interface SettingsType {
