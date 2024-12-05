@@ -38,6 +38,7 @@ export default [
         useThemeSettings: 'readonly',
         useSundriesSettings: 'readonly',
         useProgress: 'readonly',
+        useMode: 'readonly',
       },
     },
   },
