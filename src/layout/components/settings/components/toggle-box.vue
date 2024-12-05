@@ -32,14 +32,15 @@ const segmentedActive = computed({
 const modeValue = computed(() => {
   const { mode, auto, options, maxLength } = props;
 
-  /** 显式设置mode属性优先级比auto属性高 */
-  if (mode === DisplayModeEnum.HORIZONTAL) return DisplayModeEnum.HORIZONTAL;
-  if (mode === DisplayModeEnum.VERTICAL) return DisplayModeEnum.VERTICAL;
+  // 优先考虑显式设置的 mode
+  if (mode === DisplayModeEnum.HORIZONTAL || mode === DisplayModeEnum.VERTICAL) {
+    return mode;
+  }
 
   if (!auto) return mode;
 
   const optionsLength = isArray(options) ? options.length : 0;
-  return optionsLength >= maxLength ? DisplayModeEnum.VERTICAL : mode;
+  return optionsLength >= maxLength ? DisplayModeEnum.VERTICAL : DisplayModeEnum.HORIZONTAL;
 });
 
 /** 是否为垂直模式 */
