@@ -24,13 +24,13 @@ export const boardData: BoardProps[] = [
   },
 ];
 
-interface ProjectAboutTYpe {
+interface ProjectAboutType {
   tagName: string;
   text: string;
   link?: string;
 }
 
-export const projectAbout: ProjectAboutTYpe[] = [
+export const projectAbout: ProjectAboutType[] = [
   {
     tagName: '源码',
     text: 'Clean Admin项目开源了！(点我查看源码)',
