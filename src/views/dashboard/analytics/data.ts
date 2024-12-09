@@ -36,11 +36,11 @@ export const projectAbout: ProjectAboutTYpe[] = [
     text: 'Clean Admin项目开源了！(点我查看源码)',
     link: 'https://github.com/QFifteen/vue-clean-admin',
   },
-  // {
-  //   tagName: '文档',
-  //   text: 'Admin 配套文档上线了',
-  //   link: 'URL_ADDRESS',
-  // },
+  {
+    tagName: '专栏',
+    text: '《通俗易懂的中后台系统建设指南》(记录此项目开发历程)',
+    link: 'https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F',
+  },
   // {
   //   tagName: '文档',
   //   text: 'Admin 配套文档上线了',
