@@ -20,6 +20,18 @@
 
 如果你有兴趣，欢迎给我提 issue 或 pr
 
+## 截图
+
+由于是前期开发，所以项目还未部署预览地址，但你可以先看看截图：
+
+##### 仪表盘：
+
+![image](https://github.com/user-attachments/assets/304aac17-2a34-403c-b785-5a6d338dfd8d)
+
+##### 设置：
+
+![image](https://github.com/user-attachments/assets/154c7e1b-78c2-4f2f-ae90-fb337bc305f6)
+
 ## 在本地运行
 
 克隆项目到你的本地
