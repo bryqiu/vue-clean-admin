@@ -13,6 +13,7 @@ interface ActionBtnsType {
   type?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text';
   icon?: Component;
   onClick: () => void;
+  [key: string]: any;
 }
 
 export interface ExceptionBasicProps {
@@ -46,7 +47,7 @@ const backHome = () => {
 </script>
 
 <template>
-  <div class="wh-full flex-c-c">
+  <div class="size-full flex-c-c">
     <div class="flex">
       <ElImage :src="img" :alt="title" class="w-[400px] lg:w-[500px]" />
       <div class="flex flex-col justify-center">

@@ -25,7 +25,7 @@ const systemTitle = import.meta.env.VITE_APP_TITLE;
 <template>
   <div class="flex-c-c gap-2 cursor-pointer" @click="goBackRootPath">
     <ElImage :src="LogoSvg" class="size-8" />
-    <span v-show="!isCollapse" class="app-h4">{{ systemTitle }}</span>
+    <span v-show="!isCollapse" class="text-xl font-semibold">{{ systemTitle }}</span>
   </div>
 </template>
 

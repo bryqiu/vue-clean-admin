@@ -50,8 +50,10 @@ onMounted(() => {
         <div class="flex flex-col gap-6">
           <div class="flex-b-c">
             <div class="flex items-center gap-2">
-              <span class="app-h5">数据总览</span
-              ><span class="app-h8 max-sm:hidden">更新时间：2024-329-3223</span>
+              <span class="text-lg font-medium">数据总览</span
+              ><span class="text-xs text-[var(--el-text-color-placeholder)] max-sm:hidden"
+                >更新时间：2024-329-3223</span
+              >
             </div>
             <div>
               <ElSegmented v-model="segmentedValue" :options="segmentedOptions" class="simple" />
@@ -67,7 +69,7 @@ onMounted(() => {
             />
           </div>
           <div class="size-full">
-            <span class="app-h6">用户访问量折现图</span>
+            <span class="text-base font-bold">用户访问量折现图</span>
             <div ref="userInstance" class="w-full h-72" />
           </div>
         </div>
@@ -75,7 +77,7 @@ onMounted(() => {
       <!--顶部-右侧-->
       <div class="col-span-6 lg:col-span-2 flex flex-col gap-4">
         <ElCard shadow="never" class="h-1/3">
-          <span class="app-h6">项目动态</span>
+          <span class="text-base font-bold">项目动态</span>
           <div class="w-full h-[calc(100%-2rem)] mt-2">
             <ElScrollbar
               :view-style="{
@@ -100,7 +102,7 @@ onMounted(() => {
           </div>
         </ElCard>
         <ElCard shadow="never" class="h-72 lg:h-2/3">
-          <span class="app-h6">仪表盘</span>
+          <span class="text-base font-bold">仪表盘</span>
           <div ref="dashboardInstance" class="size-full" />
         </ElCard>
       </div>

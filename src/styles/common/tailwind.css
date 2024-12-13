@@ -17,36 +17,4 @@
   .flex-b-c {
     @apply flex justify-between items-center;
   }
-
-  .app-h1 {
-    @apply text-5xl font-bold; /* 48px */
-  }
-
-  .app-h2 {
-    @apply text-4xl font-bold; /* 36px */
-  }
-
-  .app-h3 {
-    @apply text-2xl font-bold; /* 24px */
-  }
-
-  .app-h4 {
-    @apply text-xl font-semibold; /* 20px */
-  }
-
-  .app-h5 {
-    @apply text-lg font-medium; /* 18px */
-  }
-
-  .app-h6 {
-    @apply text-base font-bold; /* 16px */
-  }
-
-  .app-h7 {
-    @apply text-sm text-[var(--el-text-color-secondary)]; /* 14px */
-  }
-
-  .app-h8 {
-    @apply text-xs text-[var(--el-text-color-placeholder)]; /* 12px */
-  }
 }
