@@ -12,7 +12,7 @@ const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useSundriesS
 
 <template>
   <ElHeader>
-    <div class="wh-full flex justify-between items-center">
+    <div class="size-full flex justify-between items-center">
       <!-- 头部-左侧 -->
       <div>
         <Breadcrumb

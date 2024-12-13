@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<ActionButtonProps>(), {
 
 /** 元素间隔 */
 const spaceStyle = computed(() => {
-  return isEmpty(props.text) ? 'wh-full' : 'gap-1';
+  return isEmpty(props.text) ? 'size-full' : 'gap-1';
 });
 
 /** 选中按钮时样式 */

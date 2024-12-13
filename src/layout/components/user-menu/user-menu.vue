@@ -17,12 +17,12 @@ const popperOptions = { modifiers: [{ name: 'offset', options: { offset: [0, 5] 
 
 <template>
   <ElDropdown
-    class="wh-full outline-none"
+    class="size-full outline-none"
     trigger="click"
     :popper-options="popperOptions"
     popper-class="user-popper"
   >
-    <div class="wh-full flex-c-c hover:bg-[var(--el-fill-color)] cursor-pointer px-2">
+    <div class="size-full flex-c-c hover:bg-[var(--el-fill-color)] cursor-pointer px-2">
       <!--用户基本信息-->
       <div class="flex-c-c space-x-2 h-8">
         <ElImage

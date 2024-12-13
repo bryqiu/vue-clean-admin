@@ -10,10 +10,6 @@
 @tailwind utilities;
 
 @layer base {
-  .wh-full {
-    @apply w-full h-full;
-  }
-
   .flex-c-c {
     @apply flex justify-center items-center;
   }

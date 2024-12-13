@@ -66,7 +66,7 @@ onMounted(() => {
               :icon="item.icon"
             />
           </div>
-          <div class="wh-full">
+          <div class="size-full">
             <span class="app-h6">用户访问量折现图</span>
             <div ref="userInstance" class="w-full h-72" />
           </div>
@@ -101,17 +101,17 @@ onMounted(() => {
         </ElCard>
         <ElCard shadow="never" class="h-72 lg:h-2/3">
           <span class="app-h6">仪表盘</span>
-          <div ref="dashboardInstance" class="wh-full" />
+          <div ref="dashboardInstance" class="size-full" />
         </ElCard>
       </div>
     </div>
     <!--中间-->
     <div class="w-full h-80 grid grid-cols-12 gap-4">
       <ElCard shadow="never" class="col-span-6">
-        <div ref="pieChartsInstance" class="wh-full" />
+        <div ref="pieChartsInstance" class="size-full" />
       </ElCard>
       <ElCard shadow="never" class="col-span-6">
-        <div ref="histogramInstance" class="wh-full" />
+        <div ref="histogramInstance" class="size-full" />
       </ElCard>
     </div>
   </div>
