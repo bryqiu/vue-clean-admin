@@ -25,6 +25,7 @@ export interface ExceptionBasicProps {
   desc: string;
   /** 图片 */
   img: string;
+  /** 操作按钮-配置项 */
   actionBtns?: ActionBtnsType[];
 }
 
