@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { ExceptionBasic, type ExceptionBasicProps } from './components';
-import image500 from '@/assets/exceptions/500.svg';
+import { ErrorBasic, type ErrorBasicProps } from './components';
+import illus500 from '@/assets/errors/500.svg';
 import AppIcon from '@/components/common/app-icon/app-icon.vue';
 import { h } from 'vue';
 
 defineOptions({
-  name: 'Exception500',
+  name: 'ServerError',
 });
 
 const backIcon = h(AppIcon, { icon: 'ri:arrow-go-back-fill' });
 const refreshIcon = h(AppIcon, { icon: 'ri:refresh-line' });
 
-const exceptionInfo: ExceptionBasicProps = {
+const errorInfo: ErrorBasicProps = {
   type: '500',
-  title: '服务器似乎发生了错误',
   desc: '服务器似乎发生了错误，请稍后再试...',
-  img: image500,
+  prompt: '但不用担心，您可以尝试刷新页面或返回首页',
+  emotionIcon: 'mdi:emoticon-dead-outline',
+  illus: illus500,
   actionBtns: [
     {
       type: 'primary',
@@ -38,5 +39,5 @@ const exceptionInfo: ExceptionBasicProps = {
 </script>
 
 <template>
-  <ExceptionBasic v-bind="exceptionInfo" />
+  <ErrorBasic v-bind="errorInfo" />
 </template>
