@@ -26,11 +26,11 @@
 
 ##### 仪表盘：
 
-![image](https://github.com/user-attachments/assets/304aac17-2a34-403c-b785-5a6d338dfd8d)
+![image](https://github.com/user-attachments/assets/c742f8d8-e327-43d1-8fe9-347bbb2b977e)
 
 ##### 设置：
 
-![image](https://github.com/user-attachments/assets/154c7e1b-78c2-4f2f-ae90-fb337bc305f6)
+![image](https://github.com/user-attachments/assets/c973a0fd-85e8-42bd-b0a2-62fde04796b6)
 
 ## 在本地运行
 
