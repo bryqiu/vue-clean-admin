@@ -18,7 +18,7 @@ const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useSundriesS
         <Breadcrumb
           v-if="showBreadcrumb"
           :is-show-icon="showBreadcrumbIcon"
-          :type="breadcrumbStyleType"
+          :style-type="breadcrumbStyleType"
         />
       </div>
       <!--头部-右侧-->

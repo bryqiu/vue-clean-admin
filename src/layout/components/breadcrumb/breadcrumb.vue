@@ -15,7 +15,7 @@ const currentRoute = useRoute();
 const props = withDefaults(defineProps<BreadcrumbProps>(), {
   replace: false,
   isHideIcon: false,
-  type: 'default',
+  styleType: 'default',
 });
 
 const emit = defineEmits<BreadcrumbEmits>();
@@ -29,7 +29,7 @@ const breadcrumbList = computed(() =>
 const getPath = (item: RouteLocationMatched): string | Object => {
   if (!item) return '';
   if (item.meta?.isReadonlyBreadcrumb) return '';
-  return item.redirect ? { path: item.redirect } : { path: item.path };
+  return { path: item.redirect ? item.redirect : item.path };
 };
 
 /** 渲染图标 */
@@ -45,7 +45,7 @@ const breadcrumbClassName = computed(() => {
     default: 'breadcrumb-default',
     parallelogram: 'breadcrumb-parallelogram',
   };
-  return className[props.type];
+  return className[props.styleType];
 });
 </script>
 
@@ -82,9 +82,6 @@ $height: 24px;
 }
 
 .breadcrumb {
-  // &-default {
-  // }
-
   //箭头样式
   &-arrow {
     :deep(.el-breadcrumb__item) {
