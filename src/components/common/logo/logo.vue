@@ -12,18 +12,30 @@ interface LogoProps {
    * @default false
    */
   isCollapse?: boolean;
+  /**
+   * 是否允许点击
+   * @default true
+   */
+  isClick?: boolean;
 }
 
-withDefaults(defineProps<LogoProps>(), {
+const props = withDefaults(defineProps<LogoProps>(), {
   isCollapse: false,
+  isClick: true,
 });
 
 const { goBackRootPath } = useRouterPath();
 const systemTitle = import.meta.env.VITE_APP_TITLE;
+
+const handleClick = () => {
+  if (props.isClick) {
+    goBackRootPath();
+  }
+};
 </script>
 
 <template>
-  <div class="flex-c-c gap-2 cursor-pointer" @click="goBackRootPath">
+  <div class="flex items-center gap-2" :class="{ 'cursor-pointer': isClick }" @click="handleClick">
     <ElImage :src="LogoSvg" class="size-8" />
     <span v-show="!isCollapse" class="text-xl font-semibold">{{ systemTitle }}</span>
   </div>
