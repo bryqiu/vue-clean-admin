@@ -25,7 +25,7 @@ withDefaults(defineProps<BoardProps>(), {
 </script>
 
 <template>
-  <div class="h-24 bg-[var(--el-fill-color)] p-4">
+  <div class="h-24 bg-[var(--el-fill-color)] p-4 rounded-lg shadow-sm">
     <div class="flex-b-c h-6 text-[var(--el-text-color-secondary)]">
       <span class="text-sm text-[var(--el-text-color-secondary)]">{{ label }}</span>
       <AppIcon v-if="icon" :icon />
