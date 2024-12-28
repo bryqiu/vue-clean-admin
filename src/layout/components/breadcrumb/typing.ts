@@ -21,7 +21,7 @@ export interface BreadcrumbProps {
    * 面包屑样式
    * @default default
    */
-  type?: BreadcrumbStyleType;
+  styleType?: BreadcrumbStyleType;
 }
 
 export type BreadcrumbEmits = {
