@@ -1,13 +1,10 @@
 import { ThemeModeEnum, VisualModeEnum } from '@/enums';
 
-interface ModeOption {
-  label: string;
-  value: ThemeModeEnum;
+interface ModeOption extends BaseOptions<ThemeModeEnum> {
   icon: string;
 }
-interface VisualModeOption {
-  label: string;
-  value: VisualModeEnum;
+
+interface VisualModeOption extends BaseOptions<VisualModeEnum> {
   icon?: string;
   style: string;
   class: string;
