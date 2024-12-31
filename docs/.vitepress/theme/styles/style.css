@@ -1,0 +1,30 @@
+:root {
+  --vp-c-brand-1: #25b0f0;
+  --vp-c-brand-2: #15a0e2;
+  --vp-c-brand-3: #0881c1;
+  --vp-button-brand-bg: var(--vp-c-brand-2);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #89f7fe 0%, #25b0f0 100%);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #e1f2fd 50%, #bce4fb 50%);
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+.VPFeature .box div.icon img {
+  width: 32px;
+}
+
+.VPSidebarItem {
+  > .item .link > .text {
+    padding: 4px 4px 4px 12px;
+  }
+}
+
+.VPImage.image-src {
+  width: 50%;
+}
+
+.VPButton.ghost {
+  color: var(--vp-c-brand-2);
+  background-color: transparent;
+  border-color: var(--vp-c-brand-2);
+}
