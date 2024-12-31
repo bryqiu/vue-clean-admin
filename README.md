@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://github.com/QFifteen/vue-clean-admin">
- <img src="https://github.com/user-attachments/assets/1553457d-43e4-4e31-9282-b719cb1158f6" alt="Logo" width="150" height="150" />
+ <img src="https://github.com/user-attachments/assets/c78ad0ba-2d08-4c7a-83db-10852fc9036d" alt="Logo" width="150" height="150" />
 </a>
 <h1> Vue Clean Admin </h1>
 
