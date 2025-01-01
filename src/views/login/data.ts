@@ -37,7 +37,7 @@ export const loginIntroduceFeatures: IntroduceFeatures[] = [
   {
     icon: 'ri:box-3-fill',
     title: '开箱即用',
-    text: '详尽的文档说明、从零开始的项目搭建指南,以及充分的代码注释,助您快速上手',
+    text: '详尽的文档说明、从零开始的项目建设指南,以及充分的代码注释,助您快速上手',
     space: true,
   },
   {
