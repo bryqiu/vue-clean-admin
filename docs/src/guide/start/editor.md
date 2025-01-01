@@ -4,39 +4,46 @@
 
 ## VSCode 配置
 
-在上一篇 [目录结构](./dir) 中，我们介绍了 CleanAdmin 的目录结构，你可以看到，在项目根目录下存在一个 `.vscode` 文件夹，里面存在一些配置文件，下面我们来介绍它们的作用
+CleanAdmin 根目录下拥有一个 `.vscode` 文件夹，目录里存放着一些文件，我们来介绍一下它们
 
 ### settings.json
 
-此 JSON 文件是编辑器的配置文件，它的作用是为编辑器提供一些配置，让编辑器更好用
+用于自定义编辑器的各种行为、外观和工作环境等，比如主题、缩进、字体、行号、代码折叠、代码格式化等
 
-CleanAdmin 里写入了一些配置，包括针对 ESLint、文件折叠、cSpell 单词拼写等配置，你可以根据自己的需求进行修改
+CleanAdmin 写入了一些配置，包括针对 ESLint、文件折叠、cSpell 单词拼写等配置，你可以根据自己的需求进行修改
 
 ### extensions.json
 
-此 JSON 文件是编辑器的插件配置文件，它的作用是为编辑器提供一些插件
+用于配置编辑器的插件，我们可以在其中添加、删除、禁用插件，也可以通过 `recommendations` 字段来推荐插件
 
-CleanAdmin 在其中写入了推荐安装的插件，以提高你的开发效率、体验
+> 我们强烈推荐你安装这些插件，以提高你的开发效率、体验
 
-1. 打开 VSCode 编辑器
-2. 点击左侧的扩展图标
-3. 点击底顶部输入框右侧的漏斗图标，选择"推荐"（或者在输入框中输入 `@recommended `）
-4. 安装插件
+安装步骤：
+
+1. 打开 VSCode 编辑器并点击左侧的扩展图标
+2. 点击顶部输入框右侧的漏斗图标，选择"推荐"（或者在框中输入 `@recommended`）
+3. 安装插件
+
+![安装推荐插件](https://github.com/user-attachments/assets/185c5f91-2d75-410f-af3a-400be0a9e090)
 
 ### tailwind.json
 
-`tailwind.json`
+用于解决 `tailwind.css` 未识别的警告问题(Unknown at rule @tailwind/@apply)
 
 ### template.code-snippets
 
-此文件中存放着一些代码片段，包括组合式(setup)代码片段、导入，导出、Pinia 组合式/选项式等代码片段
+此文件中存放着一些代码片段，包括 vue组合式(setup)代码片段、导入，导出、Pinia 组合式/选项式等代码片段
 
 - `scope`：代码片段的作用域
 - `prefix`：代码片段的前缀
 - `body`：代码片段的内容
 - `description`：代码片段的描述
 
-主要 `prefix` 属性的值，在你的代码中输入前缀值，即可有相关的代码提示
+这里请多注意 `prefix` 属性的值，在相应的 `scope` 范围文件中输入前缀值，即可有相关的代码提示
+
+比如 Vue 的代码片段
+
+![Vue 代码片段](https://github.com/user-attachments/assets/7e5794bb-5819-4302-ac6a-b352a26638b2)
 
 ## WebStorm 配置
 

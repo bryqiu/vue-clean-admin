@@ -9,11 +9,11 @@
 ## 具有什么特点？
 
 - **现代化技术栈**：使用 Vue3、Vite、TypeScript 等技术栈，提升开发效率和项目性能
-- **详尽文档及搭建指南**：提供易于理解的文档和[搭建指南](https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F)，帮助开发者快速上手
+- **详尽文档及建设指南**：提供详尽文档和[《中后台建设指南》](https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F)，帮助开发者快速上手
 - **严格的代码规范**：确保代码的高质量和一致性
-- **多语言支持**：内置多语言切换功能
-- **集成 ApiFox Mock 方案**：模拟 API 数据，帮助开发和测试
-- **不算太丑的样式**：采用 TailwindCSS, 给用户良好的视觉体验
+- **多语言支持**：内置多语言切换功能，轻松实现全球化
+- **集成 ApiFox Mock 方案**：易于配置的数据模拟，加速前后端分离开发
+- **不算太丑的样式**：采用 TailwindCSS 原子化，给用户良好的视觉体验
 
 ## 系列专栏
 
@@ -21,7 +21,7 @@
 
 但是，我更想告诉你这个项目是如何从零到一搭起来的，在搭的过程中是如何做的。基于这一点想法，我记录了开发 CleanAdmin 的过程并写成一个系列文章：
 
-- [《通俗易懂的中后台搭建指南》](https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F)
+- [《通俗易懂的中后台建设指南》](https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F)
 
 > 如果你觉得这个专栏对你有帮助，欢迎给我一个 star
 

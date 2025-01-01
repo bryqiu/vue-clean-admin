@@ -72,9 +72,9 @@ const getSidebarInterflow = (): DefaultTheme.SidebarItem[] => {
 const getSidebarStandard = (): DefaultTheme.SidebarItem[] => {
   return [
     {
-      text: '开发规范',
+      text: '工程规范',
       items: [
-        { text: '规范总览', link: '/overview' },
+        { text: '规范概述', link: '/overview' },
         { text: '编码规范', link: '/code-standard' },
         { text: '提交规范', link: '/git-standard' },
         { text: '命名规范', link: '/name-standard' },
@@ -85,15 +85,15 @@ const getSidebarStandard = (): DefaultTheme.SidebarItem[] => {
 
 export const sidebarConfig: DefaultTheme.Sidebar = {
   '/guide/': {
-    base: '/guide/',
+    base: '/guide',
     items: getSidebarGuide(),
   },
   '/interflow/': {
-    base: '/interflow/',
+    base: '/interflow',
     items: getSidebarInterflow(),
   },
   '/standard/': {
-    base: '/standard/',
+    base: '/standard',
     items: getSidebarStandard(),
   },
 };
