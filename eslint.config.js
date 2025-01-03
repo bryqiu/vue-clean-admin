@@ -30,6 +30,7 @@ export default [
         BaseOptions: 'readonly',
         DisplayMode: 'readonly',
         BreadcrumbStyleType: 'readonly',
+        ElColorType: 'readonly',
         useIcon: 'readonly',
         useRouterPath: 'readonly',
         useSettingsStore: 'readonly',
