@@ -5,6 +5,7 @@ import { DEFAULT_SETTINGS } from '@/config';
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
 import { usePreferredDark } from '@vueuse/core';
 import { visualModeOptions } from '@/dict';
+import { applyAppThemeColor } from '@/utils';
 
 const createSettingsStore = defineStore(
   'settings',
@@ -55,12 +56,17 @@ const createSettingsStore = defineStore(
       unref(getSundriesSettings).breadcrumbStyleType = val;
     };
 
-    const { setThemeMode, addVisualStyle } = useMode();
+    const { setThemeMode, addVisualStyle, isDarkMode } = useMode();
 
     /** 设置当前视觉模式 */
     const setVisualMode = (val: VisualModeEnum) => {
       addVisualStyle(val);
       unref(getSundriesSettings).visualMode = val;
+    };
+
+    /** 设置主题色 */
+    const setPrimaryColor = (val: string) => {
+      unref(getThemeSettings).primaryColor = val;
     };
 
     /** 系统主题 */
@@ -83,8 +89,15 @@ const createSettingsStore = defineStore(
       () => unref(getThemeSettings).currentThemeMode,
       (mode) => {
         setThemeMode(mode);
+        applyAppThemeColor(unref(getThemeSettings).primaryColor, isDarkMode.value);
       },
-      { immediate: true },
+    );
+
+    watch(
+      () => unref(getThemeSettings).primaryColor,
+      (color) => {
+        applyAppThemeColor(color, isDarkMode.value);
+      },
     );
 
     // 初始化视觉模式
@@ -109,6 +122,7 @@ const createSettingsStore = defineStore(
       toggleBreadcrumbIcon,
       toggleBreadcrumbStyleType,
       setVisualMode,
+      setPrimaryColor,
     };
   },
   { persist: true },

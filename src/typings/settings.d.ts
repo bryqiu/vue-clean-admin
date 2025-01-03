@@ -8,8 +8,8 @@ export interface ThemeSettingsType {
    */
   currentThemeMode: ThemeModeEnum;
   /**
-   * 主题色
-   * @default #0d9fea
+   * 主色调
+   * @default #25B0F0
    */
   primaryColor: string;
   /**

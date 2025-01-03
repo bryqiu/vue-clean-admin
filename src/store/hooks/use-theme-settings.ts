@@ -3,7 +3,8 @@ import { useSettingsStore } from '../index';
 import { PageTransitionEnum, ThemeModeEnum } from '@/enums';
 
 export const useThemeSettings = () => {
-  const { getThemeSettings, togglePageTransition, toggleThemeMode } = useSettingsStore();
+  const { getThemeSettings, togglePageTransition, toggleThemeMode, setPrimaryColor } =
+    useSettingsStore();
 
   /** 路由动画 */
   const pageTransitionName = computed({
@@ -22,9 +23,21 @@ export const useThemeSettings = () => {
     set: (val: ThemeModeEnum) => toggleThemeMode(val),
   });
 
+  /** 主题色调 */
+  const currentPrimaryColor = computed({
+    get: () => unref(getThemeSettings).primaryColor,
+    set: (val: string) => setPrimaryColor(val),
+  });
+
   const isSystemMode = computed(() => {
     return currentThemeMode.value === ThemeModeEnum.SYSTEM;
   });
 
-  return { pageTransitionName, hasPageTransition, currentThemeMode, isSystemMode };
+  return {
+    pageTransitionName,
+    hasPageTransition,
+    currentThemeMode,
+    isSystemMode,
+    currentPrimaryColor,
+  };
 };

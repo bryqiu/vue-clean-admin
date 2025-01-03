@@ -9,7 +9,7 @@ import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index
 /** 默认主题设置 */
 const DEFAULT_THEME_SETTINGS: ThemeSettingsType = {
   currentThemeMode: ThemeModeEnum.LIGHT, // 主题模式
-  primaryColor: '#0d9fea', // 主题色
+  primaryColor: '#25B0F0', // 主色调
   pageTransitionName: PageTransitionEnum.FADE_DOWN, // 路由切换动画
 };
 
