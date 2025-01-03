@@ -1,6 +1,7 @@
 import { useDark, usePreferredDark } from '@vueuse/core';
 import { ThemeModeEnum, VisualModeEnum } from '@/enums';
 import { visualModeOptions } from '@/dict';
+import { computed } from 'vue';
 
 export const useMode = () => {
   const systemDark = usePreferredDark();
@@ -9,6 +10,10 @@ export const useMode = () => {
     disableTransition: false,
     valueDark: ThemeModeEnum.DARK,
     valueLight: ThemeModeEnum.LIGHT,
+  });
+
+  const isDarkMode = computed(() => {
+    return isDark.value;
   });
 
   /** 获取主题 */
@@ -58,5 +63,6 @@ export const useMode = () => {
     getThemeMode,
     setThemeMode,
     addVisualStyle,
+    isDarkMode,
   };
 };
