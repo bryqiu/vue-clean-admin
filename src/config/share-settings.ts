@@ -23,14 +23,14 @@ const DEFAULT_LAYOUT_SETTINGS: LayoutSettingsType = {
 
 /** 默认其他设置 */
 const DEFAULT_SUNDRIES_SETTINGS: SundriesSettingsType = {
-  hasWatermark: false,
-  showBreadcrumb: true,
-  showBreadcrumbIcon: true,
-  breadcrumbStyleType: 'arrow',
-  visualMode: VisualModeEnum.NORMAL,
+  hasWatermark: false, // 是否有水印
+  showBreadcrumb: true, // 是否展示面包屑
+  showBreadcrumbIcon: true, // 是否显示面包屑图标
+  breadcrumbStyleType: 'arrow', // 面包屑样式
+  visualMode: VisualModeEnum.NORMAL, // 视觉模式
 };
 
-/** 默认设置 */
+/** 总体默认配置 */
 const DEFAULT_SETTINGS: SettingsType = {
   theme: { ...DEFAULT_THEME_SETTINGS },
   layout: { ...DEFAULT_LAYOUT_SETTINGS },
