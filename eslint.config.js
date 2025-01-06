@@ -15,6 +15,8 @@ import pluginCheckFile from 'eslint-plugin-check-file';
 
 import * as regexpPlugin from 'eslint-plugin-regexp';
 
+import autoImport from './.eslintrc-auto-import.mjs';
+
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
@@ -31,15 +33,7 @@ export default [
         DisplayMode: 'readonly',
         BreadcrumbStyleType: 'readonly',
         ElColorType: 'readonly',
-        useIcon: 'readonly',
-        useRouterPath: 'readonly',
-        useSettingsStore: 'readonly',
-        useEcharts: 'readonly',
-        useLayoutSettings: 'readonly',
-        useThemeSettings: 'readonly',
-        useSundriesSettings: 'readonly',
-        useProgress: 'readonly',
-        useMode: 'readonly',
+        ...autoImport.globals,
       },
     },
   },
@@ -419,6 +413,7 @@ export default [
       '**/LICENSE*',
       '**/__snapshots__',
       '**/auto-import?(s).d.ts',
+      '.eslintrc-auto-import.mjs',
     ],
   },
 ];

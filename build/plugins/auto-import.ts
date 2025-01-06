@@ -11,5 +11,10 @@ export const autoImportPluginConfig = () => {
     ],
     dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/store/hooks')}`],
     dts: `src/typings/auto-imports.d.ts`, // 生成相应.d.ts文件的文件路径
+    eslintrc: {
+      enabled: true,
+      filepath: './.eslintrc-auto-import.mjs',
+      globalsPropValue: true,
+    },
   });
 };
