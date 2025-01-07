@@ -30,7 +30,7 @@ export default [
         PropType: true,
         RegisterComponentList: true,
         BaseOptions: true,
-        DisplayMode: true,
+        AlignMode: true,
         BreadcrumbStyleType: true,
         ElColorType: true,
         ...autoImport.globals,

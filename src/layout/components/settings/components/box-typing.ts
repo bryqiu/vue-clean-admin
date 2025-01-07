@@ -1,4 +1,4 @@
-import { DisplayModeEnum } from '@/enums';
+import { AlignModeEnum } from '@/enums';
 
 export interface BasicBoxProps {
   /**
@@ -10,7 +10,7 @@ export interface BasicBoxProps {
    * 显示模式
    * @default horizontal
    */
-  mode?: DisplayModeEnum | DisplayMode;
+  mode?: AlignModeEnum | AlignMode;
   /**
    * 提示内容
    */

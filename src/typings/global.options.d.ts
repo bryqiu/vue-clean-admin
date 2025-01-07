@@ -1,5 +1,5 @@
 declare global {
-  type DisplayMode = 'horizontal' | 'vertical';
+  type AlignMode = 'horizontal' | 'vertical';
   type BreadcrumbStyleType = 'default' | 'arrow' | 'parallelogram';
 
   type ElColorType = 'primary' | 'success' | 'warning' | 'danger' | 'info';

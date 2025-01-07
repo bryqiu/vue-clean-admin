@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { BasicBox } from './index';
 import { ElScrollbar, ElSegmented } from 'element-plus';
-import { DisplayModeEnum } from '@/enums';
+import { AlignModeEnum } from '@/enums';
 import { isArray } from '@/utils';
 import type { BasicBoxProps, ToggleBoxEmits, ToggleBoxProps } from './box-typing';
 
@@ -33,19 +33,19 @@ const modeValue = computed(() => {
   const { mode, auto, options, maxLength } = props;
 
   // 优先考虑显式设置的 mode
-  if (mode === DisplayModeEnum.HORIZONTAL || mode === DisplayModeEnum.VERTICAL) {
+  if (mode === AlignModeEnum.HORIZONTAL || mode === AlignModeEnum.VERTICAL) {
     return mode;
   }
 
   if (!auto) return mode;
 
   const optionsLength = isArray(options) ? options.length : 0;
-  return optionsLength >= maxLength ? DisplayModeEnum.VERTICAL : DisplayModeEnum.HORIZONTAL;
+  return optionsLength >= maxLength ? AlignModeEnum.VERTICAL : AlignModeEnum.HORIZONTAL;
 });
 
 /** 是否为垂直模式 */
 const isVertical = computed(() => {
-  return modeValue.value === DisplayModeEnum.VERTICAL;
+  return modeValue.value === AlignModeEnum.VERTICAL;
 });
 
 // 计算 BasicBox 的属性
