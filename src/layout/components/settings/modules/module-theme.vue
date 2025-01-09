@@ -93,7 +93,7 @@ const colorPickerChange = (value: string | null) => {
         </ElSelect>
         <div class="w-full flex-c-c my-12">
           <div
-            class="w-56 h-36 bg-[--el-fill-color] rounded-[var(--app-round-base)]"
+            class="w-56 h-36 bg-[--el-fill-color] rounded-[var(--app-round)]"
             :style="transitionAnimation"
           />
         </div>

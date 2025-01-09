@@ -1,7 +1,7 @@
 @mixin menu-item($gap: 8px, $margin: 0 8px 4px) {
   gap: $gap;
   margin: $margin;
-  border-radius: var(--app-round-base);
+  border-radius: var(--app-round);
 }
 
 ul.el-menu {
@@ -72,7 +72,7 @@ ul.el-menu {
     margin: 8px;
 
     .el-sub-menu {
-      border-radius: var(--app-round-base);
+      border-radius: var(--app-round);
 
       div.el-sub-menu__title {
         @include menu-item(0, 0);
@@ -94,6 +94,6 @@ ul.el-menu {
 
   // 弹窗
   &--popup {
-    border-radius: var(--app-round-base);
+    border-radius: var(--app-round);
   }
 }

@@ -31,10 +31,7 @@ const conditionStyle = computed(() => {
 </script>
 
 <template>
-  <div
-    class="flex gap-2 justify-between p-2 rounded-[var(--app-round-base)]"
-    :class="conditionStyle"
-  >
+  <div class="flex gap-2 justify-between p-2 rounded-[var(--app-round)]" :class="conditionStyle">
     <div class="flex items-center gap-0.5">
       <ElText truncated>{{ text }}</ElText>
       <ElTooltip v-if="!isEmpty(tipsContent)" :content="tipsContent" placement="top">

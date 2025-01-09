@@ -1,7 +1,7 @@
 div.settings-drawer {
   &.el-drawer {
-    border-top-left-radius: var(--app-round-base);
-    border-bottom-left-radius: var(--app-round-base);
+    border-top-left-radius: var(--app-round);
+    border-bottom-left-radius: var(--app-round);
   }
 
   .el-drawer__body {
@@ -34,7 +34,7 @@ div.settings-drawer {
 
     &__item {
       padding: 0 1rem;
-      border-radius: var(--app-round-base);
+      border-radius: var(--app-round);
 
       &.is-left.is-active {
         background-color: var(--el-fill-color);

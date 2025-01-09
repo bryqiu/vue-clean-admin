@@ -90,7 +90,7 @@ onMounted(() => {
               <div
                 v-for="(item, index) in projectAbout"
                 :key="index"
-                class="p-2 flex items-center rounded-[--app-round-base] bg-[var(--el-fill-color-light)] gap-2"
+                class="p-2 flex items-center rounded-[--app-round] bg-[var(--el-fill-color-light)] gap-2"
               >
                 <ElTag effect="light">{{ item.tagName }}</ElTag>
                 <ElLink v-if="item.link" :href="item.link" target="_blank">

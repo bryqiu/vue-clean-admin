@@ -4,7 +4,7 @@ const { pageTransitionName } = useThemeSettings();
 
 <template>
   <div
-    class="h-full overflow-auto overflow-x-hidden flex-1 bg-[var(--el-fill-color-light)] p-4 rounded-[var(--app-round-base)]"
+    class="h-full overflow-auto overflow-x-hidden flex-1 bg-[var(--el-fill-color-light)] p-4 rounded-[var(--app-round)]"
   >
     <RouterView v-slot="{ Component, route }">
       <Transition :name="pageTransitionName" mode="out-in" appear>
