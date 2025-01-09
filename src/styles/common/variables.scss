@@ -1,15 +1,12 @@
 :root {
-  --app-font-size: 32px;
+  /* 阴影 */
   --app-header-shadow: 0px 2px 4px 0px rgb(0 0 0 / 14%), 0px 0px 1px 0px rgb(0 0 0 / 16%);
 
-  // space：间距
-  --app-space-size1: 8px;
-  --app-space-size2: 16px;
-
-  // 圆角
-  --app-round-small: 4px;
-  --app-round-base: 8px;
-  --app-round-large: 16px;
-
-  // 16、20、24、28、32、36、40
+  /* 圆角 */
+  --app-round-sm: calc(var(--app-round) - 6px);
+  --app-round-md: calc(var(--app-round) - 4px);
+  --app-round: 8px;
+  --app-round-xl: calc(var(--app-round) + 4px);
+  --app-round-2xl: calc(var(--app-round) * 2);
+  --app-round-3xl: calc(var(--app-round) * 3);
 }
