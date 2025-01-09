@@ -5,26 +5,25 @@
 }
 
 ul.el-menu {
-  // 菜单Item项-高度
   --menu-base-size: 40px;
   --el-menu-item-height: var(--menu-base-size);
   --el-menu-sub-item-height: var(--menu-base-size);
   --el-menu-base-level-padding: calc(var(--menu-base-size) - var(--el-menu-level-padding));
 
-  // 子菜单
+  /* 子菜单 */
   .el-sub-menu {
     &__title {
       @include menu-item;
     }
 
-    // 菜单Item项
+    /* 菜单Item项 */
     & ul.el-menu {
       li.el-menu-item {
         @include menu-item;
       }
     }
 
-    // 子菜单选中状态
+    /* 子菜单选中状态 */
     &.is-active {
       .el-sub-menu__title {
         color: var(--el-menu-active-color);
@@ -37,7 +36,7 @@ ul.el-menu {
       }
     }
 
-    // 子菜单展开状态
+    /* 子菜单展开状态 */
     &.is-opened {
       .el-sub-menu__title {
         .el-icon.el-sub-menu__icon-arrow {
@@ -55,13 +54,7 @@ ul.el-menu {
     }
   }
 
-  // 垂直菜单
-  // &--vertical{}
-
-  // 水平菜单
-  // &--horizontal{}
-
-  // 收缩菜单
+  /* 收缩菜单 */
   &--collapse {
     --menu-margin: 8px;
 
@@ -92,7 +85,7 @@ ul.el-menu {
     }
   }
 
-  // 弹窗
+  /* 弹窗 */
   &--popup {
     border-radius: var(--app-round);
   }

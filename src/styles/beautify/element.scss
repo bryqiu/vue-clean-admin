@@ -21,7 +21,7 @@ div.el-card {
 
 /* ======================== segmented-分段控制器的样式美化 ======================== */
 
-// 简约风格，在使用时加上simple类名，class="simple"
+/* 简约风格，在使用时加上simple类名，class="simple" */
 .simple.el-segmented {
   --el-segmented-item-selected-color: var(--el-text-color-primary);
   --el-segmented-item-selected-bg-color: var(--el-bg-color);
