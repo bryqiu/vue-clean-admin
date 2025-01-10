@@ -36,12 +36,14 @@ VITE_API_URL = ""
 当然，不止于此，你还可以添加其他环境变量文件，但是需要注意的是，环境变量文件的名称必须以 `.env` 开头，否则 Vite 不会识别该文件，比如 `.env.test` 测试环境文件
 
 :::info 相关内容
-在[《通俗易懂的中后台建设指南》](https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F)专栏中，第三篇文章[《Vite 配置技巧》](https://github.com/QFifteen/Blog/issues/3)中有详细介绍环境变量，如果有兴趣的话，可以看一下
+在[《通俗易懂的中后台建设指南》](https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F)专栏中，第三篇文章[《Vite 配置技巧》](https://github.com/QFifteen/Blog/issues/3)有详细介绍环境变量，有兴趣的话，可以看一下
 :::
 
 ## 如何使用
 
 CleanAdmin 已经写入了很多环境变量。要使用它们，可以通过 `import.meta.env` 来获取环境变量值
+
+语法是 `import.meta.env.<你的环境变量名称>`，比如：
 
 ```ts
 import.meta.env.VITE_APP_TITLE;
