@@ -45,7 +45,7 @@ const getSidebarGuide = (): DefaultTheme.SidebarItem[] => {
     {
       text: '其他资源',
       collapsed: false,
-      base: '/guide/about/',
+      base: '/guide/about',
       items: [
         { text: '常见问题', link: '/FAQ' },
         { text: '技术生态', link: '/ecosystem' },
