@@ -4,8 +4,7 @@ import { acceptHMRUpdate, defineStore } from 'pinia';
 import { DEFAULT_SETTINGS } from '@/config';
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
 import { usePreferredDark } from '@vueuse/core';
-import { visualModeOptions } from '@/dict';
-import { applyAppThemeColor } from '@/utils';
+import { applyAppThemeColor } from '@/colors';
 
 const createSettingsStore = defineStore(
   'settings',

@@ -1,7 +1,4 @@
-/**
- * 颜色生成
- */
-
+import { EL_COLOR_WEIGHT } from './constants';
 type RGB = {
   r: number;
   g: number;
@@ -31,10 +28,6 @@ type HEX_VALUE =
   | 'E'
   | 'F';
 
-// 组合字符串类型枚举的数量太多了，没办法限定了直接string
-// type HEX =
-//   | `#${HEX_VALUE}${HEX_VALUE}${HEX_VALUE}`
-//   | `#${HEX_VALUE}${HEX_VALUE}${HEX_VALUE}${HEX_VALUE}${HEX_VALUE}${HEX_VALUE}`;
 type HEX = string;
 
 type ScaleColor = {
@@ -119,11 +112,9 @@ function normalizationColor(color: string): HEX {
 }
 
 /**
- * RGB颜色转HSL颜色值
- * @param r 红色值
- * @param g 绿色值
- * @param b 蓝色值
- * @returns
+ * rgb -> hsl
+ * @param rgb RGB
+ * @returns HSL
  */
 function rgbToHsl(rgb: RGB): HSL {
   let { r, g, b } = rgb;
@@ -170,9 +161,7 @@ function rgbToHsl(rgb: RGB): HSL {
 
 /**
  * hsl -> rgb
- * @param h [0, 360]
- * @param s [0, 1]
- * @param l [0, 1]
+ * @param hsl HSL
  * @returns RGB
  */
 function hslToRgb(hsl: HSL): RGB {
@@ -212,8 +201,8 @@ function hslToRgb(hsl: HSL): RGB {
 }
 
 /**
- * 16进制颜色转换RGB
- * @param color #rrggbb
+ * 16进制 转 rgb
+ * @param hex HEX
  * @returns RGB
  */
 function hexToRGB(hex: HEX): RGB {
@@ -252,17 +241,17 @@ function rgbToHex(rgb: RGB): HEX {
   )}${getRemainderAndQuotient(rgb.b)}`;
 }
 
-// hsl 转 16进制
+/** hsl 转 16进制 */
 function hslToHex(hsl: HSL): HEX {
   return rgbToHex(hslToRgb(hsl));
 }
 
-// 16进制 转 hsl
+/** 16进制 转 hsl */
 function hexToHsl(hex: HEX): HSL {
   return rgbToHsl(hexToRGB(hex));
 }
 
-// 混合基础色获取
+/** 混合基础色获取 */
 function getMixColorFromVar(isDark?: boolean) {
   const VAR_WHITE = '--el-color-white';
   const VAR_BLACK = '--el-color-black';
@@ -312,14 +301,12 @@ const generateMixColor: GenerateMixColor = (base, isDark) => {
     };
   }
 
-  const scaleKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
   const mixColor = isDark ? mixDarkColor : mixLightColor;
 
   const variables: ScaleColor = {};
 
-  scaleKeys.forEach((key) => {
-    variables[key] = rgbToHex(mix(rgbBase, mixColor, Number(key) / 10));
+  EL_COLOR_WEIGHT.forEach((key) => {
+    variables[`${key / 100}`] = rgbToHex(mix(rgbBase, mixColor, Number(key) / 1000));
   });
 
   return {
