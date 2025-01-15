@@ -17,11 +17,15 @@ type DataType =
 /**
  * 通用且精确的类型判断
  * @param value 需要判断的值
- * @param type 类型
- * @returns 符合类型的布尔值
+ * @param expectedType 预期的类型
+ * @returns 如果值符合预期类型则返回 true，否则返回 false
  */
-const judgeType = (value: unknown, type: DataType) => {
-  return Object.prototype.toString.call(value) === `[object ${type}]`;
+const isType = (value: unknown, expectedType: DataType) => {
+  const GET_TYPE = Object.prototype.toString;
+
+  const typeTag = `[object ${expectedType}]`;
+
+  return GET_TYPE.call(value) === typeTag;
 };
 
 /**
@@ -39,7 +43,7 @@ export const isArray = (value: unknown) => {
  * @returns 如果 value 是 Object，则返回 true，否则返回 false
  */
 export const isObject = (value: unknown): value is object => {
-  return judgeType(value, 'Object');
+  return isType(value, 'Object');
 };
 
 /**
@@ -48,7 +52,7 @@ export const isObject = (value: unknown): value is object => {
  * @returns 如果 value 是 Boolean，则返回 true，否则返回 false
  */
 export const isBoolean = (value: unknown): value is boolean => {
-  return judgeType(value, 'Boolean');
+  return isType(value, 'Boolean');
 };
 
 /**
@@ -57,7 +61,7 @@ export const isBoolean = (value: unknown): value is boolean => {
  * @returns 如果 value 是 Number，则返回 true，否则返回 false
  */
 export const isNumber = (value: unknown): value is number => {
-  return judgeType(value, 'Number');
+  return isType(value, 'Number');
 };
 
 /**
@@ -66,7 +70,7 @@ export const isNumber = (value: unknown): value is number => {
  * @returns 如果 value 是 String，则返回 true，否则返回 false
  */
 export const isString = (value: unknown): value is string => {
-  return judgeType(value, 'String');
+  return isType(value, 'String');
 };
 
 /**
@@ -75,7 +79,7 @@ export const isString = (value: unknown): value is string => {
  * @returns 如果 value 是 Null，则返回 true，否则返回 false
  */
 export const isNull = (value: unknown) => {
-  return judgeType(value, 'Null');
+  return isType(value, 'Null');
 };
 
 /**
@@ -84,7 +88,7 @@ export const isNull = (value: unknown) => {
  * @returns 如果 value 是 Undefined，则返回 true，否则返回 false
  */
 export const isUndefined = (value: unknown) => {
-  return judgeType(value, 'Undefined');
+  return isType(value, 'Undefined');
 };
 
 /**
@@ -93,7 +97,7 @@ export const isUndefined = (value: unknown) => {
  * @returns 如果 value 是 Function，则返回 true，否则返回 false
  */
 export const isFunction = (value: unknown) => {
-  return judgeType(value, 'Function');
+  return isType(value, 'Function');
 };
 
 /**
@@ -102,7 +106,7 @@ export const isFunction = (value: unknown) => {
  * @returns 如果 value 是 Date，则返回 true，否则返回 false
  */
 export const isDate = (value: unknown): value is Date => {
-  return judgeType(value, 'Date');
+  return isType(value, 'Date');
 };
 
 /**
@@ -111,7 +115,7 @@ export const isDate = (value: unknown): value is Date => {
  * @returns 如果 value 是 Symbol，则返回 true，否则返回 false
  */
 export const isSymbol = (value: unknown): value is symbol => {
-  return judgeType(value, 'Symbol');
+  return isType(value, 'Symbol');
 };
 
 /**
