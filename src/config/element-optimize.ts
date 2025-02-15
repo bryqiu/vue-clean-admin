@@ -54,6 +54,7 @@ export const elStyleKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElTabPane',
   'ElTableColumn',
   'ElTableV2',
+  'ElProgress',
   /* ======================== 导航 ======================== */
   'ElDropdown',
   'ElDropdownMenu',
