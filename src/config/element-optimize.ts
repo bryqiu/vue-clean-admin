@@ -50,6 +50,10 @@ export const elStyleKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElSegmented',
   'ElTag',
   'ElText',
+  'ElTable',
+  'ElTabPane',
+  'ElTableColumn',
+  'ElTableV2',
   /* ======================== 导航 ======================== */
   'ElDropdown',
   'ElDropdownMenu',
