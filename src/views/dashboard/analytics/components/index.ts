@@ -1,3 +1,3 @@
-export { default as BoardItem } from './board-item.vue';
+export { default as StatCard, type StatCardProps } from './stat-card.vue';
 
 export type { BoardProps } from './board-item.vue';
