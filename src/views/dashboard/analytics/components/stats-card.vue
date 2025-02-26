@@ -3,10 +3,10 @@ import { computed } from 'vue';
 import {} from '@/components/common/app-icon';
 
 defineOptions({
-  name: 'StatCard',
+  name: 'StatsCard',
 });
 
-export interface StatCardProps {
+export interface StatsCardProps {
   /**
    * 标题
    */
@@ -45,7 +45,7 @@ export interface StatCardProps {
   compareValue?: string | number;
 }
 
-const props = withDefaults(defineProps<StatCardProps>(), {
+const props = withDefaults(defineProps<StatsCardProps>(), {
   label: '--',
   value: '--',
   isCompare: true,
@@ -80,10 +80,10 @@ const compareTrendDisplay = computed(() => {
 </script>
 
 <template>
-  <div class="size-full p-4 border border-solid border-el-light bg-el-blank rounded-lg">
+  <div class="size-full p-4 bg-el-blank rounded-lg">
     <div class="flex items-center gap-x-2">
       <div class="w-full flex flex-col truncate">
-        <span class="text-sm text-el-secondary">{{ label }}</span>
+        <span class="text-xs text-el-regular font-medium">{{ label }}</span>
         <span class="text-2xl font-bold text-el-primary">{{ value }}</span>
         <div v-if="isCompare" class="text-xs flex mt-2">
           <span class="text-el-placeholder">{{ `${compareLabel}：` }}</span>
@@ -94,10 +94,10 @@ const compareTrendDisplay = computed(() => {
         </div>
       </div>
       <div
-        class="size-12 flex-c-c bg-el-default rounded-lg flex-shrink-0"
+        class="size-10 flex-c-c bg-el-default rounded-lg flex-shrink-0"
         :style="{ background: iconBackground }"
       >
-        <AppIcon v-if="icon" :icon class="text-2xl" :style="{ color: iconColor }" />
+        <AppIcon v-if="icon" :icon class="text-xl" :style="{ color: iconColor }" />
       </div>
     </div>
   </div>
