@@ -21,8 +21,6 @@ export interface ErrorBasicProps {
   type?: '403' | '404' | '500';
   /** 描述文本 */
   desc: string;
-  /** 表情图标 */
-  emotionIcon?: string;
   /** 提示文本 */
   prompt: string;
   /** 插图 */
@@ -57,14 +55,12 @@ const backHome = () => {
       <div class="flex flex-col items-center">
         <!--插画-->
         <ElImage :src="illus" class="size-[350px]" />
-        <!-- <span class="mb-6">{{ type }}</span> -->
         <!--描述文本-->
-        <span class="text-2xl font-normal flex items-center gap-x-1.5 mb-3 mt-2">
-          <AppIcon v-if="emotionIcon" :icon="emotionIcon" class="text-2xl" />
+        <span class="text-3xl font-bold flex items-center gap-x-1.5 mb-3 mt-2">
           {{ desc }}
         </span>
         <!--提示文本-->
-        <span class="text-sm text-[var(--el-text-color-secondary)] mb-4">{{ prompt }}</span>
+        <span class="text-base text-el-regular mb-6">{{ prompt }}</span>
         <!--操作按钮-->
         <div
           v-if="isActionBtns"
