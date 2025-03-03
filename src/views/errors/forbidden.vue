@@ -10,7 +10,6 @@ const errorInfo: ErrorBasicProps = {
   type: '403',
   desc: '抱歉，您的访问权限不足...',
   prompt: '您可以尝试获取相关权限或联系管理员',
-  emotionIcon: 'mdi:emoticon-cry-outline',
   illus: illus403,
 };
 </script>
