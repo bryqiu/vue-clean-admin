@@ -1,36 +1,162 @@
-import type { BoardProps } from './components';
 import { echarts } from '@/plugins/echarts';
+import type { StatsCardProps } from './components';
+import type { AccessLog, Bulletin, QuickNavItem } from './modules';
+import dayjs from 'dayjs';
 
-export const boardData: BoardProps[] = [
+/**
+ * 用户分析
+ */
+export const userVisitList: StatsCardProps[] = [
   {
-    label: '总访问量',
-    value: '1000000',
-    icon: 'line-md:emoji-grin',
+    label: '总访问量(PV)',
+    value: '2,845,920',
+    icon: 'line-md:watch',
+    trend: 'up',
+    compareValue: '12',
+    iconColor: '#0ea5e9',
+    iconBackground: '#f0f9ff',
   },
   {
-    label: '最高访问量',
-    value: '99999',
-    icon: 'line-md:telegram',
+    label: '独立访客(UV)',
+    value: '300,000',
+    icon: 'line-md:person-filled',
+    trend: 'down',
+    compareValue: '12',
+    iconColor: '#f59e0b',
+    iconBackground: '#fffbeb',
   },
   {
-    label: '新增访问量',
-    value: '9999',
-    icon: 'line-md:account-add',
+    label: '日均访问量',
+    value: '40,000',
+    icon: 'line-md:sunny-filled',
+    trend: 'up',
+    compareValue: '20',
+    iconColor: '#a855f7',
+    iconBackground: '#faf5ff',
   },
   {
-    label: '总用户量',
-    value: '222',
-    icon: 'line-md:account-small',
+    label: '新增用户数',
+    value: '500',
+    icon: 'line-md:person-add-filled',
+    trend: 'up',
+    compareValue: '2',
+    iconColor: '#22c55e',
+    iconBackground: '#f0fdf4',
   },
 ];
 
-interface ProjectAboutType {
-  tagName: string;
-  text: string;
-  link?: string;
-}
+export const dateOptions = ['日', '周', '月', '年'];
 
-export const projectAbout: ProjectAboutType[] = [
+/**
+ * 日志列表
+ */
+export const accessLogList: AccessLog[] = [
+  {
+    date: '2023-05-01 12:00:00',
+    country: '中国北京',
+    deviceType: 'mobile',
+    browser: 'Chrome',
+    ip: '223.104.63.101',
+    os: 'Android 12',
+  },
+  {
+    date: '2023-05-02 14:30:00',
+    country: '美国洛杉矶',
+    browser: 'Safari',
+    deviceType: 'desktop',
+    ip: '216.58.213.14',
+    os: 'macOS 13 Ventura',
+  },
+  {
+    date: '2023-05-03 09:15:00',
+    country: '英国',
+    browser: 'Firefox',
+    deviceType: 'mobile',
+    ip: '51.140.100.25',
+    os: 'iOS 16',
+  },
+  {
+    date: '2023-05-04 18:45:00',
+    country: '美国山景城',
+    browser: 'Chrome',
+    deviceType: 'desktop',
+    ip: '172.217.24.46',
+    os: 'Windows 11',
+  },
+  {
+    date: '2023-05-07 09:45:00',
+    country: '加拿大渥太华',
+    deviceType: 'tablet',
+    browser: 'Edge',
+    ip: '208.67.222.222',
+    os: 'iPadOS 16',
+  },
+  {
+    date: '2023-05-07 15:20:00',
+    country: '澳大利亚',
+    deviceType: 'mobile',
+    browser: 'Opera',
+    ip: '139.130.4.5',
+    os: 'Android 13',
+  },
+  {
+    date: '2023-05-08 08:10:00',
+    country: '法国巴黎',
+    deviceType: 'desktop',
+    browser: 'Firefox',
+    ip: '92.154.66.128',
+    os: 'iOS 15',
+  },
+  {
+    date: '2023-05-09 20:55:00',
+    country: '新加坡',
+    deviceType: 'mobile',
+    browser: 'Chrome',
+    ip: '132.147.176.23',
+    os: 'iOS 15',
+  },
+];
+
+/**
+ * 快捷导航列表
+ */
+export const quickNavList: QuickNavItem[] = [
+  {
+    title: '订单列表',
+    icon: 'mdi:help-circle-outline',
+    url: '/dashboard/workbench/order',
+  },
+  {
+    title: '订单列表',
+    icon: 'mdi:history',
+    url: '/dashboard/workbench/order',
+  },
+  {
+    title: '订单列表',
+    icon: 'mdi:history',
+    url: '/dashboard/workbench/order',
+  },
+  {
+    title: '订单列表',
+    icon: 'mdi:history',
+    url: '/dashboard/workbench/order',
+  },
+  {
+    title: '订单列表',
+    icon: 'mdi:history',
+    url: '/dashboard/workbench/order',
+  },
+  {
+    title: '订单列表',
+    icon: 'mdi:history',
+    url: '/dashboard/workbench/order',
+  },
+];
+
+/**
+ * 公告列表
+ */
+export const bulletinList: Bulletin[] = [
   {
     tagName: '源码',
     text: 'Clean Admin项目开源了！(点我查看源码)',
@@ -38,490 +164,267 @@ export const projectAbout: ProjectAboutType[] = [
   },
   {
     tagName: '专栏',
-    text: '《通俗易懂的中后台系统建设指南》(记录此项目开发历程)',
+    text: '《通俗易懂的中后台系统建设指南》系列文章',
     link: 'https://github.com/QFifteen/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F',
   },
-  // {
-  //   tagName: '文档',
-  //   text: 'Admin 配套文档上线了',
-  //   link: 'URL_ADDRESS',
-  // },
-];
-
-export const segmentedOptions = [
   {
-    label: '全部',
-    value: 'all',
+    tagName: '公告',
+    text: '系统将于每天11:00~次日9:00停止维护(因为我要规律作息)',
   },
   {
-    label: '本月',
-    value: 'month',
-  },
-  {
-    label: '本周',
-    value: 'week',
-  },
-  {
-    label: '本日',
-    value: 'day',
+    tagName: '公告',
+    text: '是的，这是一条公告！',
   },
 ];
 
-export const userVisitOption: echarts.EChartsCoreOption = {
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      lineStyle: {
-        color: '#333',
-      },
-    },
+const trendDates = [];
+for (let i = 0; i < 15; i++) {
+  const date = dayjs().subtract(i, 'day').format('MM-DD');
+  trendDates.unshift(date);
+}
+
+/**
+ * 用户日访问量趋势图配置
+ */
+export const trendOption: echarts.EChartsCoreOption = {
+  title: {
+    textStyle: { color: '#666', fontSize: 14, fontWeight: 'normal' },
+    padding: [5, 0, 0, 0],
   },
   legend: {
-    icon: 'rect',
-    itemWidth: 14,
-    itemHeight: 5,
-    itemGap: 13,
-    data: ['近6个月平均拜访次数'],
-    right: 'center',
-    textStyle: {
-      fontSize: 12,
+    type: 'plain',
+    top: 0,
+    right: 20,
+    itemGap: 64,
+    itemWidth: 10,
+    icon: 'circle',
+    selectedMode: false,
+    textStyle: { padding: [0, 0, 0, 4] },
+    data: ['老用户', '新用户'],
+  },
+  grid: { left: 0, top: 40, bottom: 10, right: 0, containLabel: true },
+  xAxis: {
+    type: 'category',
+    data: trendDates,
+    axisLine: { lineStyle: { color: '#ccc' } },
+    axisTick: { length: 3 },
+    axisLabel: { color: '#999' },
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: { color: '#999' },
+    splitLine: { show: true },
+  },
+  tooltip: {
+    trigger: 'axis',
+    padding: [12, 17, 20, 23],
+    textStyle: { color: '#424242' },
+    renderMode: 'html',
+    className: 'tooltip',
+  },
+  series: [
+    {
+      name: '老用户',
+      type: 'line',
+      data: [0, 10, 2, 4, 4, 7, 2, 8, 3, 3, 0, 9, 6, 0, 0],
+      smooth: true,
+      showSymbol: false,
+      itemStyle: { color: '#126EFC' },
+      lineStyle: { width: 2, color: '#126EFC' },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgba(18, 110, 252, 0.45)',
+          },
+          {
+            offset: 1,
+            color: 'rgba(18, 110, 252, 0.1)',
+          },
+        ]),
+      },
     },
+    {
+      name: '新用户',
+      type: 'line',
+      data: [0, 0, 0, 5, 0, 2, 1, 2, 5, 2, 0, 4, 1, 0, 0],
+      smooth: true,
+      showSymbol: false,
+      itemStyle: { color: '#1BB389' },
+      lineStyle: {
+        width: 2,
+        color: '#1BB389',
+      },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgba(27, 179, 137, 0.45)',
+          },
+          {
+            offset: 1,
+            color: 'rgba(27, 179, 137, 0.1)',
+          },
+        ]),
+      },
+    },
+  ],
+};
+
+/**
+ * 用户访问渠道配置
+ */
+export const channelOption: echarts.EChartsCoreOption = {
+  tooltip: {
+    trigger: 'axis',
   },
   grid: {
     left: '3%',
-    right: '4%',
-    bottom: '3%',
+    right: '3%',
+    bottom: '5%',
     containLabel: true,
   },
-  xAxis: [
-    {
-      type: 'category',
-      boundaryGap: false,
-      axisLine: {
-        lineStyle: {
-          color: '#ccc',
-        },
-      },
-      axisTick: {
-        show: true,
-      },
-      axisLabel: {
-        margin: 10,
-        fontSize: 14,
-        color: '#999',
-      },
-      data: ['2017-07', '2017-08', '2017-09', '2017-10', '2017-11', '2017-12'],
-    },
-  ],
-  yAxis: [
-    {
-      type: 'value',
-      name: '',
-      axisTick: {
-        show: false,
-      },
-      axisLine: {
-        lineStyle: {
-          color: '#fff',
-        },
-      },
-      axisLabel: {
-        margin: 10,
-        fontSize: 14,
-        color: '#999',
-      },
-      splitLine: {
-        lineStyle: {
-          type: 'solid',
-          color: '#ccc',
-        },
-      },
-    },
-  ],
-  series: [
-    {
-      name: '近6个月平均拜访次数',
-      type: 'line',
-      smooth: true,
-      symbol: 'circle',
-      symbolSize: 5,
-      showSymbol: false,
-      lineStyle: {
-        width: 1,
-      },
-      areaStyle: {
-        type: 'linear',
-        color: new echarts.graphic.LinearGradient(
-          0,
-          0,
-          0,
-          1,
-          [
-            {
-              offset: 0,
-              color: 'rgba(0, 136, 212, 0.2)',
-            },
-            {
-              offset: 1,
-              color: 'rgba(0, 136, 212, 0)',
-            },
-          ],
-          false,
-        ),
-        shadowColor: 'rgba(0, 0, 0, 0.1)',
-        shadowBlur: 10,
-      },
-      itemStyle: {
-        color: 'rgb(0,136,212)',
-        borderColor: 'rgba(0,136,212,0.2)',
-        borderWidth: 12,
-      },
-      data: [120, 110, 145, 122, 165, 150],
-    },
-  ],
-};
-
-const center1 = ['50%', '65%'];
-const data1 = '2200';
-const data2 = '1800';
-const Dvalue = ((Number(data1) / Number(data2)) * 100).toFixed(2);
-
-const startAngle = 180;
-const endAngle = 0;
-const min = 0;
-const max = 150;
-const radius = '85%';
-const pointer = { show: false };
-const axisLabel = {
-  distance: -5,
-  color: '#999',
-  fontSize: 12,
-  formatter(value: number) {
-    return `${value}%`;
-  },
-};
-
-const axisTick = {
-  distance: -35,
-  splitNumber: 5,
-  length: 5,
-  lineStyle: {
-    color: '#999',
-  },
-};
-const splitLine = {
-  distance: -35,
-  length: 6,
-  lineStyle: {
-    width: 3,
-    color: '#999',
-  },
-};
-const anchor = { show: false };
-
-const axisLine = {
-  lineStyle: {
-    width: 30,
-    color: [[1, '#f4f4f4']],
-  },
-};
-const textStyle = {
-  textAlign: 'center',
-  fontSize: 16,
-  lineHeight: 24,
-  rich: {
-    a: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      lineHeight: 24,
-    },
-  },
-};
-
-const title = {
-  show: true,
-  offsetCenter: [0, '60%'],
-  fontSize: 18,
-};
-const detail = {
-  valueAnimation: true,
-  fontSize: 30,
-  lineHeight: 30,
-  color: '#106ae7',
-  offsetCenter: [0, '-20%'],
-  fontWeight: 'bold',
-  formatter(value: number) {
-    return `{a|占比} ` + `\n${value}{a|%}`;
-  },
-  rich: {
-    a: {
-      color: '#333',
-      fontSize: 16,
-      lineHeight: 30,
-    },
-  },
-};
-export const dashboardOption: echarts.EChartsCoreOption = {
-  title: [
-    {
-      text: `当前值\n{a|${data1}} 吨`,
-      left: '10%',
-      top: '70%',
-      textStyle,
-    },
-    {
-      text: `目标值\n{a|${data2}} 吨`,
-      right: '7%',
-      top: '70%',
-      textStyle,
-    },
-  ],
-  series: [
-    {
-      type: 'gauge',
-      startAngle,
-      center: center1,
-      endAngle,
-      min,
-      max,
-      radius,
-      splitNumber: 6,
-      progress: {
-        show: true,
-        width: 30,
-        itemStyle: {
-          color: '#90ccff',
-        },
-      },
-      pointer,
-      axisLine,
-      axisTick,
-      splitLine,
-      axisLabel,
-      anchor,
-      title,
-      detail,
-      data: [
-        {
-          value: Dvalue,
-          name: '',
-        },
-      ],
-    },
-    {
-      type: 'gauge',
-      startAngle,
-      center: center1,
-      endAngle,
-      min,
-      max: 150,
-      radius,
-      splitNumber: 5,
-      progress: {
-        show: true,
-        width: 15,
-        itemStyle: {
-          color: '#1492ff',
-        },
-      },
-      pointer: { show: false },
-      axisLine: { show: false },
-      axisTick: { show: false },
-      splitLine: { show: false },
-      axisLabel: { show: false },
-      anchor: { show: false },
-      title: { show: false },
-      detail: { show: false },
-      data: [
-        {
-          value: 100,
-          name: '',
-        },
-      ],
-    },
-  ],
-};
-
-export const histogramOption: echarts.EChartsCoreOption = {
-  backgroundColor: 'transparent',
-  title: {
-    //   text: `{a|年度毛利及增速图}`,
-    textStyle: {
-      rich: {
-        a: {
-          fontSize: 16,
-          fontWeight: 600,
-        },
-      },
-    },
-    top: '3%',
-    left: '2%',
-  },
   legend: {
-    show: false,
+    icon: 'rect',
+    right: 'center',
   },
-  tooltip: {
-    show: true,
-    trigger: 'item',
-  },
-  grid: {
-    top: '10%',
-    left: '9%',
-    right: '8%',
-    bottom: '12%',
-  },
-  xAxis: [
-    {
-      type: 'category',
-      data: ['2016年', '2017年', '2018年', '2019年', '2020年'],
-      axisTick: {
-        show: false, // 是否显示坐标轴轴线
-      },
-      axisLabel: {
-        fontSize: 14,
-        formatter(params: string) {
-          let str = ''; // 最终拼接成的字符串
-          const paramsLen = params.length; // 获取每项文字的个数
-          const len = 5; // 每行能显示的字的个数（根据实际情况自己设置）
-          const rowNumber = Math.ceil(paramsLen / len); // 换行的话，需要显示几行，向上取整
-          if (paramsLen > len) {
-            // 大于设定的len就换行，不大于就不变化
-            for (let i = 0; i < rowNumber; i++) {
-              let temp = ''; // 表示每一次截取的字符串
-              const start = i * len; // 开始截取的位置
-              const end = start + len; // 结束截取的位置
-              if (i === rowNumber - 1) {
-                // 最后一次不换行
-                temp = params.substring(start, paramsLen);
-              } else {
-                // 每一次拼接字符串并换行
-                temp = `${params.substring(start, end)}\n`;
-              }
-              str += temp; // 最终拼成的字符串
-            }
-          } else {
-            // 给新的字符串赋值
-            str = params;
-          }
-          return str; // 返回字符串
-        },
-      },
-      splitLine: {
-        show: false,
-      },
-      boundaryGap: true,
-      axisLine: {
-        // 坐标轴轴线相关设置。
-        show: true,
-        inside: false,
-        lineStyle: {
-          color: 'rgba(31, 134, 255, 1)',
-          type: 'dashed',
-        },
+  xAxis: {
+    type: 'category',
+    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+    axisLabel: {
+      // 坐标轴字体颜色
+      textStyle: {
+        color: '#333333',
       },
     },
-  ],
-  yAxis: [
-    {
-      type: 'value',
-      min: 0,
-      max: 100,
-      axisLabel: {
-        // 坐标轴刻度标签的相关设置。
-        show: true,
-        color: 'rgba(31, 134, 255, 1)',
-        fontSize: 14,
+    axisLine: {
+      lineStyle: {
+        color: '#e5e5e5',
       },
-      axisLine: {
-        show: false,
+    },
+    axisTick: {
+      // y轴刻度线
+      show: false,
+    },
+    splitLine: {
+      // 网格
+      show: false,
+    },
+  },
+  yAxis: {
+    type: 'value',
+    boundaryGap: ['0%', '20%'],
+    axisLabel: {
+      // 坐标轴字体颜色
+      textStyle: {
+        color: '#333333',
       },
-      axisTick: {
-        show: false,
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: 'rgba(133, 189, 254, 1)',
-          type: 'dashed',
-        },
-      },
+    },
+    axisLine: {
+      show: false,
+    },
+    axisTick: {
+      // y轴刻度线
+      show: false,
+    },
+    splitLine: {
+      // 网格
       show: true,
+      lineStyle: {
+        color: '#dadde4',
+        type: 'dashed',
+      },
+    },
+  },
+  series: [
+    {
+      name: '社交媒体',
+      type: 'bar',
+      stack: 'total',
+      barMaxWidth: '20%', // 柱子宽度
+      itemStyle: {
+        // 柱子颜色
+        color: '#1b78f5',
+      },
+      data: [80, 120, 160, 200, 240, 280, 240, 200, 160, 120, 80, 120], // 波浪形节奏
+    },
+    {
+      name: '广告',
+      type: 'bar',
+      stack: 'total',
+      barMaxWidth: '20%', // 柱子宽度
+      itemStyle: {
+        // 柱子颜色
+        color: '#59b7ff',
+      },
+      data: [120, 160, 200, 240, 280, 320, 280, 240, 200, 160, 120, 160], // 阶梯递增+波浪
+    },
+    {
+      name: '自然流量',
+      type: 'bar',
+      stack: 'total',
+      barMaxWidth: '20%', // 柱子宽度
+      itemStyle: {
+        // 柱子颜色
+        color: '#bce3ff',
+      },
+      data: [60, 80, 100, 120, 140, 160, 140, 120, 100, 80, 60, 80], // 平滑波动
     },
   ],
+};
+
+const dataC1 = [20, 30, 60, 40, 50, 30];
+const xData = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'];
+
+// ddd
+export const testOption: echarts.EChartsCoreOption = {
+  backgroundColor: 'transparent',
+  xAxis: {
+    type: 'category',
+    axisLine: {
+      show: false,
+    },
+    axisTick: {
+      show: false,
+    },
+    axisLabel: {
+      show: false,
+    },
+    data: xData,
+  },
+  yAxis: {
+    type: 'value',
+    axisLine: {
+      show: false,
+    },
+    splitLine: {
+      show: false,
+    },
+    axisTick: {
+      show: false,
+    },
+    axisLabel: {
+      show: false,
+    },
+    boundaryGap: ['20%', '20%'],
+  },
   series: [
     {
       name: '',
-      type: 'bar',
-      barMaxWidth: 15,
-      zlevel: 10,
-      // barGap: '100%',
-      data: [90, 60, 65, 70, 85],
+      type: 'line',
+      stack: '总量',
+      smooth: true,
+      symbol: 'none',
+      showSymbol: false,
+      symbolSize: 8,
       itemStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [
-            {
-              offset: 0,
-              color: 'rgba(31, 129, 255, 1)',
-            },
-            {
-              offset: 1,
-              color: 'rgba(31, 134, 255, 0)',
-            },
-          ],
-        },
-        borderRadius: [30, 30, 0, 0],
-        label: {
-          show: true, // 开启显示
-          position: 'top', // 在上方显示
-          textStyle: {
-            // 数值样式
-            color: 'rgba(31, 129, 255, 1)',
-            fontSize: 12,
-            fontWeight: 400,
+        normal: {
+          lineStyle: {
+            width: 5,
           },
         },
       },
-    },
-  ],
-};
-
-export const pieChartsOption: echarts.EChartsCoreOption = {
-  tooltip: {
-    show: true,
-  },
-  legend: {
-    top: 'bottom',
-  },
-  series: [
-    {
-      name: '访问来源',
-      type: 'pie',
-      radius: '85%',
-      center: ['50%', '50%'],
-      tooltip: {
-        formatter: '{b}: {d}%',
-      },
-      data: [
-        { value: 235, name: '视频广告', itemStyle: { color: '#0C457A' } },
-        { value: 274, name: '联盟广告', itemStyle: { color: '#0E4C86' } },
-        { value: 310, name: '邮件营销', itemStyle: { color: '#115FA8' } },
-        { value: 335, name: '直接访问', itemStyle: { color: '#1173CE' } },
-        { value: 400, name: '搜索引擎', itemStyle: { color: '#1890FF' } },
-      ],
-      roseType: 'radius',
-      label: {
-        show: true,
-      },
-      animationType: 'scale',
-      animationEasing: 'elasticOut',
-      animationDelay() {
-        return Math.random() * 200;
-      },
+      data: dataC1,
     },
   ],
 };
