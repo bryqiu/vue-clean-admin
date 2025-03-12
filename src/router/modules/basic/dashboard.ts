@@ -20,15 +20,6 @@ const dashboard: CustomRouteRecordRaw = {
         icon: 'ri:donut-chart-fill',
       },
     },
-    {
-      path: 'workbench',
-      name: 'Workbench',
-      component: () => import('@/views/dashboard/workbench/workbench.vue'),
-      meta: {
-        title: '工作台',
-        icon: 'ri:computer-line',
-      },
-    },
   ],
 };
 
