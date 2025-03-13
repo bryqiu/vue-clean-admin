@@ -33,7 +33,7 @@
     "axios": "^1.7.4",
     "dayjs": "^1.11.13",
     "echarts": "^5.5.1",
-    "element-plus": "^2.8.4",
+    "element-plus": "^2.9.6",
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.1",
     "mockjs": "^1.1.0",
