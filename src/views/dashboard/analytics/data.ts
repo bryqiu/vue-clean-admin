@@ -293,9 +293,7 @@ export const channelOption: echarts.EChartsCoreOption = {
     data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
     axisLabel: {
       // 坐标轴字体颜色
-      textStyle: {
-        color: '#333333',
-      },
+      color: '#333333',
     },
     axisLine: {
       lineStyle: {
@@ -316,9 +314,7 @@ export const channelOption: echarts.EChartsCoreOption = {
     boundaryGap: ['0%', '20%'],
     axisLabel: {
       // 坐标轴字体颜色
-      textStyle: {
-        color: '#333333',
-      },
+      color: '#333333',
     },
     axisLine: {
       show: false,
