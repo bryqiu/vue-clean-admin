@@ -12,7 +12,7 @@ const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType, currentVisualMo
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col gap-4">
     <SegmentContainer title="面包屑">
       <ToggleBox v-model="showBreadcrumb" text="是否显示面包屑" :options="whetherOptions" />
       <ToggleBox
