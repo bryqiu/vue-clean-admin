@@ -15,11 +15,6 @@ export interface BasicBoxProps {
    * 提示内容
    */
   tipsContent?: string;
-  /**
-   * 是否显示边框
-   * @default true
-   */
-  showBorder?: boolean;
 }
 
 export type ValueType = string | number | boolean;

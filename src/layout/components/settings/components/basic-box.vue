@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ElScrollbar, ElText, ElTooltip } from 'element-plus';
+import { ElScrollbar, ElTooltip } from 'element-plus';
 import { AlignModeEnum } from '@/enums';
 import { isEmpty } from '@/utils';
 import type { BasicBoxProps } from './box-typing';
@@ -12,7 +12,6 @@ defineOptions({
 const props = withDefaults(defineProps<BasicBoxProps>(), {
   text: '--',
   mode: AlignModeEnum.HORIZONTAL,
-  showBorder: true,
 });
 
 /** 是否垂直模式 */
@@ -25,20 +24,16 @@ const isVertical = computed(() => {
 const conditionStyle = computed(() => {
   return {
     'flex-col justify-start': isVertical.value,
-    'border border-[var(--el-border-color-light)]': props.showBorder,
   };
 });
 </script>
 
 <template>
-  <div class="flex gap-2 justify-between p-2 rounded-[var(--app-round)]" :class="conditionStyle">
-    <div class="flex items-center gap-0.5">
-      <ElText truncated>{{ text }}</ElText>
+  <div class="flex gap-2 justify-between rounded-lg" :class="conditionStyle">
+    <div class="flex items-center gap-0.5 flex-1">
+      <span class="text-sm text-el-secondary">{{ text }}</span>
       <ElTooltip v-if="!isEmpty(tipsContent)" :content="tipsContent" placement="top">
-        <AppIcon
-          icon="ri:question-line"
-          class="text-[var(--el-text-color-placeholder)] cursor-help"
-        />
+        <AppIcon icon="ri:question-line" class="text-el-secondary cursor-help" />
       </ElTooltip>
     </div>
     <!-- 内容插槽 -->

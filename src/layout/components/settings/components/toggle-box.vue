@@ -14,7 +14,6 @@ const props = withDefaults(defineProps<ToggleBoxProps>(), {
   auto: true,
   maxLength: 3,
   disabled: false,
-  showBorder: true,
 });
 
 const emits = defineEmits<ToggleBoxEmits>();
@@ -54,7 +53,6 @@ const basicBoxProps = computed<BasicBoxProps>(() => {
     text: props.text,
     mode: modeValue.value,
     tipsContent: props.tipsContent,
-    showBorder: props.showBorder,
   };
 });
 </script>
