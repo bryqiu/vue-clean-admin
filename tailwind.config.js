@@ -5,6 +5,7 @@ import { twThemeConfig } from './src/config/tw-theme';
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}', './docs/**/*.{vue,js,ts,jsx,tsx}'],
   mode: 'jit',
+  darkMode: 'class',
   theme: {
     ...twThemeConfig,
   },
