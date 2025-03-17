@@ -27,10 +27,6 @@ div.el-card {
   --el-border-radius-base: var(--app-round);
 
   label.el-segmented__item {
-    &.is-selected {
-      box-shadow: var(--el-box-shadow-lighter);
-    }
-
     &.is-disabled {
       color: var(--el-text-color-disabled);
     }
