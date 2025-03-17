@@ -70,6 +70,7 @@ export const elStyleKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElTooltip',
   'ElAlert',
   'ElDrawer',
+  'ElDialog',
   /* ======================== 其他 ======================== */
   'ElDivider',
 ];
