@@ -39,11 +39,11 @@ const colorPickerChange = (value: string | null) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-4">
     <!--主题模式-->
-    <BasicBox mode="vertical" text="主题模式">
+    <SegmentContainer title="主题模式">
       <ThemeMode />
-    </BasicBox>
+    </SegmentContainer>
 
     <!--主题色调-->
     <SegmentContainer title="主题色调">
