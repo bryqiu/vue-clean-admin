@@ -80,7 +80,7 @@ const compareTrendDisplay = computed(() => {
 </script>
 
 <template>
-  <div class="size-full p-4 bg-el-blank rounded-lg shadow">
+  <div class="size-full p-4 bg-el-blank dark:bg-el-overlay rounded-lg shadow">
     <div class="flex items-center gap-x-2">
       <div class="w-full flex flex-col truncate">
         <span class="text-xs text-el-regular font-medium">{{ label }}</span>
