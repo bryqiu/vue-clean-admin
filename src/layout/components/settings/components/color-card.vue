@@ -21,13 +21,13 @@ withDefaults(defineProps<ColorCardProps>(), {
 
 <template>
   <div
-    class="w-full p-3 rounded-lg flex justify-start items-center border border-solid border-[var(--el-border-color-light)] cursor-pointer hover:border-[var(--el-color-primary)] duration-300 relative overflow-hidden"
+    class="w-full p-3 rounded-lg flex justify-start items-center border border-solid border-el-light cursor-pointer hover:border-primary duration-300 relative overflow-hidden"
     :class="{
-      'border-[var(--el-color-primary)]  color-active': active,
+      'border-primary  color-active': active,
     }"
   >
     <div class="size-5 rounded-full" :style="{ backgroundColor: value }" />
-    <span class="text-sm pl-2 text-[var(--el-text-color-regular)]">{{ label }}</span>
+    <span class="text-sm pl-2 text-el-regular line-clamp-1">{{ label }}</span>
   </div>
 </template>
 
