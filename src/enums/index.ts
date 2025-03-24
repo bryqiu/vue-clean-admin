@@ -1,6 +1,6 @@
 export * from './theme';
 export * from './icon-flip';
-export * from './display-mode';
+export * from './direction';
 export * from './transition';
 
 // 全局枚举

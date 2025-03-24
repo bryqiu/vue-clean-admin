@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ElScrollbar, ElTooltip } from 'element-plus';
-import { AlignModeEnum } from '@/enums';
+import { DirectionEnum } from '@/enums';
 import { isEmpty } from '@/utils';
 import type { BasicBoxProps } from './box-typing';
 
@@ -11,13 +11,13 @@ defineOptions({
 
 const props = withDefaults(defineProps<BasicBoxProps>(), {
   text: '--',
-  mode: AlignModeEnum.HORIZONTAL,
+  mode: DirectionEnum.HORIZONTAL,
 });
 
 /** 是否垂直模式 */
 const isVertical = computed(() => {
   const { mode } = props;
-  return mode === AlignModeEnum.VERTICAL;
+  return mode === DirectionEnum.VERTICAL;
 });
 
 /** 条件样式 */
