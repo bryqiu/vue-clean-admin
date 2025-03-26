@@ -13,7 +13,9 @@ interface ImportMetaEnv {
   /** 打包后是否显示包分析可视化 */
   readonly VITE_VISUALIZER: boolean;
   /** API请求URL */
-  readonly VITE_API_URL: string;
+  readonly VITE_BASE_URL: string;
+  /** 路径前缀 */
+  readonly VITE_PATH_PREFIX: string;
   /** 是否启用Mock */
   readonly VITE_USE_MOCK: boolean;
   /** 是否在控制台显示 Mock 请求日志 */
