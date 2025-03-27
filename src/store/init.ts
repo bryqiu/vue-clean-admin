@@ -1,7 +1,7 @@
 import { createPinia } from 'pinia';
 import { App } from 'vue';
 import { createPersistedState } from 'pinia-plugin-persistedstate';
-import { STORE_PREFIX } from '@/config';
+import { STORE_PREFIX } from './config';
 // 实例
 const store = createPinia();
 

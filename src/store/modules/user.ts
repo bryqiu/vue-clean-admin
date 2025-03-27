@@ -1,8 +1,9 @@
 import { ref } from 'vue';
 import { store } from '../init';
 import { acceptHMRUpdate, defineStore } from 'pinia';
+import { STORE_MODULES_KEYS } from '../config';
 
-const createUserStore = defineStore('user', () => {
+const createUserStore = defineStore(STORE_MODULES_KEYS.USER, () => {
   const count = ref(0);
   return { count };
 });

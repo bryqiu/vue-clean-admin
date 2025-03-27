@@ -5,9 +5,10 @@ import { DEFAULT_SETTINGS } from '@/config';
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
 import { usePreferredDark } from '@vueuse/core';
 import { applyAppThemeColor } from '@/colors';
+import { STORE_MODULES_KEYS } from '../config';
 
 const createSettingsStore = defineStore(
-  'settings',
+  STORE_MODULES_KEYS.SETTINGS,
   () => {
     const appSettings = ref({ ...DEFAULT_SETTINGS });
 
