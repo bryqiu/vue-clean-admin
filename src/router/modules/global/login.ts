@@ -1,7 +1,9 @@
+import { ROUTE_NAMES } from '@/router/config';
+
 const login: CustomRouteRecordRaw = {
   path: '/login',
   component: () => import('@/views/login/login-container.vue'),
-  name: 'Login',
+  name: ROUTE_NAMES.LOGIN,
   meta: {
     title: '登录页',
   },

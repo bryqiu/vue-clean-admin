@@ -1,10 +1,10 @@
-import { LAYOUT } from '@/config';
-import { ROOT_REDIRECT } from '@/config';
+import { APP_LAYOUT, ROOT_REDIRECT, ROUTE_NAMES } from '@/router/config';
+
 const dashboard: CustomRouteRecordRaw = {
   path: ROOT_REDIRECT,
   redirect: `${ROOT_REDIRECT}/analytics`,
-  component: LAYOUT,
-  name: 'Dashboard',
+  component: APP_LAYOUT,
+  name: ROUTE_NAMES.DASHBOARD,
   meta: {
     title: '仪表盘',
     sort: 1,
@@ -13,7 +13,7 @@ const dashboard: CustomRouteRecordRaw = {
   children: [
     {
       path: 'analytics',
-      name: 'Analytics',
+      name: ROUTE_NAMES.ANALYTICS,
       component: () => import('@/views/dashboard/analytics/analytics.vue'),
       meta: {
         title: '可视化',

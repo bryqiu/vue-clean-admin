@@ -1,8 +1,9 @@
-import { ROOT_REDIRECT } from '@/config';
+import { ROOT_REDIRECT, ROUTE_NAMES } from '@/router/config';
+
 const root: CustomRouteRecordRaw = {
   path: '/',
   redirect: ROOT_REDIRECT,
-  name: 'Root',
+  name: ROUTE_NAMES.ROOT,
   meta: {
     title: '根目录',
   },

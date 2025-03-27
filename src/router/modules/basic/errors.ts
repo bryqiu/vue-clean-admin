@@ -1,9 +1,9 @@
-import { LAYOUT } from '@/config';
+import { APP_LAYOUT, ROUTE_NAMES } from '@/router/config';
 
 const errorPages: CustomRouteRecordRaw = {
   path: '/error',
-  name: 'ErrorPages',
-  component: LAYOUT,
+  name: ROUTE_NAMES.ERROR_PAGES,
+  component: APP_LAYOUT,
   redirect: '/error/404',
   meta: {
     title: '错误页',
@@ -13,7 +13,7 @@ const errorPages: CustomRouteRecordRaw = {
   children: [
     {
       path: '404',
-      name: 'NotFound',
+      name: ROUTE_NAMES.NOT_FOUND,
       component: () => import('@/views/errors/not-found.vue'),
       meta: {
         title: '404',
@@ -22,7 +22,7 @@ const errorPages: CustomRouteRecordRaw = {
     },
     {
       path: '403',
-      name: 'Forbidden',
+      name: ROUTE_NAMES.FORBIDDEN,
       component: () => import('@/views/errors/forbidden.vue'),
       meta: {
         title: '403',
@@ -31,7 +31,7 @@ const errorPages: CustomRouteRecordRaw = {
     },
     {
       path: '500',
-      name: 'ServerError',
+      name: ROUTE_NAMES.SERVER_ERROR,
       component: () => import('@/views/errors/server-error.vue'),
       meta: {
         title: '500',
