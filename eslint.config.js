@@ -112,6 +112,7 @@ export default [
       '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/unified-signatures': 'off',
     },
   },
   // 声明文件配置
