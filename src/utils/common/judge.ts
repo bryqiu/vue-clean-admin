@@ -1,4 +1,4 @@
-import { EMAIL_REG, LINK_URL } from '@/constants';
+import { REGEX } from '@/constants';
 
 type DataType =
   | 'Number'
@@ -143,7 +143,7 @@ export const isEmpty = (value: any) => {
  */
 export const isEmail = (value: string) => {
   if (!isString(value)) return false;
-  return EMAIL_REG.test(value);
+  return REGEX.EMAIL_REG.test(value);
 };
 
 /**
@@ -153,5 +153,5 @@ export const isEmail = (value: string) => {
  */
 export const isURL = (value: string) => {
   if (!isString(value)) return false;
-  return LINK_URL.test(value);
+  return REGEX.LINK_URL.test(value);
 };
