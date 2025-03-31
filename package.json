@@ -118,5 +118,9 @@
     "admin",
     "typescript",
     "vue-clean-admin"
-  ]
+  ],
+  "engines": {
+    "node": ">=18.20.8",
+    "pnpm": ">=9.14.3"
+  }
 }
