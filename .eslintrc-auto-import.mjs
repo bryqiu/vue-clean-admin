@@ -4,7 +4,6 @@ export default {
     "useIcon": true,
     "useLayoutSettings": true,
     "useMode": true,
-    "useProgress": true,
     "useRouterPath": true,
     "useSettingsStore": true,
     "useSundriesSettings": true,
