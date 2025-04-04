@@ -112,6 +112,7 @@
     "vite",
     "admin",
     "typescript",
+    "element-plus",
     "vue-clean-admin"
   ],
   "engines": {
