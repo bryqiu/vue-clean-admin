@@ -1,4 +1,3 @@
-import { addDynamicIconSelectors } from '@iconify/tailwind';
 import { twThemeConfig } from './src/config/tw-theme';
 
 /** @type {import('tailwindcss').Config} */
@@ -9,10 +8,7 @@ export default {
   theme: {
     ...twThemeConfig,
   },
-  plugins: [
-    // 支持iconify图标库的图标使用
-    addDynamicIconSelectors(),
-  ],
+  plugins: [],
   corePlugins: {
     preflight: false, // 是否使用tailwind默认的重置css样式
   },
