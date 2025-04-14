@@ -20,8 +20,8 @@ const createSettingsStore = defineStore(
       return appSettings.value.theme;
     });
 
-    const getSundriesSettings = computed(() => {
-      return appSettings.value.sundries;
+    const getShareSettings = computed(() => {
+      return appSettings.value.share;
     });
 
     /** 切换菜单伸缩状态 */
@@ -43,17 +43,17 @@ const createSettingsStore = defineStore(
 
     /** 切换面包屑显示状态 */
     const toggleBreadcrumb = (val: boolean) => {
-      unref(getSundriesSettings).showBreadcrumb = val;
+      unref(getShareSettings).showBreadcrumb = val;
     };
 
     /** 切换面包屑图标状态 */
     const toggleBreadcrumbIcon = (val: boolean) => {
-      unref(getSundriesSettings).showBreadcrumbIcon = val;
+      unref(getShareSettings).showBreadcrumbIcon = val;
     };
 
     /** 切换面包屑样式类型 */
     const toggleBreadcrumbStyleType = (val: BreadcrumbStyleType) => {
-      unref(getSundriesSettings).breadcrumbStyleType = val;
+      unref(getShareSettings).breadcrumbStyleType = val;
     };
 
     const { setThemeMode, addVisualStyle, isDarkMode } = useMode();
@@ -61,7 +61,7 @@ const createSettingsStore = defineStore(
     /** 设置当前视觉模式 */
     const setVisualMode = (val: VisualModeEnum) => {
       addVisualStyle(val);
-      unref(getSundriesSettings).visualMode = val;
+      unref(getShareSettings).visualMode = val;
     };
 
     /** 设置主题色 */
@@ -102,7 +102,7 @@ const createSettingsStore = defineStore(
 
     // 初始化视觉模式
     watch(
-      () => unref(getSundriesSettings).visualMode,
+      () => unref(getShareSettings).visualMode,
       (mode) => {
         setVisualMode(mode);
       },
@@ -113,7 +113,7 @@ const createSettingsStore = defineStore(
       appSettings,
       getLayoutSettings,
       getThemeSettings,
-      getSundriesSettings,
+      getShareSettings,
       toggleMenuCollapse,
       toggleMenuAccordion,
       togglePageTransition,
