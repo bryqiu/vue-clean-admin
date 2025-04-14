@@ -1,7 +1,7 @@
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
 /* ======================== 主题 ======================== */
 
-export interface ThemeSettingsType {
+export interface Theme {
   /**
    * 主题模式
    * @default light
@@ -21,7 +21,7 @@ export interface ThemeSettingsType {
 
 /* ======================== 布局 ======================== */
 
-export interface LayoutSettingsType {
+export interface Layout {
   /**
    * 控制菜单是否折叠
    * @default false (默认展开)
@@ -48,7 +48,7 @@ export interface LayoutSettingsType {
 
 /* ======================== 杂项 ======================== */
 // 面包屑
-interface BreadcrumbConfig {
+interface Breadcrumb {
   /**
    * 是否展示面包屑
    * @default true
@@ -66,7 +66,7 @@ interface BreadcrumbConfig {
   breadcrumbStyleType: BreadcrumbStyleType;
 }
 
-export interface SundriesSettingsType extends BreadcrumbConfig {
+export interface Share extends Breadcrumb {
   /**
    * 是否有水印
    * @default false
@@ -80,8 +80,8 @@ export interface SundriesSettingsType extends BreadcrumbConfig {
   visualMode: VisualModeEnum;
 }
 
-export interface SettingsType {
-  theme: ThemeSettingsType;
-  layout: LayoutSettingsType;
-  sundries: SundriesSettingsType;
+export interface Settings {
+  theme: Theme;
+  layout: Layout;
+  share: Share;
 }
