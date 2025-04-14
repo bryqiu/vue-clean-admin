@@ -4,11 +4,11 @@ import { breadcrumbStyleOptions, visualModeOptions, whetherOptions } from '@/dic
 import { SegmentContainer } from '../components';
 
 defineOptions({
-  name: 'ModuleSundries',
+  name: 'ModuleShare',
 });
 
 const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType, currentVisualMode } =
-  useSundriesSettings();
+  useShareSettings();
 </script>
 
 <template>

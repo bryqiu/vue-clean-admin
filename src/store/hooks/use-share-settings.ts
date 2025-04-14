@@ -1,6 +1,6 @@
 import { computed, unref } from 'vue';
 
-export const useSundriesSettings = () => {
+export const useShareSettings = () => {
   const {
     getShareSettings,
     toggleBreadcrumb,

@@ -2,7 +2,7 @@
 import { ElDrawer, ElScrollbar, ElTabPane, ElTabs } from 'element-plus';
 import { computed, ref } from 'vue';
 import type { SettingsDrawerEmits, SettingsDrawerProps, TabOptions } from './typing';
-import { ModuleLayout, ModuleSundries, ModuleTheme } from './modules';
+import { ModuleLayout, ModuleShare, ModuleTheme } from './modules';
 
 defineOptions({
   name: 'SettingsDrawer',
@@ -40,7 +40,7 @@ const tabsOptions: TabOptions[] = [
   {
     label: '共享',
     value: '3',
-    component: ModuleSundries,
+    component: ModuleShare,
   },
 ];
 

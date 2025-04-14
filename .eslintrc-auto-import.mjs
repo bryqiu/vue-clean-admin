@@ -6,7 +6,7 @@ export default {
     "useMode": true,
     "useRouterPath": true,
     "useSettingsStore": true,
-    "useSundriesSettings": true,
+    "useShareSettings": true,
     "useThemeSettings": true
   }
 }
