@@ -2,7 +2,7 @@ import { computed, unref } from 'vue';
 
 export const useSundriesSettings = () => {
   const {
-    getSundriesSettings,
+    getShareSettings,
     toggleBreadcrumb,
     toggleBreadcrumbIcon,
     toggleBreadcrumbStyleType,
@@ -10,26 +10,26 @@ export const useSundriesSettings = () => {
   } = useSettingsStore();
 
   const hasWatermark = computed(() => {
-    return unref(getSundriesSettings).hasWatermark;
+    return unref(getShareSettings).hasWatermark;
   });
 
   const showBreadcrumb = computed({
-    get: () => unref(getSundriesSettings).showBreadcrumb,
+    get: () => unref(getShareSettings).showBreadcrumb,
     set: (val) => toggleBreadcrumb(val),
   });
 
   const showBreadcrumbIcon = computed({
-    get: () => unref(getSundriesSettings).showBreadcrumbIcon,
+    get: () => unref(getShareSettings).showBreadcrumbIcon,
     set: (val) => toggleBreadcrumbIcon(val),
   });
 
   const currentVisualMode = computed({
-    get: () => unref(getSundriesSettings).visualMode,
+    get: () => unref(getShareSettings).visualMode,
     set: (val) => setVisualMode(val),
   });
 
   const breadcrumbStyleType = computed({
-    get: () => unref(getSundriesSettings).breadcrumbStyleType,
+    get: () => unref(getShareSettings).breadcrumbStyleType,
     set: (val) => toggleBreadcrumbStyleType(val),
   });
   return {
