@@ -38,7 +38,7 @@ const tabsOptions: TabOptions[] = [
     component: ModuleTheme,
   },
   {
-    label: '其他',
+    label: '共享',
     value: '3',
     component: ModuleSundries,
   },

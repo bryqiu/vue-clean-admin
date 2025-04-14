@@ -1,5 +1,5 @@
 import type { ColorCardProps } from '../components';
-import { DEFAULT_SETTINGS } from '@/config/share-settings';
+import { DEFAULT_SETTINGS } from '@/config/settings';
 
 export const PRESET_COLOR_LIST: ColorCardProps[] = [
   {
