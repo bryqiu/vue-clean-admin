@@ -2,7 +2,7 @@
 import {
   AccessLogs,
   BulletinBoard,
-  ChannelVisits,
+  ChannelChart,
   DataOverview,
   QuickNav,
   VisitsChart,
@@ -25,7 +25,7 @@ defineOptions({
         <QuickNav class="flex-1" />
       </div>
     </div>
-    <ChannelVisits />
+    <ChannelChart />
     <AccessLogs />
   </div>
 </template>

@@ -4,7 +4,7 @@ import { channelOption } from '../data';
 import { BaseContainer } from '../components';
 
 defineOptions({
-  name: 'ChannelVisits',
+  name: 'ChannelChart',
 });
 
 const channelInstance = ref<NullType<HTMLDivElement>>(null);
