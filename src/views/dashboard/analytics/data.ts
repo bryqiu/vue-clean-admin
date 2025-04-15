@@ -186,7 +186,7 @@ for (let i = 0; i < 15; i++) {
 /**
  * 用户日访问量趋势图配置
  */
-export const trendOption: echarts.EChartsCoreOption = {
+export const visitsOption: echarts.EChartsCoreOption = {
   title: {
     textStyle: { color: '#666', fontSize: 14, fontWeight: 'normal' },
     padding: [5, 0, 0, 0],

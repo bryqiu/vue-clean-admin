@@ -4,8 +4,8 @@ import {
   BulletinBoard,
   ChannelVisits,
   DataOverview,
-  DayVisitsTrend,
   QuickNav,
+  VisitsChart,
 } from './modules';
 
 defineOptions({
@@ -18,7 +18,7 @@ defineOptions({
     <div class="w-full grid grid-cols-12 gap-3">
       <div class="col-span-9 flex flex-col gap-y-3">
         <DataOverview />
-        <DayVisitsTrend />
+        <VisitsChart />
       </div>
       <div class="col-span-3 flex flex-col gap-y-3">
         <BulletinBoard class="flex-1" />
