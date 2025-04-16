@@ -7,7 +7,7 @@ import { SettingsAction } from '../components/settings';
 import { Breadcrumb } from '../components/breadcrumb';
 import type { RouteLocationMatched } from 'vue-router';
 
-const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useSundriesSettings();
+const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useShareSettings();
 </script>
 
 <template>
