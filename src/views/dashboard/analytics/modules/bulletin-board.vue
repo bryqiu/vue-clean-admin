@@ -12,7 +12,7 @@ export interface Bulletin {
   text: string;
   link?: string;
   tagName: string;
-  tagProps?: TagProps;
+  tagProps?: Partial<TagProps>;
 }
 
 /**
@@ -29,12 +29,12 @@ const handleClick = (link: Bulletin['link']) => {
     <ElScrollbar>
       <!--公告列表-->
       <div class="flex flex-col gap-y-3">
-        <div v-for="(bulletin, index) in bulletinList" :key="index" class="flex gap-x-1">
-          <ElTag v-if="bulletin.tagName" size="small" round v-bind="bulletin.tagProps">
+        <div v-for="(bulletin, index) in bulletinList" :key="index" class="flex gap-x-1.5">
+          <ElTag v-if="bulletin.tagName" size="small" effect="plain" v-bind="bulletin.tagProps">
             {{ bulletin.tagName }}
           </ElTag>
           <span
-            class="text-sm text-el-regular font-medium flex-1 line-clamp-1 cursor-pointer"
+            class="text-sm text-el-primary font-medium flex-1 line-clamp-1 cursor-pointer"
             :class="{ 'hover:text-primary': bulletin.link }"
             @click="handleClick(bulletin.link)"
             >{{ bulletin.text }}</span
