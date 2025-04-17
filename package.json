@@ -104,7 +104,6 @@
     "vue-eslint-parser": "^9.4.3",
     "vue-tsc": "^2.0.29"
   },
-  "license": "MIT",
   "keywords": [
     "vue",
     "vue3",
@@ -117,5 +116,11 @@
   "engines": {
     "node": ">=18.20.8",
     "pnpm": ">=9.14.3"
-  }
+  },
+  "homepage": "https://github.com/bryqiu/vue-clean-admin",
+  "repository": "https://github.com/bryqiu/vue-clean-admin",
+  "bugs": {
+    "url": "https://github.com/bryqiu/vue-clean-admin/issues"
+  },
+  "license": "MIT"
 }
