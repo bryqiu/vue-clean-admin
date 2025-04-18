@@ -109,9 +109,13 @@
     "vue3",
     "vite",
     "admin",
+    "vue admin",
+    "vue3 admin",
+    "vite admin",
+    "clean admin",
+    "vue clean admin",
     "typescript",
-    "element-plus",
-    "vue-clean-admin"
+    "element plus"
   ],
   "engines": {
     "node": ">=18.20.8",
