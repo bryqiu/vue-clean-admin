@@ -2,7 +2,7 @@
   "name": "vue-clean-admin",
   "version": "1.0.0",
   "description": "基于Vue3、Vite、TypeScript、Element-Plus的精简中后台管理系统",
-  "author": "Fifteen",
+  "author": "Bryan Qiu(十五)",
   "type": "module",
   "private": true,
   "scripts": {
