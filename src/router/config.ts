@@ -23,4 +23,4 @@ export const ROUTE_NAMES = {
   FORBIDDEN: 'Forbidden',
   /** 500 */
   SERVER_ERROR: 'ServerError',
-};
+} as const;
