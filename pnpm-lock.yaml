@@ -39,7 +39,7 @@ importers:
         specifier: ^2.5.0
         version: 2.5.0
       pinia:
-        specifier: ^2.2.2
+        specifier: ^3.0.2
         version: 2.2.2(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
       pinia-plugin-persistedstate:
         specifier: ^3.2.1
