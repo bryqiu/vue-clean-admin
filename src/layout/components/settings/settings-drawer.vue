@@ -58,7 +58,7 @@ const tabActive = ref(tabsOptions[0].value);
     </template>
     <ElTabs v-model="tabActive" type="border-card" tab-position="left" class="setting-tabs">
       <template #default>
-        <ElScrollbar :view-style="{ padding: '12px', height: '100%' }">
+        <ElScrollbar :view-style="{ padding: '12px' }">
           <ElTabPane
             v-for="(tab, index) in tabsOptions"
             :key="index"
