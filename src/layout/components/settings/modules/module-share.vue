@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ToggleBox } from '../components';
-import { breadcrumbStyleOptions, visualModeOptions, whetherOptions } from '@/dict';
+import { breadcrumbStyleOptions, whetherOptions } from '@/dict';
 import { SegmentContainer } from '../components';
 
 defineOptions({
   name: 'ModuleShare',
 });
 
-const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType, currentVisualMode } =
-  useShareSettings();
+const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useShareSettings();
 </script>
 
 <template>
@@ -28,9 +27,6 @@ const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType, currentVisualMo
         :options="breadcrumbStyleOptions"
         :disabled="!showBreadcrumb"
       />
-    </SegmentContainer>
-    <SegmentContainer title="视觉模式">
-      <ToggleBox v-model="currentVisualMode" text="切换视觉模式" :options="visualModeOptions" />
     </SegmentContainer>
   </div>
 </template>

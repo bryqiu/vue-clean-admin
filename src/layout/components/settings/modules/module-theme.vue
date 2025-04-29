@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { PageTransitionOptions } from '@/dict';
-import { BasicBox } from '../components';
+import { PageTransitionOptions, visualModeOptions } from '@/dict';
+import { BasicBox, ToggleBox } from '../components';
 import { ElColorPicker, ElOption, ElOptionGroup, ElSelect } from 'element-plus';
 import { ThemeMode } from '@/components/common/theme-mode';
 import { ColorCard, SegmentContainer } from '../components';
@@ -10,9 +10,11 @@ import { PRESET_COLOR_LIST } from './data';
 defineOptions({
   name: 'ModuleColor',
 });
-const { pageTransitionName, hasPageTransition, currentPrimaryColor } = useThemeSettings();
+const { pageTransitionName, hasPageTransition, currentPrimaryColor, currentVisualMode } =
+  useThemeSettings();
 
 // 页面过渡的CSS动画
+
 const transitionAnimation = computed(() => {
   if (!hasPageTransition.value) return {};
   const animation = { animation: `${pageTransitionName.value}-view 2s infinite` };
@@ -43,6 +45,11 @@ const colorPickerChange = (value: string | null) => {
     <!--主题模式-->
     <SegmentContainer title="主题模式">
       <ThemeMode />
+    </SegmentContainer>
+
+    <!--视觉模式-->
+    <SegmentContainer title="视觉模式">
+      <ToggleBox v-model="currentVisualMode" text="切换视觉模式" :options="visualModeOptions" />
     </SegmentContainer>
 
     <!--主题色调-->
