@@ -3,7 +3,7 @@ import { ThemeModeEnum, VisualModeEnum } from '@/enums';
 import { visualModeOptions } from '@/dict';
 import { computed } from 'vue';
 
-export const useMode = () => {
+export const useTheme = () => {
   const systemDark = usePreferredDark();
 
   const isDark = useDark({
