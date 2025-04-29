@@ -1,14 +1,15 @@
 import { ref } from 'vue';
-import { store } from '../init';
-import { acceptHMRUpdate, defineStore } from 'pinia';
-import { STORE_MODULES_KEYS } from '../config';
+import { store } from '@/store';
+import { defineStore } from 'pinia';
+import { STORE_MODULES_NAMES } from '@/store/config';
+import { enableStoreHMR } from '@/store/helpers';
 
-const createUserStore = defineStore(STORE_MODULES_KEYS.USER, () => {
+const createUserStore = defineStore(STORE_MODULES_NAMES.USER, () => {
   const count = ref(0);
   return { count };
 });
 
-import.meta.hot && import.meta.hot.accept(acceptHMRUpdate(createUserStore, import.meta.hot));
+enableStoreHMR(createUserStore);
 
 /**
  * 注入 Pinia 实例，使其能在组件外使用

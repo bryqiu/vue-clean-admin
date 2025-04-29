@@ -1,7 +1,6 @@
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
-/* ======================== 主题 ======================== */
 
-export interface Theme {
+interface Theme {
   /**
    * 主题模式
    * @default light
@@ -17,11 +16,15 @@ export interface Theme {
    * @default fade-down
    */
   pageTransitionName: PageTransitionEnum;
+  /**
+   * 视觉模式
+   * @desc 用于设置不同的视觉效果，例如灰色模式、色弱模式等
+   * @default ''
+   */
+  visualMode: VisualModeEnum;
 }
 
-/* ======================== 布局 ======================== */
-
-export interface Layout {
+interface Layout {
   /**
    * 控制菜单是否折叠
    * @default false (默认展开)
@@ -46,9 +49,7 @@ export interface Layout {
   sidebarCollapseWidth: number;
 }
 
-/* ======================== 杂项 ======================== */
-// 面包屑
-interface Breadcrumb {
+interface Share {
   /**
    * 是否展示面包屑
    * @default true
@@ -64,24 +65,17 @@ interface Breadcrumb {
    * @default arrow
    */
   breadcrumbStyleType: BreadcrumbStyleType;
-}
-
-export interface Share extends Breadcrumb {
   /**
    * 是否有水印
    * @default false
    */
   hasWatermark: boolean;
-
-  /**
-   * 视觉模式
-   * @default ''
-   */
-  visualMode: VisualModeEnum;
 }
 
-export interface Settings {
+interface Settings {
   theme: Theme;
   layout: Layout;
   share: Share;
 }
+
+export type { Settings, Theme, Layout, Share };

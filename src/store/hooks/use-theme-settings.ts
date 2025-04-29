@@ -1,14 +1,18 @@
-import { computed, unref } from 'vue';
-import { useSettingsStore } from '../index';
+import { computed } from 'vue';
 import { PageTransitionEnum, ThemeModeEnum } from '@/enums';
 
 export const useThemeSettings = () => {
-  const { getThemeSettings, togglePageTransition, toggleThemeMode, setPrimaryColor } =
-    useSettingsStore();
+  const {
+    getThemeSettings,
+    togglePageTransition,
+    toggleThemeMode,
+    setPrimaryColor,
+    setVisualMode,
+  } = useSettingsStore();
 
   /** 路由动画 */
   const pageTransitionName = computed({
-    get: () => unref(getThemeSettings).pageTransitionName,
+    get: () => getThemeSettings.pageTransitionName,
     set: (val: PageTransitionEnum) => togglePageTransition(val),
   });
 
@@ -17,18 +21,31 @@ export const useThemeSettings = () => {
     return pageTransitionName.value !== PageTransitionEnum.NONE;
   });
 
-  /** 主题模式 */
+  /** 当前主题模式 */
   const currentThemeMode = computed({
-    get: () => unref(getThemeSettings).currentThemeMode,
-    set: (val: ThemeModeEnum) => toggleThemeMode(val),
+    get: () => getThemeSettings.currentThemeMode,
+    set: (val: ThemeModeEnum) => {
+      toggleThemeMode(val);
+    },
   });
 
-  /** 主题色调 */
+  /** 当前主题色调 */
   const currentPrimaryColor = computed({
-    get: () => unref(getThemeSettings).primaryColor,
-    set: (val: string) => setPrimaryColor(val),
+    get: () => getThemeSettings.primaryColor,
+    set: (val: string) => {
+      setPrimaryColor(val);
+    },
   });
 
+  /** 当前视觉模式 */
+  const currentVisualMode = computed({
+    get: () => getThemeSettings.visualMode,
+    set: (val) => {
+      setVisualMode(val);
+    },
+  });
+
+  /** 是否为系统模式 */
   const isSystemMode = computed(() => {
     return currentThemeMode.value === ThemeModeEnum.SYSTEM;
   });
@@ -37,6 +54,7 @@ export const useThemeSettings = () => {
     pageTransitionName,
     hasPageTransition,
     currentThemeMode,
+    currentVisualMode,
     isSystemMode,
     currentPrimaryColor,
   };

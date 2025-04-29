@@ -1,35 +1,29 @@
-import { computed, unref } from 'vue';
+import { computed } from 'vue';
 
 export const useShareSettings = () => {
-  const {
-    getShareSettings,
-    toggleBreadcrumb,
-    toggleBreadcrumbIcon,
-    toggleBreadcrumbStyleType,
-    setVisualMode,
-  } = useSettingsStore();
+  const { getShareSettings, toggleBreadcrumb, toggleBreadcrumbIcon, toggleBreadcrumbStyleType } =
+    useSettingsStore();
 
+  /** 是否显示水印 */
   const hasWatermark = computed(() => {
-    return unref(getShareSettings).hasWatermark;
+    return getShareSettings.hasWatermark;
   });
 
+  /** 是否显示面包屑 */
   const showBreadcrumb = computed({
-    get: () => unref(getShareSettings).showBreadcrumb,
+    get: () => getShareSettings.showBreadcrumb,
     set: (val) => toggleBreadcrumb(val),
   });
 
+  /** 是否显示面包屑图标 */
   const showBreadcrumbIcon = computed({
-    get: () => unref(getShareSettings).showBreadcrumbIcon,
+    get: () => getShareSettings.showBreadcrumbIcon,
     set: (val) => toggleBreadcrumbIcon(val),
   });
 
-  const currentVisualMode = computed({
-    get: () => unref(getShareSettings).visualMode,
-    set: (val) => setVisualMode(val),
-  });
-
+  /** 面包屑样式 */
   const breadcrumbStyleType = computed({
-    get: () => unref(getShareSettings).breadcrumbStyleType,
+    get: () => getShareSettings.breadcrumbStyleType,
     set: (val) => toggleBreadcrumbStyleType(val),
   });
   return {
@@ -37,6 +31,5 @@ export const useShareSettings = () => {
     showBreadcrumb,
     showBreadcrumbIcon,
     breadcrumbStyleType,
-    currentVisualMode,
   };
 };

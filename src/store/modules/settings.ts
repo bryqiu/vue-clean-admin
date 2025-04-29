@@ -1,25 +1,28 @@
-import { computed, ref, unref, watch } from 'vue';
-import { store } from '../init';
-import { acceptHMRUpdate, defineStore } from 'pinia';
-import { DEFAULT_SETTINGS } from '@/config';
+import { computed, ref, watch } from 'vue';
+import { store } from '@/store';
+import { defineStore } from 'pinia';
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
-import { usePreferredDark } from '@vueuse/core';
 import { applyAppThemeColor } from '@/colors';
-import { STORE_MODULES_KEYS } from '../config';
+import { DEFAULT_SETTINGS, STORE_MODULES_NAMES } from '@/store/config';
+import { enableStoreHMR } from '@/store/helpers';
+import { usePreferredDark } from '@vueuse/core';
 
 const createSettingsStore = defineStore(
-  STORE_MODULES_KEYS.SETTINGS,
+  STORE_MODULES_NAMES.SETTINGS,
   () => {
     const appSettings = ref({ ...DEFAULT_SETTINGS });
 
+    /** 获取布局设置 */
     const getLayoutSettings = computed(() => {
       return appSettings.value.layout;
     });
 
+    /** 获取主题设置 */
     const getThemeSettings = computed(() => {
       return appSettings.value.theme;
     });
 
+    /** 获取共享设置 */
     const getShareSettings = computed(() => {
       return appSettings.value.share;
     });
@@ -27,87 +30,65 @@ const createSettingsStore = defineStore(
     /** 切换菜单伸缩状态 */
     const toggleMenuCollapse = (val: boolean) => {
       if (getLayoutSettings.value.isMenuCollapse === val) return;
-      unref(getLayoutSettings).isMenuCollapse = val;
+      getLayoutSettings.value.isMenuCollapse = val;
     };
 
     /** 菜单手风琴模式切换 */
     const toggleMenuAccordion = (val: boolean) => {
       if (getLayoutSettings.value.isMenuAccordion === val) return;
-      unref(getLayoutSettings).isMenuAccordion = val;
+      getLayoutSettings.value.isMenuAccordion = val;
     };
 
     /** 切换页面过渡动画 */
     const togglePageTransition = (name: PageTransitionEnum) => {
-      unref(getThemeSettings).pageTransitionName = name;
+      getThemeSettings.value.pageTransitionName = name;
     };
 
     /** 切换面包屑显示状态 */
     const toggleBreadcrumb = (val: boolean) => {
-      unref(getShareSettings).showBreadcrumb = val;
+      getShareSettings.value.showBreadcrumb = val;
     };
 
     /** 切换面包屑图标状态 */
     const toggleBreadcrumbIcon = (val: boolean) => {
-      unref(getShareSettings).showBreadcrumbIcon = val;
+      getShareSettings.value.showBreadcrumbIcon = val;
     };
 
     /** 切换面包屑样式类型 */
     const toggleBreadcrumbStyleType = (val: BreadcrumbStyleType) => {
-      unref(getShareSettings).breadcrumbStyleType = val;
+      getShareSettings.value.breadcrumbStyleType = val;
     };
 
-    const { setThemeMode, addVisualStyle, isDarkMode } = useMode();
+    const { setThemeMode, addVisualStyle, isDarkMode } = useTheme();
 
     /** 设置当前视觉模式 */
     const setVisualMode = (val: VisualModeEnum) => {
       addVisualStyle(val);
-      unref(getShareSettings).visualMode = val;
+      getThemeSettings.value.visualMode = val;
     };
 
     /** 设置主题色 */
     const setPrimaryColor = (val: string) => {
-      unref(getThemeSettings).primaryColor = val;
+      applyAppThemeColor(val, isDarkMode.value);
+      getThemeSettings.value.primaryColor = val;
     };
-
-    /** 系统主题 */
-    const systemDark = usePreferredDark();
 
     /** 切换主题模式 */
     const toggleThemeMode = (mode: ThemeModeEnum) => {
-      unref(getThemeSettings).currentThemeMode = mode;
+      setThemeMode(mode);
+      applyAppThemeColor(getThemeSettings.value.primaryColor, isDarkMode.value);
+      getThemeSettings.value.currentThemeMode = mode;
     };
+
+    const systemDark = usePreferredDark();
 
     // 监听系统主题变化
     watch(systemDark, () => {
-      if (unref(getThemeSettings).currentThemeMode === ThemeModeEnum.SYSTEM) {
+      if (getThemeSettings.value.currentThemeMode === ThemeModeEnum.SYSTEM) {
         setThemeMode(ThemeModeEnum.SYSTEM);
+        applyAppThemeColor(getThemeSettings.value.primaryColor, isDarkMode.value);
       }
     });
-
-    // 初始化主题
-    watch(
-      () => unref(getThemeSettings).currentThemeMode,
-      (mode) => {
-        setThemeMode(mode);
-        applyAppThemeColor(unref(getThemeSettings).primaryColor, isDarkMode.value);
-      },
-    );
-
-    watch(
-      () => unref(getThemeSettings).primaryColor,
-      (color) => {
-        applyAppThemeColor(color, isDarkMode.value);
-      },
-    );
-
-    // 初始化视觉模式
-    watch(
-      () => unref(getShareSettings).visualMode,
-      (mode) => {
-        setVisualMode(mode);
-      },
-      { immediate: true },
-    );
 
     return {
       appSettings,
@@ -127,7 +108,8 @@ const createSettingsStore = defineStore(
   },
   { persist: true },
 );
-import.meta.hot && import.meta.hot.accept(acceptHMRUpdate(createSettingsStore, import.meta.hot));
+
+enableStoreHMR(createSettingsStore);
 
 export const useSettingsStore = () => {
   return createSettingsStore(store);
