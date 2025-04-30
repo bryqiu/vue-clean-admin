@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import { initStore } from '@/store/init';
+import { initStore } from '@/store';
 import { initRouter } from '@/router';
 import { initGlobalModules, initIcons } from '@/plugins';
 import '@/styles/index.scss';
