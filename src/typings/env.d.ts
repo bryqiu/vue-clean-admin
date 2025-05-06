@@ -2,6 +2,8 @@
 interface ImportMetaEnv {
   /** 全局标题 */
   readonly VITE_APP_TITLE: string;
+  /** 持久化存储前缀 */
+  readonly VITE_STORE_PREFIX: string;
   /** 本地开发-端口号 */
   readonly VITE_DEV_PORT: number;
   /** 预览-端口号 */
