@@ -58,6 +58,18 @@ pnpm i
 pnpm dev
 ```
 
+## 系列专栏
+
+理论知识与具体实践相辅相成，我写了一份与此项目配套的[《通俗易懂的中后台系统建设指南》](https://github.com/bryqiu/Blog?tab=readme-ov-file#%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%E4%B8%AD%E5%90%8E%E5%8F%B0%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%E4%B8%93%E6%A0%8F)，如果你有兴趣，可以来看看：
+
+1. [收下这份 Vue + TS + Vite 中后台系统搭建指南，从此不再害怕建项目](https://github.com/bryqiu/Blog/issues/1)
+2. [中后台开发必修课：Vue 项目中 Pinia 与 Router 完全攻略](https://github.com/bryqiu/Blog/issues/2)
+3. [用了这些 Vite 配置技巧，同事都以为我开挂了](https://github.com/bryqiu/Blog/issues/3)
+4. [受够了团队代码风格不统一？7千字教你从零搭建代码规范体系](https://github.com/bryqiu/Blog/issues/4)
+5. [开发者必看！在团队中我是这样实现 Git 提交规范化的](https://github.com/bryqiu/Blog/issues/5)
+6. [告别繁琐！Vue3 组合式函数解锁 Echarts 封装新姿势](https://github.com/bryqiu/Blog/issues/6)
+7. [彻底搞懂面包屑，手把手封装一个 Vue3 面包屑导航组件](https://github.com/bryqiu/Blog/issues/7)
+
 ## 维护者
 
 - [@Bryan Qiu](https://github.com/bryqiu)
