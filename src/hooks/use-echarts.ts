@@ -28,7 +28,7 @@ interface ConfigProps {
   autoResize?: boolean;
   /**
    * 防抖时间(ms)
-   * @default 150
+   * @default 300
    */
   resizeDebounceWait?: number;
   /**
