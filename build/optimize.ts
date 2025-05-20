@@ -13,6 +13,7 @@ export const getOptimize = (): DepOptimizationOptions => {
     'echarts/components',
     'echarts/renderers',
     'echarts/features',
+    'axios',
     ...getElStylePaths(),
   ];
   const exclude: string[] = [
