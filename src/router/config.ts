@@ -13,7 +13,7 @@ export const ROUTE_NAMES = {
   HOME: 'Home',
   /** 仪表盘 */
   DASHBOARD: 'Dashboard',
-  /** 可视化 */
+  /** 数据分析 */
   ANALYTICS: 'Analytics',
   /** 错误页 */
   ERROR_PAGES: 'ErrorPages',

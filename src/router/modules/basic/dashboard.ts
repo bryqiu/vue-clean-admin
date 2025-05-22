@@ -16,7 +16,7 @@ const dashboard: CustomRouteRecordRaw = {
       name: ROUTE_NAMES.ANALYTICS,
       component: () => import('@/views/dashboard/analytics/analytics.vue'),
       meta: {
-        title: '可视化',
+        title: '数据分析',
         icon: 'ri:donut-chart-fill',
       },
     },
