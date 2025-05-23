@@ -74,10 +74,6 @@ export interface BaseDialogProps extends Partial<Omit<DialogProps, 'modelValue'>
 
 export type BaseDialogEmits = {
   /**
-   * Dialog 双向绑定的值，用于控制 Dialog 的显示与隐藏
-   */
-  (e: 'update:modelValue', value: boolean): void;
-  /**
    * Dialog 打开的回调
    */
   (e: 'open'): void;
