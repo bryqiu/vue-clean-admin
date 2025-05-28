@@ -83,7 +83,8 @@
     "stylelint",
     "unplugin",
     "mockjs",
-    "numbro"
+    "numbro",
+    "wechat"
   ],
   // 忽略的文件
   "cSpell.ignorePaths": [
