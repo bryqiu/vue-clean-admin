@@ -7,12 +7,16 @@ defineOptions({
 
 export interface BaseContainerProps {
   title?: string;
+  description?: string;
   containerClass?: string;
   headerClass?: string;
+  showHeader?: boolean;
+  showDescription?: boolean;
 }
 
 withDefaults(defineProps<BaseContainerProps>(), {
-  title: '--',
+  showHeader: true,
+  showDescription: true,
 });
 </script>
 
@@ -20,13 +24,14 @@ withDefaults(defineProps<BaseContainerProps>(), {
   <ElCard shadow="never" v-bind="$attrs" class="!border-transparent shadow">
     <div class="flex flex-col h-full gap-y-2" :class="containerClass">
       <!--头部-->
-      <div class="w-full" :class="headerClass">
+      <div v-if="showHeader" class="w-full" :class="headerClass">
         <template v-if="$slots.header">
           <slot name="header" />
         </template>
-        <template v-else>
-          <span class="text-base font-medium">{{ title }}</span>
-        </template>
+        <div v-else class="flex flex-col gap-y-1">
+          <span class="text-lg font-medium text-el-primary">{{ title }}</span>
+          <span v-if="showDescription" class="text-sm text-el-secondary">{{ description }}</span>
+        </div>
       </div>
       <!--内容-->
       <slot />
