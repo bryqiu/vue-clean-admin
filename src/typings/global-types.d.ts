@@ -2,8 +2,6 @@ import { PropType as propType } from 'vue';
 import type { Component, DefineComponent } from 'vue';
 
 declare global {
-  type RecordType<T> = Record<string, T>;
-
   type NullType<T> = T | null;
 
   type PropType<T> = propType<T>;

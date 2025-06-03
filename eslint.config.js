@@ -24,7 +24,6 @@ export default [
       globals: {
         // 全局变量声明
         ImportMetaEnv: true,
-        RecordType: true,
         CustomRouteRecordRaw: true,
         NullType: true,
         PropType: true,

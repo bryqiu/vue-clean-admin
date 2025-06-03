@@ -14,7 +14,7 @@ const pathResolve = (dir: string): string => {
  * @param env 环境变量对象
  * @returns 返回一个类型正确的环境变量
  */
-const processEnv = (env: RecordType<string>): ImportMetaEnv => {
+const processEnv = (env: Record<string, string>): ImportMetaEnv => {
   const metaEnv: any = {};
   for (const key in env) {
     const wrapValue = env[key].trim().replace(/\\n/g, '\n');
