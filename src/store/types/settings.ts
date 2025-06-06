@@ -1,6 +1,7 @@
-import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
+import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
 
-interface Theme {
+/** 主题设置 */
+export interface Theme {
   /**
    * 主题模式
    * @default light
@@ -24,7 +25,8 @@ interface Theme {
   visualMode: VisualModeEnum;
 }
 
-interface Layout {
+/** 布局设置 */
+export interface Layout {
   /**
    * 控制菜单是否折叠
    * @default false (默认展开)
@@ -49,7 +51,8 @@ interface Layout {
   sidebarCollapseWidth: number;
 }
 
-interface Share {
+/** 共享设置 */
+export interface Share {
   /**
    * 是否展示面包屑
    * @default true
@@ -72,10 +75,9 @@ interface Share {
   hasWatermark: boolean;
 }
 
-interface Settings {
+/** 总体设置 */
+export interface Settings {
   theme: Theme;
   layout: Layout;
   share: Share;
 }
-
-export type { Settings, Theme, Layout, Share };
