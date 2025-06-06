@@ -1,5 +1,5 @@
 import type { PluginOptions } from 'pinia-plugin-persistedstate';
-import type { Layout, Settings, Share, Theme } from '@/store/types/settings';
+import type { Layout, Settings, Share, Theme } from '@/store/types';
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
 
 /** 默认持久化存储配置 */
