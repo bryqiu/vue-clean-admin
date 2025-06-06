@@ -3,14 +3,15 @@ import { store } from '@/store';
 import { defineStore } from 'pinia';
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
 import { applyAppThemeColor } from '@/colors';
-import { DEFAULT_SETTINGS, STORE_MODULES_NAMES } from '@/store/config';
+import { defaultSettings, storeModulesNames } from '@/store/config';
 import { enableStoreHMR } from '@/store/helpers';
 import { usePreferredDark } from '@vueuse/core';
+import type { Settings } from '@/store/types';
 
 const createSettingsStore = defineStore(
-  STORE_MODULES_NAMES.SETTINGS,
+  storeModulesNames.settings,
   () => {
-    const appSettings = ref({ ...DEFAULT_SETTINGS });
+    const appSettings = ref<Settings>({ ...defaultSettings });
 
     /** 获取布局设置 */
     const getLayoutSettings = computed(() => {

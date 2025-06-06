@@ -1,10 +1,10 @@
 import type { ColorCardProps } from '../components';
-import { DEFAULT_SETTINGS } from '@/store/config';
+import { defaultSettings } from '@/store/config';
 
 export const PRESET_COLOR_LIST: ColorCardProps[] = [
   {
     label: '默认品牌色',
-    value: DEFAULT_SETTINGS.theme.primaryColor,
+    value: defaultSettings.theme.primaryColor,
   },
   {
     label: '竹绿',
