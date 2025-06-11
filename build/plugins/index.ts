@@ -2,7 +2,6 @@ import type { PluginOption } from 'vite';
 
 import vue from '@vitejs/plugin-vue';
 // import eslint from "vite-plugin-eslint";
-// import imagemin from "unplugin-imagemin/vite";
 import vueDevTools from 'vite-plugin-vue-devtools';
 import ElementPlus from 'unplugin-element-plus/vite';
 import vueJsx from '@vitejs/plugin-vue-jsx'; // +新增
@@ -24,7 +23,6 @@ export const getPlugins = (env: ImportMetaEnv) => {
   const plugins: PluginOption[] = [
     vue(),
     vueJsx(),
-    // imagemin({ mode: "sharp", beforeBundle: true }),
     // eslint()
 
     // pluginConfig,
