@@ -26,7 +26,7 @@
 
 ##### 仪表盘：
 
-![image](https://github.com/user-attachments/assets/a20eb0c8-4ff4-417c-b780-6d6e4078b2c3)
+![image](https://github.com/user-attachments/assets/d1636448-3385-4396-8641-c9aaa888d902)
 
 ##### 设置：
 
