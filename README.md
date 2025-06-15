@@ -28,9 +28,9 @@
 
 ![image](https://github.com/user-attachments/assets/d1636448-3385-4396-8641-c9aaa888d902)
 
-##### 设置：
+##### 异常页：
 
-![image](https://github.com/user-attachments/assets/70475273-b04d-4873-85f2-457b81a15208)
+![image](https://github.com/user-attachments/assets/fc8d5694-f8ba-48cf-8297-eab55101403d)
 
 ## 在本地运行
 
