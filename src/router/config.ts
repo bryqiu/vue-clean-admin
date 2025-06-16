@@ -1,5 +1,7 @@
 export const APP_LAYOUT = () => import('@/layout/index.vue');
 
+export const AUTH_LAYOUT = () => import('@/views/auth/auth-layout.vue');
+
 /** 根路径-重定向路径 */
 export const ROOT_REDIRECT = '/dashboard';
 
@@ -7,8 +9,6 @@ export const ROOT_REDIRECT = '/dashboard';
 export const ROUTE_NAMES = {
   /** 根路径 */
   ROOT: 'Root',
-  /** 登录 */
-  LOGIN: 'Login',
   /** 首页 */
   HOME: 'Home',
   /** 仪表盘 */
@@ -22,5 +22,18 @@ export const ROUTE_NAMES = {
   /** 403 */
   FORBIDDEN: 'Forbidden',
   /** 500 */
-  SERVER_ERROR: 'ServerError',
+  SERVICE_ERROR: 'ServiceError',
+
+  /** 登录 */
+  AUTH: 'Auth',
+  /** 账号登录 */
+  ACCOUNT_LOGIN: 'AccountLogin',
+  /** 短信登录 */
+  SMS_LOGIN: 'SmsLogin',
+  /** 扫码登录 */
+  QR_LOGIN: 'QrLogin',
+  /** 忘记密码 */
+  FORGOT_PASSWORD: 'ForgotPassword',
+  /** 注册 */
+  REGISTER: 'Register',
 } as const;
