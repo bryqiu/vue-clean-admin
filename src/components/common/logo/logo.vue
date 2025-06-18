@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ElImage } from 'element-plus';
-import LogoSvg from '@/assets/icons/logo.svg';
 
 defineOptions({
   name: 'Logo',
@@ -36,7 +35,7 @@ const handleClick = () => {
 
 <template>
   <div class="flex items-center gap-2" :class="{ 'cursor-pointer': isClick }" @click="handleClick">
-    <ElImage :src="LogoSvg" class="size-8" />
+    <LocalIcon name="logo" :size="36" />
     <span v-show="!isCollapse" class="text-xl font-semibold">{{ systemTitle }}</span>
   </div>
 </template>
