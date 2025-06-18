@@ -1,22 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { h, ref } from 'vue';
 import { ElInput } from 'element-plus';
+import { IconifyIcon } from '@/components/common/app-icon';
 
 defineOptions({
   name: 'Search',
 });
 
-const { generateIconNode } = useIcon();
+const searchIcon = h(IconifyIcon, { name: 'ri:search-line' });
 const searchValue = ref<string>('');
 </script>
 
 <template>
   <div>
-    <ElInput
-      v-model="searchValue"
-      placeholder="搜索菜单内容"
-      :prefix-icon="generateIconNode({ icon: 'ri:search-line' })"
-    />
+    <ElInput v-model="searchValue" placeholder="搜索菜单内容" :prefix-icon="searchIcon" />
   </div>
 </template>
 

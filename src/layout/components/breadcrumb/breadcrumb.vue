@@ -5,7 +5,7 @@ import type { RouteLocationMatched } from 'vue-router';
 
 import type { BreadcrumbEmits, BreadcrumbProps, BreadcrumbStyleObj } from './typing';
 import { computed, h } from 'vue';
-import { AppIcon } from '@/components/common/app-icon';
+import { IconifyIcon } from '@/components/common/app-icon';
 
 defineOptions({
   name: 'Breadcrumb',
@@ -35,7 +35,7 @@ const getPath = (item: RouteLocationMatched): string | Object => {
 /** 渲染图标 */
 const renderIcon = (item: RouteLocationMatched) => {
   if (!props.isShowIcon || !item.meta.icon) return null;
-  return h(AppIcon, { icon: item.meta.icon });
+  return h(IconifyIcon, { name: item.meta.icon });
 };
 
 /** 获取面包屑Class样式 */

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ElMenuItem, ElSubMenu } from 'element-plus';
-import { computed } from 'vue';
+import { computed, h } from 'vue';
 import { has } from 'lodash-es';
-import { AppIcon } from '@/components/common/app-icon';
 import { useRouter } from 'vue-router';
-
+import { IconifyIcon } from '@/components/common/app-icon';
 defineOptions({
   name: 'MenuSubItem',
 });
@@ -19,7 +18,6 @@ const props = withDefaults(defineProps<MenuItemProps>(), {
 });
 
 const { push } = useRouter();
-const { generateIconNode } = useIcon();
 
 /** 是否存在子菜单 */
 const isMenuChild = computed(() => {
@@ -43,7 +41,7 @@ const onClickMenuItem = () => {
   push(finalPath.value);
 };
 
-const downIcon = generateIconNode({ icon: 'mingcute:down-fill' });
+const downIcon = h(IconifyIcon, { name: 'mingcute:down-fill' });
 </script>
 
 <template>
@@ -56,7 +54,7 @@ const downIcon = generateIconNode({ icon: 'mingcute:down-fill' });
     :collapse-open-icon="downIcon"
   >
     <template #title>
-      <i class="inline-flex"><AppIcon v-if="menu.meta.icon" :icon="menu.meta.icon" /></i>
+      <i class="inline-flex"><IconifyIcon v-if="menu.meta.icon" :name="menu.meta.icon" /></i>
       <span>{{ menu.meta && menu.meta.title }}</span>
       <!-- <MenuContent :title="menu.meta?.title" :icon="menu.meta?.icon" /> -->
     </template>
@@ -69,7 +67,7 @@ const downIcon = generateIconNode({ icon: 'mingcute:down-fill' });
   </ElSubMenu>
   <div v-else>
     <ElMenuItem :index="finalPath" @click="onClickMenuItem">
-      <i class="inline-flex"><AppIcon v-if="menu.meta.icon" :icon="menu.meta.icon" /></i>
+      <i class="inline-flex"><IconifyIcon v-if="menu.meta.icon" :name="menu.meta.icon" /></i>
       <template #title>
         {{ menu?.meta?.title }}
       </template>

@@ -12,7 +12,7 @@ withDefaults(defineProps<ContentProps>(), {});
 
 <template>
   <!-- <div class="w-full h-full flex items-center"> -->
-  <AppIcon icon="ri:4k-fill" />
+  <IconifyIcon name="ri:4k-fill" />
   <span>{{ title }}</span>
   <!-- </div> -->
 </template>

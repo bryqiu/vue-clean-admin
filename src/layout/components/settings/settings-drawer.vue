@@ -52,7 +52,7 @@ const tabActive = ref(tabsOptions[0].value);
     <template #header>
       <div class="flex-b-c">
         <span class="font-medium text-base space-x-1"
-          ><AppIcon icon="ri:settings-line" /><span>用户个性化设置</span></span
+          ><IconifyIcon name="ri:settings-line" /><span>用户个性化设置</span></span
         >
       </div>
     </template>

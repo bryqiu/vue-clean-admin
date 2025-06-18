@@ -4,7 +4,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     ElButton: (typeof import('element-plus'))['ElButton'];
 
-    AppIcon: (typeof import('../components/common/app-icon/index'))['AppIcon'];
     ActionButton: (typeof import('../components/common/action-button/index'))['ActionButton'];
+
+    IconifyIcon: (typeof import('../components/common/app-icon/index'))['IconifyIcon'];
+    LocalIcon: (typeof import('../components/common/app-icon/index'))['LocalIcon'];
   }
 }

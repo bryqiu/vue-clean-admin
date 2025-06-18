@@ -69,7 +69,7 @@ const colorPickerChange = (value: string | null) => {
         class="w-full p-3 rounded-lg flex items-center justify-between gap-1 border border-solid border-[var(--el-border-color-light)] text-[var(--el-text-color-placeholder)]"
       >
         <div class="flex-c-c gap-1">
-          <AppIcon icon="ri:palette-line" />
+          <IconifyIcon name="ri:palette-line" />
           <span class="text-sm">自定义颜色</span>
         </div>
         <ElColorPicker

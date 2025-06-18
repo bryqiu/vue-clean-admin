@@ -35,7 +35,7 @@ const goToAuthMethod = (value: RouteNames) => {
       class="h-9 rounded-lg border border-solid border-el-default flex items-center justify-center flex-1 gap-2 cursor-pointer hover:bg-el-light duration-300"
       @click="goToAuthMethod(item.value)"
     >
-      <AppIcon v-if="item.icon" :icon="item.icon" class="text-base" />
+      <IconifyIcon v-if="item.icon" :name="item.icon" class="text-base" />
       <span class="text-sm">{{ item?.label ?? '登录' }}</span>
     </div>
   </div>

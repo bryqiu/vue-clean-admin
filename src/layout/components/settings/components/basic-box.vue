@@ -33,7 +33,7 @@ const conditionStyle = computed(() => {
     <div class="flex items-center gap-0.5 flex-1">
       <span class="text-sm text-el-secondary">{{ text }}</span>
       <ElTooltip v-if="!isEmpty(tipsContent)" :content="tipsContent" placement="top">
-        <AppIcon icon="ri:question-line" class="text-el-secondary cursor-help" />
+        <IconifyIcon name="ri:question-line" class="text-el-secondary cursor-help" />
       </ElTooltip>
     </div>
     <!-- 内容插槽 -->

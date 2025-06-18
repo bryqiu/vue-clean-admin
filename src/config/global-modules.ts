@@ -1,7 +1,7 @@
 import { ElButton, ElLoading } from 'element-plus';
 
-import { AppIcon } from '@/components/common/app-icon';
 import { ActionButton } from '@/components/common/action-button';
+import { IconifyIcon, LocalIcon } from '@/components/common/app-icon';
 
 /** 全局注册的Element Plus组件 */
 const globalElCompConfig: RegisterComponentList = [
@@ -14,12 +14,16 @@ const globalElCompConfig: RegisterComponentList = [
 /** 全局注册的项目内部组件 */
 const globalCompConfig: RegisterComponentList = [
   {
-    name: 'AppIcon',
-    component: AppIcon,
-  },
-  {
     name: 'ActionButton',
     component: ActionButton,
+  },
+  {
+    name: 'IconifyIcon',
+    component: IconifyIcon,
+  },
+  {
+    name: 'LocalIcon',
+    component: LocalIcon,
   },
 ];
 

@@ -2,7 +2,7 @@
 import { h, reactive, ref } from 'vue';
 import { ElCheckbox, ElDivider, ElForm, ElFormItem, ElInput } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
-import { AppIcon } from '@/components/common/app-icon';
+import { IconifyIcon } from '@/components/common/app-icon';
 import { AuthMethod, type AuthMethodProps, PolicyAgreement } from '../modules';
 import { PageHeader } from '../components';
 import { AUTH_INFO_MAP } from '../config';
@@ -20,8 +20,8 @@ interface FormData {
 
 const { push } = useRouter();
 
-const accountIcon = h(AppIcon, { icon: 'ri:shield-user-fill' });
-const passwordIcon = h(AppIcon, { icon: 'ri:lock-fill' });
+const accountIcon = h(IconifyIcon, { name: 'ri:shield-user-fill' });
+const passwordIcon = h(IconifyIcon, { name: 'ri:lock-fill' });
 
 const formInstance = ref<FormInstance>();
 

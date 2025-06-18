@@ -37,7 +37,7 @@ const popperOptions = { modifiers: [{ name: 'offset', options: { offset: [0, 5] 
           >
           <span class="text-xs text-[var(--el-text-color-secondary)]">front-end</span>
         </div>
-        <AppIcon icon="mingcute:down-line" />
+        <IconifyIcon name="mingcute:down-line" />
       </div>
       <!--菜单信息-->
       <div />

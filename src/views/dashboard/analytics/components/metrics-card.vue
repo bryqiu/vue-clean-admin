@@ -72,13 +72,13 @@ const trendTextColor = computed(() => {
       </div>
       <div class="w-1/5 flex justify-center items-start">
         <div class="rounded-lg border border-el-light size-8 flex justify-center items-center">
-          <AppIcon :icon class="text-base" />
+          <IconifyIcon :name="icon" class="text-base" />
         </div>
       </div>
     </div>
     <div class="w-full flex items-center text-xs text-el-secondary gap-x-1">
       <div class="flex items-center gap-x-0.5" :class="trendTextColor">
-        <AppIcon :icon="trendIcon" class="text-sm" />
+        <IconifyIcon :name="trendIcon" class="text-sm" />
         <span>{{ `${compareValue}%` }}</span>
       </div>
       <span class="flex-shrink-0">{{ `${compareLabel}` }}</span>

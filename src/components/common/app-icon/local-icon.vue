@@ -1,41 +1,84 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { SvgIconProps } from '../share-typing';
+import { getFlipStyle, getRotateStyle, getSizeStyle } from './helper';
 import { isBoolean, isString } from '@/utils';
-import { getFlipStyle, getRotateStyle, getSizeStyle } from '../utils';
-import { IconFlipEnum } from '@/enums';
+import type { CSSProperties } from 'vue';
 
 defineOptions({
-  name: 'SvgIcon',
+  name: 'LocalIcon',
 });
 
-const props = withDefaults(defineProps<SvgIconProps>(), {
+export interface LocalIconProps {
+  /**
+   * 唯一ID自定义前缀
+   * @default icon
+   */
+  prefix?: string;
+  /**
+   * 图标类名
+   */
+  class?: string;
+  /**
+   * 图标名称
+   */
+  name: string;
+  /**
+   * 图标大小
+   * @default 16
+   */
+  size?: string | number;
+  /**
+   * 图标颜色
+   */
+  color?: string;
+  /**
+   * 旋转角度(使用Css方式，非 SVG 内部转换)
+   * @default 0
+   */
+  rotate?: number | string;
+  /**
+   * 是否翻转，参考 iconify 的 transform 属性
+   * @see https://iconify.design/docs/icon-components/vue/transform.html
+   */
+  flip?: 'horizontal' | 'vertical' | 'both';
+  /**
+   * 垂直翻转图标
+   * @default false
+   */
+  verticalFlip?: boolean;
+  /**
+   * 水平翻转图标
+   * @default false
+   */
+  horizontalFlip?: boolean;
+  /**
+   * 自定义样式
+   */
+  style?: string | CSSProperties;
+}
+
+const props = withDefaults(defineProps<LocalIconProps>(), {
   prefix: 'icon',
-  height: 16,
+  size: 16,
+  rotate: 0,
+  flip: 'horizontal',
   horizontalFlip: false,
   verticalFlip: false,
 });
 
-/** 获取图标类名 */
 const getIconClass = computed(() => {
-  const { iconClass } = props;
-  const classList = ['svg-icon'];
-  if (iconClass) {
-    classList.push(iconClass);
-  }
-  return classList;
+  return ['svg-icon', props.class];
 });
 
-/** 唯一ID */
-const symbolId = computed(() => `#${props.prefix}-${props.icon}`);
+const symbolId = computed(() => `#${props.prefix}-${props.name}`);
 
 // 获取整体style样式
 const getIconStyle = computed(() => {
-  const { height, rotate, flip, color, style, horizontalFlip, verticalFlip } = props;
+  const { size, rotate, flip, color, style, horizontalFlip, verticalFlip } = props;
   const styles: string[] = [];
 
-  const size = getSizeStyle(height);
-  styles.push(`width: ${size}; height: ${size};`);
+  const iconSize = getSizeStyle(size);
+  styles.push(`width: ${iconSize}; height: ${iconSize};`);
 
   // 处理颜色
   if (color) {
@@ -50,14 +93,15 @@ const getIconStyle = computed(() => {
 
   // 处理翻转
   if (isBoolean(horizontalFlip) && horizontalFlip) {
-    const horizontalFlipStyle = getFlipStyle(IconFlipEnum.HORIZONTAL);
+    const horizontalFlipStyle = getFlipStyle('horizontal');
     styles.push(horizontalFlipStyle);
   }
 
   if (isBoolean(verticalFlip) && verticalFlip) {
-    const verticalFlipStyle = getFlipStyle(IconFlipEnum.VERTICAL);
+    const verticalFlipStyle = getFlipStyle('vertical');
     styles.push(verticalFlipStyle);
   }
+
   // flip优先级比verticalFlip、horizontalFlip高
   const flipStyle = getFlipStyle(flip);
   if (flipStyle) {
@@ -104,16 +148,6 @@ const getIconStyle = computed(() => {
 
   &.spin {
     animation: rotating 1s linear infinite;
-  }
-}
-
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
 </style>

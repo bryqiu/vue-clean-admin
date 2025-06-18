@@ -2,7 +2,7 @@
 import { h, reactive, ref } from 'vue';
 import { ElButton, ElForm, ElFormItem, ElInput } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
-import { AppIcon } from '@/components/common/app-icon';
+import { IconifyIcon } from '@/components/common/app-icon';
 import { PageHeader } from '../components';
 import { AUTH_INFO_MAP } from '../config';
 import { ROUTE_NAMES } from '@/router/config';
@@ -20,8 +20,8 @@ interface FormData {
 
 const { push } = useRouter();
 
-const phoneIcon = h(AppIcon, { icon: 'ri:smartphone-fill' });
-const verifyIcon = h(AppIcon, { icon: 'ri:shield-keyhole-fill' });
+const phoneIcon = h(IconifyIcon, { name: 'ri:smartphone-fill' });
+const verifyIcon = h(IconifyIcon, { name: 'ri:shield-keyhole-fill' });
 
 const formInstance = ref<FormInstance>();
 
