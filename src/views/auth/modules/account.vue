@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Logo } from '@/components/common/logo';
 import { AppCopyright } from '@/components/common/app-copyright';
 import { PageTransitionEnum } from '@/enums';
+import { Logo } from '@/components/common/logo';
 
 defineOptions({
   name: 'Account',
@@ -11,11 +11,9 @@ defineOptions({
 <template>
   <div class="size-full flex flex-col p-4">
     <!--头部-->
-    <div class="flex items-center justify-between">
-      <Logo :is-click="false" />
-      <div class="flex items-center">
-        <ActionButton icon="ri:color-filter-line" />
-      </div>
+    <div class="flex items-center justify-between lg:justify-end">
+      <Logo :is-click="false" class="block lg:hidden" />
+      <ActionButton icon="ri:color-filter-line" />
     </div>
     <!--内容-->
     <div class="flex-1 flex justify-center items-center">
