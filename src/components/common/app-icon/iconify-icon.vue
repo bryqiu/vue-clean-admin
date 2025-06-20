@@ -6,7 +6,7 @@ defineOptions({
   name: 'IconifyIcon',
 });
 
-interface IconifyIconProps extends Omit<IconProps, 'icon'> {
+export interface IconifyIconProps extends Omit<IconProps, 'icon'> {
   /**
    * 图标名称
    */
