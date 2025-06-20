@@ -61,7 +61,6 @@ const props = withDefaults(defineProps<LocalIconProps>(), {
   prefix: 'icon',
   size: 16,
   rotate: 0,
-  flip: 'horizontal',
   horizontalFlip: false,
   verticalFlip: false,
 });
