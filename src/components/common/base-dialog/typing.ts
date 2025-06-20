@@ -74,30 +74,6 @@ export interface BaseDialogProps extends Partial<Omit<DialogProps, 'modelValue'>
 
 export type BaseDialogEmits = {
   /**
-   * Dialog 打开的回调
-   */
-  (e: 'open'): void;
-  /**
-   * Dialog 打开动画结束时的回调
-   */
-  (e: 'opened'): void;
-  /**
-   * Dialog 关闭的回调
-   */
-  (e: 'close'): void;
-  /**
-   * Dialog 关闭动画结束时的回调
-   */
-  (e: 'closed'): void;
-  /**
-   * 输入焦点聚焦在 Dialog 内容时的回调
-   */
-  (e: 'openAutoFocus'): void;
-  /**
-   * 输入焦点从 Dialog 内容失焦时的回调
-   */
-  (e: 'closeAutoFocus'): void;
-  /**
    * 点击关闭按钮的回调
    */
   (e: 'handleCancel'): void;

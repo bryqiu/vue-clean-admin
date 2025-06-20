@@ -5,6 +5,7 @@ import { BaseDialogEmits, BaseDialogProps } from './typing';
 import { DialogInstance } from 'element-plus';
 import { omit } from 'lodash-es';
 import type { ButtonProps } from 'element-plus';
+import { twMerge } from 'tailwind-merge';
 
 defineOptions({
   name: 'BaseDialog',
@@ -30,6 +31,7 @@ const dialogVisible = defineModel<boolean>({
  * 是否存在 ActionBtns
  */
 const isActionBtns = computed(() => {
+  console.log(props.actionBtns, 'props.actionBtns');
   return props.actionBtns && Array.isArray(props.actionBtns) && props.actionBtns.length;
 });
 
@@ -105,14 +107,8 @@ defineExpose({
   <ElDialog
     ref="dialogInstance"
     v-model="dialogVisible"
+    :class="twMerge('base-dialog', dialogClass)"
     v-bind="dialogAttrs"
-    :class="['base-dialog', dialogClass]"
-    @open="emits('open')"
-    @opened="emits('opened')"
-    @close="emits('close')"
-    @closed="emits('closed')"
-    @open-auto-focus="emits('openAutoFocus')"
-    @close-auto-focus="emits('closeAutoFocus')"
   >
     <div v-if="showCloseIcon" class="absolute right-2 top-3">
       <ActionButton icon="mingcute:close-fill" :bg="false" @click="dialogVisible = false" />
@@ -123,7 +119,7 @@ defineExpose({
       <slot name="header" />
     </template>
     <template v-else #header>
-      <div class="pr-4" :class="headerClass">
+      <div :class="twMerge('pr-4', headerClass)">
         <span class="text-lg font-medium">{{ title }}</span>
       </div>
     </template>
@@ -133,8 +129,13 @@ defineExpose({
 
     <!-- 底部插槽 -->
     <template v-if="showFooter" #footer>
-      <slot v-if="$slots.footer" name="footer" />
-      <div v-else-if="isActionBtns">
+      <div v-if="$slots.footer" :class="twMerge('dialog-footer', footerClass)">
+        <slot name="footer" />
+      </div>
+      <div
+        v-else-if="isActionBtns"
+        :class="twMerge('dialog-footer flex justify-end items-center', footerClass)"
+      >
         <template v-for="(btn, index) in actionBtns" :key="index">
           <ElButton v-bind="omit(btn, 'btnText')" @click="btn.onClick">
             {{ btn.btnText }}
@@ -142,17 +143,13 @@ defineExpose({
         </template>
       </div>
 
-      <div v-else class="dialog-footer flex items-center justify-end" :class="footerClass">
-        <!-- footer前置插槽 -->
-        <slot name="footer-before" />
+      <div v-else :class="twMerge('dialog-footer flex justify-end items-center', footerClass)">
         <ElButton v-if="showCancelBtn" v-bind="cancelBtnAttrs" @click="handleCancel">
           {{ cancelBtnText }}
         </ElButton>
         <ElButton v-if="showConfirmBtn" v-bind="confirmBtnAttrs" @click="handleConfirm">
           {{ confirmBtnText }}
         </ElButton>
-        <!-- footer后置插槽 -->
-        <slot name="footer-after" />
       </div>
     </template>
   </ElDialog>
