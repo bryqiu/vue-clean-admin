@@ -78,41 +78,14 @@ const chartInstance = ref<NullType<HTMLDivElement>>(null);
 
 const { renderChart } = useEcharts(chartInstance);
 
-const orderOptions = ref([
-  {
-    label: '月订单销售额(元)',
-    value: '¥ 19,780.52',
-  },
-  {
-    label: '本月订单交易量(笔)',
-    value: '98',
-  },
-  {
-    label: '月平均客单价(元)',
-    value: '¥ 346',
-  },
-]);
-
 onMounted(() => {
   renderChart(getOptions());
 });
 </script>
 
 <template>
-  <BaseContainer :show-header="false" class="h-full">
-    <div class="h-full flex flex-col gap-y-2">
-      <div ref="chartInstance" class="w-full h-56" />
-      <div class="h-[calc(100%-14rem)] grid grid-cols-3 gap-x-4">
-        <div
-          v-for="(order, key) in orderOptions"
-          :key="key"
-          class="flex flex-col gap-y-1 items-center justify-center bg-el-light py-1"
-        >
-          <span class="text-xs text-el-regular">{{ order.label }}</span>
-          <span class="text-base font-medium">{{ order.value }}</span>
-        </div>
-      </div>
-    </div>
+  <BaseContainer :show-description="false" title="月度订单量" class="h-full">
+    <div ref="chartInstance" class="w-full h-60" />
   </BaseContainer>
 </template>
 
