@@ -32,6 +32,7 @@ export default [
         AlignMode: true,
         BreadcrumbStyleType: true,
         ElColorType: true,
+        IconComponent: true,
         ...autoImport.globals,
       },
     },

@@ -28,4 +28,5 @@ declare global {
     label: string;
     value: T;
   }
+  type IconComponent = 'iconify' | 'local';
 }
