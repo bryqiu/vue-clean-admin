@@ -48,7 +48,7 @@ const techStacks: TechStack[] = [
 
 const linkConfig: LinkConfig[] = [
   {
-    title: '查看相关文档',
+    title: '查看配套文档',
     iconName: 'vite-press',
     url: '',
   },
@@ -71,18 +71,16 @@ const handleLinkClick = (url: string) => {
     </div>
     <PatternBackground>
       <div class="flex flex-col items-center">
-        <span class="mb-3 text-center text-4xl font-bold md:text-4xl text-el-primary"
-          >Vue Clean Admin</span
-        >
+        <span class="mb-3 text-center text-4xl font-bold text-el-primary">Vue Clean Admin</span>
         <div class="text-base text-el-secondary flex flex-col items-center">
           <span>一套基于 Vue3 + Vite + TypeScript + Element Plus </span>
           <span>构建的企业级中后台模板，提供高效、可靠的中后台解决方案</span>
         </div>
-        <div class="flex items-center gap-2 mx-auto mt-8 mb-12">
+        <div class="flex items-center gap-3 mx-auto mt-8 mb-12">
           <div
             v-for="(item, index) in linkConfig"
             :key="index"
-            class="flex h-12 w-fit items-center gap-2 rounded-lg bg-el-dark px-4 py-2 text-center cursor-pointer border border-solid border-transparent hover:opacity-60 hover:border-el-darker duration-300"
+            class="flex w-fit items-center gap-2 rounded-lg bg-el-dark px-4 py-3 text-center cursor-pointer border border-solid border-transparent hover:opacity-60 hover:border-el-darker duration-300"
             @click="handleLinkClick(item.url)"
           >
             <div class="flex items-center gap-2">
