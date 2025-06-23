@@ -111,7 +111,7 @@ defineExpose({
     v-bind="dialogAttrs"
   >
     <div v-if="showCloseIcon" class="absolute right-2 top-3">
-      <ActionButton icon="mingcute:close-fill" :bg="false" @click="dialogVisible = false" />
+      <ActionButton icon="mingcute:close-fill" @click="dialogVisible = false" />
     </div>
 
     <!-- 头部插槽 -->

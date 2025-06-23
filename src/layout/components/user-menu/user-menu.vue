@@ -58,7 +58,7 @@ const popperOptions = { modifiers: [{ name: 'offset', options: { offset: [0, 5] 
         <div class="p-4">action</div>
         <!--退出登录-->
         <div class="p-2 border-t-[1px] border-[var(--el-border-color-light)]">
-          <ActionButton icon="ri:logout-circle-r-line" text="退出登录" class="w-full" />
+          <ActionButton icon="ri:logout-circle-r-line" btn-text="退出登录" class="w-full" />
         </div>
       </div>
     </template>

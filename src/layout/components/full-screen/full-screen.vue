@@ -3,27 +3,24 @@ import { computed } from 'vue';
 import { useFullscreen } from '@vueuse/core';
 const { isFullscreen, toggle } = useFullscreen();
 
-interface toggleContentObj {
+interface FullScreenInfo {
   /** 图标名称 */
   icon: string;
-  /** 文本信息 */
-  text?: string;
   /** 提示信息 */
-  tipsContent?: string;
+  tipContent: string;
 }
 
-const toggleContent = computed((): toggleContentObj => {
+const fullScreenInfo = computed((): FullScreenInfo => {
   return !isFullscreen.value
-    ? { icon: 'ri:fullscreen-fill', tipsContent: '使当前页面占满整个屏幕' }
-    : { icon: 'ri:fullscreen-exit-line', tipsContent: '退出全屏模式' };
+    ? { icon: 'ri:fullscreen-fill', tipContent: '使当前页面占满整个屏幕' }
+    : { icon: 'ri:fullscreen-exit-line', tipContent: '退出全屏模式' };
 });
 </script>
 
 <template>
   <ActionButton
-    :icon="toggleContent.icon"
-    :text="toggleContent.text"
-    :tips-content="toggleContent.tipsContent"
+    :icon="fullScreenInfo.icon"
+    :tip-props="{ content: fullScreenInfo.tipContent }"
     @click="toggle"
   />
 </template>

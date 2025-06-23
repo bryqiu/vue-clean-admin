@@ -11,7 +11,7 @@ const drawerVisible = ref(false);
 
 <template>
   <div>
-    <ActionButton icon="ri:settings-line" @click="drawerVisible = true" />
+    <ActionButton icon="ri:settings-6-line" @click="drawerVisible = true" />
     <SettingsDrawer v-model="drawerVisible" />
   </div>
 </template>
