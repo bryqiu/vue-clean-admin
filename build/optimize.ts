@@ -16,12 +16,7 @@ export const getOptimize = (): DepOptimizationOptions => {
     'axios',
     ...getElStylePaths(),
   ];
-  const exclude: string[] = [
-    '@iconify-json/mdi',
-    '@iconify-json/mingcute',
-    '@iconify-json/ri',
-    '@iconify-json/line-md',
-  ];
+  const exclude: string[] = ['@iconify-json/mdi', '@iconify-json/mingcute', '@iconify-json/ri'];
 
   return {
     include,

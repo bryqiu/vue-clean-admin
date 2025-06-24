@@ -13,7 +13,7 @@ const getBtnText = computed(() => {
 
 <template>
   <ActionButton
-    icon="line-md:chevron-small-double-up"
+    icon="mdi:view-sequential-outline"
     :tip-props="{ placement: 'right', content: getBtnText }"
     @click="isMenuAccordion = !isMenuAccordion"
   />

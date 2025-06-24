@@ -72,9 +72,6 @@ importers:
       '@eslint/js':
         specifier: ^9.9.1
         version: 9.9.1
-      '@iconify-json/line-md':
-        specifier: ^1.2.1
-        version: 1.2.1
       '@iconify-json/mdi':
         specifier: ^1.2.1
         version: 1.2.1
@@ -718,9 +715,6 @@ packages:
   '@humanwhocodes/retry@0.3.0':
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
-
-  '@iconify-json/line-md@1.2.1':
-    resolution: {integrity: sha512-XMga2q5PiQ2LrU7K06hfqSYOA+7UFhRwhl52xvPCPAiLmtdfWBeX38nA46mcaLj7sdNo+DK+BJy9iTrzQ0ewNw==}
 
   '@iconify-json/mdi@1.2.1':
     resolution: {integrity: sha512-dSkQU78gsZV6Yxnq78+LuX7jzeFC/5NAmz7O3rh558GimGFcwMVY/OtqRowIzjqJBmMmWZft7wkFV4TrwRXjlg==}
@@ -5263,10 +5257,6 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.3.0': {}
-
-  '@iconify-json/line-md@1.2.1':
-    dependencies:
-      '@iconify/types': 2.0.0
 
   '@iconify-json/mdi@1.2.1':
     dependencies:
