@@ -1,5 +1,4 @@
 import { resolve } from 'path';
-import { elStyleKeys } from '../src/config/element-optimize';
 
 /** 获取当前工作目录的路径 */
 const root: string = process.cwd();
@@ -30,11 +29,11 @@ const processEnv = (env: Record<string, string>): ImportMetaEnv => {
  * 获取组件样式路径用于预构建，防止reload
  * @returns 返回拼接后的完整样式路径
  */
-const getElStylePaths = () => {
+const getElOptimizePaths = (compKyes: string[]) => {
   const hyphenateRE = /\B([A-Z])/g;
   const hyphenate = (str: string) => str.replaceAll(hyphenateRE, '-$1').toLowerCase();
 
-  const keys = elStyleKeys
+  const keys = compKyes
     .filter((component) => component.startsWith('El'))
     .map((component) => {
       return `element-plus/es/components/${hyphenate(component.slice(2))}/style/css`;
@@ -43,4 +42,4 @@ const getElStylePaths = () => {
   return ['element-plus/es', ...keys];
 };
 
-export { pathResolve, root, processEnv, getElStylePaths };
+export { pathResolve, root, processEnv, getElOptimizePaths };
