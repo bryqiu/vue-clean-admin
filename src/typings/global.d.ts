@@ -20,9 +20,6 @@ declare global {
   /** 属性类型 */
   type PropType<T> = propType<T>;
 
-  /** 注册组件列表 */
-  type RegisterComponentList = { name: string; component: Component | DefineComponent }[];
-
   /** 字典基本结构 */
   interface BaseOptions<T = string> {
     label: string;
