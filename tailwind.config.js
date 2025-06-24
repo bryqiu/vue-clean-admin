@@ -1,4 +1,4 @@
-import { twThemeConfig } from './src/config/tw-theme';
+import { twThemeConfig } from './src/config/theme';
 
 /** @type {import('tailwindcss').Config} */
 export default {
