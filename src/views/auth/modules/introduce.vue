@@ -67,7 +67,7 @@ const handleLinkClick = (url: string) => {
 <template>
   <div class="size-full border border-solid border-el-lighter relative">
     <div class="absolute top-4 left-4 z-10">
-      <Logo :is-collapse="true" />
+      <Logo show-title />
     </div>
     <PatternBackground>
       <div class="flex flex-col items-center">

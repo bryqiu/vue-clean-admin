@@ -25,7 +25,7 @@ const sidebarWidth = computed(() => {
 <template>
   <ElAside :width="sidebarWidth" class="!overflow-x-hidden duration-300">
     <div class="w-full h-14 flex-c-c">
-      <Logo :is-collapse="isMenuCollapse" />
+      <Logo :show-title="isMenuCollapse" />
     </div>
     <div class="h-[calc(100%-7rem)] py-2">
       <SidebarMenu />

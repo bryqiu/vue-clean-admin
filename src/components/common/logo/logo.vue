@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ElImage } from 'element-plus';
+import { PageTransitionEnum } from '@/enums';
+import { ROOT_REDIRECT } from '@/router/config';
+import { useRouter } from 'vue-router';
 
 defineOptions({
   name: 'Logo',
@@ -7,37 +9,43 @@ defineOptions({
 
 interface LogoProps {
   /**
-   * 是否折叠
+   * 是否显示标题
    * @default false
    */
-  isCollapse?: boolean;
+  showTitle?: boolean;
   /**
    * 是否允许点击
    * @default true
    */
-  isClick?: boolean;
+  click?: boolean;
 }
 
+const router = useRouter();
+
 const props = withDefaults(defineProps<LogoProps>(), {
-  isCollapse: false,
-  isClick: true,
+  showTitle: false,
+  click: true,
 });
 
-const { goBackRootPath } = useRouterPath();
-const systemTitle = import.meta.env.VITE_APP_TITLE;
+const appTitle = import.meta.env.VITE_APP_TITLE;
 
 const handleClick = () => {
-  if (props.isClick) {
-    goBackRootPath();
+  if (!props.click) {
+    return;
   }
+  router.push({
+    name: ROOT_REDIRECT,
+  });
 };
 </script>
 
 <template>
-  <div class="flex items-center gap-2" :class="{ 'cursor-pointer': isClick }" @click="handleClick">
+  <div class="flex items-center gap-2" :class="{ 'cursor-pointer': click }" @click="handleClick">
     <LocalIcon name="logo" :size="36" />
-    <span v-show="!isCollapse" class="text-xl font-semibold">{{ systemTitle }}</span>
+    <Transition :name="PageTransitionEnum.NONE">
+      <span v-show="!showTitle" class="text-xl font-semibold inline-block truncate">{{
+        appTitle
+      }}</span>
+    </Transition>
   </div>
 </template>
-
-<style scoped lang="scss"></style>
