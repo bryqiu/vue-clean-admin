@@ -24,6 +24,8 @@ interface ImportMetaEnv {
   readonly VITE_MOCK_LOG: boolean;
   /** 是否启用 Vue DevTools */
   readonly VITE_DEVTOOLS: boolean;
+  /** 应用版本 */
+  readonly VITE_APP_VERSION: string;
 }
 
 interface ImportMeta {
