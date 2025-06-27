@@ -88,6 +88,7 @@ const elComponentKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElMenu',
   'ElMenuItem',
   'ElMenuItemGroup',
+  'ElSubMenu',
   'ElPageHeader',
   'ElSteps',
   'ElStep',
