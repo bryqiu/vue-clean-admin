@@ -7,6 +7,7 @@ export const autoImportPluginConfig = () => {
     imports: [
       {
         '@/store/modules/settings': ['useSettingsStore'],
+        '@/store/modules/user': ['useUserStore'],
       },
     ],
     dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/store/hooks')}`],

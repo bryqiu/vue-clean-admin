@@ -1,13 +1,20 @@
 import { ref } from 'vue';
 import { store } from '@/store';
 import { defineStore } from 'pinia';
-import { STORE_MODULES_NAMES } from '@/store/config';
+import { storeModulesNames } from '@/store/config';
 import { enableStoreHMR } from '@/store/helpers';
 
-const createUserStore = defineStore(STORE_MODULES_NAMES.USER, () => {
-  const count = ref(0);
-  return { count };
-});
+const createUserStore = defineStore(
+  storeModulesNames.user,
+  () => {
+    const accessToken = ref('9bba23a759e54c4ca04108b14d24b73a');
+    const refreshToken = ref('');
+    const userInfo = ref({});
+
+    return { accessToken, refreshToken, userInfo };
+  },
+  { persist: true },
+);
 
 enableStoreHMR(createUserStore);
 

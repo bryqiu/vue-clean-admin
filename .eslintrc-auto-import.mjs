@@ -7,6 +7,7 @@ export default {
     "useSettingsStore": true,
     "useShareSettings": true,
     "useTheme": true,
-    "useThemeSettings": true
+    "useThemeSettings": true,
+    "useUserStore": true
   }
 }
