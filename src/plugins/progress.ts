@@ -1,11 +1,12 @@
-import type { NProgressOptions } from 'nprogress';
+import type { NProgress as NProgressInstance, NProgressOptions } from 'nprogress';
+import nprogress from 'nprogress';
 
 /**
- * 生成 progress 配置
+ * 写入配置生成 progress 实例
  * @param config - 配置对象
- * @returns 配置对象
+ * @returns progress 实例
  */
-export const createProgressConfig = (config: NProgressOptions) => {
+export const createProgress = (config: Partial<NProgressOptions> = {}): NProgressInstance => {
   const DEFAULT_CONFIG: Partial<NProgressOptions> = {
     easing: 'ease', // 缓动动画，@see：https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
     speed: 500, // 速度(ms)
@@ -15,5 +16,5 @@ export const createProgressConfig = (config: NProgressOptions) => {
     parent: 'body', // 父容器，默认body
   };
 
-  return { ...DEFAULT_CONFIG, ...config };
+  return nprogress.configure({ ...DEFAULT_CONFIG, ...config });
 };
