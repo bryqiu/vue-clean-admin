@@ -32,6 +32,8 @@ export default [
         AlignMode: true,
         BreadcrumbStyleType: true,
         ElColorType: true,
+        PaginationParams: true,
+        PaginationResult: true,
         IconComponent: true,
         ...autoImport.globals,
       },

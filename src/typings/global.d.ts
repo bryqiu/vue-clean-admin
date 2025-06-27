@@ -25,5 +25,22 @@ declare global {
     label: string;
     value: T;
   }
+
   type IconComponent = 'iconify' | 'local';
+
+  /** 分页请求参数 */
+  interface PaginationParams {
+    /** 当前页码 */
+    currentPage: number;
+    /** 每页显示条数 */
+    pageSize: number;
+  }
+
+  /** 分页响应数据结构 */
+  interface PaginationResult<T = any> {
+    /** 列表数据 */
+    list: T[];
+    /** 总条数 */
+    total: number;
+  }
 }
