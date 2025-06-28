@@ -49,7 +49,7 @@ const techStacks: TechStack[] = [
 const linkConfig: LinkConfig[] = [
   {
     title: '查看配套文档',
-    iconName: 'vite-press',
+    iconName: 'astro',
     url: '',
   },
   {
