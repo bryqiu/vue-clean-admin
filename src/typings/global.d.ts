@@ -1,5 +1,4 @@
 import { PropType as propType } from 'vue';
-import type { Component, DefineComponent } from 'vue';
 
 declare global {
   /** 对齐模式 */
@@ -43,4 +42,13 @@ declare global {
     /** 总条数 */
     total: number;
   }
+
+  /** 基础对象类型 */
+  type BaseObject = Record<string | number | symbol, any>;
+
+  /** 获取对象的 key 类型 */
+  type GetObjectKey<T extends BaseObject> = keyof T;
+
+  /** 获取对象的 value 类型 */
+  type GetObjectValues<T extends BaseObject> = T[GetObjectKey<T>];
 }

@@ -35,6 +35,8 @@ export default [
         PaginationParams: true,
         PaginationResult: true,
         IconComponent: true,
+        GetObjectKey: true,
+        GetObjectValues: true,
         ...autoImport.globals,
       },
     },
