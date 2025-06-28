@@ -17,8 +17,10 @@ const handleReport = () => {
 
 <template>
   <BasicException
-    title="系统异常(500)"
-    desc="服务器暂时无法响应您的请求，请稍后再试或联系技术支持"
+    title="500"
+    iconify-icon="ri:server-line"
+    problem-desc="服务器暂时无法处理您的请求"
+    guide-desc="请稍后刷新页面，或联系我们获取帮助"
     :action-btns="[
       {
         label: '刷新页面',
@@ -26,7 +28,7 @@ const handleReport = () => {
         type: 'primary',
       },
       {
-        label: '报告问题',
+        label: '反馈问题',
         onClick: handleReport,
         type: 'default',
       },
