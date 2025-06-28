@@ -64,7 +64,7 @@ const trendTextColor = computed(() => {
 </script>
 
 <template>
-  <div class="size-full bg-el-overlay rounded-xl flex flex-col shadow px-4 py-6 gap-y-2">
+  <div class="size-full bg-el-overlay rounded-xl flex flex-col shadow px-4 py-4 gap-y-2">
     <div class="flex justify-between">
       <div class="w-4/5 flex flex-col gap-y-7">
         <span class="text-sm text-el-primary font-medium">{{ title }}</span>
@@ -82,6 +82,16 @@ const trendTextColor = computed(() => {
         <span>{{ `${compareValue}%` }}</span>
       </div>
       <span class="flex-shrink-0">{{ `${compareLabel}` }}</span>
+    </div>
+    <div class="size-full border-t border-el-light flex justify-between text-el-secondary text-xs">
+      <div class="flex items-center gap-x-1 pt-1">
+        <IconifyIcon name="ri:bar-chart-fill" />
+        <span>可视化数据</span>
+      </div>
+      <div class="flex items-center gap-x-1 pt-1">
+        <span>查看详情</span>
+        <IconifyIcon name="ri:arrow-right-line" />
+      </div>
     </div>
   </div>
 </template>
