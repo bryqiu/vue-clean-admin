@@ -3,14 +3,12 @@ const { pageTransitionName } = useThemeSettings();
 </script>
 
 <template>
-  <div
-    class="h-full overflow-auto overflow-x-hidden flex-1 bg-[var(--el-fill-color-light)] p-4 rounded-[var(--app-round)]"
-  >
+  <div class="flex-1 bg-[var(--el-fill-color-light)] p-4 rounded-[var(--app-round)] mt-14">
     <RouterView v-slot="{ Component, route }">
       <Transition :name="pageTransitionName" mode="out-in" appear>
-        <KeepAlive :include="[]">
-          <component :is="Component" :key="route.path" />
-        </KeepAlive>
+        <!-- <KeepAlive :include="[]"> -->
+        <component :is="Component" :key="route.path" />
+        <!-- </KeepAlive> -->
       </Transition>
     </RouterView>
   </div>

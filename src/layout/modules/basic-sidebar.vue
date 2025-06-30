@@ -3,9 +3,8 @@
 import { ElAside } from 'element-plus';
 import { Logo } from '@/components/common/logo';
 import { SidebarMenu } from '../components/sidebar-menu/index';
-import { ToggleCollapse } from '../components/toggle-collapse';
-import { ToggleAccordion } from '../components/toggle-accordion';
 import { computed } from 'vue';
+import { UserMenuSidebar } from '../components/user-menu';
 
 defineOptions({
   name: 'BasicSidebar',
@@ -23,16 +22,15 @@ const sidebarWidth = computed(() => {
 </script>
 
 <template>
-  <ElAside :width="sidebarWidth" class="!overflow-x-hidden duration-300">
+  <ElAside :width="sidebarWidth" class="!overflow-x-hidden duration-300 flex flex-col">
     <div class="w-full h-14 flex-c-c">
       <Logo :show-title="isMenuCollapse" />
     </div>
-    <div class="h-[calc(100%-7rem)] py-2">
+    <div class="flex-1 py-2">
       <SidebarMenu />
     </div>
-    <div :class="['h-14', 'p-2', 'flex-b-c', isMenuCollapse && 'justify-center']">
-      <ToggleCollapse />
-      <ToggleAccordion v-if="!isMenuCollapse" />
+    <div class="p-2">
+      <UserMenuSidebar />
     </div>
   </ElAside>
 </template>

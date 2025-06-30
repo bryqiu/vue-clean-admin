@@ -6,7 +6,7 @@ import { BasicHeader, BasicMain, BasicSidebar } from './modules/index';
 <template>
   <ElContainer class="h-full">
     <BasicSidebar />
-    <ElContainer class="size-full !flex-col">
+    <ElContainer class="size-full !flex-col overflow-auto overflow-x-hidden">
       <BasicHeader />
       <BasicMain />
       <!-- <BasicFooter /> -->
