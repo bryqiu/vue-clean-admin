@@ -15,5 +15,12 @@ export const useLayoutSettings = () => {
     set: (val) => toggleMenuAccordion(val),
   });
 
-  return { isMenuCollapse, isMenuAccordion };
+  /** 获取当前侧边栏宽度 */
+  const getCurrentSidebarWidth = computed(() => {
+    return isMenuCollapse.value
+      ? getLayoutSettings.sidebarCollapseWidth
+      : getLayoutSettings.sidebarOpenedWidth;
+  });
+
+  return { isMenuCollapse, isMenuAccordion, getCurrentSidebarWidth };
 };
