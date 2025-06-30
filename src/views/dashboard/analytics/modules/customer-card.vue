@@ -173,7 +173,7 @@ const getTypeText = (type: CustomerItem['type']) => {
 
 <template>
   <BaseContainer title="客户消费情况记录" :show-description="false">
-    <ElTable :data="customerData" height="288px">
+    <ElTable :data="customerData" height="360px">
       <ElTableColumn
         prop="name"
         label="客户信息"
