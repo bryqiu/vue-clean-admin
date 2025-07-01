@@ -14,7 +14,7 @@ const { getCurrentSidebarWidth } = useLayoutSettings();
 
 <template>
   <div
-    class="fixed top-0 z-50 h-14 w-[calc(100%-208px)] bg-[var(--el-bg-color)] duration-300"
+    class="fixed top-0 z-50 h-14 w-[calc(100%-208px)] bg-el-bg-default duration-300"
     :style="{ width: `calc(100% - ${getCurrentSidebarWidth}px)` }"
   >
     <ElHeader>

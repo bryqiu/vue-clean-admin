@@ -26,7 +26,7 @@ const exportIcon = h(IconifyIcon, {
 <template>
   <div class="flex flex-col gap-y-4">
     <div class="flex items-center justify-between">
-      <span class="text-el-primary text-3xl font-bold">Dashboard</span>
+      <span class="text-el-text-primary text-3xl font-bold">Dashboard </span>
       <div class="flex items-center">
         <ElButton plain :icon="filterIcon">
           <span>筛选</span>

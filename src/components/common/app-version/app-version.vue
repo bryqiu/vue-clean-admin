@@ -16,7 +16,7 @@ const currentVersion = import.meta.env.VITE_APP_VERSION;
 </script>
 
 <template>
-  <div class="flex items-center justify-center text-sm text-el-placeholder gap-x-1">
+  <div class="flex items-center justify-center text-sm text-el-text-placeholder gap-x-1">
     <template v-if="abbreviated">
       <span>v {{ currentVersion }}</span>
     </template>

@@ -185,8 +185,8 @@ const getTypeText = (type: CustomerItem['type']) => {
           <div class="flex items-center gap-x-3">
             <AppUserAvatar :src="scope.row.avatar" shape="square" :show-login-status="false" />
             <div class="flex flex-col gap-y-0.5">
-              <span class="text-sm font-medium text-el-primary">{{ scope.row.name }}</span>
-              <span class="text-xs text-el-secondary">{{ scope.row.email }}</span>
+              <span class="text-sm font-medium text-el-text-primary">{{ scope.row.name }}</span>
+              <span class="text-xs text-el-text-secondary">{{ scope.row.email }}</span>
             </div>
           </div>
         </template>

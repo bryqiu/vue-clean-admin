@@ -43,9 +43,11 @@ const handleClick = () => {
   <div class="flex items-center gap-2" :class="{ 'cursor-pointer': click }" @click="handleClick">
     <LocalIcon name="logo" :size="36" />
     <Transition :name="PageTransitionEnum.NONE">
-      <span v-show="!showTitle" class="text-xl font-semibold inline-block truncate">{{
-        appTitle
-      }}</span>
+      <span
+        v-show="!showTitle"
+        class="text-xl font-semibold inline-block truncate text-el-text-primary"
+        >{{ appTitle }}</span
+      >
     </Transition>
   </div>
 </template>

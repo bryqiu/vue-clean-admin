@@ -45,7 +45,7 @@ const formatYearValue = computed(() => {
 </script>
 
 <template>
-  <div class="text-xs text-el-secondary w-full text-center">
+  <div class="text-xs text-el-text-secondary w-full text-center">
     <span class="pr-1.5">Copyright © {{ formatYearValue }}</span>
     <span v-if="isEmpty(link)">{{ owner }}</span>
     <ElLink v-else type="primary" :href="link" target="_blank" v-bind="$attrs" class="!text-xs">

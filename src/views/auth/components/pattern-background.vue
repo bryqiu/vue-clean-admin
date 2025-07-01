@@ -11,7 +11,7 @@
       :class="
         twMerge(
           'absolute pointer-events-none inset-0',
-          'bg-el-overlay',
+          'bg-el-bg-overlay',
           '[mask-image:radial-gradient(ellipse_at_center,transparent,black_80%)]',
         )
       "

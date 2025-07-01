@@ -110,9 +110,9 @@ const handleLogin = async () => {
       <div class="flex items-center justify-between text-sm">
         <div class="flex items-center gap-x-1">
           <ElCheckbox v-model="isRemember" />
-          <span class="text-el-secondary">记住我</span>
+          <span class="text-el-text-secondary">记住我</span>
         </div>
-        <span class="text-primary cursor-pointer" @click="goToForgetPassword">忘记密码？</span>
+        <span class="text-el-primary cursor-pointer" @click="goToForgetPassword">忘记密码？</span>
       </div>
 
       <div class="w-full flex flex-col gap-y-2 mt-4">
@@ -126,14 +126,14 @@ const handleLogin = async () => {
       <PolicyAgreement class="mt-4" />
 
       <ElDivider border-style="dashed">
-        <span class="text-xs text-el-secondary">或</span>
+        <span class="text-xs text-el-text-secondary">或</span>
       </ElDivider>
 
       <AuthMethod :auth-method-list />
 
       <div class="flex items-center justify-center text-sm mt-6">
         <span>还没有账号？</span>
-        <span class="text-primary cursor-pointer" @click="goToRegister">立即注册</span>
+        <span class="text-el-primary cursor-pointer" @click="goToRegister">立即注册</span>
       </div>
     </div>
   </div>

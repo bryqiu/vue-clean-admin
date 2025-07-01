@@ -23,7 +23,7 @@ withDefaults(defineProps<PageHeaderProps>(), {
   <div class="flex flex-col gap-y-2">
     <span :class="twMerge('text-xl font-semibold', titleClass)">{{ title }}</span>
     <slot v-if="$slots.subTitle" name="subTitle" />
-    <span v-else-if="subTitle" :class="twMerge('text-sm text-el-secondary', subTitleClass)">{{
+    <span v-else-if="subTitle" :class="twMerge('text-sm text-el-text-secondary', subTitleClass)">{{
       subTitle
     }}</span>
   </div>

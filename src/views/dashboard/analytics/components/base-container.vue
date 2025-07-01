@@ -29,8 +29,10 @@ withDefaults(defineProps<BaseContainerProps>(), {
           <slot name="header" />
         </template>
         <div v-else class="flex flex-col gap-y-1">
-          <span class="text-lg font-medium text-el-primary">{{ title }}</span>
-          <span v-if="showDescription" class="text-sm text-el-secondary">{{ description }}</span>
+          <span class="text-lg font-medium text-el-text-primary">{{ title }}</span>
+          <span v-if="showDescription" class="text-sm text-el-text-secondary">{{
+            description
+          }}</span>
         </div>
       </div>
       <!--内容-->

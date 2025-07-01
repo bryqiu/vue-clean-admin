@@ -32,7 +32,7 @@ const goToAuthMethod = (value: RouteNames) => {
     <div
       v-for="item in authMethodList"
       :key="item.value"
-      class="h-9 rounded-lg border border-solid border-el-default flex items-center justify-center flex-1 gap-2 cursor-pointer hover:bg-el-light duration-300"
+      class="h-9 rounded-lg border border-solid border-el-border-default flex items-center justify-center flex-1 gap-2 cursor-pointer hover:bg-el-fill-light duration-300"
       @click="goToAuthMethod(item.value)"
     >
       <IconifyIcon v-if="item.icon" :name="item.icon" class="text-base" />

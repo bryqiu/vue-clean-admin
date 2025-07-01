@@ -64,26 +64,30 @@ const trendTextColor = computed(() => {
 </script>
 
 <template>
-  <div class="size-full bg-el-overlay rounded-xl flex flex-col shadow px-4 py-4 gap-y-2">
+  <div class="size-full bg-el-bg-overlay rounded-xl flex flex-col shadow px-4 py-4 gap-y-2">
     <div class="flex justify-between">
       <div class="w-4/5 flex flex-col gap-y-7">
-        <span class="text-sm text-el-primary font-medium">{{ title }}</span>
-        <span class="text-2xl font-bold text-el-primary w-full">{{ numValue }}</span>
+        <span class="text-sm text-el-text-primary font-medium">{{ title }}</span>
+        <span class="text-2xl font-bold text-el-text-primary w-full">{{ numValue }}</span>
       </div>
       <div class="w-1/5 flex justify-center items-start">
-        <div class="rounded-lg border border-el-light size-8 flex justify-center items-center">
+        <div
+          class="rounded-lg border border-el-border-light size-8 flex justify-center items-center"
+        >
           <IconifyIcon :name="icon" class="text-base" />
         </div>
       </div>
     </div>
-    <div class="w-full flex items-center text-xs text-el-secondary gap-x-1">
+    <div class="w-full flex items-center text-xs text-el-text-secondary gap-x-1">
       <div class="flex items-center gap-x-0.5" :class="trendTextColor">
         <IconifyIcon :name="trendIcon" class="text-sm" />
         <span>{{ `${compareValue}%` }}</span>
       </div>
       <span class="flex-shrink-0">{{ `${compareLabel}` }}</span>
     </div>
-    <div class="size-full border-t border-el-light flex justify-between text-el-secondary text-xs">
+    <div
+      class="size-full border-t border-el-border-light flex justify-between text-el-text-secondary text-xs"
+    >
       <div class="flex items-center gap-x-1 pt-1">
         <IconifyIcon name="ri:bar-chart-fill" />
         <span>可视化数据</span>
