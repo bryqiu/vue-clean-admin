@@ -2,11 +2,11 @@ import { computed, ref, watch } from 'vue';
 import { store } from '@/store';
 import { defineStore } from 'pinia';
 import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
-import { applyAppThemeColor } from '@/colors';
 import { defaultSettings, storeModulesNames } from '@/store/config';
 import { enableStoreHMR } from '@/store/helpers';
 import { usePreferredDark } from '@vueuse/core';
 import type { Settings } from '@/store/types';
+import { setElementPrimaryColor } from '@/theme';
 
 const createSettingsStore = defineStore(
   storeModulesNames.settings,
@@ -70,14 +70,14 @@ const createSettingsStore = defineStore(
 
     /** 设置主题色 */
     const setPrimaryColor = (val: string) => {
-      applyAppThemeColor(val, isDarkMode.value);
+      setElementPrimaryColor(val, isDarkMode.value);
       getThemeSettings.value.primaryColor = val;
     };
 
     /** 切换主题模式 */
     const toggleThemeMode = (mode: ThemeModeEnum) => {
       setThemeMode(mode);
-      applyAppThemeColor(getThemeSettings.value.primaryColor, isDarkMode.value);
+      setElementPrimaryColor(getThemeSettings.value.primaryColor, isDarkMode.value);
       getThemeSettings.value.currentThemeMode = mode;
     };
 
@@ -87,7 +87,7 @@ const createSettingsStore = defineStore(
     watch(systemDark, () => {
       if (getThemeSettings.value.currentThemeMode === ThemeModeEnum.SYSTEM) {
         setThemeMode(ThemeModeEnum.SYSTEM);
-        applyAppThemeColor(getThemeSettings.value.primaryColor, isDarkMode.value);
+        setElementPrimaryColor(getThemeSettings.value.primaryColor, isDarkMode.value);
       }
     });
 
