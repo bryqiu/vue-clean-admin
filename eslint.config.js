@@ -37,6 +37,7 @@ export default [
         IconComponent: true,
         GetObjectKey: true,
         GetObjectValues: true,
+        ColorWeight: true,
         ...autoImport.globals,
       },
     },
