@@ -1,4 +1,4 @@
-import { twThemeConfig } from './src/config/theme';
+import { tailwindThemeConfig } from './src/theme/tailwind';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -6,7 +6,7 @@ export default {
   mode: 'jit',
   darkMode: 'class',
   theme: {
-    ...twThemeConfig,
+    ...tailwindThemeConfig,
   },
   plugins: [],
   corePlugins: {
