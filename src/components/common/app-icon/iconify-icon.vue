@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Icon as IconifyIcon } from '@iconify/vue/dist/offline';
-import type { IconProps } from '@iconify/vue/dist/offline';
+import { Icon as IconifyIcon } from '@iconify/vue';
+import type { IconProps } from '@iconify/vue';
 
 defineOptions({
   name: 'IconifyIcon',

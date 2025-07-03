@@ -123,10 +123,11 @@ export const getOptimize = (): DepOptimizationOptions => {
     'echarts/components',
     'echarts/renderers',
     'echarts/features',
+    '@iconify/vue',
     'axios',
     ...getElOptimizePaths(elComponentKeys),
   ];
-  const exclude: string[] = ['@iconify-json/mdi', '@iconify-json/mingcute', '@iconify-json/ri'];
+  const exclude: string[] = [];
 
   return {
     include,
