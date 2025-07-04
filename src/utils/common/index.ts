@@ -1,3 +1,3 @@
-export * from './judge';
+export * from './validate';
 export * from './uuid';
 export * from './file';
