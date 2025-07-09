@@ -6,6 +6,7 @@ import { Notice } from '../components/notice';
 import { Settings } from '../components/settings';
 import { Breadcrumb } from '../components/breadcrumb';
 import { ToggleCollapse } from '../components/toggle-collapse';
+import { ToggleAccordion } from '../components/toggle-accordion';
 import { AppThemeMode } from '@/components/common/app-theme-mode';
 
 const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useShareSettings();
@@ -22,6 +23,7 @@ const { getCurrentSidebarWidth } = useLayoutSettings();
         <!-- 头部-左侧 -->
         <div class="flex items-center gap-x-1.5">
           <ToggleCollapse />
+          <ToggleAccordion />
           <ElDivider direction="vertical" />
           <Breadcrumb
             v-if="showBreadcrumb"

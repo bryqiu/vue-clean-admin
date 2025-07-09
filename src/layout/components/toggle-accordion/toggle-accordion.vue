@@ -6,15 +6,17 @@ defineOptions({
 
 const { isMenuAccordion } = useLayoutSettings();
 
-const getBtnText = computed(() => {
-  return isMenuAccordion.value ? '只保持一个子菜单的展开' : '保持所有子菜单的展开';
+const menuAccordionInfo = computed(() => {
+  return isMenuAccordion.value
+    ? { icon: 'ri:list-radio', tipText: '单击允许所有子菜单展开' }
+    : { icon: 'ri:list-check-3', tipText: '单击只允许展开一个子菜单' };
 });
 </script>
 
 <template>
   <ActionButton
-    icon="mdi:view-sequential-outline"
-    :tip-props="{ placement: 'right', content: getBtnText }"
+    :icon="menuAccordionInfo.icon"
+    :tip-props="{ placement: 'bottom', content: menuAccordionInfo.tipText }"
     @click="isMenuAccordion = !isMenuAccordion"
   />
 </template>
