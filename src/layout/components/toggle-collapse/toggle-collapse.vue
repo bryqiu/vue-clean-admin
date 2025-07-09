@@ -6,17 +6,15 @@ defineOptions({
 
 const { isMenuCollapse } = useLayoutSettings();
 
-const toggleCollapseInfo = computed(() => {
-  return isMenuCollapse.value
-    ? { icon: 'mingcute:layout-leftbar-open-line', tipContent: '展开侧边栏' }
-    : { icon: 'mingcute:layout-leftbar-close-line', tipContent: '折叠侧边栏' };
+const getToggleCollapseTipText = computed(() => {
+  return `单击${isMenuCollapse.value ? '展开' : '折叠'}侧边栏`;
 });
 </script>
 
 <template>
   <ActionButton
-    :icon="toggleCollapseInfo.icon"
-    :tip-props="{ content: toggleCollapseInfo.tipContent }"
+    icon="ri:layout-left-line"
+    :tip-props="{ placement: 'bottom', content: getToggleCollapseTipText }"
     @click="isMenuCollapse = !isMenuCollapse"
   />
 </template>
