@@ -49,6 +49,11 @@ export interface Layout {
    * @default 64px
    */
   sidebarCollapseWidth: number;
+  /**
+   * 头部高度
+   * @default 56px
+   */
+  headerHeight: number;
 }
 
 /** 共享设置 */

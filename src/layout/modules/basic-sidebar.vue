@@ -11,7 +11,7 @@ defineOptions({
 });
 
 const settingsStore = useSettingsStore();
-const { isMenuCollapse } = useLayoutSettings();
+const { isMenuCollapse, getCurrentHeaderHeight } = useLayoutSettings();
 
 /** 左侧边栏宽度 */
 const sidebarWidth = computed(() => {
@@ -23,7 +23,7 @@ const sidebarWidth = computed(() => {
 
 <template>
   <ElAside :width="sidebarWidth" class="!overflow-x-hidden duration-300 flex flex-col">
-    <div class="w-full h-14 flex-c-c">
+    <div class="w-full flex-c-c" :style="{ height: `${getCurrentHeaderHeight}px` }">
       <Logo :show-title="isMenuCollapse" />
     </div>
     <div class="flex-1 py-2">

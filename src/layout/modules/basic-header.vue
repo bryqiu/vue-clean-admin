@@ -8,17 +8,22 @@ import { Breadcrumb } from '../components/breadcrumb';
 import { ToggleCollapse } from '../components/toggle-collapse';
 import { ToggleAccordion } from '../components/toggle-accordion';
 import { AppThemeMode } from '@/components/common/app-theme-mode';
+import { twMerge } from 'tailwind-merge';
 
 const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useShareSettings();
-const { getCurrentSidebarWidth } = useLayoutSettings();
+const { getCurrentSidebarWidth, getCurrentHeaderHeight } = useLayoutSettings();
 </script>
 
 <template>
   <div
-    class="fixed top-0 z-50 h-14 w-[calc(100%-208px)] bg-el-bg-default duration-300"
-    :style="{ width: `calc(100% - ${getCurrentSidebarWidth}px)` }"
+    :class="
+      twMerge(
+        'fixed top-0 z-50 bg-el-bg-default duration-300',
+        `w-[calc(100%-${getCurrentSidebarWidth}px)]`,
+      )
+    "
   >
-    <ElHeader>
+    <ElHeader :style="{ height: `${getCurrentHeaderHeight}px` }">
       <div class="size-full flex justify-between items-center">
         <!-- 头部-左侧 -->
         <div class="flex items-center gap-x-1.5">
@@ -47,7 +52,6 @@ const { getCurrentSidebarWidth } = useLayoutSettings();
 
 <style scoped lang="scss">
 .el-header {
-  // --el-header-height: 56px;
   --el-header-padding: 0 22px;
 }
 

@@ -22,5 +22,10 @@ export const useLayoutSettings = () => {
       : getLayoutSettings.sidebarOpenedWidth;
   });
 
-  return { isMenuCollapse, isMenuAccordion, getCurrentSidebarWidth };
+  /** 获取当前头部高度 */
+  const getCurrentHeaderHeight = computed(() => {
+    return getLayoutSettings.headerHeight;
+  });
+
+  return { isMenuCollapse, isMenuAccordion, getCurrentSidebarWidth, getCurrentHeaderHeight };
 };
