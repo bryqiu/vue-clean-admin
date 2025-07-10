@@ -16,6 +16,7 @@ const elComponentKeys: ElKeys<ElementPlusComponentType>[] = [
   'ElFooter',
   'ElHeader',
   'ElAside',
+  'ElMain',
   'ElLink',
   'ElText',
   'ElSpace',
