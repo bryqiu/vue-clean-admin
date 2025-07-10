@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PatternBackground } from '../components';
 import { LocalIconProps } from '@/components/common/app-icon';
-import { Logo } from '@/components/common/logo';
+import { AppLogo } from '@/components/common/app-logo';
 
 defineOptions({
   name: 'Introduce',
@@ -67,7 +67,7 @@ const handleLinkClick = (url: string) => {
 <template>
   <div class="size-full border border-solid border-el-border-lighter relative">
     <div class="absolute top-4 left-4 z-10">
-      <Logo show-title />
+      <AppLogo />
     </div>
     <PatternBackground>
       <div class="flex flex-col items-center">

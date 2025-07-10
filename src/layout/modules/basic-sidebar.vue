@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import { ref } from "vue";
 import { ElAside } from 'element-plus';
-import { Logo } from '@/components/common/logo';
+import { AppLogo } from '@/components/common/app-logo';
 import { SidebarMenu } from '../components/sidebar-menu/index';
 import { computed } from 'vue';
 import { UserMenuSidebar } from '../components/user-menu';
@@ -24,7 +24,7 @@ const sidebarWidth = computed(() => {
 <template>
   <ElAside :width="sidebarWidth" class="!overflow-x-hidden duration-300 flex flex-col">
     <div class="w-full flex-c-c" :style="{ height: `${getCurrentHeaderHeight}px` }">
-      <Logo :show-title="isMenuCollapse" />
+      <AppLogo :show-title="!isMenuCollapse" />
     </div>
     <div class="flex-1 py-2">
       <SidebarMenu />

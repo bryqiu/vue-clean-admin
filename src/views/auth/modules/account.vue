@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { AppCopyright } from '@/components/common/app-copyright';
 import { PageTransitionEnum } from '@/enums';
-import { Logo } from '@/components/common/logo';
+import { AppLogo } from '@/components/common/app-logo';
 import { AppFullScreen } from '@/components/common/app-full-screen';
 
 defineOptions({
@@ -13,7 +13,7 @@ defineOptions({
   <div class="size-full flex flex-col p-4">
     <!--头部-->
     <div class="flex items-center justify-between lg:justify-end">
-      <Logo :is-click="false" class="block lg:hidden" />
+      <AppLogo :clickable="false" show-title class="block lg:hidden" />
       <div class="flex items-center gap-x-2">
         <AppFullScreen />
       </div>
