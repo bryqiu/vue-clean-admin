@@ -2,6 +2,7 @@
 import { AppCopyright } from '@/components/common/app-copyright';
 import { PageTransitionEnum } from '@/enums';
 import { AppLogo } from '@/components/common/app-logo';
+import { AppThemeDropdown } from '@/components/common/app-theme';
 import { AppFullScreen } from '@/components/common/app-full-screen';
 
 defineOptions({
@@ -15,6 +16,7 @@ defineOptions({
     <div class="flex items-center justify-between lg:justify-end">
       <AppLogo :clickable="false" show-title class="block lg:hidden" />
       <div class="flex items-center gap-x-2">
+        <AppThemeDropdown />
         <AppFullScreen />
       </div>
     </div>
