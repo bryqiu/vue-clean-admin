@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ElDivider, ElHeader } from 'element-plus';
-import { FullScreen } from '../components/full-screen';
+import { AppFullScreen } from '@/components/common/app-full-screen';
 import { UserMenuHeader } from '../components/user-menu';
 import { Notice } from '../components/notice';
 import { Settings } from '../components/settings';
@@ -34,7 +34,7 @@ const { getCurrentSidebarWidth } = useLayoutSettings();
         <!--头部-右侧-->
         <div class="flex items-center gap-x-1.5">
           <AppThemeMode :is-show-system-mode="false" :is-show-label="false" class="mr-2" />
-          <FullScreen />
+          <AppFullScreen />
           <Settings />
           <Notice />
           <ElDivider direction="vertical" />

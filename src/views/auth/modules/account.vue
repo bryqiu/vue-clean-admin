@@ -2,6 +2,7 @@
 import { AppCopyright } from '@/components/common/app-copyright';
 import { PageTransitionEnum } from '@/enums';
 import { Logo } from '@/components/common/logo';
+import { AppFullScreen } from '@/components/common/app-full-screen';
 
 defineOptions({
   name: 'Account',
@@ -13,7 +14,9 @@ defineOptions({
     <!--头部-->
     <div class="flex items-center justify-between lg:justify-end">
       <Logo :is-click="false" class="block lg:hidden" />
-      <ActionButton icon="ri:color-filter-line" />
+      <div class="flex items-center gap-x-2">
+        <AppFullScreen />
+      </div>
     </div>
     <!--内容-->
     <div class="flex-1 flex justify-center items-center">
