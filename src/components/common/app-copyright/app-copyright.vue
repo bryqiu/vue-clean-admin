@@ -3,6 +3,8 @@ import dayjs from 'dayjs';
 import { isArray, isEmpty } from '@/utils';
 import { computed } from 'vue';
 import { ElLink } from 'element-plus';
+import { twMerge } from 'tailwind-merge';
+
 defineOptions({
   name: 'AppCopyright',
 });
@@ -27,12 +29,18 @@ interface AppCopyrightProps {
    * @default false
    */
   whole?: boolean;
+  /**
+   * 文本类
+   * @default ''
+   */
+  textClass?: string;
 }
 
 const props = withDefaults(defineProps<AppCopyrightProps>(), {
   year: dayjs().year(),
   link: '',
   whole: false,
+  textClass: '',
 });
 
 /** 格式化年份 */
@@ -45,7 +53,7 @@ const formatYearValue = computed(() => {
 </script>
 
 <template>
-  <div class="text-xs text-el-text-secondary w-full text-center">
+  <div :class="twMerge('text-xs text-el-text-secondary w-full text-center', textClass)">
     <span class="pr-1.5">Copyright © {{ formatYearValue }}</span>
     <span v-if="isEmpty(link)">{{ owner }}</span>
     <ElLink v-else type="primary" :href="link" target="_blank" v-bind="$attrs" class="!text-xs">
