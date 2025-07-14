@@ -38,6 +38,7 @@ export default [
         GetObjectKey: true,
         GetObjectValues: true,
         ColorWeight: true,
+        Direction: true,
         ...autoImport.globals,
       },
     },

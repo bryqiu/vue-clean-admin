@@ -4,6 +4,9 @@ declare global {
   /** 对齐模式 */
   type AlignMode = 'horizontal' | 'vertical';
 
+  /** 方向 */
+  type Direction = 'horizontal' | 'vertical';
+
   /** 面包屑样式类型 */
   type BreadcrumbStyleType = 'default' | 'arrow' | 'parallelogram';
 
