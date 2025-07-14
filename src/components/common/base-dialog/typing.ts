@@ -4,7 +4,7 @@ interface ActionBtn extends Partial<ButtonProps> {
   onClick: () => void;
 }
 
-export interface BaseDialogProps extends Partial<Omit<DialogProps, 'modelValue'>> {
+export interface BaseDialogProps {
   /**
    * 标题
    * @default '标题'

@@ -67,10 +67,10 @@ const dialogAttrs = computed(() => {
  */
 const cancelBtnAttrs = computed(() => {
   // 默认属性
-  const defaultAttrs: Partial<ButtonProps> = {
+  const defaultProps: Partial<ButtonProps> = {
     plain: true,
   };
-  return Object.assign(defaultAttrs, props.cancelBtnProps);
+  return Object.assign(defaultProps, props.cancelBtnProps);
 });
 
 /**
@@ -78,10 +78,10 @@ const cancelBtnAttrs = computed(() => {
  */
 const confirmBtnAttrs = computed(() => {
   // 默认属性
-  const defaultAttrs: Partial<ButtonProps> = {
+  const defaultProps: Partial<ButtonProps> = {
     type: 'primary',
   };
-  return Object.assign(defaultAttrs, props.confirmBtnProps);
+  return Object.assign(defaultProps, props.confirmBtnProps);
 });
 
 /**
