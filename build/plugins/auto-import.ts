@@ -10,7 +10,11 @@ export const autoImportPluginConfig = () => {
         '@/store/modules/user': ['useUserStore'],
       },
     ],
-    dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/store/hooks')}`],
+    dirs: [
+      `${pathResolve('src/hooks')}`,
+      `${pathResolve('src/store/hooks')}`,
+      `${pathResolve('src/components/systems/settings/hooks')}`,
+    ],
     dts: `src/typings/auto-imports.d.ts`, // 生成相应.d.ts文件的文件路径
     eslintrc: {
       enabled: true,

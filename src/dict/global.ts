@@ -9,7 +9,7 @@ export const switchOptions: BaseOptions<boolean>[] = [
   },
 ];
 
-export const whetherOptions: (BaseOptions<boolean> & { disabled?: boolean })[] = [
+export const whetherOptions: BaseOptions<boolean>[] = [
   {
     label: '是',
     value: true,
@@ -20,17 +20,13 @@ export const whetherOptions: (BaseOptions<boolean> & { disabled?: boolean })[] =
   },
 ];
 
-export const breadcrumbStyleOptions: BaseOptions<BreadcrumbStyleType>[] = [
+export const showOptions: BaseOptions<boolean>[] = [
   {
-    label: '默认',
-    value: 'default',
+    label: '显示',
+    value: true,
   },
   {
-    label: '箭头',
-    value: 'arrow',
-  },
-  {
-    label: '平行四边形',
-    value: 'parallelogram',
+    label: '隐藏',
+    value: false,
   },
 ];
