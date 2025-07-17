@@ -7,7 +7,7 @@ import { Settings } from '../components/settings';
 import { Breadcrumb } from '../components/breadcrumb';
 import { ToggleCollapse } from '../components/toggle-collapse';
 import { ToggleAccordion } from '../components/toggle-accordion';
-import { AppThemeDropdown } from '@/components/common/app-theme';
+import { AppTheme } from '@/components/common/app-theme';
 
 const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useShareSettings();
 const { getCurrentSidebarWidth, getCurrentHeaderHeight } = useLayoutSettings();
@@ -33,7 +33,7 @@ const { getCurrentSidebarWidth, getCurrentHeaderHeight } = useLayoutSettings();
         </div>
         <!--头部-右侧-->
         <div class="flex items-center gap-x-3">
-          <AppThemeDropdown />
+          <AppTheme />
           <AppFullScreen />
           <Settings />
           <Notice />

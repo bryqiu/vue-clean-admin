@@ -5,7 +5,7 @@ import { ThemeModeEnum } from '@/enums';
 import { ElPopover } from 'element-plus';
 
 defineOptions({
-  name: 'AppThemeDropdown',
+  name: 'AppTheme',
 });
 
 const { currentThemeMode } = useThemeSettings();
@@ -31,6 +31,8 @@ const handleChangeThemeMode = (value: ThemeModeEnum) => {
     :show-arrow="false"
     :popper-style="{ borderRadius: 'var(--app-round)' }"
     placement="bottom-end"
+    popper-class="app-theme-popover"
+    :width="120"
   >
     <template #reference>
       <div>
@@ -42,22 +44,23 @@ const handleChangeThemeMode = (value: ThemeModeEnum) => {
         <div
           v-for="item in themeModeOptions"
           :key="item.value"
-          class="flex justify-between items-center rounded-lg px-2 py-1.5 cursor-pointer hover:bg-el-fill-light"
+          class="flex items-center rounded-lg px-2 py-1.5 text-el-text-primary cursor-pointer hover:bg-el-fill-default"
+          :class="{ 'bg-el-fill-default': item.value === currentThemeMode }"
           @click="handleChangeThemeMode(item.value)"
         >
           <div class="flex items-center gap-x-2">
             <IconifyIcon :name="item.icon" class="text-base" />
-            <span class="text-sm font-medium">{{ item.label }}</span>
+            <span class="text-sm">{{ item.enLabel }}</span>
           </div>
-          <IconifyIcon
-            v-if="item.value === currentThemeMode"
-            name="ri:focus-3-line"
-            class="text-sm text-el-text-placeholder"
-          />
         </div>
       </div>
     </template>
   </ElPopover>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+.el-popover.el-popper.app-theme-popover {
+  min-width: 120px;
+  padding: 4px;
+}
+</style>
