@@ -1,1 +1,1 @@
-export { default as SettingDialog } from './settings.vue';
+export { default as SettingDrawer } from './settings.vue';

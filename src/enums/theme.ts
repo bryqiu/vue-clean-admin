@@ -13,5 +13,5 @@ export enum VisualModeEnum {
   /** 色弱模式 */
   WEAK = 'weak',
   /** 标准模式 */
-  NORMAL = '',
+  NORMAL = 'normal',
 }

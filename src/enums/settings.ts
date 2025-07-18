@@ -1,9 +1,5 @@
-export const SettingValueEnum = {
-  ACCOUNT: 'account',
-  SECURITY: 'security',
+export const SettingModuleEnum = {
   LAYOUT: 'layout',
   THEME: 'theme',
-  COPYRIGHT: 'copyright',
   SHARE: 'share',
-  ABOUT: 'about',
 } as const;

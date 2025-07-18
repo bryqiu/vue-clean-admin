@@ -1,19 +1,11 @@
-import { PageTransitionEnum, SettingValueEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
-import {
-  About,
-  Account,
-  Copyright,
-  Layout,
-  Security,
-  Share,
-  Theme,
-} from '@/components/systems/settings/modules';
+import { PageTransitionEnum, SettingModuleEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
+import { Layout, Share, Theme } from '@/components/systems/settings/modules';
 import type { Component } from 'vue';
 import { defaultSettings } from '@/store/config';
 
 /* ======================== 设置 ======================== */
 
-interface SettingOption extends BaseOptions<GetObjectValues<typeof SettingValueEnum>> {
+interface SettingOption extends BaseOptions<GetObjectValues<typeof SettingModuleEnum>> {
   component: Component;
   icon: string;
   description?: string;
@@ -22,46 +14,22 @@ interface SettingOption extends BaseOptions<GetObjectValues<typeof SettingValueE
 
 export const settingOptions: SettingOption[] = [
   {
-    label: '账号信息',
-    value: SettingValueEnum.ACCOUNT,
-    icon: 'ri:user-line',
-    component: Account,
-  },
-  {
-    label: '安全设置',
-    value: SettingValueEnum.SECURITY,
-    icon: 'ri:shield-keyhole-line',
-    component: Security,
-  },
-  {
-    label: '布局管理',
-    value: SettingValueEnum.LAYOUT,
-    icon: 'ri:layout-3-line',
-    component: Layout,
-  },
-  {
     label: '主题偏好',
-    value: SettingValueEnum.THEME,
+    value: SettingModuleEnum.THEME,
     icon: 'ri:color-filter-ai-line',
     component: Theme,
   },
   {
+    label: '布局管理',
+    value: SettingModuleEnum.LAYOUT,
+    icon: 'ri:layout-3-line',
+    component: Layout,
+  },
+  {
     label: '共享设置',
-    value: SettingValueEnum.SHARE,
+    value: SettingModuleEnum.SHARE,
     icon: 'ri:share-line',
     component: Share,
-  },
-  {
-    label: '版权声明',
-    value: SettingValueEnum.COPYRIGHT,
-    icon: 'ri:copyright-line',
-    component: Copyright,
-  },
-  {
-    label: '关于系统',
-    value: SettingValueEnum.ABOUT,
-    icon: 'ri:information-2-line',
-    component: About,
   },
 ];
 
@@ -75,47 +43,48 @@ type PageTransition = {
 /** 页面转场动画 */
 export const PageTransitionOptions: PageTransition[] = [
   {
+    label: '无动画',
     options: [
       {
-        label: '无动画',
+        label: '无',
         value: PageTransitionEnum.NONE,
       },
     ],
   },
   {
-    label: '淡入淡出效果',
+    label: '淡入淡出动画',
     options: [
       {
-        label: '淡出淡出(基础)',
+        label: '基础',
         value: PageTransitionEnum.FADE_BASE,
       },
       {
-        label: '淡入淡出(上)',
+        label: '向上',
         value: PageTransitionEnum.FADE_UP,
       },
       {
-        label: '淡入淡出(下)',
+        label: '向下',
         value: PageTransitionEnum.FADE_DOWN,
       },
       {
-        label: '淡入淡出(右)',
+        label: '向右',
         value: PageTransitionEnum.FADE_RIGHT,
       },
     ],
   },
   {
-    label: '缩放效果',
+    label: '缩放动画',
     options: [
       {
-        label: '缩放(基础)',
+        label: '基础',
         value: PageTransitionEnum.SCALE_BASE,
       },
       {
-        label: '缩放(上)',
+        label: '向上',
         value: PageTransitionEnum.SCALE_UP,
       },
       {
-        label: '缩放(下)',
+        label: '向下',
         value: PageTransitionEnum.SCALE_DOWN,
       },
     ],
@@ -124,11 +93,11 @@ export const PageTransitionOptions: PageTransition[] = [
     label: '其他动画',
     options: [
       {
-        label: '旋转效果',
+        label: '旋转',
         value: PageTransitionEnum.ROTATE_BASE,
       },
       {
-        label: '翻转效果',
+        label: '翻转',
         value: PageTransitionEnum.FLIP_BASE,
       },
     ],
@@ -138,25 +107,33 @@ export const PageTransitionOptions: PageTransition[] = [
 /* ======================== 主题 ======================== */
 
 interface ModeOption extends BaseOptions<ThemeModeEnum> {
+  enLabel: string;
   icon: string;
+  modeIcon: string;
 }
 
 /** 主题模式 */
 export const themeModeOptions: ModeOption[] = [
   {
-    label: 'Light',
+    enLabel: 'Light',
+    label: '明亮模式',
     value: ThemeModeEnum.LIGHT,
     icon: 'ri:sun-line',
+    modeIcon: 'theme-light',
   },
   {
-    label: 'Dark',
+    enLabel: 'Dark',
+    label: '暗黑模式',
     value: ThemeModeEnum.DARK,
     icon: 'ri:moon-line',
+    modeIcon: 'theme-dark',
   },
   {
-    label: 'System',
+    enLabel: 'System',
+    label: '跟随系统',
     value: ThemeModeEnum.SYSTEM,
-    icon: 'ri:color-filter-ai-line',
+    icon: 'ri:computer-line',
+    modeIcon: 'theme-system',
   },
 ];
 
@@ -215,6 +192,14 @@ export const presetPrimaryColorOptions: BaseOptions<string>[] = [
   {
     label: '荧光橙',
     value: '#ff8a00',
+  },
+  {
+    label: '孔雀蓝',
+    value: '#0eb0c9',
+  },
+  {
+    label: '雾紫灰',
+    value: '#908686',
   },
 ];
 

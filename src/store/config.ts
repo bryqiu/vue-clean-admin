@@ -23,8 +23,8 @@ export const storeModulesNames = {
 /** 默认主题设置 */
 const defaultTheme: Theme = {
   currentThemeMode: ThemeModeEnum.LIGHT, // 主题模式
-  primaryColor: '#1c82f2', // 主色调
-  pageTransitionName: PageTransitionEnum.FADE_DOWN, // 路由切换动画
+  primaryColor: '#3a77ef', // 主色调
+  pageTransitionName: PageTransitionEnum.FADE_RIGHT, // 路由切换动画
   visualMode: VisualModeEnum.NORMAL, // 视觉模式
 } as const;
 

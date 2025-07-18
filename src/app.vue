@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { SettingDialog } from '@/components/systems/settings';
 import { ElConfigProvider } from 'element-plus';
 
 const { getThemeSettings, setVisualMode, toggleThemeMode, setPrimaryColor } = useSettingsStore();
@@ -19,7 +18,6 @@ onMounted(() => {
 <template>
   <ElConfigProvider>
     <RouterView />
-    <SettingDialog />
   </ElConfigProvider>
 </template>
 

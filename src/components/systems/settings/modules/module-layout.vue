@@ -1,29 +1,22 @@
 <script setup lang="ts">
-import { WidgetBox, WidgetIntro } from '../widgets';
-import { ElSegmented } from 'element-plus';
-import { computed } from 'vue';
+import { WidgetCell } from '../widgets';
+import { ElSwitch } from 'element-plus';
 
 defineOptions({
   name: 'ModuleLayout',
 });
 
-const { getActiveSettingOptionByValue } = useSettingState();
-
-const layoutOption = computed(() => {
-  return {
-    label: getActiveSettingOptionByValue('layout')?.label || '--',
-    description: getActiveSettingOptionByValue('layout')?.description,
-  };
-});
+const { isMenuCollapse, isMenuAccordion } = useLayoutSettings();
 </script>
 
 <template>
-  <div class="w-full">
-    <WidgetIntro :title="layoutOption.label" :desc="layoutOption.description" />
-    <WidgetBox
-      title="是否折叠菜单"
-      desc="切换左侧菜单栏的折叠与展开状态，优化空间利用与操作便捷性。"
-    />
+  <div class="flex flex-col gap-y-3">
+    <WidgetCell title="是否折叠侧边栏" desc="控制侧边栏的折叠与展开状态，优化空间利用与操作便捷性">
+      <ElSwitch v-model="isMenuCollapse" />
+    </WidgetCell>
+    <WidgetCell title="只允许展开一个子菜单" desc="侧边栏-菜单-只允许展开一个子菜单">
+      <ElSwitch v-model="isMenuAccordion" />
+    </WidgetCell>
   </div>
 </template>
 

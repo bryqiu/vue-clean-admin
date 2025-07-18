@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { useSettingState } from '@/components/systems/settings/hooks/use-setting-state';
+import { SettingDrawer } from '@/components/systems/settings';
+import { ref } from 'vue';
 
 defineOptions({
   name: 'Settings',
 });
 
-const { openSettingDialog } = useSettingDialog();
-const { setActiveSettingValue } = useSettingState();
+const settingDrawerRef = ref<InstanceType<typeof SettingDrawer>>();
 
-const openSetting = () => {
-  setActiveSettingValue('layout');
-  openSettingDialog();
+const openSettingDrawer = () => {
+  settingDrawerRef.value?.openSettingDrawer();
 };
 </script>
 
 <template>
   <div>
-    <ActionButton icon="ri:settings-6-line" @click="openSetting" />
+    <ActionButton icon="ri:settings-6-line" @click="openSettingDrawer" />
+    <SettingDrawer ref="settingDrawerRef" />
   </div>
 </template>
 
