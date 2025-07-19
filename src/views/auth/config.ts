@@ -1,7 +1,7 @@
 export const AUTH_INFO_MAP = {
   ACCOUNT: {
-    title: '👋 嗨，近来可好！',
-    subTitle: '欢迎来到 Clean Admin，输入账号信息以继续',
+    title: '👋 新的旅程，从这里出发',
+    subTitle: '欢迎使用 Clean Admin，输入账号信息以继续',
   },
   SMS: {
     title: '手机验证码登录',
