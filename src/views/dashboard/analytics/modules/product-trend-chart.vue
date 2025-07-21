@@ -149,7 +149,7 @@ onMounted(() => {
 
 <template>
   <BaseContainer title="商品交易趋势分析" description="展示全年各月份交易额走势及波动情况">
-    <div ref="chartInstance" class="w-full h-64" />
+    <div ref="chartInstance" class="w-full h-64 2xl:h-80" />
   </BaseContainer>
 </template>
 
