@@ -64,11 +64,15 @@ const trendTextColor = computed(() => {
 </script>
 
 <template>
-  <div class="size-full bg-el-bg-overlay rounded-xl flex flex-col shadow px-4 py-4 gap-y-2">
+  <div
+    class="size-full bg-el-fill-blank rounded-lg flex flex-col px-4 py-4 gap-y-2 2xl:gap-y-3 dark:bg-el-bg-overlay shadow"
+  >
     <div class="flex justify-between">
-      <div class="w-4/5 flex flex-col gap-y-7">
+      <div class="w-4/5 flex flex-col gap-y-7 2xl:gap-y-10">
         <span class="text-sm text-el-text-primary font-medium">{{ title }}</span>
-        <span class="text-2xl font-bold text-el-text-primary w-full">{{ numValue }}</span>
+        <span class="text-2xl font-bold text-el-text-primary w-full 2xl:text-3xl">{{
+          numValue
+        }}</span>
       </div>
       <div class="w-1/5 flex justify-center items-start">
         <div
@@ -86,7 +90,7 @@ const trendTextColor = computed(() => {
       <span class="flex-shrink-0">{{ `${compareLabel}` }}</span>
     </div>
     <div
-      class="size-full border-t border-el-border-light flex justify-between text-el-text-secondary text-xs"
+      class="w-full flex-1 border-t border-el-border-light flex justify-between text-el-text-secondary text-xs"
     >
       <div class="flex items-center gap-x-1 pt-1">
         <IconifyIcon name="ri:bar-chart-fill" />
