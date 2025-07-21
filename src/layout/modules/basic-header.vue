@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ElDivider, ElHeader } from 'element-plus';
 import { AppFullScreen } from '@/components/common/app-full-screen';
-import { UserMenuHeader } from '../components/user-menu';
+import { UserDropdownHeader } from '../components/user-dropdown';
 import { Notice } from '../components/notice';
 import { Settings } from '../components/settings';
 import { Breadcrumb } from '../components/breadcrumb';
@@ -38,7 +38,7 @@ const { getCurrentSidebarWidth, getCurrentHeaderHeight } = useLayoutSettings();
           <Settings />
           <Notice />
           <ElDivider direction="vertical" />
-          <UserMenuHeader />
+          <UserDropdownHeader />
         </div>
       </div>
     </ElHeader>

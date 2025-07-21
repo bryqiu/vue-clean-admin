@@ -4,7 +4,7 @@ import { ElAside } from 'element-plus';
 import { AppLogo } from '@/components/common/app-logo';
 import { SidebarMenu } from '../components/sidebar-menu/index';
 import { computed } from 'vue';
-import { UserMenuSidebar } from '../components/user-menu';
+import { UserDropdownSidebar } from '../components/user-dropdown';
 
 defineOptions({
   name: 'BasicSidebar',
@@ -30,7 +30,7 @@ const sidebarWidth = computed(() => {
       <SidebarMenu />
     </div>
     <div class="p-2">
-      <UserMenuSidebar />
+      <UserDropdownSidebar />
     </div>
   </ElAside>
 </template>
