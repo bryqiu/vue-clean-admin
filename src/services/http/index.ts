@@ -40,7 +40,7 @@ export class HttpClient {
   private currentConfig: CreateAxiosDefaults<ResponseResult> = {};
 
   constructor(config: CreateAxiosDefaults<ResponseResult> = {}) {
-    this.currentConfig = Object.assign(this.DEFAULT_CONFIG, config);
+    this.currentConfig = { ...this.DEFAULT_CONFIG, ...config };
     this.instance = axios.create(this.currentConfig);
     this.setupDefaultInterceptors();
   }
@@ -93,14 +93,14 @@ export class HttpClient {
   }
 
   async get<T = any>(config?: AxiosRequestConfig) {
-    const mergedConfig = Object.assign(config || {}, { method: 'GET' });
+    const mergedConfig = { ...(config || {}), method: 'GET' };
 
     const res = await this.instance.request<T>(mergedConfig);
     return res.data;
   }
 
   async post<T = any>(config?: AxiosRequestConfig) {
-    const mergedConfig = Object.assign(config || {}, { method: 'POST' });
+    const mergedConfig = { ...(config || {}), method: 'POST' };
     const res = await this.instance.request<T>(mergedConfig);
     console.log(res, 'res');
 
@@ -108,13 +108,13 @@ export class HttpClient {
   }
 
   async put<T = any>(config?: AxiosRequestConfig) {
-    const mergedConfig = Object.assign(config || {}, { method: 'PUT' });
+    const mergedConfig = { ...(config || {}), method: 'PUT' };
     const res = await this.instance.request<T>(mergedConfig);
     return res.data;
   }
 
   async delete<T = any>(config?: AxiosRequestConfig) {
-    const mergedConfig = Object.assign(config || {}, { method: 'DELETE' });
+    const mergedConfig = { ...(config || {}), method: 'DELETE' };
     const res = await this.instance.request<T>(mergedConfig);
     return res.data;
   }

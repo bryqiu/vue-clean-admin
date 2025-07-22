@@ -81,7 +81,7 @@ const getElImageProps = computed(() => {
     fit: 'cover',
   };
   const attrs = useAttrs();
-  return Object.assign(defaultImageProps, elImageProps, attrs);
+  return { ...defaultImageProps, ...elImageProps, ...attrs };
 });
 </script>
 

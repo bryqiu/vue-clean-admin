@@ -77,10 +77,9 @@ const isLocalIcon = computed(() => {
 const getIconifyIconProps = computed(() => {
   const defaultProps: Partial<OmitIconifyIconProps> = {};
   const iconifyProps = omit(props.iconifyIconProps, ['name']);
+  const iconifyClass = { class: twMerge('text-lg', props.iconifyClass) };
 
-  return Object.assign(defaultProps, iconifyProps, {
-    class: twMerge('text-lg', props.iconifyClass),
-  });
+  return { ...defaultProps, ...iconifyProps, ...iconifyClass };
 });
 
 /** 获取本地图标属性 */
@@ -91,7 +90,7 @@ const getLocalIconProps = computed(() => {
 
   const localProps = omit(props.localIconProps, ['name']);
 
-  return Object.assign(defaultProps, localProps);
+  return { ...defaultProps, ...localProps };
 });
 
 /** 获取提示框属性 */
@@ -99,7 +98,7 @@ const getTooltipProps = computed(() => {
   const defaultProps: Partial<ElTooltipProps> = {
     disabled: isEmpty(props.tipProps?.content),
   };
-  return Object.assign(defaultProps, props.tipProps);
+  return { ...defaultProps, ...props.tipProps };
 });
 
 /** 获取按钮属性 */
@@ -108,7 +107,7 @@ const getBtnProps = computed(() => {
   const defaultProps: Partial<ButtonProps> = {
     text: true,
   };
-  return Object.assign(defaultProps, props.btnProps, attrs);
+  return { ...defaultProps, ...props.btnProps, ...attrs };
 });
 
 /** 提示框实例 */

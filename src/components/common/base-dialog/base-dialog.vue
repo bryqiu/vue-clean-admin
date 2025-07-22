@@ -59,7 +59,7 @@ const dialogAttrs = computed(() => {
     showClose: false,
   };
 
-  return Object.assign(elDialogAttrs, defaultAttrs);
+  return { ...elDialogAttrs, ...defaultAttrs };
 });
 
 /**
@@ -70,7 +70,7 @@ const cancelBtnAttrs = computed(() => {
   const defaultProps: Partial<ButtonProps> = {
     plain: true,
   };
-  return Object.assign(defaultProps, props.cancelBtnProps);
+  return { ...defaultProps, ...props.cancelBtnProps };
 });
 
 /**
@@ -81,7 +81,7 @@ const confirmBtnAttrs = computed(() => {
   const defaultProps: Partial<ButtonProps> = {
     type: 'primary',
   };
-  return Object.assign(defaultProps, props.confirmBtnProps);
+  return { ...defaultProps, ...props.confirmBtnProps };
 });
 
 /**

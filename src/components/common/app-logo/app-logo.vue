@@ -48,7 +48,7 @@ const getLocalIconProps = computed(() => {
     size: 36,
   };
   const localIconProps = omit(props.localIconProps, ['name']);
-  return Object.assign(defaultProps, localIconProps);
+  return { ...defaultProps, ...localIconProps };
 });
 </script>
 
