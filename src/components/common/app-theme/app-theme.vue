@@ -44,8 +44,8 @@ const handleChangeThemeMode = (value: ThemeModeEnum) => {
         <div
           v-for="item in themeModeOptions"
           :key="item.value"
-          class="flex items-center rounded-lg px-2 py-1.5 text-el-text-primary cursor-pointer hover:bg-el-fill-default"
-          :class="{ 'bg-el-fill-default': item.value === currentThemeMode }"
+          class="flex items-center rounded-lg px-2 py-1.5 text-el-text-primary cursor-pointer hover:bg-el-fill"
+          :class="{ 'bg-el-fill': item.value === currentThemeMode }"
           @click="handleChangeThemeMode(item.value)"
         >
           <div class="flex items-center gap-x-2">

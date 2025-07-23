@@ -48,7 +48,7 @@ const refreshIcon = h(IconifyIcon, {
 </script>
 
 <template>
-  <div class="size-full flex items-center justify-center bg-el-bg-default rounded-lg">
+  <div class="size-full flex items-center justify-center bg-el-bg rounded-lg">
     <div class="flex flex-col items-center gap-x-2">
       <div>
         <div class="flex flex-col items-center gap-y-4">

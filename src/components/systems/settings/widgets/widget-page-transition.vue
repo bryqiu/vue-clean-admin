@@ -44,7 +44,7 @@ const setPageTransitionName = (name: PageTransitionEnum) => {
               @click="setPageTransitionName(transitionItem.value)"
             >
               <div
-                class="size-full bg-el-fill-default rounded-lg"
+                class="size-full bg-el-fill rounded-lg"
                 :style="{ animation: `${transitionItem.value}-view 2s infinite` }"
               />
             </div>

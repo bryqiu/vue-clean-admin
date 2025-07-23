@@ -40,7 +40,7 @@ const setThemeMode = (mode: ThemeModeEnum) => {
         <IconifyIcon :name="themeMode.icon" />
         <span>{{ themeMode.label }}</span>
       </div>
-      <div class="flex-1 bg-el-fill-default p-2 rounded-b-lg">
+      <div class="flex-1 bg-el-fill p-2 rounded-b-lg">
         <LocalIcon :name="themeMode.modeIcon" :size="110" />
       </div>
     </div>

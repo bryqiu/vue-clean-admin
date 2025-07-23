@@ -4,27 +4,27 @@ import {
   EL_BG_WEIGHT,
   EL_BORDER_WEIGHT,
   EL_FILL_WEIGHT,
-  EL_PREFIX,
   EL_PRIMARY_COLOR_WEIGHT,
-  EL_SHADOW_WEIGHT,
   EL_TEXT_WEIGHT,
 } from './constants';
 
 /**
- * 生成 Tailwind 颜色阶
- * @param colorType 色彩类型
- * @param weight 权重列表
+ * 生成 Element Plus 主色、辅助色-色阶(primary、success、warning、danger、info)
+ * @param colorType 主色、辅助色类型
+ * @param weights 权重
  * @returns 颜色色阶
  */
-export function generateTailwindColorScale(
+export function generateElPrimaryScale(
   colorType: ElColorType = 'primary',
-  weight: number[],
+  weights: number[],
 ): Record<number | string, string> {
   const colorVariableScale: Record<number | string, string> = {};
 
   colorVariableScale.DEFAULT = `var(--el-color-${colorType})`;
 
-  weight.forEach((weight) => {
+  colorVariableScale['dark-200'] = `var(--el-color-${colorType}-dark-2)`;
+
+  weights.forEach((weight) => {
     colorVariableScale[weight] = `var(--el-color-${colorType}-light-${weight / 100})`;
   });
 
@@ -32,69 +32,27 @@ export function generateTailwindColorScale(
 }
 
 /**
- * 通用的 Tailwind 主题配置
- * @param colorType 颜色类型
- * @param weight 权重列表
+ * 生成 Element Plus 中性色-色阶
+ * @param colorType 中性色类型(border、bg、fill、shadow...)
+ * @param weights 权重列表
  * @param hasDefault 是否包含默认值
  * @returns 颜色色阶
  */
-function generateTailwindScale(
+export function generateElThemeScale(
   colorType: string,
-  weight: number[] | string[],
+  weights: number[] | string[],
   hasDefault: boolean = true,
 ): Record<number | string, string> {
   const colorVariableScale: Record<number | string, string> = {};
 
-  hasDefault && (colorVariableScale.default = `var(--el-${colorType}-color)`);
+  hasDefault && (colorVariableScale.DEFAULT = `var(--el-${colorType}-color)`);
 
-  weight.forEach((weight) => {
+  weights.forEach((weight) => {
     colorVariableScale[weight] = `var(--el-${colorType}-color-${weight})`;
   });
 
   return colorVariableScale;
 }
-
-function withPrefix<T extends Record<string, any>>(obj: T, prefix: string): Record<string, any> {
-  return Object.fromEntries(Object.entries(obj).map(([key, value]) => [`${prefix}${key}`, value]));
-}
-
-const themeColorScales = {
-  /** 主题色 */
-  primary: generateTailwindColorScale('primary', EL_PRIMARY_COLOR_WEIGHT),
-  /** 成功色 */
-  success: generateTailwindColorScale('success', EL_ASSISTANT_COLOR_WEIGHT),
-  /** 警告色 */
-  warning: generateTailwindColorScale('warning', EL_ASSISTANT_COLOR_WEIGHT),
-  /** 危险色 */
-  danger: generateTailwindColorScale('danger', EL_ASSISTANT_COLOR_WEIGHT),
-  /** 信息色 */
-  info: generateTailwindColorScale('info', EL_ASSISTANT_COLOR_WEIGHT),
-};
-
-/** 边框色阶 */
-const borderScales = {
-  border: generateTailwindScale('border', EL_BORDER_WEIGHT),
-};
-
-/** 背景色阶 */
-const bgScales = {
-  bg: generateTailwindScale('bg', EL_BG_WEIGHT),
-};
-
-/** 填充色阶 */
-const fillScales = {
-  fill: generateTailwindScale('fill', EL_FILL_WEIGHT),
-};
-
-/** 阴影色阶 */
-const shadowScales = {
-  shadow: generateTailwindScale('shadow', EL_SHADOW_WEIGHT),
-};
-
-/** 文本色阶 */
-const textScales = {
-  text: generateTailwindScale('text', EL_TEXT_WEIGHT, false),
-};
 
 /** 圆角色阶 */
 const roundScales = {
@@ -111,24 +69,37 @@ const roundScales = {
 
 export const tailwindThemeConfig: Config['theme'] = {
   extend: {
-    colors: withPrefix(themeColorScales, EL_PREFIX),
+    colors: {
+      /** 主题色 */
+      'el-primary': generateElPrimaryScale('primary', EL_PRIMARY_COLOR_WEIGHT),
+      /** 成功色 */
+      'el-success': generateElPrimaryScale('success', EL_ASSISTANT_COLOR_WEIGHT),
+      /** 警告色 */
+      'el-warning': generateElPrimaryScale('warning', EL_ASSISTANT_COLOR_WEIGHT),
+      /** 危险色 */
+      'el-danger': generateElPrimaryScale('danger', EL_ASSISTANT_COLOR_WEIGHT),
+      /** 信息色 */
+      'el-info': generateElPrimaryScale('info', EL_ASSISTANT_COLOR_WEIGHT),
+    },
     textColor: {
-      ...withPrefix(textScales, EL_PREFIX),
+      /** 文本色阶 */
+      'el-text': generateElThemeScale('text', EL_TEXT_WEIGHT, false),
     },
     borderColor: {
-      ...withPrefix(borderScales, EL_PREFIX),
+      /** 边框色阶 */
+      'el-border': generateElThemeScale('border', EL_BORDER_WEIGHT),
     },
     fill: {
-      ...withPrefix(fillScales, EL_PREFIX),
+      /** 填充色阶 */
+      'el-fill': generateElThemeScale('fill', EL_FILL_WEIGHT),
     },
     backgroundColor: ({ theme }) => {
       return {
+        /** 填充色阶 */
         ...theme('fill'),
-        ...withPrefix(bgScales, EL_PREFIX),
+        /** 背景色阶 */
+        'el-bg': generateElThemeScale('bg', EL_BG_WEIGHT),
       };
-    },
-    boxShadow: {
-      ...withPrefix(shadowScales, EL_PREFIX),
     },
   },
   borderRadius: roundScales,
