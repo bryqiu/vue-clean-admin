@@ -86,7 +86,7 @@ const getElImageProps = computed(() => {
 </script>
 
 <template>
-  <div class="app-user-avatar relative size-[34px] flex shrink-0" :class="userAvatarClass">
+  <div :class="twMerge('app-user-avatar relative size-[34px] flex shrink-0', userAvatarClass)">
     <ElImage
       :src
       v-bind="getElImageProps"
