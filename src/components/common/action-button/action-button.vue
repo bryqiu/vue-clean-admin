@@ -162,5 +162,9 @@ defineExpose({
   &.is-text {
     color: var(--el-text-color-primary);
   }
+
+  &.el-button {
+    margin-left: 0;
+  }
 }
 </style>
