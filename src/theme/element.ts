@@ -3,8 +3,8 @@ import { getDarkColor, getLightColor, setHtmlProperty } from './helpers';
 
 /**
  * 处理 Element Plus 主题颜色
- * @param theme 主题颜色
- * @param isDark 是否为暗色主题
+ * @param color 主题颜色
+ * @param isDark 是否暗黑模式
  */
 export function setElementPrimaryColor(color: string, isDark: boolean = false): void {
   setHtmlProperty('--el-color-primary', color);
