@@ -25,10 +25,19 @@ div.el-card {
   --el-segmented-item-selected-bg-color: var(--el-bg-color);
   --el-segmented-item-selected-disabled-bg-color: var(--el-bg-color);
   --el-border-radius-base: var(--app-round);
+  --el-segmented-item-bg-color: var(--el-fill-color);
 
   label.el-segmented__item {
     &.is-disabled {
       color: var(--el-text-color-disabled);
+    }
+
+    &.is-selected {
+      font-weight: 600;
+      box-shadow:
+        0 1px 2px 0 rgb(0 0 0 / 3%),
+        0 1px 6px -1px rgb(0 0 0 / 2%),
+        0 2px 4px 0 rgb(0 0 0 / 2%);
     }
   }
 }
