@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ElDrawer, ElScrollbar, ElSegmented } from 'element-plus';
+import { ElDrawer, ElSegmented } from 'element-plus';
 import { computed, ref } from 'vue';
 import { settingOptions } from '@/dict';
 import { SettingModuleEnum } from '@/enums';
