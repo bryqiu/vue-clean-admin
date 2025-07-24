@@ -3,28 +3,37 @@ import { ElPopover } from 'element-plus';
 import { AppUserAvatar } from '@/components/common/app-user-avatar';
 import userAvatar from '@/assets/images/user-avatar.jpg';
 import { MenuCell, MenuGroup } from './widgets';
+import { computed, useAttrs } from 'vue';
+import type { PopoverProps } from 'element-plus';
 
 defineOptions({
   name: 'UserDropdown',
+});
+
+const getPopoverProps = computed(() => {
+  const attrs = useAttrs();
+
+  const defaultProps: Partial<PopoverProps> = {
+    width: 260,
+    showArrow: false,
+    popperStyle: { borderRadius: 'var(--app-round)' },
+    popperClass: 'user-dropdown',
+  };
+
+  return { ...defaultProps, ...attrs };
 });
 
 const openLink = (url: string) => window.open(url, '_blank');
 </script>
 
 <template>
-  <ElPopover
-    :width="260"
-    :show-arrow="false"
-    :popper-style="{ borderRadius: 'var(--app-round)' }"
-    v-bind="$attrs"
-    popper-class="user-popover"
-  >
+  <ElPopover v-bind="getPopoverProps">
     <template #reference>
       <slot />
     </template>
     <template #default>
       <div class="flex flex-col">
-        <div class="p-2 space-y-2">
+        <div class="p-2">
           <!--用户信息-->
           <div class="flex items-center gap-x-3">
             <AppUserAvatar :src="userAvatar" user-avatar-class="size-12" />
@@ -35,10 +44,10 @@ const openLink = (url: string) => window.open(url, '_blank');
           </div>
           <!--登录时间-->
           <div
-            class="flex items-center p-2 bg-el-primary-900 rounded-lg text-xs text-el-primary w-full truncate"
+            class="flex items-center p-2 bg-el-primary-900 rounded-lg text-xs text-el-primary w-full truncate mt-3 mb-1"
           >
             <IconifyIcon name="ri:time-line" class="text-sm mr-1 shrink-0" />
-            <span>上次登录时间：</span>
+            <span>上次登录：</span>
             <span>{{ '2025/07/21 14:21:53' }}</span>
           </div>
         </div>
@@ -82,7 +91,7 @@ const openLink = (url: string) => window.open(url, '_blank');
 </template>
 
 <style lang="scss">
-.user-popover.el-popover.el-popper {
+.user-dropdown.el-popover.el-popper {
   padding: 0;
   box-shadow: var(--el-box-shadow);
 }
