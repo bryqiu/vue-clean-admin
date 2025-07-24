@@ -9,7 +9,18 @@ defineOptions({
 </script>
 
 <template>
-  <UserDropdown>
+  <UserDropdown
+    :popper-options="{
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [-110, 10],
+          },
+        },
+      ],
+    }"
+  >
     <div class="flex items-center gap-x-2">
       <AppUserAvatar :src="UserAvatar" user-avatar-class="cursor-pointer" />
     </div>
