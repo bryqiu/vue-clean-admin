@@ -3,8 +3,7 @@ import { h, reactive, ref } from 'vue';
 import { ElCheckbox, ElDivider, ElForm, ElFormItem, ElInput } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
 import { IconifyIcon } from '@/components/common/app-icon';
-import { AuthMethod, type AuthMethodProps, PolicyAgreement } from '../modules';
-import { PageHeader } from '../components';
+import { AuthContainer, AuthMode, type AuthModeProps, AuthPolicy } from '../components';
 import { AUTH_INFO_MAP } from '../config';
 import { ROUTE_NAMES } from '@/router/config';
 import { useRouter } from 'vue-router';
@@ -49,7 +48,7 @@ const goToForgetPassword = () => {
   });
 };
 
-const authMethodList = ref<AuthMethodProps['authMethodList']>([
+const authModeList = ref<AuthModeProps['authModeList']>([
   {
     label: '短信登录',
     value: ROUTE_NAMES.SMS_LOGIN,
@@ -73,70 +72,65 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <!--标题-->
-    <PageHeader v-bind="AUTH_INFO_MAP.ACCOUNT" />
+  <AuthContainer v-bind="AUTH_INFO_MAP.ACCOUNT">
+    <ElForm
+      ref="formInstance"
+      :model="formData"
+      :rules="rules"
+      label-width="auto"
+      label-position="top"
+      hide-required-asterisk
+    >
+      <ElFormItem prop="userName" label="账号">
+        <ElInput
+          v-model="formData.userName"
+          placeholder="请输入账号"
+          clearable
+          class="h-9"
+          :prefix-icon="accountIcon"
+        />
+      </ElFormItem>
+      <ElFormItem prop="password" label="密码">
+        <ElInput
+          v-model="formData.password"
+          placeholder="请输入密码"
+          clearable
+          class="h-9"
+          show-password
+          :prefix-icon="passwordIcon"
+        />
+      </ElFormItem>
+    </ElForm>
 
-    <div class="mt-8">
-      <ElForm
-        ref="formInstance"
-        :model="formData"
-        :rules="rules"
-        label-width="auto"
-        label-position="top"
-        hide-required-asterisk
-      >
-        <ElFormItem prop="userName">
-          <ElInput
-            v-model="formData.userName"
-            size="large"
-            placeholder="请输入账号"
-            clearable
-            :prefix-icon="accountIcon"
-          />
-        </ElFormItem>
-        <ElFormItem prop="password">
-          <ElInput
-            v-model="formData.password"
-            size="large"
-            placeholder="请输入密码"
-            clearable
-            show-password
-            :prefix-icon="passwordIcon"
-          />
-        </ElFormItem>
-      </ElForm>
-
-      <div class="flex items-center justify-between text-sm">
-        <div class="flex items-center gap-x-1">
-          <ElCheckbox v-model="isRemember" />
-          <span class="text-el-text-secondary">记住我</span>
-        </div>
-        <span class="text-el-primary cursor-pointer" @click="goToForgetPassword">忘记密码？</span>
+    <div class="flex items-center justify-between text-sm">
+      <div class="flex items-center gap-x-1">
+        <ElCheckbox v-model="isRemember" class="!h-4" />
+        <span class="text-el-text-secondary">记住我</span>
       </div>
+      <span class="text-el-primary cursor-pointer" @click="goToForgetPassword">忘记密码？</span>
+    </div>
 
-      <div class="w-full flex flex-col gap-y-2 mt-4">
-        <div>
-          <ElButton class="w-full" type="primary" size="large" @click="handleLogin">
-            <span class="tracking-[0.4em]">登录</span>
-          </ElButton>
-        </div>
-      </div>
-
-      <PolicyAgreement class="mt-4" />
-
-      <ElDivider border-style="dashed">
-        <span class="text-xs text-el-text-secondary">或</span>
-      </ElDivider>
-
-      <AuthMethod :auth-method-list />
-
-      <div class="flex items-center justify-center text-sm mt-6">
-        <span>还没有账号？</span>
-        <span class="text-el-primary cursor-pointer" @click="goToRegister">立即注册</span>
+    <div class="w-full flex flex-col gap-y-2 mt-4">
+      <div>
+        <ElButton class="w-full h-9" type="primary" @click="handleLogin">
+          <span class="tracking-[0.4em]">登录</span>
+        </ElButton>
       </div>
     </div>
-  </div>
+
+    <AuthPolicy class="mt-2" />
+
+    <ElDivider border-style="dashed">
+      <span class="text-xs text-el-text-secondary">或</span>
+    </ElDivider>
+
+    <AuthMode :auth-mode-list="authModeList" />
+
+    <div class="flex items-center justify-center text-xs mt-6">
+      <span>还没有账号？</span>
+      <span class="text-el-primary cursor-pointer" @click="goToRegister">立即注册</span>
+    </div>
+  </AuthContainer>
 </template>
 
 <style scoped lang="scss"></style>

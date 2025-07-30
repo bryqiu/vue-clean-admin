@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { PageHeader } from '../components';
-import { PolicyAgreement } from '../modules';
+import { AuthContainer } from '../components';
 import { AUTH_INFO_MAP } from '../config';
 import type { FormInstance, FormRules } from 'element-plus';
 import { ElForm, ElFormItem, ElInput } from 'element-plus';
@@ -50,40 +49,43 @@ const goToAccount = () => {
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <PageHeader v-bind="AUTH_INFO_MAP.REGISTER" />
-    <div class="mt-8">
-      <ElForm :model="formData" :rules="rules">
-        <ElFormItem prop="account">
-          <ElInput v-model="formData.account" placeholder="请输入账号" size="large" />
+  <AuthContainer v-bind="AUTH_INFO_MAP.REGISTER">
+    <div>
+      <ElForm
+        ref="formInstance"
+        :model="formData"
+        :rules="rules"
+        label-width="auto"
+        label-position="top"
+      >
+        <ElFormItem prop="account" label="账号">
+          <ElInput v-model="formData.account" placeholder="请输入账号" class="h-9" />
         </ElFormItem>
-        <ElFormItem prop="email">
-          <ElInput v-model="formData.email" placeholder="请输入邮箱" size="large" />
+        <ElFormItem prop="email" label="邮箱">
+          <ElInput v-model="formData.email" placeholder="请输入邮箱" class="h-9" />
         </ElFormItem>
-        <ElFormItem prop="password">
-          <ElInput v-model="formData.password" placeholder="请输入密码" size="large" />
+        <ElFormItem prop="password" label="密码">
+          <ElInput v-model="formData.password" placeholder="请输入密码" class="h-9" />
         </ElFormItem>
-        <ElFormItem prop="confirmPassword">
-          <ElInput v-model="formData.confirmPassword" placeholder="请确认密码" size="large" />
+        <ElFormItem prop="confirmPassword" label="确认密码">
+          <ElInput v-model="formData.confirmPassword" placeholder="请确认密码" class="h-9" />
         </ElFormItem>
       </ElForm>
     </div>
 
     <div class="mt-4 flex flex-col gap-y-2">
       <div>
-        <ElButton class="w-full" type="primary" size="large" @click="handleRegister">
+        <ElButton class="w-full h-9" type="primary" @click="handleRegister">
           <span class="tracking-[0.4em]">注册</span>
         </ElButton>
       </div>
       <div>
-        <ElButton class="w-full" plain size="large" @click="goToAccount">
+        <ElButton class="w-full h-9" plain @click="goToAccount">
           <span>已有账号？返回登录</span>
         </ElButton>
       </div>
     </div>
-
-    <PolicyAgreement class="mt-4" />
-  </div>
+  </AuthContainer>
 </template>
 
 <style scoped lang="scss"></style>

@@ -3,11 +3,10 @@ import { h, reactive, ref } from 'vue';
 import { ElButton, ElForm, ElFormItem, ElInput } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
 import { IconifyIcon } from '@/components/common/app-icon';
-import { PageHeader } from '../components';
+import { AuthContainer, AuthPolicy } from '../components';
 import { AUTH_INFO_MAP } from '../config';
 import { ROUTE_NAMES } from '@/router/config';
 import { useRouter } from 'vue-router';
-import { PolicyAgreement } from '../modules';
 
 defineOptions({
   name: 'SmsLogin',
@@ -62,48 +61,50 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <div>
-    <div class="flex flex-col">
-      <PageHeader v-bind="AUTH_INFO_MAP.SMS" />
-      <ElForm ref="formInstance" :model="formData" :rules="rules" class="mt-8">
-        <ElFormItem prop="phone">
-          <ElInput
-            v-model="formData.phone"
-            size="large"
-            placeholder="请输入手机号"
-            maxlength="11"
-            :prefix-icon="phoneIcon"
-            clearable
-          />
-        </ElFormItem>
-        <ElFormItem prop="code">
-          <ElInput
-            v-model="formData.code"
-            size="large"
-            placeholder="请输入验证码"
-            :prefix-icon="verifyIcon"
-          >
-            <template #suffix>
-              <ElButton type="primary" link size="large"> 获取验证码 </ElButton>
-            </template>
-          </ElInput>
-        </ElFormItem>
-      </ElForm>
+  <AuthContainer v-bind="AUTH_INFO_MAP.SMS">
+    <ElForm
+      ref="formInstance"
+      :model="formData"
+      label-width="auto"
+      label-position="top"
+      :rules="rules"
+    >
+      <ElFormItem prop="phone" label="手机号">
+        <ElInput
+          v-model="formData.phone"
+          class="h-9"
+          placeholder="请输入手机号"
+          maxlength="11"
+          :prefix-icon="phoneIcon"
+          clearable
+        />
+      </ElFormItem>
+      <ElFormItem prop="code" label="验证码">
+        <ElInput
+          v-model="formData.code"
+          class="h-9"
+          placeholder="请输入验证码"
+          :prefix-icon="verifyIcon"
+        >
+          <template #suffix>
+            <ElButton type="primary" link size="large"> 获取验证码 </ElButton>
+          </template>
+        </ElInput>
+      </ElFormItem>
+    </ElForm>
 
-      <PolicyAgreement class="mt-2" />
-
-      <div class="w-full flex flex-col gap-y-2 mt-6">
-        <div>
-          <ElButton class="w-full" type="primary" size="large" @click="handleLogin">
-            <span class="tracking-[0.4em]">登录</span>
-          </ElButton>
-        </div>
-        <div>
-          <ElButton plain size="large" class="w-full" @click="goToAccountLogin"> 返回 </ElButton>
-        </div>
+    <div class="w-full flex flex-col gap-y-2 mt-6">
+      <div>
+        <ElButton class="w-full h-9" type="primary" @click="handleLogin">
+          <span class="tracking-[0.4em]">登录</span>
+        </ElButton>
       </div>
+      <div>
+        <ElButton plain class="w-full h-9" @click="goToAccountLogin"> 返回 </ElButton>
+      </div>
+      <AuthPolicy class="mt-2" />
     </div>
-  </div>
+  </AuthContainer>
 </template>
 
 <style scoped lang="scss"></style>
