@@ -31,27 +31,63 @@ export function generateElPrimaryScale(
   return colorVariableScale;
 }
 
+interface ThemeScaleOptions {
+  /**
+   * 是否包含默认值
+   * @default true
+   */
+  hasDefault?: boolean;
+  /**
+   * 格式化函数，接收 colorType 和 weight 参数
+   */
+  format?: (colorType: string, weight: number | string) => string;
+  /**
+   * 自定义默认值的key
+   * @default DEFAULT
+   */
+  defaultKey?: string;
+}
+
 /**
  * 生成 Element Plus 中性色-色阶
  * @param colorType 中性色类型(border、bg、fill、shadow...)
  * @param weights 权重列表
- * @param hasDefault 是否包含默认值
+ * @param options 配置项
  * @returns 颜色色阶
  */
 export function generateElThemeScale(
   colorType: string,
   weights: number[] | string[],
-  hasDefault: boolean = true,
+  options?: ThemeScaleOptions,
 ): Record<number | string, string> {
+  const { hasDefault = true, format, defaultKey = 'DEFAULT' } = options || {};
+
+  const defaultFormat = (colorType: string, weight: number | string) =>
+    `var(--el-${colorType}-color${weight ? `-${weight}` : ''})`;
+
+  const currentFormatFn = format || defaultFormat;
+
   const colorVariableScale: Record<number | string, string> = {};
 
-  hasDefault && (colorVariableScale.DEFAULT = `var(--el-${colorType}-color)`);
+  if (hasDefault) {
+    colorVariableScale[defaultKey] = currentFormatFn(colorType, '');
+  }
 
   weights.forEach((weight) => {
-    colorVariableScale[weight] = `var(--el-${colorType}-color-${weight})`;
+    colorVariableScale[weight] = currentFormatFn(colorType, weight);
   });
 
   return colorVariableScale;
+}
+
+/**
+ * 为对象的所有键名添加前缀
+ * @param obj 要添加前缀的对象
+ * @param prefix 前缀
+ * @returns 添加前缀后的对象
+ */
+function addKeyPrefix<T extends Record<string, any>>(obj: T, prefix: string): Record<string, any> {
+  return Object.fromEntries(Object.entries(obj).map(([key, value]) => [`${prefix}${key}`, value]));
 }
 
 /** 圆角色阶 */
@@ -83,15 +119,24 @@ export const tailwindThemeConfig: Config['theme'] = {
     },
     textColor: {
       /** 文本色阶 */
-      'el-text': generateElThemeScale('text', EL_TEXT_WEIGHT, false),
+      'el-text': generateElThemeScale('text', EL_TEXT_WEIGHT, { hasDefault: false }),
+      'el-text-disabled': 'var(--el-text-color-placeholder)',
     },
     borderColor: {
       /** 边框色阶 */
       'el-border': generateElThemeScale('border', EL_BORDER_WEIGHT),
+      'el-border-disabled': 'var(--el-disabled-border-color)',
     },
     fill: {
       /** 填充色阶 */
       'el-fill': generateElThemeScale('fill', EL_FILL_WEIGHT),
+    },
+    boxShadow: {
+      /** 阴影色阶 */
+      'el-shadow': 'var(--el-box-shadow)',
+      'el-shadow-light': 'var(--el-box-shadow-light)',
+      'el-shadow-lighter': 'var(--el-box-shadow-lighter)',
+      'el-shadow-dark': 'var(--el-box-shadow-dark)',
     },
     backgroundColor: ({ theme }) => {
       return {
@@ -99,6 +144,9 @@ export const tailwindThemeConfig: Config['theme'] = {
         ...theme('fill'),
         /** 背景色阶 */
         'el-bg': generateElThemeScale('bg', EL_BG_WEIGHT),
+        'el-bg-disabled': 'var(--el-disabled-bg-color)',
+        'el-bg-mask': 'var(--el-mask-color)',
+        'el-bg-mask-extra-light': 'var(--el-mask-color-extra-light)',
       };
     },
   },

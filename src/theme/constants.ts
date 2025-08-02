@@ -21,6 +21,3 @@ export const EL_BG_WEIGHT = ['page', 'overlay'];
 
 /** Element Plus 填充权重 */
 export const EL_FILL_WEIGHT = [...EL_BORDER_WEIGHT, 'blank'];
-
-/** Element Plus 阴影权重 */
-export const EL_SHADOW_WEIGHT = ['light', 'lighter', 'dark'];
