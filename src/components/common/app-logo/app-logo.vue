@@ -32,11 +32,17 @@ interface LogoProps {
    * 视图类名
    */
   viewClass?: string;
+  /**
+   * 显示边框
+   * @default false
+   */
+  border?: boolean;
 }
 
 const props = withDefaults(defineProps<LogoProps>(), {
   showTitle: false,
   clickable: true,
+  border: false,
 });
 
 const appTitle = import.meta.env.VITE_APP_TITLE;
@@ -45,7 +51,7 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
 const getLocalIconProps = computed(() => {
   const defaultProps: LocalIconProps = {
     name: 'logo',
-    size: 36,
+    size: 24,
   };
   const localIconProps = omit(props.localIconProps, ['name']);
   return { ...defaultProps, ...localIconProps };
@@ -54,12 +60,21 @@ const getLocalIconProps = computed(() => {
 
 <template>
   <div :class="twMerge('flex items-center gap-x-2', clickable && 'cursor-pointer', viewClass)">
-    <LocalIcon v-bind="getLocalIconProps" />
+    <template v-if="border">
+      <div
+        class="size-8 flex items-center justify-center p-1 border border-el-border-light rounded-lg hover:bg-el-fill-light"
+      >
+        <LocalIcon v-bind="getLocalIconProps" />
+      </div>
+    </template>
+    <template v-else>
+      <LocalIcon v-bind="getLocalIconProps" />
+    </template>
     <Transition :name="PageTransitionEnum.NONE">
       <span
         v-show="showTitle"
         :class="
-          twMerge('text-xl font-semibold inline-block truncate text-el-text-primary', textClass)
+          twMerge('text-lg font-semibold inline-block truncate text-el-text-primary', textClass)
         "
         >{{ appTitle }}</span
       >
