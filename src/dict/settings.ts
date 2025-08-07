@@ -1,7 +1,15 @@
-import { PageTransitionEnum, SettingModuleEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
+import {
+  LayoutModeEnum,
+  PageTransitionEnum,
+  SettingModuleEnum,
+  ThemeModeEnum,
+  VisualModeEnum,
+} from '@/enums';
 import { Layout, Share, Theme } from '@/components/systems/settings/modules';
+import { ColLayout, SideLayout, TopLayout } from '@/layout/modules';
 import type { Component } from 'vue';
 import { defaultSettings } from '@/store/config';
+import type { SettingModeItemProps } from '@/components/systems/settings/components';
 
 /* ======================== 设置 ======================== */
 
@@ -34,6 +42,35 @@ export const settingOptions: SettingOption[] = [
 ];
 
 /* ======================== 布局 ======================== */
+
+interface LayoutModeOption
+  extends Pick<
+    SettingModeItemProps<GetObjectValues<typeof LayoutModeEnum>>,
+    'label' | 'modeIcon' | 'value'
+  > {
+  component: Component;
+}
+
+export const layoutModeOptions: LayoutModeOption[] = [
+  {
+    label: '侧边布局',
+    value: LayoutModeEnum.SIDE,
+    modeIcon: 'side-layout',
+    component: SideLayout,
+  },
+  {
+    label: '顶部布局',
+    value: LayoutModeEnum.TOP,
+    modeIcon: 'top-layout',
+    component: TopLayout,
+  },
+  {
+    label: '双列布局',
+    value: LayoutModeEnum.COL,
+    modeIcon: 'col-layout',
+    component: ColLayout,
+  },
+];
 
 type PageTransition = {
   label?: string;
@@ -106,7 +143,7 @@ export const PageTransitionOptions: PageTransition[] = [
 
 /* ======================== 主题 ======================== */
 
-interface ModeOption extends BaseOptions<ThemeModeEnum> {
+interface ModeOption extends Pick<SettingModeItemProps<ThemeModeEnum>, 'label' | 'value'> {
   enLabel: string;
   icon: string;
   modeIcon: string;
