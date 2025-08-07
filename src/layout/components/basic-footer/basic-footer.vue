@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'Notice',
+  name: 'BasicFooter',
 });
 </script>
 
 <template>
-  <ActionButton icon="mingcute:notification-line" />
+  <div>底部</div>
 </template>
 
 <style scoped lang="scss"></style>

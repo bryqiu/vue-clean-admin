@@ -41,8 +41,8 @@ type BreadcrumbStyleMap = {
 
 const props = withDefaults(defineProps<BreadcrumbProps>(), {
   replace: false,
-  isHideIcon: false,
   styleType: 'default',
+  isShowIcon: true,
 });
 
 const emit = defineEmits<BreadcrumbEmits>();
@@ -55,7 +55,6 @@ const breadcrumbList = computed(() =>
 /** 获取路由路径 */
 const getPath = (item: RouteLocationMatched): string | Object => {
   if (!item) return '';
-  if (item.meta?.isReadonlyBreadcrumb) return '';
   return { path: item.redirect ? item.redirect : item.path };
 };
 

@@ -1,4 +1,4 @@
-import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
+import { LayoutModeEnum, PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums';
 
 /** 主题设置 */
 export interface Theme {
@@ -28,6 +28,11 @@ export interface Theme {
 /** 布局设置 */
 export interface Layout {
   /**
+   * 当前布局模式
+   * @default sidebar
+   */
+  currentLayoutMode: GetObjectValues<typeof LayoutModeEnum>;
+  /**
    * 控制菜单是否折叠
    * @default false (默认展开)
    */
@@ -49,6 +54,11 @@ export interface Layout {
    * @default 64px
    */
   sidebarCollapseWidth: number;
+  /**
+   * 双栏布局-侧边栏宽度
+   * @default 262px
+   */
+  colSidebarWidth: number;
   /**
    * 头部高度
    * @default 56px

@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { ElContainer } from 'element-plus';
-import { BasicHeader, BasicMain, BasicSidebar } from './modules/index';
+import { computed } from 'vue';
+import { layoutModeOptions } from '@/dict';
+import { SettingDrawer } from '@/components/systems/settings';
+
+const { currentLayoutMode } = useLayoutSettings();
+
+const currentLayoutComponent = computed(() => {
+  return layoutModeOptions.find((item) => item.value === currentLayoutMode.value)?.component;
+});
 </script>
 
 <template>
-  <ElContainer class="h-full">
-    <BasicSidebar />
-    <ElContainer class="size-full !flex-col overflow-auto overflow-x-hidden">
-      <BasicHeader />
-      <BasicMain />
-      <!-- <BasicFooter /> -->
-    </ElContainer>
-  </ElContainer>
+  <div class="size-full">
+    <component :is="currentLayoutComponent" />
+    <SettingDrawer />
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

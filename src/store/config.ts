@@ -1,6 +1,6 @@
 import type { PluginOptions } from 'pinia-plugin-persistedstate';
 import type { Layout, Settings, Share, Theme } from '@/store/types';
-import { PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
+import { LayoutModeEnum, PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
 
 /** 默认持久化存储配置 */
 export const defaultStoreOptions: PluginOptions = {
@@ -30,9 +30,11 @@ const defaultTheme: Theme = {
 
 /** 默认布局设置 */
 const defaultLayout: Layout = {
+  currentLayoutMode: LayoutModeEnum.SIDE, // 当前布局模式
   isMenuCollapse: false, // 控制菜单是否折叠
   sidebarOpenedWidth: 224, // 左侧边栏展开时的宽度
-  sidebarCollapseWidth: 64, // 左侧边栏收缩时的宽度
+  sidebarCollapseWidth: 78, // 左侧边栏收缩时的宽度
+  colSidebarWidth: 262, // 双栏布局-侧边栏宽度
   headerHeight: 56, // 头部高度
   isMenuAccordion: false, // 控制菜单是否使用手风琴模式
 } as const;

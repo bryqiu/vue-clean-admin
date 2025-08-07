@@ -3,6 +3,7 @@ export * from './icon-flip';
 export * from './direction';
 export * from './transition';
 export * from './settings';
+export * from './layout';
 
 // 全局枚举
 export enum SortModeEnum {

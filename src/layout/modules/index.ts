@@ -1,5 +1,3 @@
-export { default as BasicFooter } from './basic-footer.vue';
-export { default as BasicHeader } from './basic-header.vue';
-export { default as BasicMain } from './basic-main.vue';
-export { default as BasicNav } from './basic-nav.vue';
-export { default as BasicSidebar } from './basic-sidebar.vue';
+export { default as SideLayout } from './side-layout/side-layout.vue';
+export { default as TopLayout } from './top-layout/top-layout.vue';
+export { default as ColLayout } from './col-layout/col-layout.vue';

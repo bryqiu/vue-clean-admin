@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 defineOptions({
-  name: 'ToggleAccordion',
+  name: 'MenuAccordion',
 });
 
 const { isMenuAccordion } = useLayoutSettings();
