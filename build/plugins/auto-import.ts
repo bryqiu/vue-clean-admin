@@ -8,6 +8,7 @@ export const autoImportPluginConfig = () => {
       {
         '@/store/modules/settings': ['useSettingsStore'],
         '@/store/modules/user': ['useUserStore'],
+        '@/components/systems/settings/use-setting-state': ['useSettingState'],
       },
     ],
     dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/store/hooks')}`],

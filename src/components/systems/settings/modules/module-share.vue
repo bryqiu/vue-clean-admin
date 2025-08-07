@@ -20,7 +20,7 @@ const { showBreadcrumb, showBreadcrumbIcon, breadcrumbStyleType } = useShareSett
         <ElSwitch v-model="showBreadcrumbIcon" />
       </SettingCell>
       <SettingCell title="面包屑样式" desc="展示风格，满足不同使用偏好">
-        <ElSelect v-model="breadcrumbStyleType">
+        <ElSelect v-model="breadcrumbStyleType" class="w-36">
           <ElOption
             v-for="item in breadcrumbStyleOptions"
             :key="item.value"

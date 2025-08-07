@@ -1,20 +1,41 @@
 <script setup lang="ts">
-import { SettingBox, SettingCell } from '../components';
-import { WidgetPageTransition, WidgetPrimaryColor, WidgetThemeMode } from '../widgets';
+import { SettingBox, SettingCell, SettingModeItem } from '../components';
+import { WidgetPageTransition, WidgetPrimaryColor } from '../widgets';
 import { visualModeOptions } from '@/dict';
 import { ElOption, ElSelect } from 'element-plus';
+import { themeModeOptions } from '@/dict';
+import { ThemeModeEnum } from '@/enums';
 
 defineOptions({
   name: 'ModuleTheme',
 });
 
-const { currentVisualMode } = useThemeSettings();
+const { currentVisualMode, currentThemeMode } = useThemeSettings();
+
+/**
+ * 设置主题模式
+ * @param mode 主题模式值
+ */
+const setThemeMode = (mode: GetObjectValues<typeof ThemeModeEnum>) => {
+  currentThemeMode.value = mode;
+};
 </script>
 
 <template>
   <div>
     <SettingBox title="主题模式" desc="适用于不同环境色彩明暗需求">
-      <WidgetThemeMode />
+      <div class="flex gap-x-2">
+        <SettingModeItem
+          v-for="themeMode in themeModeOptions"
+          :key="themeMode.value"
+          :label="themeMode.label"
+          :value="themeMode.value"
+          :icon="themeMode.icon"
+          :mode-icon="themeMode.modeIcon"
+          :is-active-item="themeMode.value === currentThemeMode"
+          @click="setThemeMode(themeMode.value)"
+        />
+      </div>
     </SettingBox>
 
     <SettingBox title="主题色调" desc="系统全局主题色，支持自定义" direction="vertical">

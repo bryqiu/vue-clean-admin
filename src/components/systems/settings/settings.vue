@@ -10,36 +10,33 @@ defineOptions({
   name: 'SettingDrawer',
 });
 
-const drawerVisible = ref(false);
+const { getDrawerVisible, closeSettingDrawer } = useSettingState();
 
 const activeSettingValue = ref(SettingModuleEnum.THEME);
 
 const getActiveSettingOption = computed(() => {
   return settingOptions.find((item) => item.value === activeSettingValue.value);
 });
-
-const openSettingDrawer = () => {
-  drawerVisible.value = true;
-};
-
-defineExpose({
-  openSettingDrawer,
-});
 </script>
 
 <template>
-  <ElDrawer v-model="drawerVisible" size="450px" class="settings-drawer">
+  <ElDrawer
+    :model-value="getDrawerVisible"
+    size="420px"
+    class="settings-drawer"
+    @update:model-value="closeSettingDrawer"
+  >
     <template #header>
       <div class="flex items-center gap-x-2">
         <IconifyIcon name="ri:settings-6-line" class="text-lg" />
         <span class="text-base font-bold">系统设置</span>
       </div>
     </template>
-    <ElSegmented v-model="activeSettingValue" :options="settingOptions" class="simple" block>
+    <ElSegmented v-model="activeSettingValue" :options="settingOptions" block>
       <template #default="{ item }">
         <div class="flex items-center justify-center gap-2 text-sm">
           <IconifyIcon :name="isObject(item) && item.icon" />
-          <span class="font-semibold">{{ isObject(item) && item.label }}</span>
+          <span class="text-sm font-medium">{{ isObject(item) && item.label }}</span>
         </div>
       </template>
     </ElSegmented>
