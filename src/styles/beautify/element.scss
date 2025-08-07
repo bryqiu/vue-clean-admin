@@ -1,26 +1,214 @@
 /* 针对Element Plus组件样式的重写、美化 */
 
-.el-popper {
-  --el-popper-border-radius: 8px;
+/* ======================== el-menu 菜单样式 ======================== */
+
+@mixin menu-item($bottom: 4px) {
+  height: 40px;
+  margin-bottom: $bottom;
+  line-height: 40px;
+  border-radius: var(--app-round);
 }
 
-ul.el-menu {
-  border-right: none;
+@mixin menu-icon($type, $right: 8px, $size: 16px) {
+  @if $type == 'sub' {
+    .menu-sub-i {
+      margin-right: $right;
+
+      .menu-sub-icon {
+        font-size: $size;
+      }
+    }
+  }
+
+  @if $type == 'item' {
+    .menu-item-i {
+      margin-right: $right;
+
+      .menu-item-icon {
+        font-size: $size;
+      }
+    }
+  }
 }
 
-div.el-card {
+ul.el-menu.basic-menu:not(.not-style) {
+  &.el-menu--vertical {
+    border-right: unset;
+
+    & .el-menu-item {
+      @include menu-item;
+      @include menu-icon('item');
+
+      &.is-active {
+        background-color: var(--el-color-primary-light-9);
+      }
+
+      &:hover {
+        color: var(--el-color-primary);
+        background-color: var(--el-color-primary-light-9);
+      }
+    }
+
+    & .el-sub-menu {
+      &__title {
+        @include menu-item;
+        @include menu-icon('sub');
+      }
+
+      &.is-active {
+        .el-sub-menu__title {
+          color: var(--el-color-primary);
+        }
+      }
+    }
+
+    &.el-menu--collapse {
+      width: 48px;
+
+      & .el-sub-menu {
+        border-radius: var(--app-round);
+
+        &.is-active {
+          background-color: var(--el-fill-color);
+        }
+
+        .el-sub-menu__title {
+          justify-content: center;
+          padding: 0;
+
+          &:hover {
+            background-color: var(--el-fill-color);
+          }
+
+          @include menu-icon('sub', 0, 18px);
+        }
+      }
+
+      & .el-menu-item {
+        padding: 0;
+
+        &:hover {
+          background-color: var(--el-fill-color);
+        }
+
+        &.is-active {
+          background-color: var(--el-fill-color);
+        }
+
+        & > div.el-menu-tooltip__trigger {
+          justify-content: center;
+          padding: 0;
+
+          @include menu-icon('item', 0, 18px);
+        }
+      }
+    }
+  }
+
+  &.el-menu--horizontal {
+    gap: 0 4px;
+    width: 100%;
+    height: 48px;
+    overflow: hidden;
+    border-bottom: unset;
+
+    .el-sub-menu {
+      @include menu-icon('sub', 6px);
+
+      &__title {
+        border-bottom: unset;
+      }
+    }
+
+    .el-menu-item {
+      @include menu-icon('item', 6px);
+
+      border-bottom: unset;
+
+      &.is-active {
+        border-bottom: unset;
+      }
+
+      &:not(.is-disaled) {
+        &:hover {
+          background-color: transparent;
+        }
+
+        &:focus {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+div.basic-menu.el-popper {
   border-radius: var(--app-round);
 
-  &__body {
+  .el-menu.el-menu--popup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px 0;
+    padding: 8px;
+    border-radius: var(--app-round);
+
+    .el-menu-item {
+      @include menu-item(0);
+      @include menu-icon('item');
+
+      &.is-active {
+        background-color: var(--el-color-primary-light-9);
+      }
+
+      &:hover {
+        color: var(--el-color-primary);
+        background-color: var(--el-color-primary-light-9);
+      }
+    }
+
+    .el-sub-menu {
+      &__title {
+        @include menu-item(0);
+        @include menu-icon('sub');
+      }
+
+      &.is-active {
+        .el-sub-menu__title {
+          color: var(--el-color-primary);
+        }
+      }
+    }
+  }
+}
+
+/* ======================== el-card 卡片样式 ======================== */
+
+div.el-card:not(.not-style) {
+  --el-card-border-radius: var(--app-round);
+  --el-card-padding: 16px;
+  --el-card-bg-color: var(--el-bg-color);
+
+  border: unset;
+
+  & > .el-card__header {
+    padding: 8px 16px;
+
+    @apply text-base font-medium;
+  }
+
+  &.is-always-shadow {
+    @apply shadow;
+  }
+
+  & > .el-card__body {
     width: 100%;
     height: 100%;
   }
 }
 
-/* ======================== segmented-分段控制器的样式美化 ======================== */
+/* ======================== el-segmented 分段控制器样式 ======================== */
 
-/* 简约风格，在使用时加上simple类名，class="simple" */
-.simple.el-segmented {
+div.el-segmented:not(.not-style) {
   --el-segmented-item-selected-color: var(--el-text-color-primary);
   --el-segmented-item-selected-bg-color: var(--el-bg-color);
   --el-segmented-item-selected-disabled-bg-color: var(--el-bg-color);
@@ -33,11 +221,9 @@ div.el-card {
     }
 
     &.is-selected {
-      font-weight: 600;
-      box-shadow:
-        0 1px 2px 0 rgb(0 0 0 / 3%),
-        0 1px 6px -1px rgb(0 0 0 / 2%),
-        0 2px 4px 0 rgb(0 0 0 / 2%);
+      font-weight: 500;
+
+      @apply shadow;
     }
   }
 }
