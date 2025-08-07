@@ -1,6 +1,6 @@
 export const APP_LAYOUT = () => import('@/layout/index.vue');
 
-export const AUTH_LAYOUT = () => import('@/views/auth/auth-layout.vue');
+export const AUTH_LAYOUT = () => import('@/views/auth/auth.vue');
 
 /** 根路径-重定向路径 */
 export const ROOT_REDIRECT = '/dashboard';
@@ -23,6 +23,15 @@ export const ROUTE_NAMES = {
   FORBIDDEN: 'Forbidden',
   /** 500 */
   SERVICE_ERROR: 'ServiceError',
+  /** 关于 */
+  ABOUT: 'About',
+  /** 关于项目 */
+  ABOUT_PROJECT: 'AboutProject',
+
+  /** 示例 */
+  EXAMPLES: 'Examples',
+  /** 示例 Element Plus */
+  ELEMENT_PLUS: 'ElementPlus',
 
   /** 登录 */
   AUTH: 'Auth',
