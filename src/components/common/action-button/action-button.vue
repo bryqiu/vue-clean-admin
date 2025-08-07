@@ -7,6 +7,7 @@ import { twMerge } from 'tailwind-merge';
 import { ref, useAttrs } from 'vue';
 import type { IconifyIconProps, LocalIconProps } from '@/components/common/app-icon';
 import { omit } from 'lodash-es';
+import { SizeEnum } from '@/enums';
 
 defineOptions({
   name: 'ActionButton',
@@ -51,12 +52,27 @@ export interface ActionButtonProps {
    * 按钮属性
    */
   btnProps?: Partial<ButtonProps>;
+  /**
+   * 按钮大小
+   * @default 'default'
+   */
+  size?: GetObjectValues<typeof SizeEnum>;
 }
 
 const props = withDefaults(defineProps<ActionButtonProps>(), {
   btnText: '',
   iconType: 'iconify',
+  size: 'default',
 });
+
+/** 按钮大小样式映射 */
+const btnSizeStyleMap: {
+  [key in GetObjectValues<typeof SizeEnum>]: string;
+} = {
+  large: 'p-[9px] h-9',
+  default: 'p-[7px] h-8',
+  small: 'p-[5px] h-7',
+};
 
 /** 元素间隔 */
 const btnSpaceStyle = computed(() => {
@@ -104,10 +120,17 @@ const getTooltipProps = computed(() => {
 /** 获取按钮属性 */
 const getBtnProps = computed(() => {
   const attrs = useAttrs();
+  const btnProps = omit(props.btnProps, ['size']);
+
   const defaultProps: Partial<ButtonProps> = {
     text: true,
   };
-  return { ...defaultProps, ...props.btnProps, ...attrs };
+  return { ...defaultProps, ...btnProps, ...attrs };
+});
+
+/** 获取当前按钮样式 */
+const getCurrentBtnStyle = computed(() => {
+  return btnSizeStyleMap[props.size];
 });
 
 /** 提示框实例 */
@@ -134,31 +157,26 @@ defineExpose({
 
 <template>
   <ElTooltip v-bind="getTooltipProps" ref="tooltipInstance">
-    <ElButton v-bind="getBtnProps" class="action-button">
-      <template #default>
-        <div :class="twMerge('flex items-center', btnSpaceStyle)">
-          <template v-if="!isLocalIcon">
-            <IconifyIcon :name="icon" v-bind="getIconifyIconProps" />
-          </template>
-          <template v-else>
-            <LocalIcon :name="icon" v-bind="getLocalIconProps" />
-          </template>
-          <span v-if="showBtnText">{{ btnText }}</span>
-        </div>
-      </template>
-    </ElButton>
+    <div>
+      <ElButton v-bind="getBtnProps" :class="twMerge('action-button', getCurrentBtnStyle)">
+        <template #default>
+          <div :class="twMerge('flex items-center', btnSpaceStyle)">
+            <template v-if="!isLocalIcon">
+              <IconifyIcon :name="icon" v-bind="getIconifyIconProps" />
+            </template>
+            <template v-else>
+              <LocalIcon :name="icon" v-bind="getLocalIconProps" />
+            </template>
+            <span v-if="showBtnText">{{ btnText }}</span>
+          </div>
+        </template>
+      </ElButton>
+    </div>
   </ElTooltip>
 </template>
 
 <style scoped lang="scss">
 .el-button.action-button {
-  height: 34px;
-
-  &,
-  &.is-round {
-    padding: 8px;
-  }
-
   &.is-text {
     color: var(--el-text-color-primary);
   }
