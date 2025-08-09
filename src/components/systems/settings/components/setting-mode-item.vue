@@ -39,6 +39,10 @@ export interface SettingModeItemProps<T = any> {
    */
   modeIconProps?: LocalIconProps;
   /**
+   * 模式内容类名
+   */
+  modeContentClass?: string;
+  /**
    * 是否选中
    * @default false
    */
@@ -88,7 +92,14 @@ const getModeItemProps = computed(() => {
       <IconifyIcon v-if="icon" :name="icon" />
       <span>{{ label || '--' }}</span>
     </div>
-    <div class="flex-1 flex items-center justify-center bg-el-fill-darker px-2 py-4 rounded-b-lg">
+    <div
+      :class="
+        twMerge(
+          'flex-1 flex items-center justify-center bg-el-fill px-2 py-4 rounded-b-lg',
+          modeContentClass,
+        )
+      "
+    >
       <LocalIcon v-bind="getModeItemProps" />
     </div>
   </div>
