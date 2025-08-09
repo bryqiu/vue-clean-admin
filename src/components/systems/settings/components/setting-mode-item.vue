@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<SettingModeItemProps>(), {
 
 /** 获取模式图标属性 */
 const getModeItemProps = computed(() => {
-  const defalutProps: LocalIconProps = {
+  const defaultProps: LocalIconProps = {
     style: {
       width: '100px',
       height: '74px',
@@ -67,7 +67,7 @@ const getModeItemProps = computed(() => {
   const modeIconProps = omit(props.modeIconProps, ['name']);
 
   return {
-    ...defalutProps,
+    ...defaultProps,
     ...modeIconProps,
   };
 });
