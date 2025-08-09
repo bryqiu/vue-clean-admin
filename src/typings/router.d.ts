@@ -10,15 +10,14 @@ declare module 'vue-router' {
     title: string;
     /** 菜单图标 */
     icon?: string;
-    /** 是否隐藏菜单 */
-    isHideMenu?: boolean;
     /** 排序 */
     sort?: number;
 
+    /** 是否隐藏菜单 */
+    hideMenu?: boolean;
+
     /** 是否隐藏面包屑 */
-    isHideBreadcrumb?: boolean;
-    /** 是否只读面包屑 */
-    isReadonlyBreadcrumb?: boolean;
+    hideBreadcrumb?: boolean;
   }
 }
 
