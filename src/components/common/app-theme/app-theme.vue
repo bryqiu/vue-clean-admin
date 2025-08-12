@@ -33,6 +33,16 @@ const handleChangeThemeMode = (value: ThemeModeEnum) => {
     placement="bottom-end"
     popper-class="app-theme-popover"
     :width="120"
+    :popper-options="{
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [-5, 2],
+          },
+        },
+      ],
+    }"
   >
     <template #reference>
       <div>
@@ -48,9 +58,16 @@ const handleChangeThemeMode = (value: ThemeModeEnum) => {
           :class="{ 'bg-el-fill': item.value === currentThemeMode }"
           @click="handleChangeThemeMode(item.value)"
         >
-          <div class="flex items-center gap-x-2">
-            <IconifyIcon :name="item.icon" class="text-base" />
-            <span class="text-sm">{{ item.enLabel }}</span>
+          <div class="flex items-center justify-between gap-x-2 w-full">
+            <div class="flex items-center gap-x-2">
+              <IconifyIcon :name="item.icon" class="text-base" />
+              <span class="text-sm">{{ item.enLabel }}</span>
+            </div>
+            <IconifyIcon
+              v-if="item.value === currentThemeMode"
+              name="ri:check-line"
+              :class="item.value === currentThemeMode && 'text-el-text-placeholder'"
+            />
           </div>
         </div>
       </div>
