@@ -1,5 +1,5 @@
 import { EL_PRIMARY_COLOR_WEIGHT } from './constants';
-import { getDarkColor, getLightColor, setHtmlProperty } from './helpers';
+import { getDarkColor, getLightColor, getWeightValue, setHtmlProperty } from './helpers';
 
 /**
  * 处理 Element Plus 主题颜色
@@ -12,7 +12,7 @@ export function setElementPrimaryColor(color: string, isDark: boolean = false): 
 
   for (const weight of EL_PRIMARY_COLOR_WEIGHT) {
     setHtmlProperty(
-      `--el-color-primary-light-${weight / 100}`,
+      `--el-color-primary-light-${getWeightValue(weight)}`,
       getLightColor(color, weight / 1000, isDark),
     );
   }

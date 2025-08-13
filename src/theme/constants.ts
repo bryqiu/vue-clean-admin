@@ -5,7 +5,7 @@
 export const EL_PREFIX = 'el-';
 
 /** Element Plus 主题色权重 */
-export const EL_PRIMARY_COLOR_WEIGHT: ColorWeight = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+export const EL_PRIMARY_COLOR_WEIGHT = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 
 /** Element Plus 辅助色权重 */
 export const EL_ASSISTANT_COLOR_WEIGHT = [300, 500, 700, 800, 900];

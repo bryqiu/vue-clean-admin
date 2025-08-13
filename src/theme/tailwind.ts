@@ -7,6 +7,7 @@ import {
   EL_PRIMARY_COLOR_WEIGHT,
   EL_TEXT_WEIGHT,
 } from './constants';
+import { getWeightValue } from './helpers';
 
 /**
  * 生成 Element Plus 主色、辅助色-色阶(primary、success、warning、danger、info)
@@ -25,7 +26,7 @@ export function generateElPrimaryScale(
   colorVariableScale['dark-200'] = `var(--el-color-${colorType}-dark-2)`;
 
   weights.forEach((weight) => {
-    colorVariableScale[weight] = `var(--el-color-${colorType}-light-${weight / 100})`;
+    colorVariableScale[weight] = `var(--el-color-${colorType}-light-${getWeightValue(weight)})`;
   });
 
   return colorVariableScale;

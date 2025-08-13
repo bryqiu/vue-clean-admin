@@ -196,3 +196,18 @@ export function setHtmlProperty(property: string, value: string | null, priority
   const style = document.documentElement.style;
   style.setProperty(property, value, priority);
 }
+
+/**
+ * 将权重值转换为有效的CSS变量名
+ * @param weight 权重值
+ * @returns CSS变量名中的权重部分
+ */
+export function getWeightValue(weight: number): string {
+  if (weight === 950) {
+    return '9-5';
+  } else if (weight === 50) {
+    return '0-5';
+  } else {
+    return (weight / 100).toString();
+  }
+}
