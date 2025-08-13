@@ -27,6 +27,8 @@ export default {
         ],
       },
     ],
+    'no-descending-specificity': null,
+
     'selector-pseudo-class-no-unknown': [
       true,
       {
