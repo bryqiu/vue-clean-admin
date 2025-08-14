@@ -43,8 +43,8 @@ const setThemeMode = (mode: GetObjectValues<typeof ThemeModeEnum>) => {
     </SettingBox>
 
     <div class="flex flex-col gap-y-3">
-      <SettingCell title="视觉模式" desc="界面视觉表现，适用于特殊场景">
-        <ElSelect v-model="currentVisualMode" class="w-36">
+      <SettingCell title="视觉模式" desc="界面视觉表现，适用于特殊场景" action-class="w-36">
+        <ElSelect v-model="currentVisualMode">
           <ElOption
             v-for="item in visualModeOptions"
             :key="item.value"

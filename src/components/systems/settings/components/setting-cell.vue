@@ -20,6 +20,14 @@ interface WidgetCellProps {
    * @default false
    */
   disabled?: boolean;
+  /**
+   * 类名
+   */
+  cellClass?: string;
+  /**
+   * 操作类名
+   */
+  actionClass?: string;
 }
 
 const props = withDefaults(defineProps<WidgetCellProps>(), {
@@ -40,6 +48,7 @@ const getDisabledStyle = computed(() => {
       twMerge(
         'flex items-center p-2 border border-el-border-light rounded-lg duration-300 ',
         getDisabledStyle,
+        cellClass,
       )
     "
   >
@@ -48,7 +57,7 @@ const getDisabledStyle = computed(() => {
         <span class="text-el-text-primary text-sm font-medium line-clamp-1">{{ title }}</span>
         <span class="text-el-text-placeholder text-xs line-clamp-1">{{ desc }}</span>
       </div>
-      <div :class="['flex justify-end', disabled && 'pointer-events-none']">
+      <div :class="twMerge('flex justify-end', disabled && 'pointer-events-none', actionClass)">
         <slot />
       </div>
     </div>
