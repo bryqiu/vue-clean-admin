@@ -22,6 +22,3 @@ const initStore = (app: App<Element>) => {
 };
 
 export { store, initStore };
-
-export * from './modules/user';
-export * from './modules/settings';
