@@ -36,6 +36,8 @@ const props = withDefaults(defineProps<BasicHeaderProps>(), {
 const { getCurrentHeaderHeight } = useLayoutSettings();
 
 const { isSideLayout } = useLayoutSettings();
+
+const { breadcrumbStyleType } = useShareSettings();
 </script>
 
 <template>
@@ -52,7 +54,7 @@ const { isSideLayout } = useLayoutSettings();
       >
         <component :is="isSideLayout && MenuCollapse" />
         <component :is="isSideLayout && MenuAccordion" />
-        <Breadcrumb />
+        <Breadcrumb :style-type="breadcrumbStyleType" />
       </div>
     </template>
     <template v-if="!hideRight">
