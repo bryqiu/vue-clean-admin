@@ -64,9 +64,7 @@ const trendTextColor = computed(() => {
 </script>
 
 <template>
-  <div
-    class="size-full bg-el-fill-blank rounded-lg flex flex-col px-4 py-4 gap-y-2 2xl:gap-y-3 dark:bg-el-bg-overlay shadow"
-  >
+  <div class="size-full bg-el-bg rounded-lg flex flex-col px-4 py-4 gap-y-2 2xl:gap-y-3 shadow">
     <div class="flex justify-between">
       <div class="w-4/5 flex flex-col gap-y-7 2xl:gap-y-10">
         <span class="text-sm text-el-text-primary font-medium">{{ title }}</span>
