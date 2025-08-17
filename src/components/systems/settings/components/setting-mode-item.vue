@@ -95,7 +95,7 @@ const getModeItemProps = computed(() => {
     <div
       :class="
         twMerge(
-          'flex-1 flex items-center justify-center bg-el-fill px-2 py-4 rounded-b-lg',
+          'flex-1 flex items-center justify-center bg-el-fill-dark px-2 py-4 rounded-b-lg',
           modeContentClass,
         )
       "
