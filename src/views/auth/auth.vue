@@ -18,7 +18,14 @@ defineOptions({
     <div class="circle1" />
 
     <div class="flex items-center justify-between absolute top-4 left-4 right-4 z-50">
-      <AppLogo :clickable="false" show-title />
+      <AppLogo
+        :clickable="false"
+        show-title
+        :local-icon-props="{
+          size: 32,
+        }"
+        text-class="text-xl"
+      />
       <div class="flex items-center gap-x-2">
         <AppTheme />
         <AppFullScreen />

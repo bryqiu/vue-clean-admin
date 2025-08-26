@@ -101,19 +101,10 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
       :style="{ width: `${getCurrentSidebarCollapseWidth}px` }"
     >
       <div
-        class="flex items-center justify-center border-b border-el-border-light"
+        class="flex items-center justify-center"
         :style="{ height: `${getCurrentHeaderHeight}px` }"
       >
-        <div
-          class="size-8 flex items-center justify-center p-1 border border-el-border-light rounded-lg hover:bg-el-fill-light"
-        >
-          <AppLogo
-            :local-icon-props="{
-              size: 24,
-            }"
-            border
-          />
-        </div>
+        <AppLogo />
       </div>
 
       <div class="flex-1 p-2 flex flex-col">

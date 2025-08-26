@@ -3,10 +3,10 @@ import { PageTransitionEnum } from '@/enums';
 import type { LocalIconProps } from '@/components/common/app-icon';
 import { computed } from 'vue';
 import { omit } from 'lodash-es';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 defineOptions({
-  name: 'Logo',
+  name: 'AppLogo',
 });
 
 interface LogoProps {
@@ -31,18 +31,12 @@ interface LogoProps {
   /**
    * 视图类名
    */
-  viewClass?: string;
-  /**
-   * 显示边框
-   * @default false
-   */
-  border?: boolean;
+  logoClass?: ClsxClassValues;
 }
 
 const props = withDefaults(defineProps<LogoProps>(), {
   showTitle: false,
   clickable: true,
-  border: false,
 });
 
 const appTitle = import.meta.env.VITE_APP_TITLE;
@@ -51,7 +45,7 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
 const getLocalIconProps = computed(() => {
   const defaultProps: LocalIconProps = {
     name: 'logo',
-    size: 24,
+    size: 28,
   };
   const localIconProps = omit(props.localIconProps, ['name']);
   return { ...defaultProps, ...localIconProps };
@@ -59,23 +53,12 @@ const getLocalIconProps = computed(() => {
 </script>
 
 <template>
-  <div :class="twMerge('flex items-center gap-x-2', clickable && 'cursor-pointer', viewClass)">
-    <template v-if="border">
-      <div
-        class="size-8 flex items-center justify-center p-1 border border-el-border-light rounded-lg hover:bg-el-fill-light"
-      >
-        <LocalIcon v-bind="getLocalIconProps" />
-      </div>
-    </template>
-    <template v-else>
-      <LocalIcon v-bind="getLocalIconProps" />
-    </template>
+  <div :class="cn('flex items-center gap-x-2', clickable && 'cursor-pointer', logoClass)">
+    <LocalIcon v-bind="getLocalIconProps" />
     <Transition :name="PageTransitionEnum.NONE">
       <span
         v-show="showTitle"
-        :class="
-          twMerge('text-lg font-semibold inline-block truncate text-el-text-primary', textClass)
-        "
+        :class="cn('text-lg font-semibold inline-block truncate text-el-text-primary', textClass)"
         >{{ appTitle }}</span
       >
     </Transition>
