@@ -64,39 +64,38 @@ const trendTextColor = computed(() => {
 </script>
 
 <template>
-  <div class="size-full bg-el-bg rounded-lg flex flex-col px-4 py-4 gap-y-2 2xl:gap-y-3 shadow">
-    <div class="flex justify-between">
-      <div class="w-4/5 flex flex-col gap-y-7 2xl:gap-y-10">
-        <span class="text-sm text-el-text-primary font-medium">{{ title }}</span>
-        <span class="text-2xl font-bold text-el-text-primary w-full 2xl:text-3xl">{{
-          numValue
-        }}</span>
-      </div>
-      <div class="w-1/5 flex justify-center items-start">
-        <div
-          class="rounded-lg border border-el-border-light size-8 flex justify-center items-center"
-        >
+  <div class="size-full bg-el-bg rounded-lg shadow flex flex-col justify-between">
+    <div class="flex flex-col space-y-1.5 p-4 pb-0 relative">
+      <div class="flex items-center justify-between">
+        <span class="text-sm text-el-text-secondary">{{ title }}</span>
+        <div class="size-8 bg-el-fill rounded-full flex justify-center items-center">
           <IconifyIcon :name="icon" class="text-base" />
         </div>
       </div>
+      <div class="tracking-tight text-2xl 2xl:text-3xl font-medium">{{ numValue }}</div>
     </div>
-    <div class="w-full flex items-center text-xs text-el-text-secondary gap-x-1">
-      <div class="flex items-center gap-x-0.5" :class="trendTextColor">
-        <IconifyIcon :name="trendIcon" class="text-sm" />
-        <span>{{ `${compareValue}%` }}</span>
+    <div class="flex p-4 lg:pt-0 flex-col items-start gap-1 text-sm">
+      <div class="flex items-center gap-x-2 pb-1">
+        <span class="flex-shrink-0 font-medium text-xs text-el-text-regular">{{
+          `${compareLabel}`
+        }}</span>
+        <div class="flex items-center gap-x-0.5" :class="trendTextColor">
+          <IconifyIcon :name="trendIcon" class="text-sm" />
+          <span>{{ `${compareValue}%` }}</span>
+        </div>
       </div>
-      <span class="flex-shrink-0">{{ `${compareLabel}` }}</span>
-    </div>
-    <div
-      class="w-full flex-1 border-t border-el-border-light flex justify-between text-el-text-secondary text-xs"
-    >
-      <div class="flex items-center gap-x-1 pt-1">
-        <IconifyIcon name="ri:bar-chart-fill" />
-        <span>可视化数据</span>
-      </div>
-      <div class="flex items-center gap-x-1 pt-1">
-        <span>查看详情</span>
-        <IconifyIcon name="ri:arrow-right-line" />
+
+      <div
+        class="w-full flex-1 border-t border-el-border-light flex justify-between text-el-text-secondary text-xs pt-1"
+      >
+        <div class="flex items-center gap-x-1 pt-1">
+          <IconifyIcon name="ri:bar-chart-fill" />
+          <span>可视化数据</span>
+        </div>
+        <div class="flex items-center gap-x-1 pt-1">
+          <span>查看详情</span>
+          <IconifyIcon name="ri:arrow-right-line" />
+        </div>
       </div>
     </div>
   </div>
