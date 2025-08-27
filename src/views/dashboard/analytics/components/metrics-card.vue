@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { EChartsCoreOption } from 'echarts';
 
 defineOptions({
   name: 'MetricsCard',
@@ -32,10 +31,6 @@ export interface MetricsCardProps {
    * 对比值
    */
   compareValue: string | number;
-  /**
-   * 图表配置
-   */
-  chartOption?: EChartsCoreOption;
 }
 
 const props = withDefaults(defineProps<MetricsCardProps>(), {
