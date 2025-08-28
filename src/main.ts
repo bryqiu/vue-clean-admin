@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { initStore } from '@/store';
 import { initRouter } from '@/router';
-import { initGlobalModules } from '@/plugins';
+import { registerComponents, registerPlugins } from '@/plugins';
 import '@/styles/index.scss';
 import '@/plugins/resource';
 
@@ -11,7 +11,8 @@ async function bootstrapApp() {
   const app = createApp(App);
   initStore(app);
   initRouter(app);
-  initGlobalModules(app);
+  registerComponents(app);
+  registerPlugins(app);
   app.mount('#app');
 }
 bootstrapApp();

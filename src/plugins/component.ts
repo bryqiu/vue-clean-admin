@@ -41,7 +41,7 @@ const globalPluginList = [ElLoading];
  * 注册全局组件
  * @param app Vue应用实例
  */
-const registerGlobalComp = (app: App<Element>) => {
+export const registerComponents = (app: App<Element>) => {
   if (!globalCompList.length) return;
   globalCompList.forEach((item) => {
     app.component(item.name, item.component);
@@ -52,15 +52,8 @@ const registerGlobalComp = (app: App<Element>) => {
  * 注册全局插件
  * @param app Vue应用实例
  */
-const registerGlobalPlugin = (app: App<Element>) => {
+export const registerPlugins = (app: App<Element>) => {
   globalPluginList.forEach((plugin) => {
     app.use(plugin);
   });
-};
-
-// const initGlobalDirective = (app: App<Element>)
-
-export const initGlobalModules = (app: App<Element>) => {
-  registerGlobalComp(app);
-  registerGlobalPlugin(app);
 };
