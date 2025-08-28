@@ -1,4 +1,5 @@
 import { PropType as propType } from 'vue';
+import type { ClassValue } from 'clsx';
 
 declare global {
   /** 对齐模式 */
@@ -21,6 +22,9 @@ declare global {
 
   /** 属性类型 */
   type PropType<T> = propType<T>;
+
+  /** clsx 类名 */
+  type ClsxClassValues = ClassValue;
 
   /** 字典基本结构 */
   interface BaseOptions<T = string> {

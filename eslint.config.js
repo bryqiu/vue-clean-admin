@@ -39,6 +39,7 @@ export default [
         GetObjectValues: true,
         ColorWeight: true,
         Direction: true,
+        ClsxClassValues: true,
         ...autoImport.globals,
       },
     },
