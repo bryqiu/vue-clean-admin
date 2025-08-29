@@ -2,8 +2,9 @@
 import { ElImage } from 'element-plus';
 import type { ImageProps } from 'element-plus';
 import { omit } from 'lodash-es';
-import { twMerge } from 'tailwind-merge';
 import { computed, useAttrs } from 'vue';
+import { cn } from '@/utils';
+import { SizeEnum } from '@/enums';
 
 defineOptions({
   name: 'AppUserAvatar',
@@ -18,6 +19,12 @@ const shapeMap = {
   round: 'rounded-full',
   square: 'rounded-lg',
 } as const;
+
+const sizeMap = {
+  [SizeEnum.small]: 'size-6',
+  [SizeEnum.default]: 'size-8',
+  [SizeEnum.large]: 'size-10',
+};
 
 interface AppUserAvatarProps {
   /**
@@ -35,6 +42,11 @@ interface AppUserAvatarProps {
    * @default round
    */
   shape?: GetObjectKey<typeof shapeMap>;
+  /**
+   * 大小
+   * @default default
+   */
+  size?: GetObjectKey<typeof sizeMap>;
   /**
    * hover 是否高亮
    * @default false
@@ -60,6 +72,7 @@ const props = withDefaults(defineProps<AppUserAvatarProps>(), {
   showLoginStatus: true,
   hasHoverHighlight: false,
   userAvatarClass: '',
+  size: 'default',
 });
 
 /** 获取形状样式 */
@@ -68,10 +81,13 @@ const getShapeStyle = computed(() => {
 });
 
 /** 获取登录状态样式 */
-const getLoginStatusDotStyle = computed(() => {
-  const statusStyle =
-    'size-3 rounded-full absolute right-0 bottom-0 border-2 border-solid border-white';
-  return `${statusStyle} ${loginStatusDotMap[props.loginStatus]}`;
+const getLoginStatusDotColor = computed(() => {
+  return loginStatusDotMap[props.loginStatus];
+});
+
+/** 获取大小样式 */
+const getSizeStyle = computed(() => {
+  return sizeMap[props.size];
 });
 
 /** 获取 ElImage 属性 */
@@ -86,13 +102,12 @@ const getElImageProps = computed(() => {
 </script>
 
 <template>
-  <div :class="twMerge('app-user-avatar relative size-8 flex shrink-0', userAvatarClass)">
-    <ElImage
-      :src
-      v-bind="getElImageProps"
-      :class="twMerge('size-full', getShapeStyle)"
-      alt="用户信息"
-    >
+  <div
+    :class="
+      cn('app-user-avatar relative flex shrink-0 overflow-hidden', userAvatarClass, getSizeStyle)
+    "
+  >
+    <ElImage :src v-bind="getElImageProps" :class="cn('size-full', getShapeStyle)" alt="用户信息">
       <template #placeholder>
         <slot name="placeholder" />
       </template>
@@ -100,7 +115,15 @@ const getElImageProps = computed(() => {
         <slot name="error" />
       </template>
     </ElImage>
-    <span v-if="showLoginStatus" :class="getLoginStatusDotStyle" />
+    <span
+      v-if="showLoginStatus"
+      :class="
+        cn(
+          'border-[var(--el-bg-color-overlay)]  absolute right-0 bottom-0 size-3 rounded-full border-2',
+          getLoginStatusDotColor,
+        )
+      "
+    />
   </div>
 </template>
 
