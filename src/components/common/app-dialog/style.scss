@@ -1,0 +1,24 @@
+div.app-dialog {
+  position: relative;
+
+  &.el-dialog {
+    border-radius: var(--app-round);
+
+    --el-dialog-padding-primary: 0px;
+
+    .el-dialog__header {
+      position: relative;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--el-border-color);
+    }
+
+    .el-dialog__body {
+      padding: 12px 24px;
+    }
+
+    .el-dialog__footer {
+      padding: 12px 24px;
+      border-top: 1px solid var(--el-border-color);
+    }
+  }
+}

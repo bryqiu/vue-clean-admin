@@ -1,10 +1,10 @@
-import type { ButtonProps, DialogProps } from 'element-plus';
+import type { ButtonProps } from 'element-plus';
 interface ActionBtn extends Partial<ButtonProps> {
   btnText: string;
   onClick: () => void;
 }
 
-export interface BaseDialogProps {
+export interface AppDialogProps {
   /**
    * 标题
    * @default '标题'
@@ -27,11 +27,11 @@ export interface BaseDialogProps {
   footerClass?: string;
 
   /**
-   * 是否显示底部模块
-   * @default true
+   * 是否隐藏底部模块
+   * @default false
    */
 
-  showFooter?: boolean;
+  hideFooter?: boolean;
 
   /**
    * 是否显示取消按钮
@@ -72,7 +72,7 @@ export interface BaseDialogProps {
   showCloseIcon?: boolean;
 }
 
-export type BaseDialogEmits = {
+export type AppDialogEmits = {
   /**
    * 点击关闭按钮的回调
    */

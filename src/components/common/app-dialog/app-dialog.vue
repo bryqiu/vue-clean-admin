@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed, ref, useAttrs } from 'vue';
 import { type DialogProps, ElDialog } from 'element-plus';
-import { BaseDialogEmits, BaseDialogProps } from './typing';
+import { AppDialogEmits, AppDialogProps } from './typing';
 import { DialogInstance } from 'element-plus';
 import { omit } from 'lodash-es';
 import type { ButtonProps } from 'element-plus';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 defineOptions({
-  name: 'BaseDialog',
+  name: 'AppDialog',
 });
 
-const props = withDefaults(defineProps<BaseDialogProps>(), {
+const props = withDefaults(defineProps<AppDialogProps>(), {
   title: '标题',
-  showFooter: true,
+  hideFooter: false,
   showCancelBtn: true,
   showConfirmBtn: true,
   showCloseIcon: true,
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<BaseDialogProps>(), {
   confirmBtnText: '确定',
 });
 
-const emits = defineEmits<BaseDialogEmits>();
+const emits = defineEmits<AppDialogEmits>();
 
 const dialogVisible = defineModel<boolean>({
   default: false,
@@ -51,9 +51,7 @@ const dialogAttrs = computed(() => {
   const attrs = useAttrs();
 
   // 要省略的属性
-  const ignoreProps: Array<keyof DialogProps> = ['showClose', 'title'];
-
-  const elDialogAttrs = omit(attrs, ignoreProps);
+  const elDialogAttrs = omit(attrs, ['show-color', 'title']);
 
   const defaultAttrs: Partial<DialogProps> = {
     showClose: false,
@@ -107,20 +105,24 @@ defineExpose({
   <ElDialog
     ref="dialogInstance"
     v-model="dialogVisible"
-    :class="twMerge('base-dialog', dialogClass)"
+    :class="cn('app-dialog', dialogClass)"
     v-bind="dialogAttrs"
   >
-    <div v-if="showCloseIcon" class="absolute right-2 top-3">
-      <ActionButton icon="mingcute:close-fill" @click="dialogVisible = false" />
-    </div>
-
     <!-- 头部插槽 -->
     <template v-if="$slots.header" #header>
       <slot name="header" />
+      <div v-if="showCloseIcon" class="absolute right-5 top-3">
+        <ActionButton
+          icon="mingcute:close-line"
+          iconify-class="text-el-text-placeholder"
+          size="small"
+          @click="dialogVisible = false"
+        />
+      </div>
     </template>
     <template v-else #header>
-      <div :class="twMerge('pr-4', headerClass)">
-        <span class="text-lg font-medium">{{ title }}</span>
+      <div :class="cn(headerClass)">
+        <span class="text-base font-semibold">{{ title }}</span>
       </div>
     </template>
 
@@ -128,13 +130,13 @@ defineExpose({
     <slot />
 
     <!-- 底部插槽 -->
-    <template v-if="showFooter" #footer>
-      <div v-if="$slots.footer" :class="twMerge('dialog-footer', footerClass)">
+    <template v-if="!hideFooter" #footer>
+      <div v-if="$slots.footer" :class="cn('dialog-footer', footerClass)">
         <slot name="footer" />
       </div>
       <div
         v-else-if="isActionBtns"
-        :class="twMerge('dialog-footer flex justify-end items-center', footerClass)"
+        :class="cn('dialog-footer flex justify-end items-center', footerClass)"
       >
         <template v-for="(btn, index) in actionBtns" :key="index">
           <ElButton v-bind="omit(btn, 'btnText')" @click="btn.onClick">
@@ -143,7 +145,7 @@ defineExpose({
         </template>
       </div>
 
-      <div v-else :class="twMerge('dialog-footer flex justify-end items-center', footerClass)">
+      <div v-else :class="cn('dialog-footer flex justify-end items-center', footerClass)">
         <ElButton v-if="showCancelBtn" v-bind="cancelBtnAttrs" @click="handleCancel">
           {{ cancelBtnText }}
         </ElButton>
