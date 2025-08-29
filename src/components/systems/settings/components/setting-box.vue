@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ElDivider } from 'element-plus';
+import { DirectionEnum } from '@/enums';
+import { computed } from 'vue';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'WidgetBox',
@@ -20,44 +23,49 @@ interface WidgetBoxProps {
    * @default true
    */
   showDivider?: boolean;
+  /**
+   * 方向
+   * @default horizontal
+   */
+  direction?: GetObjectValues<typeof DirectionEnum>;
 }
 
-withDefaults(defineProps<WidgetBoxProps>(), {
+const props = withDefaults(defineProps<WidgetBoxProps>(), {
   title: '标题',
   showDivider: true,
+  direction: 'horizontal',
 });
+
+const isVertical = computed(() => props.direction === DirectionEnum.VERTICAL);
 </script>
 
 <template>
   <div>
-    <div class="felx flex-col">
-      <div class="flex items-center justify-between gap-x-4" :class="{ 'mb-3': $slots.default }">
-        <div class="flex flex-col gap-y-1 flex-1">
-          <template v-if="$slots.title">
-            <slot name="title" />
-          </template>
-          <span v-else class="text-el-text-primary text-sm font-medium line-clamp-1">{{
-            title
-          }}</span>
+    <div
+      :class="
+        cn('flex size-full gap-x-4', {
+          'flex-col gap-y-4 items-start justify-between': isVertical,
+        })
+      "
+    >
+      <div class="flex flex-col gap-y-1 flex-1">
+        <template v-if="$slots.title">
+          <slot name="title" />
+        </template>
+        <span v-else class="text-el-text-primary text-sm font-medium line-clamp-1">{{
+          title
+        }}</span>
 
-          <template v-if="$slots.desc">
-            <slot name="desc" />
-          </template>
-          <span
-            v-else-if="desc"
-            class="text-el-text-placeholder text-xs font-normal line-clamp-1"
-            >{{ desc }}</span
-          >
-        </div>
-        <div v-if="$slots.action">
-          <slot name="action" />
-        </div>
+        <template v-if="$slots.desc">
+          <slot name="desc" />
+        </template>
+        <span v-else-if="desc" class="text-el-text-placeholder text-xs font-normal line-clamp-1">{{
+          desc
+        }}</span>
       </div>
-      <div v-if="$slots.default" class="w-full">
-        <slot />
-      </div>
+      <slot />
     </div>
-    <ElDivider v-if="showDivider" class="!my-4" />
+    <!-- <ElDivider v-if="showDivider" class="!my-6" /> -->
   </div>
 </template>
 

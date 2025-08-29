@@ -16,7 +16,7 @@ const setCurrentLayoutMode = (value: GetObjectValues<typeof LayoutModeEnum>) => 
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-3">
+  <div class="flex flex-col gap-y-6">
     <SettingBox title="布局模式" desc="满足不同场景的布局需求">
       <div class="grid grid-cols-3 gap-2">
         <SettingModeItem
@@ -31,21 +31,21 @@ const setCurrentLayoutMode = (value: GetObjectValues<typeof LayoutModeEnum>) => 
       </div>
     </SettingBox>
 
-    <SettingCell
+    <SettingBox
       title="是否折叠侧边栏"
       desc="控制侧边栏的折叠与展开状态，优化空间利用与操作便捷性"
       :disabled="!isSideLayout"
     >
       <ElSwitch v-model="isMenuCollapse" />
-    </SettingCell>
+    </SettingBox>
 
-    <SettingCell
+    <SettingBox
       title="只允许展开一个子菜单"
       desc="侧边栏-菜单-只允许展开一个子菜单"
       :disabled="!isSideLayout"
     >
       <ElSwitch v-model="isMenuAccordion" />
-    </SettingCell>
+    </SettingBox>
   </div>
 </template>
 

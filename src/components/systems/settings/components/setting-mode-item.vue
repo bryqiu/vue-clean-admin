@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import type { LocalIconProps } from '@/components/common/app-icon';
 import { computed } from 'vue';
 import { omit } from 'lodash-es';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'SettingModeItem',
@@ -58,8 +59,8 @@ const props = withDefaults(defineProps<SettingModeItemProps>(), {
 const getModeItemProps = computed(() => {
   const defaultProps: LocalIconProps = {
     style: {
-      width: '100px',
-      height: '74px',
+      width: '90px',
+      height: '64px',
     },
     name: props.modeIcon,
   };
@@ -74,33 +75,42 @@ const getModeItemProps = computed(() => {
 </script>
 
 <template>
-  <div
-    :class="
-      twMerge(
-        'flex-1 flex flex-col border border-el-border-light rounded-lg cursor-pointer duration-300 hover:border-el-primary relative',
-        isActiveItem && 'border-el-primary',
-        modeItemClass,
-      )
-    "
-  >
-    <IconifyIcon
-      v-show="isActiveItem"
-      name="ri:checkbox-circle-fill"
-      class="absolute bottom-1 right-1 text-base text-el-primary"
-    />
-    <div class="p-1.5 flex items-center justify-center gap-x-2 text-sm text-el-text-primary">
-      <IconifyIcon v-if="icon" :name="icon" />
-      <span>{{ label || '--' }}</span>
-    </div>
+  <div>
     <div
       :class="
         twMerge(
-          'flex-1 flex items-center justify-center bg-el-fill-dark px-2 py-4 rounded-b-lg',
-          modeContentClass,
+          'flex-1 flex flex-col border border-el-border-light rounded-lg cursor-pointer duration-300 hover:border-el-primary relative',
+          isActiveItem && 'border-el-primary',
+          modeItemClass,
         )
       "
     >
-      <LocalIcon v-bind="getModeItemProps" />
+      <IconifyIcon
+        v-show="isActiveItem"
+        name="ri:checkbox-circle-fill"
+        class="absolute bottom-1 right-1 text-base text-el-primary"
+      />
+      <div
+        :class="
+          twMerge(
+            'flex-1 flex items-center justify-center bg-el-fill-dark p-2 rounded-lg',
+            modeContentClass,
+          )
+        "
+      >
+        <LocalIcon v-bind="getModeItemProps" />
+      </div>
+    </div>
+
+    <div
+      :class="
+        cn('flex items-center justify-center gap-x-2 text-sm text-el-text-secondary pt-1', {
+          'text-el-text-primary': isActiveItem,
+        })
+      "
+    >
+      <IconifyIcon v-if="icon" :name="icon" />
+      <span>{{ label || '--' }}</span>
     </div>
   </div>
 </template>

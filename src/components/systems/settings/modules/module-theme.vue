@@ -22,7 +22,7 @@ const setThemeMode = (mode: GetObjectValues<typeof ThemeModeEnum>) => {
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col gap-y-6">
     <SettingBox title="主题模式" desc="适用于不同环境色彩明暗需求">
       <div class="flex gap-x-2">
         <SettingModeItem
@@ -38,26 +38,24 @@ const setThemeMode = (mode: GetObjectValues<typeof ThemeModeEnum>) => {
       </div>
     </SettingBox>
 
-    <SettingBox title="主题色调" desc="系统全局主题色，支持自定义" direction="vertical">
+    <SettingBox title="主题色调" desc="系统全局主题色，支持自定义">
       <WidgetPrimaryColor />
     </SettingBox>
 
-    <div class="flex flex-col gap-y-3">
-      <SettingCell title="视觉模式" desc="界面视觉表现，适用于特殊场景" action-class="w-36">
-        <ElSelect v-model="currentVisualMode">
-          <ElOption
-            v-for="item in visualModeOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          />
-        </ElSelect>
-      </SettingCell>
+    <SettingBox title="视觉模式" desc="界面视觉表现，适用于特殊场景">
+      <ElSelect v-model="currentVisualMode" class="!w-56">
+        <ElOption
+          v-for="item in visualModeOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </ElSelect>
+    </SettingBox>
 
-      <SettingCell title="页面切换-过渡动画" desc="页面切换-过渡动画">
-        <WidgetPageTransition />
-      </SettingCell>
-    </div>
+    <!-- <SettingBox title="页面切换-过渡动画" desc="页面切换-过渡动画">
+      <WidgetPageTransition />
+    </SettingBox> -->
   </div>
 </template>
 

@@ -46,7 +46,7 @@ const getDisabledStyle = computed(() => {
   <div
     :class="
       twMerge(
-        'flex items-center p-2 border border-el-border-light rounded-lg duration-300 ',
+        'flex items-center p-2 border border-el-border-light rounded-lg duration-300 max-w-xl',
         getDisabledStyle,
         cellClass,
       )
