@@ -31,7 +31,7 @@ withDefaults(defineProps<UserDropdownSidebarProps>(), {
         )
       "
     >
-      <AppUserAvatar :src="UserAvatar" user-avatar-class="cursor-pointer" shape="square" />
+      <AppUserAvatar :src="UserAvatar" user-avatar-class="cursor-pointer" shape="round" />
       <div v-show="!hideText" class="flex flex-col gap-x-1 justify-center truncate">
         <span class="text-sm font-medium">Bryan Qiu</span>
         <span class="text-xs text-el-text-secondary">bryanqiu.me@gmail.com</span>

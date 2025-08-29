@@ -36,7 +36,7 @@ const openLink = (url: string) => window.open(url, '_blank');
         <div class="p-2">
           <!--用户信息-->
           <div class="flex items-center gap-x-3">
-            <AppUserAvatar :src="userAvatar" user-avatar-class="size-12" />
+            <AppUserAvatar :src="userAvatar" size="large" />
             <div class="flex flex-col flex-1">
               <span class="text-el-text-primary text-sm font-semibold line-clamp-1">Fifteen</span>
               <span class="text-el-text-secondary text-xs line-clamp-1">bryanqiu.me@gmail.com</span>
