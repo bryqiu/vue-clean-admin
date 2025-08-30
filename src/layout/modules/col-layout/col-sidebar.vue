@@ -3,10 +3,11 @@ import { ElAside } from 'element-plus';
 import { AppLogo } from '@/components/common/app-logo';
 import { computed, ref, watch } from 'vue';
 import { UserDropdownSidebar } from '@/layout/components/user-dropdown';
-import { menuRoutes } from '@/router';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 import { useRoute, useRouter } from 'vue-router';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
+import { constantRoutes } from '@/router';
+import { ROUTE_NAMES } from '@/router/config';
 
 defineOptions({
   name: 'ColSidebar',
@@ -24,12 +25,11 @@ const {
 
 /** 获取最上层菜单列表 */
 const getTopLevelMenuList = computed(() => {
-  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
+  return constantRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 
 /** 激活的菜单样式 */
-const activeMenuItemStyle =
-  'text-white bg-el-primary-100 dark:bg-el-primary-dark-200  dark:text-el-text-primary';
+const activeMenuItemStyle = 'bg-el-fill-dark';
 
 const currentTopMenuPath = ref(route.matched[0].path);
 
@@ -46,23 +46,7 @@ watch(
  * @param item 菜单项
  */
 const handleTopLevelMenuClick = (item: CustomRouteRecordRaw) => {
-  // 如果有重定向路径，直接跳转
-  if (item.redirect) {
-    push(item.redirect);
-    return;
-  }
-
-  // 如果有子菜单，跳转到第一个子菜单
-  if (item.children && item.children.length) {
-    const firstChild = item.children[0];
-    // 正确处理子菜单路径
-    const childPath = `${item.path}/${firstChild.path}`;
-    push(childPath);
-  } else {
-    // 如果没有子菜单，直接跳转到当前菜单
-    console.log('跳转到菜单:', item.path);
-    push(item.path);
-  }
+  currentTopMenuPath.value = item.path;
 };
 
 /**
@@ -72,7 +56,7 @@ const getSubMenuList = computed(() => {
   if (!currentTopMenuPath.value) return [];
 
   // 查找对应的菜单项
-  const targetMenu = menuRoutes.find((menu) => menu.path === currentTopMenuPath.value);
+  const targetMenu = constantRoutes.find((menu) => menu.path === currentTopMenuPath.value);
 
   // 返回子菜单列表，如果没有子菜单则返回空数组
   return targetMenu?.children || [];
@@ -97,7 +81,7 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
     class="!overflow-x-hidden duration-300 flex bg-el-bg"
   >
     <div
-      class="flex flex-col h-full border-r border-el-border-light"
+      class="flex flex-col h-full bg-el-fill-lighter"
       :style="{ width: `${getCurrentSidebarCollapseWidth}px` }"
     >
       <div
@@ -107,27 +91,30 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
         <AppLogo />
       </div>
 
-      <div class="flex-1 p-2 flex flex-col">
-        <div class="flex-1 space-y-2">
+      <div class="flex-1 p-2 flex flex-col items-center">
+        <div class="flex-1 space-y-2 w-[var(--app-menu-item-collapse-size)]">
           <div
             v-for="menu in getTopLevelMenuList"
             :key="menu.path"
             :class="
-              twMerge(
-                'h-12 rounded-lg flex flex-col gap-y-1 items-center justify-center cursor-pointer duration-300',
-                `hover:text-white hover:bg-el-primary-100`,
+              cn(
+                'h-[var(--app-menu-item-collapse-size)] rounded-lg flex flex-col gap-y-1 items-center justify-center cursor-pointer duration-300',
+                `hover:bg-el-fill-dark`,
                 isActiveMenu(menu.path) && activeMenuItemStyle,
               )
             "
             @click="handleTopLevelMenuClick(menu)"
           >
-            <IconifyIcon v-if="menu.meta.icon" :name="menu.meta.icon" class="text-lg shrink-0" />
-            <span class="text-xs line-clamp-1 px-1">{{ menu.meta.title }}</span>
+            <IconifyIcon
+              v-if="menu.meta.menuIcon"
+              :name="menu.meta.menuIcon"
+              class="text-xl shrink-0"
+            />
           </div>
         </div>
 
         <div>
-          <UserDropdownSidebar :hide-text="true" />
+          <UserDropdownSidebar :hide-text="true" user-dropdown-side-class="hover:bg-el-fill-dark" />
         </div>
       </div>
     </div>
