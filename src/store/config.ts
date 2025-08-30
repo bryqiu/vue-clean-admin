@@ -4,7 +4,8 @@ import { LayoutModeEnum, PageTransitionEnum, ThemeModeEnum, VisualModeEnum } fro
 
 /** 默认持久化存储配置 */
 export const defaultStoreOptions: PluginOptions = {
-  key: (id) => `__${import.meta.env.VITE_STORE_PREFIX}__${id}__`.toUpperCase(),
+  key: (id) =>
+    `__${import.meta.env.VITE_STORE_PREFIX}__${id}__${import.meta.env.VITE_APP_VERSION}`.toUpperCase(),
   storage: localStorage,
 } as const;
 
@@ -33,9 +34,9 @@ const defaultLayout: Layout = {
   currentLayoutMode: LayoutModeEnum.SIDE, // 当前布局模式
   isMenuCollapse: false, // 控制菜单是否折叠
   sidebarOpenedWidth: 224, // 左侧边栏展开时的宽度
-  sidebarCollapseWidth: 78, // 左侧边栏收缩时的宽度
+  sidebarCollapseWidth: 60, // 左侧边栏收缩时的宽度
   colSidebarWidth: 262, // 双栏布局-侧边栏宽度
-  headerHeight: 56, // 头部高度
+  headerHeight: 52, // 头部高度
   isMenuAccordion: false, // 控制菜单是否使用手风琴模式
 } as const;
 
