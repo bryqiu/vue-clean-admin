@@ -15,7 +15,11 @@ const { getCurrentSidebarWidth } = useLayoutSettings();
   <ElContainer class="h-full">
     <Sidebar />
     <ElContainer class="size-full !flex-col overflow-auto overflow-x-hidden relative">
-      <BasicHeader :style="{ width: `calc(100% - ${getCurrentSidebarWidth}px)` }" />
+      <BasicHeader
+        :style="{
+          width: `calc(100% - ${getCurrentSidebarWidth}px)`,
+        }"
+      />
       <BasicMain />
     </ElContainer>
   </ElContainer>

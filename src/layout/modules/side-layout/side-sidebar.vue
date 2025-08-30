@@ -4,8 +4,9 @@ import { AppLogo } from '@/components/common/app-logo';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { computed } from 'vue';
 import { UserDropdownSidebar } from '@/layout/components/user-dropdown';
-import { menuRoutes } from '@/router';
 import { twMerge } from 'tailwind-merge';
+import { constantRoutes } from '@/router';
+import { MenuCollapse } from '@/layout/components/menu-collapse';
 
 defineOptions({
   name: 'SideSidebar',
@@ -17,25 +18,33 @@ const { isMenuCollapse, getCurrentHeaderHeight } = useLayoutSettings();
 /** 左侧边栏宽度 */
 const sidebarWidth = computed(() => {
   return isMenuCollapse.value
-    ? `${settingsStore.getLayoutSettings.sidebarCollapseWidth}px`
-    : `${settingsStore.getLayoutSettings.sidebarOpenedWidth}px`;
+    ? settingsStore.getLayoutSettings.sidebarCollapseWidth
+    : settingsStore.getLayoutSettings.sidebarOpenedWidth;
 });
 
 /** 获取可见的菜单路由 */
 const getVisibleMenuRoutes = computed(() => {
-  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
+  return constantRoutes.filter((menu) => !menu.meta.hideMenu);
+});
+
+/** 菜单折叠/展开图标偏移量 */
+const getMenuCollapseIconOffset = computed(() => {
+  return {
+    left: `${sidebarWidth.value - 10}px`,
+    top: `${getCurrentHeaderHeight.value + 20}px`,
+  };
 });
 </script>
 
 <template>
   <ElAside
-    :width="sidebarWidth"
+    :width="`${sidebarWidth}px`"
     class="!overflow-x-hidden duration-300 flex flex-col bg-el-bg border-r border-solid border-el-border-lighter"
   >
     <div
       :class="
         twMerge(
-          'w-full flex gap-x-2  justify-between items-center px-4 border-b border-el-border-lighter',
+          'w-full flex gap-x-2  justify-between items-center px-4',
           isMenuCollapse && 'justify-center',
         )
       "
@@ -45,8 +54,16 @@ const getVisibleMenuRoutes = computed(() => {
         <AppLogo :show-title="!isMenuCollapse" border />
       </div>
 
+      <MenuCollapse
+        :style="{
+          position: 'fixed',
+          zIndex: '101',
+          ...getMenuCollapseIconOffset,
+        }"
+      />
+
       <div v-show="!isMenuCollapse">
-        <ActionButton icon="mingcute:more-2-fill" size="small" />
+        <ActionButton icon="ri:bard-line" size="small" :iconify-class="'text-base'" />
       </div>
     </div>
     <div class="flex-1">
