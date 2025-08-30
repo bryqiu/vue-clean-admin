@@ -6,6 +6,7 @@ import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { AppLogo } from '@/components/common/app-logo';
 import { menuRoutes } from '@/router';
 import { computed } from 'vue';
+import { constantRoutes } from '@/router';
 
 defineOptions({
   name: 'TopLayout',
@@ -13,7 +14,7 @@ defineOptions({
 
 /** 获取可见的菜单路由 */
 const getVisibleMenuRoutes = computed(() => {
-  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
+  return constantRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 </script>
 
