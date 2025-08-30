@@ -1,22 +1,38 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { cn } from '@/utils';
+
 defineOptions({
   name: 'MenuCollapse',
 });
 
 const { isMenuCollapse } = useLayoutSettings();
 
-const getMenuCollapseTipText = computed(() => {
-  return `单击${isMenuCollapse.value ? '展开' : '折叠'}侧边栏`;
+const getMenuCollapseIcon = computed(() => {
+  return isMenuCollapse.value ? 'ri:arrow-right-s-line' : 'ri:arrow-left-s-line';
+});
+
+interface MenuCollapseProps {
+  menuCollapseClass?: ClsxClassValues;
+}
+
+withDefaults(defineProps<MenuCollapseProps>(), {
+  menuCollapseClass: '',
 });
 </script>
 
 <template>
-  <ActionButton
-    icon="ri:side-bar-line"
-    :tip-props="{ placement: 'bottom', content: getMenuCollapseTipText }"
+  <div
+    :class="
+      cn(
+        'size-[22px] rounded-full shadow flex items-center justify-center cursor-pointer duration-300 bg-el-bg dark:bg-el-fill hover:bg-el-fill-light',
+        menuCollapseClass,
+      )
+    "
     @click="isMenuCollapse = !isMenuCollapse"
-  />
+  >
+    <IconifyIcon :name="getMenuCollapseIcon" class="text-el-text-secondary" />
+  </div>
 </template>
 
 <style scoped lang="scss"></style>
