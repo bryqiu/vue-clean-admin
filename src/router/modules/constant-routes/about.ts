@@ -1,6 +1,6 @@
-import { APP_LAYOUT, ROOT_REDIRECT, ROUTE_NAMES } from '@/router/config';
+import { APP_LAYOUT, ROUTE_NAMES } from '@/router/config';
 
-const about: CustomRouteRecordRaw = {
+const aboutRoutes: CustomRouteRecordRaw = {
   path: '/about',
   component: APP_LAYOUT,
   name: ROUTE_NAMES.ABOUT,
@@ -15,10 +15,10 @@ const about: CustomRouteRecordRaw = {
       component: () => import('@/views/about/about-project.vue'),
       meta: {
         title: '关于项目',
-        icon: 'ri:information-2-line',
+        menuIcon: 'ri:information-2-line',
       },
     },
   ],
 };
 
-export default about;
+export default aboutRoutes;

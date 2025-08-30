@@ -1,14 +1,13 @@
-import { APP_LAYOUT, ROUTE_NAMES } from '@/router/config';
+import { ROUTE_NAMES } from '@/router/config';
 
-const exceptionPages: CustomRouteRecordRaw = {
+const exceptionRoutes: CustomRouteRecordRaw = {
   path: '/exception',
   name: ROUTE_NAMES.ERROR_PAGES,
-  component: APP_LAYOUT,
   redirect: '/exception/notFound',
   meta: {
     title: '异常页',
     sort: 3,
-    icon: 'ri:error-warning-line',
+    menuIcon: 'ri:error-warning-line',
   },
   children: [
     {
@@ -17,7 +16,7 @@ const exceptionPages: CustomRouteRecordRaw = {
       component: () => import('@/views/exceptions/not-found.vue'),
       meta: {
         title: '无页面(404)',
-        icon: 'ri-file-search-line',
+        menuIcon: 'ri-file-search-line',
       },
     },
     {
@@ -26,7 +25,7 @@ const exceptionPages: CustomRouteRecordRaw = {
       component: () => import('@/views/exceptions/forbidden.vue'),
       meta: {
         title: '访问受限(403)',
-        icon: 'ri-forbid-line',
+        menuIcon: 'ri-forbid-line',
       },
     },
     {
@@ -35,10 +34,10 @@ const exceptionPages: CustomRouteRecordRaw = {
       component: () => import('@/views/exceptions/service-error.vue'),
       meta: {
         title: '系统异常(500)',
-        icon: 'ri-bug-line',
+        menuIcon: 'ri-bug-line',
       },
     },
   ],
 };
 
-export default exceptionPages;
+export default exceptionRoutes;

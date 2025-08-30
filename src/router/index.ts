@@ -1,34 +1,33 @@
-import { extractRoutes, generateSortRoutes } from './helpers';
-import type { ImportGlobRoutes } from './typing';
-import { SortModeEnum } from '@/enums';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import type { App } from 'vue';
+import type { ImportGlobRoutes } from './typing';
+import { extractRoutes, generateSortRoutes } from './helpers';
 
-/** 基础路由 */
-const basicRoutes = import.meta.glob<ImportGlobRoutes>(['./modules/basic/**/*.ts'], {
-  eager: true,
-});
-
-/** 动态路由 */
-const dynamicRoutes = import.meta.glob<ImportGlobRoutes>(['./modules/business/**/*.ts'], {
-  eager: true,
-});
-
-const globalRoutes = import.meta.glob<ImportGlobRoutes>(['./modules/global/**/*.ts'], {
-  eager: true,
-});
-
-// 菜单路由表
-export const menuRoutes = generateSortRoutes(
-  [...extractRoutes(basicRoutes), ...extractRoutes(dynamicRoutes)],
-  SortModeEnum.ASC,
+const originConstantRoutes = import.meta.glob<ImportGlobRoutes>(
+  ['./modules/constant-routes/**/*.ts'],
+  {
+    eager: true,
+  },
 );
 
-/** 整体路由表 */
-export const routes = [...extractRoutes(globalRoutes), ...menuRoutes];
+const originSystemRoutes = import.meta.glob<ImportGlobRoutes>(['./modules/system-routes/**/*.ts'], {
+  eager: true,
+});
 
-export const router = createRouter({
+/**
+ * 固定路由，系统固有的路由，会展示在菜单栏
+ */
+const constantRoutes = generateSortRoutes(extractRoutes(originConstantRoutes));
+
+/**
+ * 系统路由，不需要显示在菜单栏
+ */
+const systemRoutes = extractRoutes(originSystemRoutes);
+
+const routes = constantRoutes.concat(systemRoutes);
+
+const router = createRouter({
   history: createWebHashHistory(),
   routes: routes as RouteRecordRaw[],
   strict: true,
@@ -36,6 +35,8 @@ export const router = createRouter({
 });
 
 /** 初始化路由 */
-export function initRouter(app: App<Element>) {
+function initRouter(app: App<Element>) {
   app.use(router);
 }
+
+export { router, initRouter, constantRoutes };

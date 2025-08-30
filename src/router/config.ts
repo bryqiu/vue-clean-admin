@@ -3,14 +3,12 @@ export const APP_LAYOUT = () => import('@/layout/index.vue');
 export const AUTH_LAYOUT = () => import('@/views/auth/auth.vue');
 
 /** 根路径-重定向路径 */
-export const ROOT_REDIRECT = '/dashboard';
+export const ROOT_PATH = '/dashboard/analytics';
 
 /** 路由名称 */
 export const ROUTE_NAMES = {
   /** 根路径 */
   ROOT: 'Root',
-  /** 首页 */
-  HOME: 'Home',
   /** 仪表盘 */
   DASHBOARD: 'Dashboard',
   /** 数据分析 */

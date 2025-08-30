@@ -1,6 +1,7 @@
+import type { RouteRecordRaw } from 'vue-router';
 import { AUTH_LAYOUT, ROUTE_NAMES } from '@/router/config';
 
-const auth: CustomRouteRecordRaw = {
+const authRoutes: RouteRecordRaw = {
   path: '/auth',
   name: ROUTE_NAMES.AUTH,
   component: AUTH_LAYOUT,
@@ -52,4 +53,4 @@ const auth: CustomRouteRecordRaw = {
   ],
 };
 
-export default auth;
+export default authRoutes;
