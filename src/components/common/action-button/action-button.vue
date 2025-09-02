@@ -69,9 +69,9 @@ const props = withDefaults(defineProps<ActionButtonProps>(), {
 const btnSizeStyleMap: {
   [key in GetObjectValues<typeof SizeEnum>]: string;
 } = {
-  large: 'p-[9px] h-9',
-  default: 'p-[7px] h-8',
-  small: 'p-[5px] h-7',
+  large: 'size-9',
+  default: 'size-8',
+  small: 'size-7',
 };
 
 /** 元素间隔 */
@@ -177,8 +177,23 @@ defineExpose({
 
 <style scoped lang="scss">
 .el-button.action-button {
+  --el-button-bg-color: var(--el-fill-color);
+
+  &,
+  .el-button.is-round {
+    padding: 0;
+  }
+
   &.is-text {
     color: var(--el-text-color-primary);
+
+    &:not(.is-disabled):hover {
+      background-color: var(--el-button-bg-color);
+    }
+
+    &:not(.is-disabled).is-has-bg {
+      background-color: var(--el-button-bg-color);
+    }
   }
 
   &.el-button {
