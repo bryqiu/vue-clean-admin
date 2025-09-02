@@ -60,8 +60,8 @@ const getPath = (item: RouteLocationMatched): string | Object => {
 
 /** 渲染图标 */
 const renderIcon = (item: RouteLocationMatched) => {
-  if (!props.isShowIcon || !item.meta.icon) return null;
-  return h(IconifyIcon, { name: item.meta.icon });
+  if (!props.isShowIcon || !item.meta.menuIcon) return null;
+  return h(IconifyIcon, { name: item.meta.menuIcon as string });
 };
 
 /** 获取面包屑Class样式 */
