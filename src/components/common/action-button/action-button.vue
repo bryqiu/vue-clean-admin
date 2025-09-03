@@ -23,11 +23,6 @@ export interface ActionButtonProps {
    */
   icon: string;
   /**
-   * 按钮文本信息
-   * @default ''
-   */
-  btnText?: string;
-  /**
    * 图标类型
    * @default 'iconify'
    */
@@ -73,16 +68,6 @@ const btnSizeStyleMap: {
   default: 'size-8',
   small: 'size-7',
 };
-
-/** 元素间隔 */
-const btnSpaceStyle = computed(() => {
-  return isEmpty(props.btnText) ? 'size-full' : 'gap-1';
-});
-
-/** 是否显示按钮文本 */
-const showBtnText = computed(() => {
-  return !isEmpty(props.btnText);
-});
 
 /** 是否是本地图标 */
 const isLocalIcon = computed(() => {
@@ -160,14 +145,13 @@ defineExpose({
     <div>
       <ElButton v-bind="getBtnProps" :class="twMerge('action-button', getCurrentBtnStyle)">
         <template #default>
-          <div :class="twMerge('flex items-center', btnSpaceStyle)">
+          <div :class="twMerge('flex items-center')">
             <template v-if="!isLocalIcon">
               <IconifyIcon :name="icon" v-bind="getIconifyIconProps" />
             </template>
             <template v-else>
               <LocalIcon :name="icon" v-bind="getLocalIconProps" />
             </template>
-            <span v-if="showBtnText">{{ btnText }}</span>
           </div>
         </template>
       </ElButton>
