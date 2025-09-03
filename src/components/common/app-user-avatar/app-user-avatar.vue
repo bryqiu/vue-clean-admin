@@ -21,9 +21,18 @@ const shapeMap = {
 } as const;
 
 const sizeMap = {
-  [SizeEnum.small]: 'size-6',
-  [SizeEnum.default]: 'size-8',
-  [SizeEnum.large]: 'size-10',
+  [SizeEnum.small]: {
+    avatar: 'size-6',
+    dot: 'size-2.5',
+  },
+  [SizeEnum.default]: {
+    avatar: 'size-8',
+    dot: 'size-3',
+  },
+  [SizeEnum.large]: {
+    avatar: 'size-10',
+    dot: 'size-3.5',
+  },
 };
 
 interface AppUserAvatarProps {
@@ -104,7 +113,11 @@ const getElImageProps = computed(() => {
 <template>
   <div
     :class="
-      cn('app-user-avatar relative flex shrink-0 overflow-hidden', userAvatarClass, getSizeStyle)
+      cn(
+        'app-user-avatar relative flex shrink-0 overflow-hidden',
+        userAvatarClass,
+        getSizeStyle.avatar,
+      )
     "
   >
     <ElImage :src v-bind="getElImageProps" :class="cn('size-full', getShapeStyle)" alt="用户信息">
@@ -121,6 +134,7 @@ const getElImageProps = computed(() => {
         cn(
           'border-[var(--el-bg-color-overlay)]  absolute right-0 bottom-0 size-3 rounded-full border-2',
           getLoginStatusDotColor,
+          getSizeStyle.dot,
         )
       "
     />
