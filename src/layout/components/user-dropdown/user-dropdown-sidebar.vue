@@ -2,7 +2,7 @@
 import { AppUserAvatar } from '@/components/common/app-user-avatar';
 import UserAvatar from '@/assets/images/user-avatar.jpg';
 import { default as UserDropdown } from './user-dropdown.vue';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'UserMenuSidebar',
@@ -14,10 +14,16 @@ interface UserDropdownSidebarProps {
    * @default false
    */
   hideText: boolean;
+  /**
+   * 用户下拉菜单类名
+   * @default ''
+   */
+  userDropdownSideClass?: NullType<ClsxClassValues>;
 }
 
 withDefaults(defineProps<UserDropdownSidebarProps>(), {
   hideText: true,
+  userDropdownSideClass: null,
 });
 </script>
 
@@ -25,9 +31,10 @@ withDefaults(defineProps<UserDropdownSidebarProps>(), {
   <UserDropdown placement="right-start">
     <div
       :class="
-        twMerge(
+        cn(
           'flex w-full items-center gap-x-2 overflow-hidden p-2 rounded-lg hover:bg-el-fill-light cursor-pointer',
           hideText && 'justify-center',
+          userDropdownSideClass,
         )
       "
     >

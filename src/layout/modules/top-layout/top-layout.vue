@@ -4,7 +4,6 @@ import { BasicHeader } from '@/layout/components/basic-header';
 import { BasicMain } from '@/layout/components/basic-main';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { AppLogo } from '@/components/common/app-logo';
-import { menuRoutes } from '@/router';
 import { computed } from 'vue';
 import { constantRoutes } from '@/router';
 
@@ -23,7 +22,7 @@ const getVisibleMenuRoutes = computed(() => {
     <ElContainer class="size-full !flex-col overflow-auto overflow-x-hidden">
       <BasicHeader>
         <template #left>
-          <div class="flex items-center flex-1 min-w-0 gap-x-2">
+          <div class="flex items-center flex-1 min-w-0 gap-x-4">
             <AppLogo show-title border />
             <BasicMenu mode="horizontal">
               <template v-for="menu in getVisibleMenuRoutes" :key="menu.path">

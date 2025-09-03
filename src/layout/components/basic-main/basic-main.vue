@@ -8,7 +8,7 @@ const { getCurrentHeaderHeight } = useLayoutSettings();
 </script>
 
 <template>
-  <div class="flex-1 p-4 bg-el-fill-light" :style="{ marginTop: `${getCurrentHeaderHeight}px` }">
+  <div class="flex-1 p-4 bg-el-fill-blank" :style="{ marginTop: `${getCurrentHeaderHeight}px` }">
     <RouterView v-slot="{ Component, route }">
       <Transition :name="pageTransitionName" mode="out-in" appear>
         <component :is="Component" :key="route.path" />
