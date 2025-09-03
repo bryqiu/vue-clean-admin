@@ -23,8 +23,8 @@ export const ROUTE_NAMES = {
   SERVICE_ERROR: 'ServiceError',
   /** 关于 */
   ABOUT: 'About',
-  /** 关于项目 */
-  ABOUT_PROJECT: 'AboutProject',
+  /** 关于首页 */
+  ABOUT_HOME: 'AboutHome',
 
   /** 示例 */
   EXAMPLES: 'Examples',
