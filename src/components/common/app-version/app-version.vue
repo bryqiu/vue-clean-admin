@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'AppVersion',
@@ -27,14 +27,7 @@ const currentVersion = import.meta.env.VITE_APP_VERSION;
 </script>
 
 <template>
-  <div
-    :class="
-      twMerge(
-        'flex items-center justify-center text-sm text-el-text-placeholder gap-x-1',
-        textClass,
-      )
-    "
-  >
+  <div :class="cn('text-sm text-el-text-placeholder', textClass)">
     <template v-if="abbreviated">
       <span>v {{ currentVersion }}</span>
     </template>
