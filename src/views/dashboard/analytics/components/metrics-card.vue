@@ -59,21 +59,21 @@ const trendTextColor = computed(() => {
 </script>
 
 <template>
-  <div class="size-full bg-el-bg rounded-lg shadow flex flex-col justify-between">
+  <div
+    class="size-full bg-el-bg rounded-lg shadow flex flex-col justify-between border border-el-border-light"
+  >
     <div class="flex flex-col space-y-1.5 p-4 pb-0 relative">
       <div class="flex items-center justify-between">
-        <span class="text-sm text-el-text-secondary">{{ title }}</span>
+        <span class="text-xs text-el-text-regular">{{ title }}</span>
         <div class="size-8 bg-el-fill rounded-full flex justify-center items-center">
           <IconifyIcon :name="icon" class="text-base" />
         </div>
       </div>
-      <div class="tracking-tight text-2xl 2xl:text-3xl font-medium">{{ numValue }}</div>
+      <div class="tracking-tight text-2xl 2xl:text-3xl font-semibold">{{ numValue }}</div>
     </div>
-    <div class="flex p-4 lg:pt-0 flex-col items-start gap-1 text-sm">
+    <div class="flex p-4 lg:pt-0 flex-col items-start gap-1 text-xs">
       <div class="flex items-center gap-x-2 pb-1">
-        <span class="flex-shrink-0 font-medium text-xs text-el-text-regular">{{
-          `${compareLabel}`
-        }}</span>
+        <span class="flex-shrink-0 text-xs text-el-text-regular">{{ `${compareLabel}` }}</span>
         <div class="flex items-center gap-x-0.5" :class="trendTextColor">
           <IconifyIcon :name="trendIcon" class="text-sm" />
           <span>{{ `${compareValue}%` }}</span>
@@ -81,7 +81,7 @@ const trendTextColor = computed(() => {
       </div>
 
       <div
-        class="w-full flex-1 border-t border-el-border-light flex justify-between text-el-text-secondary text-xs pt-1"
+        class="w-full flex-1 border-t border-el-border-light flex justify-between text-el-text-placeholder text-xs pt-1"
       >
         <div class="flex items-center gap-x-1 pt-1">
           <IconifyIcon name="ri:bar-chart-fill" />

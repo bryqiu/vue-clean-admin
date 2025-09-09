@@ -21,7 +21,7 @@ withDefaults(defineProps<BaseContainerProps>(), {
 </script>
 
 <template>
-  <ElCard shadow="never" v-bind="$attrs" class="!border-transparent shadow">
+  <ElCard v-bind="$attrs">
     <div class="flex flex-col h-full gap-y-2" :class="containerClass">
       <!--头部-->
       <div v-if="showHeader" class="w-full" :class="headerClass">
@@ -29,8 +29,8 @@ withDefaults(defineProps<BaseContainerProps>(), {
           <slot name="header" />
         </template>
         <div v-else class="flex flex-col gap-y-1">
-          <span class="text-lg font-medium text-el-text-primary">{{ title }}</span>
-          <span v-if="showDescription" class="text-sm text-el-text-secondary">{{
+          <span class="text-base font-medium text-el-text-primary">{{ title }}</span>
+          <span v-if="showDescription" class="text-xs text-el-text-secondary">{{
             description
           }}</span>
         </div>
