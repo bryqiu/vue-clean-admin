@@ -5,6 +5,7 @@ import { Breadcrumb } from '@/layout/components/breadcrumb';
 import { UserDropdownHeader } from '@/layout/components/user-dropdown';
 import { AppTheme } from '@/components/common/app-theme';
 import { AppFullScreen } from '@/components/common/app-full-screen';
+import { AppLocale } from '@/components/common/app-locale';
 
 defineOptions({
   name: 'BasicHeader',
@@ -52,6 +53,7 @@ const { breadcrumbStyleType } = useShareSettings();
       <template v-if="!hideRight">
         <slot v-if="$slots.right" name="right" />
         <div v-else class="flex items-center gap-x-3 flex-shrink-0">
+          <AppLocale />
           <AppTheme />
           <Notice />
           <AppFullScreen />

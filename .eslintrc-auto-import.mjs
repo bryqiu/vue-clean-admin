@@ -1,6 +1,7 @@
 export default {
   "globals": {
     "useEcharts": true,
+    "useI18n": true,
     "useLayoutSettings": true,
     "useRouterPath": true,
     "useSettingState": true,

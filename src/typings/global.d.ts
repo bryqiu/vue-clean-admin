@@ -1,5 +1,6 @@
 import { PropType as propType } from 'vue';
 import type { ClassValue } from 'clsx';
+import { supportLocales } from '@/locale';
 
 declare global {
   /** 对齐模式 */
@@ -25,6 +26,9 @@ declare global {
 
   /** clsx 类名 */
   type ClsxClassValues = ClassValue;
+
+  /** 支持的区域语言 */
+  type SupportedLocales = 'zh-CN' | 'en' | 'zh-HK';
 
   /** 字典基本结构 */
   interface BaseOptions<T = string> {

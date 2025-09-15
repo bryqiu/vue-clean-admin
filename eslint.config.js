@@ -17,6 +17,8 @@ import * as regexpPlugin from 'eslint-plugin-regexp';
 
 import autoImport from './.eslintrc-auto-import.mjs';
 
+import vueI18n from '@intlify/eslint-plugin-vue-i18n';
+
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
@@ -40,6 +42,7 @@ export default [
         ColorWeight: true,
         Direction: true,
         ClsxClassValues: true,
+        SupportedLocales: true,
         ...autoImport.globals,
       },
     },
@@ -402,6 +405,27 @@ export default [
     },
     rules: {
       ...regexpPlugin.configs['flat/recommended'].rules,
+    },
+  },
+
+  // i18n 国际化
+  ...vueI18n.configs.recommended,
+  {
+    rules: {
+      // Optional.
+      '@intlify/vue-i18n/no-dynamic-keys': 'error',
+      '@intlify/vue-i18n/no-unused-keys': [
+        'error',
+        {
+          extensions: ['.js', '.ts', '.vue', '.tsx'],
+        },
+      ],
+    },
+    settings: {
+      'vue-i18n': {
+        localeDir: './src/locale/langs/*.{json,json5,yaml,yml}',
+        messageSyntaxVersion: '^11.0.0',
+      },
     },
   },
 

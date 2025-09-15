@@ -97,5 +97,12 @@
     "stylelint.config.*"
   ],
 
+  "i18n-ally.localesPaths": ["src/locale/langs"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sortKeys": true,
+  "i18n-ally.enabledParsers": ["json"],
+  "i18n-ally.sourceLanguage": "zh-CN",
+  "i18n-ally.displayLanguage": "zh-CN",
+
   "css.customData": [".vscode/tailwind.json"]
 }

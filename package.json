@@ -42,6 +42,7 @@
     "qs": "^6.14.0",
     "tailwind-merge": "^3.3.0",
     "vue": "^3.5.16",
+    "vue-i18n": "11",
     "vue-router": "^4.4.3"
   },
   "devDependencies": {
@@ -51,6 +52,7 @@
     "@eslint/config-inspector": "^0.5.4",
     "@eslint/js": "^9.9.1",
     "@iconify/vue": "^4.1.2",
+    "@intlify/eslint-plugin-vue-i18n": "^4.1.0",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.4.1",
     "@types/nprogress": "^0.2.3",

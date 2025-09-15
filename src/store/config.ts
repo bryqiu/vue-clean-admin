@@ -17,6 +17,8 @@ export const storeModulesNames = {
   user: 'user',
   /** 设置模块 */
   settings: 'settings',
+  /** 语言模块 */
+  locale: 'locale',
 } as const;
 
 /* ======================== Setting 默认配置 ======================== */

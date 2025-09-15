@@ -4,6 +4,7 @@ import { PageTransitionEnum } from '@/enums';
 import { AppLogo } from '@/components/common/app-logo';
 import { AppTheme } from '@/components/common/app-theme';
 import { AppFullScreen } from '@/components/common/app-full-screen';
+import { AppLocale } from '@/components/common/app-locale';
 
 defineOptions({
   name: 'Auth',
@@ -27,6 +28,7 @@ defineOptions({
         text-class="text-xl"
       />
       <div class="flex items-center gap-x-2">
+        <AppLocale />
         <AppTheme />
         <AppFullScreen />
       </div>
