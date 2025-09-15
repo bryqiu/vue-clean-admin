@@ -10,3 +10,11 @@ export const enableStoreHMR = (storeCreator: StoreDefinition) => {
     hot.accept(acceptHMRUpdate(storeCreator, hot));
   }
 };
+
+/**
+ * 格式化持久化 Store 键名
+ * @param id 模块ID
+ */
+export const formatStoreKey = (id: string) => {
+  return `__${import.meta.env.VITE_STORE_PREFIX}__${id}__${import.meta.env.VITE_APP_VERSION}`.toUpperCase();
+};
