@@ -19,7 +19,7 @@ declare global {
   type ColorWeight = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
   /** 空类型 */
-  type NullType<T> = T | null;
+  type Nullable<T> = T | null;
 
   /** 属性类型 */
   type PropType<T> = propType<T>;

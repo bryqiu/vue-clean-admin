@@ -18,7 +18,7 @@ interface UserDropdownSidebarProps {
    * 用户下拉菜单类名
    * @default ''
    */
-  userDropdownSideClass?: NullType<ClsxClassValues>;
+  userDropdownSideClass?: Nullable<ClsxClassValues>;
 }
 
 withDefaults(defineProps<UserDropdownSidebarProps>(), {

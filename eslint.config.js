@@ -27,7 +27,7 @@ export default [
         // 全局变量声明
         ImportMetaEnv: true,
         CustomRouteRecordRaw: true,
-        NullType: true,
+        Nullable: true,
         PropType: true,
         RegisterComponentList: true,
         BaseOptions: true,

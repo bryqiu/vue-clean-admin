@@ -96,13 +96,13 @@ export const useEcharts = (
   } = { ...DEFAULT_CONFIG, ...config };
 
   /** 图表实例 */
-  let chartInstance: NullType<echarts.ECharts> = null;
+  let chartInstance: Nullable<echarts.ECharts> = null;
 
   /** 图表尺寸变化监听 */
-  let resizeObserver: NullType<UseResizeObserverReturn> = null;
+  let resizeObserver: Nullable<UseResizeObserverReturn> = null;
 
   /** 图表配置项 */
-  const chartOptions = ref<NullType<EChartsCoreOption>>(null);
+  const chartOptions = ref<Nullable<EChartsCoreOption>>(null);
 
   const isDark = useDark();
 

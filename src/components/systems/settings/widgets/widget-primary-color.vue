@@ -16,7 +16,7 @@ const setPrimaryColor = (color: string) => {
 };
 
 /** 颜色选择器实例 */
-const colorPickerInstance = ref<NullType<HTMLInputElement>>(null);
+const colorPickerInstance = ref<Nullable<HTMLInputElement>>(null);
 
 /** 颜色选择器值变化时 */
 const colorPickerChange = useDebounceFn((e: Event) => {

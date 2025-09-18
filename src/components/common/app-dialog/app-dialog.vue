@@ -35,7 +35,7 @@ const isActionBtns = computed(() => {
   return props.actionBtns && Array.isArray(props.actionBtns) && props.actionBtns.length;
 });
 
-const dialogInstance = ref<NullType<DialogInstance>>();
+const dialogInstance = ref<Nullable<DialogInstance>>();
 
 /**
  * 获取 el-dialog 实例
