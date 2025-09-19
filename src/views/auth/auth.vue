@@ -9,6 +9,8 @@ import { AppLocale } from '@/components/common/app-locale';
 defineOptions({
   name: 'Auth',
 });
+
+const { getCurrentLoadViewStatus } = useLoadView();
 </script>
 
 <template>
@@ -40,7 +42,7 @@ defineOptions({
         <!-- 路由视图 -->
         <RouterView v-slot="{ Component }">
           <Transition :name="PageTransitionEnum.FADE_RIGHT" mode="out-in">
-            <component :is="Component" />
+            <component :is="Component" v-if="getCurrentLoadViewStatus" />
           </Transition>
         </RouterView>
       </div>

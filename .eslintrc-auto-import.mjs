@@ -3,7 +3,7 @@ export default {
     "useEcharts": true,
     "useI18n": true,
     "useLayoutSettings": true,
-    "useRouterPath": true,
+    "useLoadView": true,
     "useSettingState": true,
     "useSettingsStore": true,
     "useShareSettings": true,

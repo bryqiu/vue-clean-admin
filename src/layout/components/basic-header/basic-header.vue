@@ -6,6 +6,7 @@ import { UserDropdownHeader } from '@/layout/components/user-dropdown';
 import { AppTheme } from '@/components/common/app-theme';
 import { AppFullScreen } from '@/components/common/app-full-screen';
 import { AppLocale } from '@/components/common/app-locale';
+import { ReloadView } from '@/layout/components/reload-view';
 
 defineOptions({
   name: 'BasicHeader',
@@ -53,6 +54,7 @@ const { breadcrumbStyleType } = useShareSettings();
       <template v-if="!hideRight">
         <slot v-if="$slots.right" name="right" />
         <div v-else class="flex items-center gap-x-3 flex-shrink-0">
+          <ReloadView />
           <AppLocale />
           <AppTheme />
           <Notice />
