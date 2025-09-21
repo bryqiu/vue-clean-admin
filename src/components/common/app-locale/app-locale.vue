@@ -10,6 +10,7 @@ defineOptions({
 });
 
 const { getCurrentLocale } = useI18n();
+const { reloadViewHandle } = useLoadView();
 
 /**
  * 更新语言环境
@@ -17,6 +18,7 @@ const { getCurrentLocale } = useI18n();
  */
 const updateLocale = (locale: SupportedLocales) => {
   loadLocaleMessages(locale);
+  reloadViewHandle();
 };
 </script>
 
