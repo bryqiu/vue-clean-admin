@@ -34,28 +34,25 @@ const setActiveSettingValue = (value: GetObjectValues<typeof SettingModuleEnum>)
     @update:model-value="closeSettingDialog"
   >
     <template #header>
-      <div class="flex items-center gap-x-2">
-        <IconifyIcon name="ri:settings-6-line" class="text-lg" />
-        <span class="text-base font-bold">系统设置</span>
-      </div>
+      <span class="text-base font-bold">系统设置</span>
     </template>
     <div class="flex flex-col size-full">
       <div class="flex-1 flex gap-x-4">
-        <div class="w-1/5 rounded-lg py-4 space-y-1">
+        <div class="w-56 rounded-lg py-4 space-y-1">
           <div
             v-for="item in settingOptions"
             :key="item.value"
             :class="
               cn(
-                'w-full p-2 flex items-center rounded-lg gap-x-2 text-el-text-secondary cursor-pointer hover:bg-el-fill-light',
+                'w-full p-2 flex items-center rounded-lg gap-x-2 text-el-text-regular cursor-pointer hover:bg-el-fill',
                 {
-                  'bg-el-fill-light text-el-text-primary': item.value === activeSettingValue,
+                  'bg-el-fill text-el-text-primary': item.value === activeSettingValue,
                 },
               )
             "
             @click="setActiveSettingValue(item.value)"
           >
-            <IconifyIcon :name="item.icon" />
+            <IconifyIcon :name="item.icon" class="text-base" />
             <span class="text-sm">{{ item.label }}</span>
           </div>
         </div>
