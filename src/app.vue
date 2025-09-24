@@ -1,24 +1,11 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { ElConfigProvider } from 'element-plus';
-
-const { getThemeSettings, setVisualMode, toggleThemeMode, setPrimaryColor } = useSettingsStore();
-
-const initThemeConfig = () => {
-  setVisualMode(getThemeSettings.visualMode);
-  toggleThemeMode(getThemeSettings.currentThemeMode);
-  setPrimaryColor(getThemeSettings.primaryColor);
-};
-
-onMounted(() => {
-  initThemeConfig();
-});
+import { AppConfigProvider } from '@/components/systems/app-config-provider';
 </script>
 
 <template>
-  <ElConfigProvider>
+  <AppConfigProvider>
     <RouterView />
-  </ElConfigProvider>
+  </AppConfigProvider>
 </template>
 
 <style scoped></style>
