@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { layoutModeOptions } from '@/dict';
-import { SettingDrawer } from '@/components/systems/settings';
 
 const { currentLayoutMode } = useLayoutSettings();
 
@@ -13,7 +12,6 @@ const currentLayoutComponent = computed(() => {
 <template>
   <div class="size-full">
     <component :is="currentLayoutComponent" />
-    <SettingDrawer />
   </div>
 </template>
 
