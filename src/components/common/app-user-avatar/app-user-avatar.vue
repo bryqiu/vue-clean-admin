@@ -22,16 +22,16 @@ const shapeMap = {
 
 const sizeMap = {
   [SizeEnum.small]: {
-    avatar: 'size-6',
+    avatar: 'size-7',
     dot: 'size-2.5',
   },
   [SizeEnum.default]: {
     avatar: 'size-8',
-    dot: 'size-3',
+    dot: 'size-2.5',
   },
   [SizeEnum.large]: {
     avatar: 'size-10',
-    dot: 'size-3.5',
+    dot: 'size-3',
   },
 };
 
