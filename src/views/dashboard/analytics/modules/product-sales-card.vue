@@ -12,7 +12,7 @@ const productSalesProps = ref<MetricsCardProps>({
   trend: 'up',
   compareLabel: '同比上月',
   compareValue: '15.6',
-  icon: 'ri:shopping-cart-fill',
+  icon: 'ri:shopping-bag-4-line',
 });
 </script>
 

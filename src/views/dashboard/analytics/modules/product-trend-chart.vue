@@ -129,7 +129,7 @@ const getOptions = (): EChartsOption => {
       type: 'line',
       showSymbol: false,
       smooth: true,
-      lineStyle: { width: 3 },
+      lineStyle: { width: 2 },
       itemStyle: { color: '#1890FF' },
       areaStyle: {
         color: createGradient('99, 102, 241'),
