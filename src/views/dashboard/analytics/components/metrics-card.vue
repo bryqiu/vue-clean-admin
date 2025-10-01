@@ -65,13 +65,15 @@ const trendTextColor = computed(() => {
     <div class="flex flex-col space-y-1.5 p-4 pb-0 relative">
       <div class="flex items-center justify-between">
         <span class="text-xs text-el-text-regular">{{ title }}</span>
-        <div class="size-8 bg-el-fill rounded-full flex justify-center items-center">
+        <div
+          class="size-8 rounded-full border border-solid border-el-border-light flex justify-center items-center text-el-text-regular"
+        >
           <IconifyIcon :name="icon" class="text-base" />
         </div>
       </div>
       <div class="tracking-tight text-2xl 2xl:text-3xl font-semibold">{{ numValue }}</div>
     </div>
-    <div class="flex p-4 lg:pt-0 flex-col items-start gap-1 text-xs">
+    <div class="flex p-4 pb-3 lg:pt-0 flex-col items-start gap-1 text-xs">
       <div class="flex items-center gap-x-2 pb-1">
         <span class="flex-shrink-0 text-xs text-el-text-regular">{{ `${compareLabel}` }}</span>
         <div class="flex items-center gap-x-0.5" :class="trendTextColor">
