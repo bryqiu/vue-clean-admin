@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import {
   ConversionRateCard,
-  CustomerCard,
   ProductSalesCard,
   ProductTrendChart,
   ProfitMarginCard,
+  RecentActivity,
   SalesRevenueCard,
+  TopProducts,
 } from './modules';
 import { h } from 'vue';
 import { IconifyIcon } from '@/components/common/app-icon';
@@ -26,7 +27,9 @@ const exportIcon = h(IconifyIcon, {
 <template>
   <div class="flex flex-col gap-y-4">
     <div class="flex items-center justify-between">
-      <span class="text-el-text-primary text-2xl font-bold">analytics</span>
+      <div class="flex flex-col">
+        <span class="text-el-text-primary text-2xl font-bold">analytics</span>
+      </div>
       <div>
         <ElButton plain :icon="filterIcon">
           <span>筛选</span>
@@ -45,12 +48,13 @@ const exportIcon = h(IconifyIcon, {
         <ProfitMarginCard />
       </div>
       <div class="col-span-6 lg:col-span-3">
-        <ProductTrendChart class="col-span-1" />
+        <ProductTrendChart />
       </div>
     </div>
 
-    <div>
-      <CustomerCard />
+    <div class="grid grid-cols-10 gap-4">
+      <TopProducts class="col-span-10 lg:col-span-6" />
+      <RecentActivity class="col-span-10 lg:col-span-4" />
     </div>
   </div>
 </template>
