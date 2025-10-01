@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { cn } from '@/utils';
 import { ElCard } from 'element-plus';
 
 defineOptions({
@@ -22,9 +23,9 @@ withDefaults(defineProps<BaseContainerProps>(), {
 
 <template>
   <ElCard v-bind="$attrs">
-    <div class="flex flex-col h-full gap-y-2" :class="containerClass">
+    <div :class="cn('flex flex-col h-full gap-y-2', containerClass)">
       <!--头部-->
-      <div v-if="showHeader" class="w-full" :class="headerClass">
+      <div v-if="showHeader" :class="cn('w-full', headerClass)">
         <template v-if="$slots.header">
           <slot name="header" />
         </template>
