@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Notice } from '@/layout/components/notice';
+import { Notification } from '@/layout/components/notification';
 import { Settings } from '@/layout/components/settings';
 import { Breadcrumb } from '@/layout/components/breadcrumb';
 import { UserDropdownHeader } from '@/layout/components/user-dropdown';
@@ -57,7 +57,7 @@ const { breadcrumbStyleType } = useShareSettings();
           <ReloadView />
           <AppLocale />
           <AppTheme />
-          <Notice />
+          <Notification />
           <AppFullScreen />
           <Settings />
           <UserDropdownHeader />

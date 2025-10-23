@@ -3,7 +3,12 @@ import { onMounted } from 'vue';
 import { ElConfigProvider } from 'element-plus';
 
 import { Settings } from '../settings';
+import { Notifications } from '../notifications';
 import { elLocaleMessage } from '@/plugins/i18n';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(relativeTime);
 
 defineOptions({
   name: 'AppConfigProvider',
@@ -25,6 +30,7 @@ onMounted(() => {
 <template>
   <ElConfigProvider :locale="elLocaleMessage">
     <Settings />
+    <Notifications />
     <slot />
   </ElConfigProvider>
 </template>

@@ -4,6 +4,7 @@ export default {
     "useI18n": true,
     "useLayoutSettings": true,
     "useLoadView": true,
+    "useNotificationState": true,
     "useSettingState": true,
     "useSettingsStore": true,
     "useShareSettings": true,
