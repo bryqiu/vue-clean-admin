@@ -12,7 +12,6 @@ const profitMarginProps = ref<MetricsCardProps>({
   trend: 'up',
   compareLabel: '环比增幅',
   compareValue: '+2.3',
-  icon: 'ri:funds-box-line',
 });
 </script>
 

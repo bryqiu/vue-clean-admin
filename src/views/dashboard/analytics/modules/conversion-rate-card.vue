@@ -12,7 +12,6 @@ const conversionRateProps = ref<MetricsCardProps>({
   trend: 'up',
   compareLabel: '月度同比',
   compareValue: '+0.8',
-  icon: 'ri:exchange-funds-fill',
 });
 </script>
 

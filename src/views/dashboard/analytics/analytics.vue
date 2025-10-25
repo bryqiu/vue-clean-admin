@@ -2,11 +2,10 @@
 import {
   ConversionRateCard,
   ProductSalesCard,
+  ProductSalesTable,
   ProductTrendChart,
   ProfitMarginCard,
-  RecentActivity,
   SalesRevenueCard,
-  TopProducts,
 } from './modules';
 import { h } from 'vue';
 import { IconifyIcon } from '@/components/common/app-icon';
@@ -48,13 +47,12 @@ const exportIcon = h(IconifyIcon, {
         <ProfitMarginCard />
       </div>
       <div class="col-span-6 lg:col-span-3">
-        <ProductTrendChart />
+        <ProductTrendChart class="col-span-8" />
       </div>
     </div>
 
     <div class="grid grid-cols-10 gap-4">
-      <TopProducts class="col-span-10 lg:col-span-6" />
-      <RecentActivity class="col-span-10 lg:col-span-4" />
+      <ProductSalesTable class="col-span-10" />
     </div>
   </div>
 </template>

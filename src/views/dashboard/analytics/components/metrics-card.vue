@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'MetricsCard',
@@ -14,10 +15,6 @@ export interface MetricsCardProps {
    * 总数值
    */
   numValue: string | number;
-  /**
-   * 图标
-   */
-  icon: string;
   /**
    * 趋势
    */
@@ -45,9 +42,9 @@ const isDownTrend = computed(() => props.trend === 'down');
 
 /** 趋势图标 */
 const trendIcon = computed(() => {
-  if (isUpTrend.value) return 'mdi:trending-up';
-  if (isDownTrend.value) return 'mdi:trending-down';
-  return 'mdi:trending-flat';
+  if (isUpTrend.value) return 'ri:arrow-right-up-line';
+  if (isDownTrend.value) return 'ri:arrow-right-down-line';
+  return 'ri:arrow-up-down-line';
 });
 
 /** 趋势文本 */
@@ -60,39 +57,25 @@ const trendTextColor = computed(() => {
 
 <template>
   <div
-    class="size-full bg-el-bg rounded-lg shadow flex flex-col justify-between border border-el-border-light"
+    class="size-full bg-el-bg rounded-lg shadow-sm border border-solid border-el-border-light flex flex-col justify-between"
   >
-    <div class="flex flex-col space-y-1.5 p-4 pb-0 relative">
-      <div class="flex items-center justify-between">
-        <span class="text-xs text-el-text-regular">{{ title }}</span>
-        <div
-          class="size-8 rounded-full border border-solid border-el-border-light flex justify-center items-center text-el-text-regular"
-        >
-          <IconifyIcon :name="icon" class="text-base" />
+    <div class="p-4 flex flex-col gap-y-4">
+      <div class="flex items-center gap-x-1 justify-between">
+        <div class="flex items-center gap-x-1">
+          <IconifyIcon name="ri:bar-chart-line" />
+          <span class="text-xs font-medium">{{ title }}</span>
         </div>
+        <IconifyIcon name="ri:arrow-right-s-line" class="text-el-text-secondary" />
       </div>
-      <div class="tracking-tight text-2xl 2xl:text-3xl font-semibold">{{ numValue }}</div>
+      <span class="text-xl font-medium text-el-text-primary">{{ numValue }}</span>
     </div>
-    <div class="flex p-4 pb-3 lg:pt-0 flex-col items-start gap-1 text-xs">
-      <div class="flex items-center gap-x-2 pb-1">
-        <span class="flex-shrink-0 text-xs text-el-text-regular">{{ `${compareLabel}` }}</span>
-        <div class="flex items-center gap-x-0.5" :class="trendTextColor">
+    <div class="px-4 py-3 border-t border-solid border-el-border-light">
+      <div class="flex items-center gap-x-1 text-xs">
+        <div :class="cn('flex items-center gap-x-0.5 font-medium', trendTextColor)">
           <IconifyIcon :name="trendIcon" class="text-sm" />
           <span>{{ `${compareValue}%` }}</span>
         </div>
-      </div>
-
-      <div
-        class="w-full flex-1 border-t border-el-border-light flex justify-between text-el-text-placeholder text-xs pt-1"
-      >
-        <div class="flex items-center gap-x-1 pt-1">
-          <IconifyIcon name="ri:bar-chart-fill" />
-          <span>可视化数据</span>
-        </div>
-        <div class="flex items-center gap-x-1 pt-1">
-          <span>查看详情</span>
-          <IconifyIcon name="ri:arrow-right-line" />
-        </div>
+        <span class="flex-shrink-0 text-xs text-el-text-secondary">{{ `${compareLabel}` }}</span>
       </div>
     </div>
   </div>

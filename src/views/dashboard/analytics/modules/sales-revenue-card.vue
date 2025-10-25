@@ -12,7 +12,6 @@ const salesRevenueProps = ref<MetricsCardProps>({
   trend: 'up',
   compareLabel: '月度环比',
   compareValue: '+18.6',
-  icon: 'ri:line-chart-fill',
 });
 </script>
 
