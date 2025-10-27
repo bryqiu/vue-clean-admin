@@ -5,19 +5,22 @@ div.app-dialog {
     border-radius: var(--app-round);
 
     --el-dialog-padding-primary: 0px;
+    --app-dialog-padding: 10px;
+    --app-dialog-padding-x: calc(var(--app-dialog-padding) * 2);
+    --app-dialog-padding-y: calc(var(--app-dialog-padding));
 
     .el-dialog__header {
       position: relative;
-      padding: 12px 24px;
+      padding: var(--app-dialog-padding-y) var(--app-dialog-padding-x);
       border-bottom: 1px solid var(--el-border-color);
     }
 
     .el-dialog__body {
-      padding: 12px 24px;
+      padding: var(--app-dialog-padding-y) var(--app-dialog-padding-x);
     }
 
     .el-dialog__footer {
-      padding: 12px 24px;
+      padding: var(--app-dialog-padding-y) var(--app-dialog-padding-x);
       border-top: 1px solid var(--el-border-color);
     }
   }

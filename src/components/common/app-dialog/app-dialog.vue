@@ -109,20 +109,18 @@ defineExpose({
     v-bind="dialogAttrs"
   >
     <!-- 头部插槽 -->
-    <template v-if="$slots.header" #header>
-      <slot name="header" />
-      <div v-if="showCloseIcon" class="absolute right-5 top-3">
+    <template #header>
+      <slot v-if="$slots.header" name="header" />
+      <div v-else :class="cn(headerClass)">
+        <span class="text-base font-medium">{{ title }}</span>
+      </div>
+      <div v-if="showCloseIcon" class="absolute right-5 top-2">
         <ActionButton
           icon="mingcute:close-line"
           iconify-class="text-el-text-placeholder"
           size="small"
           @click="dialogVisible = false"
         />
-      </div>
-    </template>
-    <template v-else #header>
-      <div :class="cn(headerClass)">
-        <span class="text-base font-semibold">{{ title }}</span>
       </div>
     </template>
 
