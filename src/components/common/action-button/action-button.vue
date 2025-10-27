@@ -78,7 +78,7 @@ const isLocalIcon = computed(() => {
 const getIconifyIconProps = computed(() => {
   const defaultProps: Partial<OmitIconifyIconProps> = {};
   const iconifyProps = omit(props.iconifyIconProps, ['name']);
-  const iconifyClass = { class: twMerge('text-lg', props.iconifyClass) };
+  const iconifyClass = { class: twMerge('text-base', props.iconifyClass) };
 
   return { ...defaultProps, ...iconifyProps, ...iconifyClass };
 });
@@ -86,7 +86,7 @@ const getIconifyIconProps = computed(() => {
 /** 获取本地图标属性 */
 const getLocalIconProps = computed(() => {
   const defaultProps: Partial<LocalIconProps> = {
-    size: 18,
+    size: 16,
   };
 
   const localProps = omit(props.localIconProps, ['name']);
