@@ -1,0 +1,22 @@
+.app-drawer.el-drawer {
+  --app-drawer-padding-x: calc(var(--el-drawer-padding-primary));
+  --app-drawer-padding-y: calc(var(--el-drawer-padding-primary) / 2);
+
+  & .el-drawer__header {
+    position: relative;
+    padding: var(--app-drawer-padding-y) var(--app-drawer-padding-x);
+    margin-bottom: 0;
+    color: var(--el-text-primary);
+    border-bottom: 1px solid var(--el-border-color);
+  }
+
+  & .el-drawer__body {
+    padding: var(--app-drawer-padding-y) var(--app-drawer-padding-x);
+  }
+
+  & .el-drawer__footer {
+    padding: var(--app-drawer-padding-y) var(--app-drawer-padding-x);
+    text-align: left;
+    border-top: 1px solid var(--el-border-color);
+  }
+}
