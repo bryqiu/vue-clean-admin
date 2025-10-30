@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ElPopover } from 'element-plus';
 import ActionButton from '../action-button/action-button.vue';
-import IconifyIcon from '../app-icon/iconify-icon/iconify-icon.vue';
 import { loadLocaleMessages } from '@/plugins/i18n';
 import { supportLocaleOptions } from '@/locale';
 
