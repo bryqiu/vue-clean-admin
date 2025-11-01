@@ -36,6 +36,7 @@ const setActiveSettingValue = (value: GetObjectValues<typeof SettingModuleEnum>)
     <template #header>
       <span class="text-base font-bold">系统设置</span>
     </template>
+
     <div class="flex flex-col size-full">
       <div class="flex-1 flex gap-x-4">
         <div class="w-56 rounded-lg py-4 space-y-1">
@@ -44,9 +45,9 @@ const setActiveSettingValue = (value: GetObjectValues<typeof SettingModuleEnum>)
             :key="item.value"
             :class="
               cn(
-                'w-full p-2 flex items-center rounded-lg gap-x-2 text-el-text-regular cursor-pointer hover:bg-el-fill',
+                'w-full px-3 py-1.5 flex items-center rounded-lg gap-x-2 text-el-text-primary cursor-pointer hover:bg-el-fill',
                 {
-                  'bg-el-fill text-el-text-primary': item.value === activeSettingValue,
+                  'bg-el-fill': item.value === activeSettingValue,
                 },
               )
             "
