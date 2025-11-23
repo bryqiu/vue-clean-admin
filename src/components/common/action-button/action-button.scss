@@ -1,0 +1,24 @@
+.el-button.action-button {
+  --el-button-text-bg-color: var(--el-fill-color);
+
+  &,
+  .el-button.is-round {
+    padding: 0;
+  }
+
+  &.is-text {
+    color: var(--el-text-color-primary);
+
+    &:not(.is-disabled):hover {
+      background-color: var(--el-button-text-bg-color);
+    }
+
+    &:not(.is-disabled).is-has-bg {
+      background-color: var(--el-button-text-bg-color);
+    }
+  }
+
+  &.el-button {
+    margin-left: 0;
+  }
+}
