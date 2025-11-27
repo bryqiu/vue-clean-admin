@@ -150,6 +150,12 @@ export const tailwindThemeConfig: Config['theme'] = {
         'el-bg-mask-extra-light': 'var(--el-mask-color-extra-light)',
       };
     },
+    height: {
+      item: 'var(--app-base-item-height)',
+    },
+    width: {
+      item: 'var(--app-base-item-height)',
+    },
   },
   borderRadius: roundScales,
 };

@@ -5,8 +5,11 @@
   /* 圆角 */
   --app-round-sm: calc(var(--app-round) - 6px);
   --app-round-md: calc(var(--app-round) - 4px);
-  --app-round: 8px;
+  --app-round: 8px; // 全局基础圆角
   --app-round-xl: calc(var(--app-round) + 4px);
   --app-round-2xl: calc(var(--app-round) * 2);
   --app-round-3xl: calc(var(--app-round) * 3);
+
+  /* 系统预设 */
+  --app-base-item-height: 32px; // 项基础高度
 }

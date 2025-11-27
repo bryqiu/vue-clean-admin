@@ -1,186 +1,5 @@
 /* 针对Element Plus组件样式的重写、美化 */
 
-/* ======================== el-menu 菜单样式 ======================== */
-
-@mixin menu-item($bottom: 4px) {
-  height: 40px;
-  margin-bottom: $bottom;
-  line-height: 40px;
-  border-radius: var(--app-round);
-}
-
-@mixin menu-icon($type, $right: 8px, $size: 16px) {
-  @if $type == 'sub' {
-    .menu-sub-i {
-      margin-right: $right;
-
-      .menu-sub-icon {
-        font-size: $size;
-      }
-    }
-  }
-
-  @if $type == 'item' {
-    .menu-item-i {
-      margin-right: $right;
-
-      .menu-item-icon {
-        font-size: $size;
-      }
-    }
-  }
-}
-
-ul.el-menu.basic-menu:not(.not-style) {
-  &.el-menu--vertical {
-    border-right: unset;
-
-    & .el-menu-item {
-      @include menu-item;
-      @include menu-icon('item');
-
-      &.is-active {
-        background-color: var(--el-color-primary-light-9);
-      }
-
-      &:hover {
-        color: var(--el-color-primary);
-        background-color: var(--el-color-primary-light-9);
-      }
-    }
-
-    & .el-sub-menu {
-      &__title {
-        @include menu-item;
-        @include menu-icon('sub');
-      }
-
-      &.is-active {
-        .el-sub-menu__title {
-          color: var(--el-color-primary);
-        }
-      }
-    }
-
-    &.el-menu--collapse {
-      width: 48px;
-
-      & .el-sub-menu {
-        border-radius: var(--app-round);
-
-        &.is-active {
-          background-color: var(--el-fill-color);
-        }
-
-        .el-sub-menu__title {
-          justify-content: center;
-          padding: 0;
-
-          &:hover {
-            background-color: var(--el-fill-color);
-          }
-
-          @include menu-icon('sub', 0, 18px);
-        }
-      }
-
-      & .el-menu-item {
-        padding: 0;
-
-        &:hover {
-          background-color: var(--el-fill-color);
-        }
-
-        &.is-active {
-          background-color: var(--el-fill-color);
-        }
-
-        & > div.el-menu-tooltip__trigger {
-          justify-content: center;
-          padding: 0;
-
-          @include menu-icon('item', 0, 18px);
-        }
-      }
-    }
-  }
-
-  &.el-menu--horizontal {
-    gap: 0 4px;
-    width: 100%;
-    height: 48px;
-    overflow: hidden;
-    border-bottom: unset;
-
-    .el-sub-menu {
-      @include menu-icon('sub', 6px);
-
-      &__title {
-        border-bottom: unset;
-      }
-    }
-
-    .el-menu-item {
-      @include menu-icon('item', 6px);
-
-      border-bottom: unset;
-
-      &.is-active {
-        border-bottom: unset;
-      }
-
-      &:not(.is-disaled) {
-        &:hover {
-          background-color: transparent;
-        }
-
-        &:focus {
-          background-color: transparent;
-        }
-      }
-    }
-  }
-}
-
-div.basic-menu.el-popper {
-  border-radius: var(--app-round);
-
-  .el-menu.el-menu--popup {
-    display: flex;
-    flex-direction: column;
-    gap: 4px 0;
-    padding: 8px;
-    border-radius: var(--app-round);
-
-    .el-menu-item {
-      @include menu-item(0);
-      @include menu-icon('item');
-
-      &.is-active {
-        background-color: var(--el-color-primary-light-9);
-      }
-
-      &:hover {
-        color: var(--el-color-primary);
-        background-color: var(--el-color-primary-light-9);
-      }
-    }
-
-    .el-sub-menu {
-      &__title {
-        @include menu-item(0);
-        @include menu-icon('sub');
-      }
-
-      &.is-active {
-        .el-sub-menu__title {
-          color: var(--el-color-primary);
-        }
-      }
-    }
-  }
-}
-
 /* ======================== el-card 卡片样式 ======================== */
 
 div.el-card:not(.not-style) {
@@ -188,16 +7,12 @@ div.el-card:not(.not-style) {
   --el-card-padding: 16px;
   --el-card-bg-color: var(--el-bg-color);
 
-  border: unset;
-
   & > .el-card__header {
     padding: 8px 16px;
-
-    @apply text-base font-medium;
   }
 
   &.is-always-shadow {
-    @apply shadow;
+    @apply shadow-sm;
   }
 
   & > .el-card__body {
@@ -214,6 +29,7 @@ div.el-segmented:not(.not-style) {
   --el-segmented-item-selected-disabled-bg-color: var(--el-bg-color);
   --el-border-radius-base: var(--app-round);
   --el-segmented-item-bg-color: var(--el-fill-color);
+  --el-segmented-padding: 3px;
 
   label.el-segmented__item {
     &.is-disabled {
@@ -227,3 +43,5 @@ div.el-segmented:not(.not-style) {
     }
   }
 }
+
+/* ======================== plusProComponents 样式 ======================== */
