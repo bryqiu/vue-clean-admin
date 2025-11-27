@@ -1,3 +1,6 @@
+import type { AuthModeProps } from './components';
+import { ROUTE_NAMES } from '@/router/config';
+
 export const AUTH_INFO_MAP = {
   ACCOUNT: {
     title: '👋 新的旅程，从这里出发',
@@ -20,3 +23,21 @@ export const AUTH_INFO_MAP = {
     subTitle: '填写基本信息，开启您的专属之旅',
   },
 } as const;
+
+export const AUTH_MODE_LIST: AuthModeProps['authModeList'] = [
+  {
+    label: '短信',
+    routeName: ROUTE_NAMES.SMS_LOGIN,
+    icon: 'ri:chat-smile-ai-line',
+  },
+  {
+    label: '二维码',
+    routeName: ROUTE_NAMES.QR_LOGIN,
+    icon: 'ri:qr-code-line',
+  },
+  {
+    label: '邮箱',
+    routeName: ROUTE_NAMES.EMAIL_LOGIN,
+    icon: 'ri:mail-ai-line',
+  },
+];

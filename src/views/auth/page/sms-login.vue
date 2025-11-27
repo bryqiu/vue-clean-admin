@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { h, reactive, ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { ElButton, ElForm, ElFormItem, ElInput } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
-import { IconifyIcon } from '@/components/common/app-icon';
 import { AuthContainer, AuthPolicy } from '../components';
 import { AUTH_INFO_MAP } from '../config';
 import { ROUTE_NAMES } from '@/router/config';
@@ -18,9 +17,6 @@ interface FormData {
 }
 
 const { push } = useRouter();
-
-const phoneIcon = h(IconifyIcon, { name: 'ri:smartphone-fill' });
-const verifyIcon = h(IconifyIcon, { name: 'ri:shield-keyhole-fill' });
 
 const formInstance = ref<FormInstance>();
 
@@ -75,17 +71,11 @@ const handleLogin = async () => {
           class="h-9"
           placeholder="请输入手机号"
           maxlength="11"
-          :prefix-icon="phoneIcon"
           clearable
         />
       </ElFormItem>
       <ElFormItem prop="code" label="验证码">
-        <ElInput
-          v-model="formData.code"
-          class="h-9"
-          placeholder="请输入验证码"
-          :prefix-icon="verifyIcon"
-        >
+        <ElInput v-model="formData.code" class="h-9" placeholder="请输入验证码">
           <template #suffix>
             <ElButton type="primary" link size="large"> 获取验证码 </ElButton>
           </template>

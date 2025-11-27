@@ -8,8 +8,10 @@ defineOptions({
 
 type RouteNames = (typeof ROUTE_NAMES)[keyof typeof ROUTE_NAMES];
 
-interface AuthMode extends BaseOptions<RouteNames> {
+interface AuthMode {
   icon: string;
+  routeName: RouteNames;
+  label?: string;
 }
 
 export interface AuthModeProps {
@@ -28,15 +30,15 @@ const goToAuthMode = (value: RouteNames) => {
 </script>
 
 <template>
-  <div class="grid grid-cols-2 gap-x-4 gap-y-2">
+  <div class="grid grid-cols-3 gap-x-4 gap-y-2">
     <div
       v-for="item in authModeList"
-      :key="item.value"
-      class="h-9 rounded-lg border border-solid border-el-border-default dark:border-el-border-dark flex items-center justify-center flex-1 gap-2 cursor-pointer hover:bg-el-fill-light duration-300"
-      @click="goToAuthMode(item.value)"
+      :key="item.routeName"
+      class="h-8 rounded-lg border border-solid border-el-border flex items-center justify-center flex-1 gap-2 cursor-pointer hover:bg-el-fill-light duration-300 text-el-text-primary"
+      @click="goToAuthMode(item.routeName)"
     >
       <IconifyIcon v-if="item.icon" :name="item.icon" class="text-base" />
-      <span class="text-sm">{{ item?.label ?? '登录' }}</span>
+      <span class="text-xs">{{ item.label }}</span>
     </div>
   </div>
 </template>
