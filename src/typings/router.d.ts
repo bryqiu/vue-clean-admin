@@ -56,6 +56,10 @@ declare global {
        * 是否隐藏面包屑
        */
       hideBreadcrumb?: boolean;
+      /**
+       * 当只有一个子菜单时，是否隐藏父级菜单直接显示子菜单内容
+       */
+      hideParentIfSingleChild?: boolean;
     };
   }
 }

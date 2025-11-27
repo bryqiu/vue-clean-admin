@@ -1,22 +1,78 @@
+import { APP_LAYOUT } from '@/router/config';
+
 const examplesRoutes: CustomRouteRecordRaw = {
   id: 1,
   path: '/examples',
   redirect: '/examples/element-plus',
+  component: APP_LAYOUT,
   name: 'Examples',
   meta: {
-    title: '基本示例',
-    sort: 2,
-    menuIcon: 'ri:magic-line',
+    title: '示例简介',
+    sort: 3,
+    menuIcon: 'ri:presentation-line',
   },
   children: [
     {
-      id: 2,
       path: 'element-plus',
       name: 'ElementPlus',
-      component: '/examples/element-plus',
+      component: () => import('@/views/examples/element-plus.vue'),
       meta: {
-        title: 'Element Plus',
-        menuIcon: 'ri:instance-line',
+        title: 'el 组件库',
+        menuIcon: 'ri:code-s-slash-line',
+      },
+    },
+    {
+      path: 'auth',
+      name: 'Auth',
+      // component: () => import('@/views/examples/auth.vue'),
+      meta: {
+        title: 'RBAC 权限',
+        menuIcon: 'ri:lock-2-line',
+      },
+    },
+    {
+      path: 'icon 图标方案',
+      name: 'Icon',
+      // component: () => import('@/views/examples/icon.vue'),
+      meta: {
+        title: '图标方案',
+        menuIcon: 'mingcute:live-location-line',
+      },
+    },
+    {
+      path: 'translate',
+      name: 'Translate',
+      // component: () => import('@/views/examples/i18n.vue'),
+      meta: {
+        title: 'i18n 国际化',
+        menuIcon: 'ri:translate-2',
+      },
+    },
+    {
+      path: 'crud',
+      name: 'Crud',
+      // component: () => import('@/views/examples/crud.vue'),
+      meta: {
+        title: 'CRUD 表格',
+        menuIcon: 'ri:table-3',
+      },
+    },
+    {
+      path: 'echarts',
+      name: 'Echarts',
+      // component: () => import('@/views/examples/echarts.vue'),
+      meta: {
+        title: 'Echarts 可视化',
+        menuIcon: 'ri:bar-chart-2-line',
+      },
+    },
+    {
+      path: 'tailwindcss',
+      name: 'Tailwindcss',
+      component: () => import('@/views/examples/tailwindcss.vue'),
+      meta: {
+        title: 'Tailwind 原子样式',
+        menuIcon: 'ri:color-filter-ai-line',
       },
     },
   ],

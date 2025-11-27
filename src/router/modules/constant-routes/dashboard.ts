@@ -8,7 +8,7 @@ const dashboardRoutes: CustomRouteRecordRaw = {
   meta: {
     title: '仪表盘',
     sort: 1,
-    menuIcon: 'ri:dashboard-2-line',
+    menuIcon: 'ri:dashboard-3-line',
   },
   children: [
     {
@@ -17,7 +17,16 @@ const dashboardRoutes: CustomRouteRecordRaw = {
       component: () => import('@/views/dashboard/analytics/analytics.vue'),
       meta: {
         title: '数据分析',
-        menuIcon: 'ri:bar-chart-box-ai-line',
+        menuIcon: 'ri:bar-chart-line',
+      },
+    },
+    {
+      path: 'workplace',
+      // name: ROUTE_NAMES.WORKPLACE,
+      // component: () => import('@/views/dashboard/workplace/workplace.vue'),
+      meta: {
+        title: '工作台',
+        menuIcon: 'mingcute:user-5-line',
       },
     },
   ],

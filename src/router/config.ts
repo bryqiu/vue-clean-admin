@@ -23,8 +23,8 @@ export const ROUTE_NAMES = {
   SERVICE_ERROR: 'ServiceError',
   /** 关于 */
   ABOUT: 'About',
-  /** 关于首页 */
-  ABOUT_HOME: 'AboutHome',
+  /** 关于项目 */
+  ABOUT_PROJECT: 'AboutProject',
 
   /** 示例 */
   EXAMPLES: 'Examples',
@@ -39,6 +39,8 @@ export const ROUTE_NAMES = {
   SMS_LOGIN: 'SmsLogin',
   /** 扫码登录 */
   QR_LOGIN: 'QrLogin',
+  /** 邮箱登录 */
+  EMAIL_LOGIN: 'EmailLogin',
   /** 忘记密码 */
   FORGOT_PASSWORD: 'ForgotPassword',
   /** 注册 */

@@ -6,7 +6,7 @@ const exceptionRoutes: CustomRouteRecordRaw = {
   redirect: '/exception/notFound',
   meta: {
     title: '异常页',
-    sort: 3,
+    sort: 2,
     menuIcon: 'ri:error-warning-line',
   },
   children: [
@@ -16,7 +16,7 @@ const exceptionRoutes: CustomRouteRecordRaw = {
       component: () => import('@/views/exceptions/not-found.vue'),
       meta: {
         title: '无页面(404)',
-        menuIcon: 'ri-file-search-line',
+        menuIcon: 'ri:file-search-line',
       },
     },
     {
@@ -25,7 +25,7 @@ const exceptionRoutes: CustomRouteRecordRaw = {
       component: () => import('@/views/exceptions/forbidden.vue'),
       meta: {
         title: '访问受限(403)',
-        menuIcon: 'ri-forbid-line',
+        menuIcon: 'ri:forbid-line',
       },
     },
     {
@@ -34,7 +34,7 @@ const exceptionRoutes: CustomRouteRecordRaw = {
       component: () => import('@/views/exceptions/service-error.vue'),
       meta: {
         title: '系统异常(500)',
-        menuIcon: 'ri-bug-line',
+        menuIcon: 'ri:bug-line',
       },
     },
   ],
