@@ -22,17 +22,7 @@ withDefaults(defineProps<MenuCollapseProps>(), {
 </script>
 
 <template>
-  <div
-    :class="
-      cn(
-        'size-[22px] rounded-full shadow flex items-center justify-center cursor-pointer duration-300 bg-el-bg dark:bg-el-fill hover:bg-el-fill-light',
-        menuCollapseClass,
-      )
-    "
-    @click="isMenuCollapse = !isMenuCollapse"
-  >
-    <IconifyIcon :name="getMenuCollapseIcon" class="text-el-text-secondary" />
-  </div>
+  <ActionButton icon="ri:layout-left-line" @click="isMenuCollapse = !isMenuCollapse" />
 </template>
 
 <style scoped lang="scss"></style>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ElContainer } from 'element-plus';
-import { BasicHeader } from '@/layout/components/basic-header';
-import { BasicMain } from '@/layout/components/basic-main';
 import { default as Sidebar } from './col-sidebar.vue';
+import { BasicContainer } from '@/layout/components/basic-container';
 
 defineOptions({
   name: 'ColLayout',
@@ -14,10 +13,7 @@ const { getCurrentColSidebarWidth } = useLayoutSettings();
 <template>
   <ElContainer class="h-full">
     <Sidebar />
-    <ElContainer class="size-full !flex-col overflow-auto overflow-x-hidden">
-      <BasicHeader :style="{ width: `calc(100% - ${getCurrentColSidebarWidth}px)` }" />
-      <BasicMain />
-    </ElContainer>
+    <BasicContainer />
   </ElContainer>
 </template>
 

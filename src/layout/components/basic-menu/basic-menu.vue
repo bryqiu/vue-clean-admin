@@ -5,7 +5,7 @@ import { useRoute } from 'vue-router';
 import { computed, h, useAttrs } from 'vue';
 import { omit } from 'lodash-es';
 import { IconifyIcon } from '@/components/common/app-icon';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'BasicMenu',
@@ -38,9 +38,9 @@ const getElMenuProps = computed(() => {
   const ElMenuProps = omit(attrs, ['collapse-transition', 'ellipsis-icon', 'default-active']);
   const defaultProps: Partial<MenuProps> & { class?: string } = {
     collapseTransition: false,
-    class: twMerge('basic-menu', props.menuClass),
+    class: cn('basic-menu sidebar-minimal', props.menuClass),
     popperClass: 'basic-menu',
-    ellipsisIcon,
+    ellipsis: true,
   };
   return {
     ...defaultProps,
@@ -58,4 +58,6 @@ const getElMenuProps = computed(() => {
   </ElMenu>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+@use './style.scss' as *;
+</style>

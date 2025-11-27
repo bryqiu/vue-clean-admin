@@ -6,7 +6,7 @@ import { UserDropdownSidebar } from '@/layout/components/user-dropdown';
 import { cn } from '@/utils';
 import { useRoute, useRouter } from 'vue-router';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
-import { constantRoutes } from '@/router';
+import { menuRoutes } from '@/router';
 import { ROUTE_NAMES } from '@/router/config';
 
 defineOptions({
@@ -25,7 +25,7 @@ const {
 
 /** 获取最上层菜单列表 */
 const getTopLevelMenuList = computed(() => {
-  return constantRoutes.filter((menu) => !menu.meta.hideMenu);
+  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 
 /** 激活的菜单样式 */
@@ -56,7 +56,7 @@ const getSubMenuList = computed(() => {
   if (!currentTopMenuPath.value) return [];
 
   // 查找对应的菜单项
-  const targetMenu = constantRoutes.find((menu) => menu.path === currentTopMenuPath.value);
+  const targetMenu = menuRoutes.find((menu) => menu.path === currentTopMenuPath.value);
 
   // 返回子菜单列表，如果没有子菜单则返回空数组
   return targetMenu?.children || [];
@@ -81,7 +81,7 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
     class="!overflow-x-hidden duration-300 flex bg-el-bg"
   >
     <div
-      class="flex flex-col h-full bg-el-fill-lighter"
+      class="flex flex-col h-full border-r border-solid border-el-border-light"
       :style="{ width: `${getCurrentSidebarCollapseWidth}px` }"
     >
       <div
@@ -92,13 +92,13 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
       </div>
 
       <div class="flex-1 p-2 flex flex-col items-center">
-        <div class="flex-1 space-y-2 w-[var(--app-menu-item-collapse-size)]">
+        <div class="flex-1 space-y-2 w-[var(--app-base-item-height)]">
           <div
             v-for="menu in getTopLevelMenuList"
             :key="menu.path"
             :class="
               cn(
-                'h-[var(--app-menu-item-collapse-size)] rounded-lg flex flex-col gap-y-1 items-center justify-center cursor-pointer duration-300',
+                ' h-item rounded-lg flex flex-col gap-y-1 items-center justify-center cursor-pointer duration-300',
                 `hover:bg-el-fill-dark`,
                 isActiveMenu(menu.path) && activeMenuItemStyle,
               )
@@ -108,7 +108,7 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
             <IconifyIcon
               v-if="menu.meta.menuIcon"
               :name="menu.meta.menuIcon"
-              class="text-xl shrink-0"
+              class="text-lg shrink-0"
             />
           </div>
         </div>

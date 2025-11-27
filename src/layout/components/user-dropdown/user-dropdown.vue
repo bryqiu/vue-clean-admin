@@ -14,7 +14,7 @@ const getPopoverProps = computed(() => {
   const attrs = useAttrs();
 
   const defaultProps: Partial<PopoverProps> = {
-    width: 260,
+    width: 250,
     showArrow: false,
     popperStyle: { borderRadius: 'var(--app-round)' },
     popperClass: 'user-dropdown',
@@ -43,13 +43,13 @@ const openLink = (url: string) => window.open(url, '_blank');
             </div>
           </div>
           <!--登录时间-->
-          <div
+          <!-- <div
             class="flex items-center p-2 bg-el-primary-900 rounded-lg text-xs text-el-primary w-full truncate mt-3 mb-1"
           >
             <IconifyIcon name="ri:time-line" class="text-sm mr-1 shrink-0" />
             <span>上次登录：</span>
             <span>{{ '2025/07/21 14:21:53' }}</span>
-          </div>
+          </div> -->
         </div>
         <MenuGroup category-name="关于账号" class="border-t border-el-border-light">
           <MenuCell title="个人资料" icon="ri:user-line" />

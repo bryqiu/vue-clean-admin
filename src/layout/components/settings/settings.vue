@@ -7,9 +7,7 @@ const { openSettingDialog } = useSettingState();
 </script>
 
 <template>
-  <div>
-    <ActionButton icon="ri:settings-6-line" @click="openSettingDialog" />
-  </div>
+  <ActionButton icon="ri:settings-6-line" @click="openSettingDialog" />
 </template>
 
 <style scoped lang="scss"></style>

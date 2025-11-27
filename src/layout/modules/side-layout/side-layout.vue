@@ -1,27 +1,17 @@
 <script setup lang="ts">
 import { ElContainer } from 'element-plus';
-import { BasicHeader } from '@/layout/components/basic-header';
-import { BasicMain } from '@/layout/components/basic-main';
 import { default as Sidebar } from './side-sidebar.vue';
+import { BasicContainer } from '@/layout/components/basic-container';
 
 defineOptions({
   name: 'SideLayout',
 });
-
-const { getCurrentSidebarWidth } = useLayoutSettings();
 </script>
 
 <template>
-  <ElContainer class="h-full">
+  <ElContainer class="h-full bg-el-fill">
     <Sidebar />
-    <ElContainer class="size-full !flex-col overflow-auto overflow-x-hidden relative">
-      <BasicHeader
-        :style="{
-          width: `calc(100% - ${getCurrentSidebarWidth}px)`,
-        }"
-      />
-      <BasicMain />
-    </ElContainer>
+    <BasicContainer />
   </ElContainer>
 </template>
 

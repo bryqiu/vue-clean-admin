@@ -22,7 +22,12 @@ defineOptions({
     }"
   >
     <div class="flex items-center gap-x-2">
-      <AppUserAvatar :src="UserAvatar" shape="round" user-avatar-class="cursor-pointer" />
+      <AppUserAvatar
+        :src="UserAvatar"
+        shape="round"
+        user-avatar-class="cursor-pointer"
+        size="small"
+      />
     </div>
   </UserDropdown>
 </template>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ActionButton from '@/components/common/action-button/action-button.vue';
-
 defineOptions({
   name: 'ReloadView',
 });

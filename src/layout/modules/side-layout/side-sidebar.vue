@@ -4,16 +4,16 @@ import { AppLogo } from '@/components/common/app-logo';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { computed } from 'vue';
 import { UserDropdownSidebar } from '@/layout/components/user-dropdown';
-import { twMerge } from 'tailwind-merge';
-import { constantRoutes } from '@/router';
-import { MenuCollapse } from '@/layout/components/menu-collapse';
+import { menuRoutes } from '@/router';
+import { cn } from '@/utils';
+import { RouteSearch } from '@/layout/components/route-search';
 
 defineOptions({
   name: 'SideSidebar',
 });
 
 const settingsStore = useSettingsStore();
-const { isMenuCollapse, getCurrentHeaderHeight } = useLayoutSettings();
+const { isMenuCollapse } = useLayoutSettings();
 
 /** 左侧边栏宽度 */
 const sidebarWidth = computed(() => {
@@ -24,59 +24,41 @@ const sidebarWidth = computed(() => {
 
 /** 获取可见的菜单路由 */
 const getVisibleMenuRoutes = computed(() => {
-  return constantRoutes.filter((menu) => !menu.meta.hideMenu);
-});
-
-/** 菜单折叠/展开图标偏移量 */
-const getMenuCollapseIconOffset = computed(() => {
-  return {
-    left: `${sidebarWidth.value - 10}px`,
-    top: `${getCurrentHeaderHeight.value + 20}px`,
-  };
+  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 </script>
 
 <template>
   <ElAside
     :width="`${sidebarWidth}px`"
-    class="!overflow-x-hidden duration-300 flex flex-col bg-el-bg border-r border-solid border-el-border-lighter"
+    class="!overflow-x-hidden duration-300 flex flex-col bg-[var(--app-sidebar-bg-color)]"
   >
     <div
       :class="
-        twMerge(
-          'w-full flex gap-x-2  justify-between items-center px-4',
-          isMenuCollapse && 'justify-center',
-        )
+        cn('w-full flex items-center py-2', [
+          isMenuCollapse
+            ? 'justify-center'
+            : 'pl-[calc(var(--el-menu-base-level-padding)+0.5rem)] pr-4',
+        ])
       "
-      :style="{ height: `${getCurrentHeaderHeight}px` }"
     >
-      <div class="flex gap-x-2 items-center">
-        <AppLogo :show-title="!isMenuCollapse" border />
-      </div>
-
-      <MenuCollapse
-        :style="{
-          position: 'fixed',
-          zIndex: '101',
-          ...getMenuCollapseIconOffset,
-        }"
-      />
-
-      <div v-show="!isMenuCollapse">
-        <ActionButton icon="ri:bard-line" size="small" :iconify-class="'text-base'" />
-      </div>
+      <AppLogo :show-title="!isMenuCollapse" />
     </div>
-    <div class="flex-1">
-      <ElScrollbar :view-class="twMerge('p-2 h-full', isMenuCollapse && 'flex justify-center')">
-        <BasicMenu :collapse="isMenuCollapse">
-          <template v-for="menu in getVisibleMenuRoutes" :key="menu.path">
-            <BasicMenuSubItem :menu :parent-path="menu.path" />
-          </template>
-        </BasicMenu>
-      </ElScrollbar>
+    <div class="w-full flex flex-col items-center justify-center p-2">
+      <RouteSearch />
     </div>
+    <ElScrollbar class="flex-1" :view-class="cn(' p-2', isMenuCollapse && 'flex justify-center')">
+      <BasicMenu :collapse="isMenuCollapse">
+        <template v-for="menu in getVisibleMenuRoutes" :key="menu.path">
+          <BasicMenuSubItem :menu :parent-path="menu.path" />
+        </template>
+      </BasicMenu>
+    </ElScrollbar>
     <div class="p-2">
-      <UserDropdownSidebar :hide-text="isMenuCollapse" />
+      <UserDropdownSidebar
+        :hide-text="isMenuCollapse"
+        user-dropdown-side-class="hover:bg-el-fill-dark"
+      />
     </div>
   </ElAside>
 </template>

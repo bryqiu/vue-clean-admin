@@ -32,16 +32,16 @@ withDefaults(defineProps<UserDropdownSidebarProps>(), {
     <div
       :class="
         cn(
-          'flex w-full items-center gap-x-2 overflow-hidden p-2 rounded-lg hover:bg-el-fill-light cursor-pointer',
+          'flex w-full items-center gap-x-2 overflow-hidden p-2 rounded-lg cursor-pointer',
           hideText && 'justify-center',
           userDropdownSideClass,
         )
       "
     >
-      <AppUserAvatar :src="UserAvatar" user-avatar-class="cursor-pointer" shape="round" />
-      <div v-show="!hideText" class="flex flex-col gap-x-1 justify-center truncate">
-        <span class="text-sm font-medium">Bryan Qiu</span>
-        <span class="text-xs text-el-text-secondary">bryanqiu.me@gmail.com</span>
+      <AppUserAvatar :src="UserAvatar" user-avatar-class="cursor-pointer" shape="square" />
+      <div v-show="!hideText" class="flex-1 flex flex-col justify-center overflow-hidden">
+        <span class="text-xs font-medium truncate">Bryan Qiu</span>
+        <span class="text-xs text-el-text-secondary truncate">bryanqiu.me@gmail.com</span>
       </div>
     </div>
   </UserDropdown>

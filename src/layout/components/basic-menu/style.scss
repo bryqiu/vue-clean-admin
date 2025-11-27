@@ -1,0 +1,270 @@
+@use 'sass:map';
+
+@mixin menu-item($bottom: 4px) {
+  margin-bottom: $bottom;
+  border-radius: var(--app-round);
+}
+
+@mixin menu-item-active {
+  background-color: var(--app-menu-item-bg-color-active);
+}
+
+// :root.dark {
+//   --app-menu-item-text-color-active: var(--el-text-color-regular);
+// }
+
+@mixin menu-icon(
+  $type,
+  $right: var(--app-menu-item-icon-gap),
+  $size: var(--app-menu-item-icon-size)
+) {
+  @if $type == 'sub' {
+    .menu-sub-i {
+      margin-right: $right;
+
+      .menu-sub-icon {
+        font-size: $size;
+      }
+    }
+  }
+
+  @if $type == 'item' {
+    .menu-item-i {
+      margin-right: $right;
+
+      .menu-item-icon {
+        font-size: $size;
+      }
+    }
+  }
+}
+
+ul.el-menu.basic-menu {
+  --el-menu-text-color: var(--app-menu-item-text-color);
+  --el-menu-active-color: var(--app-menu-item-text-color-active);
+  --el-menu-bg-color: var(--app-sidebar-bg-color);
+  --el-menu-hover-bg-color: var(--app-menu-item-bg-color-active);
+  --el-menu-item-height: var(--app-base-item-height);
+  --el-menu-sub-item-height: var(--app-base-item-height);
+  --el-menu-horizontal-sub-item-height: var(--app-base-item-height);
+  --el-menu-item-hover-fill: var(--app-menu-item-bg-color-active);
+  --el-menu-level-padding: var(--app-menu-item-level-padding);
+
+  &.el-menu--vertical {
+    border-right: unset;
+
+    & .el-menu-item {
+      @include menu-item;
+      @include menu-icon('item');
+
+      &.is-active {
+        @include menu-item-active;
+      }
+
+      &:hover {
+        @include menu-item-active;
+      }
+    }
+
+    & .el-sub-menu {
+      &__title {
+        @include menu-item;
+        @include menu-icon('sub');
+
+        &:hover {
+          @include menu-item-active;
+        }
+      }
+
+      &.is-active {
+        .el-sub-menu__title {
+          color: var(--app-menu-item-text-color-active);
+        }
+      }
+    }
+  }
+
+  &.el-menu--collapse {
+    width: var(--app-base-item-height);
+
+    & .el-sub-menu {
+      border-radius: var(--app-round);
+
+      &.is-active {
+        @include menu-item-active;
+      }
+
+      .el-sub-menu__title {
+        justify-content: center;
+        padding: 0;
+
+        &:hover {
+          @include menu-item-active;
+        }
+
+        @include menu-icon('sub', 0, 16px);
+      }
+    }
+
+    & .el-menu-item {
+      padding: 0;
+
+      &:hover {
+        @include menu-item-active;
+      }
+
+      &.is-active {
+        @include menu-item-active;
+      }
+
+      & > div.el-menu-tooltip__trigger {
+        justify-content: center;
+        padding: 0;
+
+        @include menu-icon('item', 0, 16px);
+      }
+    }
+  }
+
+  &.el-menu--horizontal {
+    gap: 0 4px;
+    border-bottom: unset;
+
+    --el-menu-horizontal-height: var(--app-base-item-height);
+
+    .el-sub-menu {
+      @include menu-icon('sub', 6px);
+
+      &__title {
+        border-bottom: unset;
+        border-radius: var(--app-round);
+      }
+
+      &.is-active .el-sub-menu__title {
+        border-bottom: unset;
+
+        @include menu-item-active;
+      }
+
+      &:hover .el-sub-menu__title {
+        @include menu-item-active;
+
+        color: var(--app-menu-item-text-color-active);
+      }
+    }
+
+    .el-menu-item {
+      @include menu-icon('item', 6px);
+
+      --el-menu-active-color: var(--app-menu-item-text-color-active);
+      --el-menu-hover-text-color: var(--app-menu-item-text-color-active);
+
+      border-bottom: unset;
+      border-radius: var(--app-round);
+
+      &.is-active {
+        @include menu-item-active;
+      }
+
+      &:not(.is-disabled) {
+        &:hover {
+          background-color: var(--app-menu-item-bg-color-active);
+        }
+
+        &:focus {
+          background-color: var(--app-menu-item-bg-color-active);
+        }
+      }
+    }
+  }
+
+  // &.el-menu--horizontal {
+  //   gap: 0 4px;
+  //   border-bottom: unset;
+
+  //   --el-menu-horizontal-height: var(--app-base-item-height);
+
+  //   .el-sub-menu {
+  //     @include menu-icon('sub', 6px);
+
+  //     &__title {
+  //       border-bottom: unset;
+  //       border-radius: var(--app-round);
+  //     }
+
+  //     &.is-active .el-sub-menu__title {
+  //       @include menu-item-active;
+  //     }
+
+  //     &:hover .el-sub-menu__title {
+  //       @include menu-item-active;
+  //     }
+  //   }
+
+  //   .el-menu-item {
+  //     @include menu-icon('item', 6px);
+
+  //     border-bottom: unset;
+  //     border-radius: var(--app-round);
+
+  //     --el-menu-active-color: var(--app-menu-item-text-color-active);
+  //     --el-menu-hover-text-color: var(--app-menu-item-text-color-active);
+
+  //     &.is-active {
+  //       border-bottom: unset;
+
+  //       @include menu-item-active;
+  //     }
+
+  //     &:not(.is-disabled) {
+  //       &:hover {
+  //         background-color: var(--app-menu-item-bg-color-active);
+  //       }
+
+  //       &:focus {
+  //         background-color: var(--app-menu-item-bg-color-active);
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+div.basic-menu.el-popper {
+  border-radius: var(--app-round);
+
+  .el-menu.el-menu--popup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px 0;
+    padding: 4px;
+    border-radius: var(--app-round);
+
+    .el-menu-item {
+      @include menu-item(0);
+      @include menu-icon('item');
+
+      &.is-active {
+        color: var(--app-menu-item-text-color-active);
+        background-color: var(--app-menu-item-bg-color-active);
+      }
+
+      &:hover {
+        color: var(--app-menu-item-text-color-active);
+        background-color: var(--app-menu-item-bg-color-active);
+      }
+    }
+
+    .el-sub-menu {
+      &__title {
+        @include menu-item(0);
+        @include menu-icon('sub');
+      }
+
+      &.is-active {
+        .el-sub-menu__title {
+          color: var(--el-color-primary);
+        }
+      }
+    }
+  }
+}

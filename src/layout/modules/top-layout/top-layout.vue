@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ElContainer, ElScrollbar } from 'element-plus';
-import { BasicHeader } from '@/layout/components/basic-header';
-import { BasicMain } from '@/layout/components/basic-main';
+import { ElContainer } from 'element-plus';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { AppLogo } from '@/components/common/app-logo';
 import { computed } from 'vue';
-import { constantRoutes } from '@/router';
+import { menuRoutes } from '@/router';
+import { BasicContainer } from '@/layout/components/basic-container';
+import { BasicToolbar } from '../../components/basic-toolbar';
+import { Breadcrumb } from '../../components/breadcrumb';
 
 defineOptions({
   name: 'TopLayout',
@@ -13,26 +14,30 @@ defineOptions({
 
 /** 获取可见的菜单路由 */
 const getVisibleMenuRoutes = computed(() => {
-  return constantRoutes.filter((menu) => !menu.meta.hideMenu);
+  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 </script>
 
 <template>
-  <ElContainer class="h-full">
-    <ElContainer class="size-full !flex-col overflow-auto overflow-x-hidden">
-      <BasicHeader>
-        <template #left>
-          <div class="flex items-center flex-1 min-w-0 gap-x-4">
-            <AppLogo show-title border />
-            <BasicMenu mode="horizontal">
-              <template v-for="menu in getVisibleMenuRoutes" :key="menu.path">
-                <BasicMenuSubItem :menu :parent-path="menu.path" />
-              </template>
-            </BasicMenu>
-          </div>
-        </template>
-      </BasicHeader>
-      <BasicMain />
-    </ElContainer>
+  <ElContainer class="h-full !flex-col bg-el-fill">
+    <div
+      class="p-4 flex items-center justify-between gap-x-4 bg-el-bg border-b border-el-border-light"
+    >
+      <AppLogo show-title />
+      <div class="flex-1 min-w-0 flex items-center">
+        <div class="flex-1 overflow-hidden">
+          <BasicMenu mode="horizontal">
+            <template v-for="menu in getVisibleMenuRoutes" :key="menu.path">
+              <BasicMenuSubItem :menu :parent-path="menu.path" />
+            </template>
+          </BasicMenu>
+        </div>
+      </div>
+      <BasicToolbar :show-user-dropdown="true" />
+    </div>
+    <div class="mt-4 ml-4">
+      <Breadcrumb />
+    </div>
+    <BasicContainer container-class="overflow-y-auto p-3" />
   </ElContainer>
 </template>

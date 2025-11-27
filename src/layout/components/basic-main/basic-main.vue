@@ -4,18 +4,15 @@ defineOptions({
 });
 
 const { pageTransitionName } = useThemeSettings();
-const { getCurrentHeaderHeight } = useLayoutSettings();
 const { getCurrentLoadViewStatus } = useLoadView();
 </script>
 
 <template>
-  <div class="flex-1 p-4 bg-el-fill-blank" :style="{ marginTop: `${getCurrentHeaderHeight}px` }">
-    <RouterView v-slot="{ Component, route }">
-      <Transition :name="pageTransitionName" mode="out-in" appear>
-        <component :is="Component" v-if="getCurrentLoadViewStatus" :key="route.path" />
-      </Transition>
-    </RouterView>
-  </div>
+  <RouterView v-slot="{ Component, route }">
+    <Transition :name="pageTransitionName" mode="out-in" appear>
+      <component :is="Component" v-if="getCurrentLoadViewStatus" :key="route.path" />
+    </Transition>
+  </RouterView>
 </template>
 
 <style scoped lang="scss"></style>
