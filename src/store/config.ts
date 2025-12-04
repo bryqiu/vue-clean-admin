@@ -1,6 +1,7 @@
 import type { PluginOptions } from 'pinia-plugin-persistedstate';
 import type { Layout, Settings, Share, Theme } from '@/store/types';
 import { LayoutModeEnum, PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
+import { PRIMARY_COLOR } from '@/theme/constants';
 
 /** 默认持久化存储配置 */
 export const defaultStoreOptions: PluginOptions = {
@@ -26,7 +27,7 @@ export const storeModulesNames = {
 /** 默认主题设置 */
 const defaultTheme: Theme = {
   currentThemeMode: ThemeModeEnum.LIGHT, // 主题模式
-  primaryColor: '#3a77ef', // 主色调
+  primaryColor: PRIMARY_COLOR, // 主色调
   pageTransitionName: PageTransitionEnum.FADE_RIGHT, // 路由切换动画
   visualMode: VisualModeEnum.NORMAL, // 视觉模式
 } as const;
