@@ -6,8 +6,6 @@ import { BasicContainer } from '@/layout/components/basic-container';
 defineOptions({
   name: 'ColLayout',
 });
-
-const { getCurrentColSidebarWidth } = useLayoutSettings();
 </script>
 
 <template>

@@ -7,14 +7,12 @@ import { cn } from '@/utils';
 import { useRoute, useRouter } from 'vue-router';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { menuRoutes } from '@/router';
-import { ROUTE_NAMES } from '@/router/config';
 
 defineOptions({
   name: 'ColSidebar',
 });
 
 const route = useRoute();
-const { push } = useRouter();
 
 const {
   getCurrentSidebarCollapseWidth,
@@ -78,7 +76,7 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
 <template>
   <ElAside
     :width="`${getCurrentColSidebarWidth}px`"
-    class="!overflow-x-hidden duration-300 flex bg-el-bg"
+    class="!overflow-x-hidden duration-300 flex bg-background"
   >
     <div
       class="flex flex-col h-full border-r border-solid border-el-border-light"
@@ -92,13 +90,13 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
       </div>
 
       <div class="flex-1 p-2 flex flex-col items-center">
-        <div class="flex-1 space-y-2 w-[var(--app-base-item-height)]">
+        <div class="flex-1 space-y-2 w-item">
           <div
             v-for="menu in getTopLevelMenuList"
             :key="menu.path"
             :class="
               cn(
-                ' h-item rounded-lg flex flex-col gap-y-1 items-center justify-center cursor-pointer duration-300',
+                'h-item rounded-lg flex flex-col gap-y-1 items-center justify-center cursor-pointer duration-300',
                 `hover:bg-el-fill-dark`,
                 isActiveMenu(menu.path) && activeMenuItemStyle,
               )

@@ -9,7 +9,7 @@ defineOptions({
 </script>
 
 <template>
-  <ElContainer class="h-full bg-el-fill">
+  <ElContainer class="h-full">
     <Sidebar />
     <BasicContainer />
   </ElContainer>

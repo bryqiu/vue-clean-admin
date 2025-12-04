@@ -24,12 +24,9 @@ withDefaults(defineProps<BasicContainerProps>(), {
 </script>
 
 <template>
-  <ElContainer :class="cn('!flex-col relative p-2 pl-1', containerClass)">
-    <div class="flex-1 flex flex-col rounded-lg border border-el-border bg-el-bg overflow-y-auto">
-      <div
-        v-if="!isTopLayout"
-        class="w-full flex items-center justify-between px-3 py-1 border-b border-el-border-light"
-      >
+  <ElContainer :class="cn('flex-col! relative p-2', containerClass)">
+    <div class="flex-1 flex flex-col rounded-2xl bg-background overflow-y-auto shadow-md">
+      <div v-if="!isTopLayout" class="w-full flex items-center justify-between py-2 px-3">
         <div class="flex items-center">
           <MenuCollapse />
           <ElDivider direction="vertical" />

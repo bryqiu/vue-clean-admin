@@ -19,9 +19,9 @@ const getVisibleMenuRoutes = computed(() => {
 </script>
 
 <template>
-  <ElContainer class="h-full !flex-col bg-el-fill">
+  <ElContainer class="h-full flex-col!">
     <div
-      class="p-4 flex items-center justify-between gap-x-4 bg-el-bg border-b border-el-border-light"
+      class="p-4 flex items-center justify-between gap-x-4 bg-background border-b border-el-border-light"
     >
       <AppLogo show-title />
       <div class="flex-1 min-w-0 flex items-center">

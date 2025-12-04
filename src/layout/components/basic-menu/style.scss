@@ -2,22 +2,23 @@
 
 @mixin menu-item($bottom: 4px) {
   margin-bottom: $bottom;
-  border-radius: var(--app-round);
+  border-radius: var(--radius);
 }
 
 @mixin menu-item-active {
-  background-color: var(--app-menu-item-bg-color-active);
+  background-color: var(--menu-active-bg-color);
 }
 
-// :root.dark {
-//   --app-menu-item-text-color-active: var(--el-text-color-regular);
-// }
+@mixin menu-active-style {
+  color: var(--menu-active-text-color) !important;
+  background-color: var(--menu-active-bg-color) !important;
+}
 
-@mixin menu-icon(
-  $type,
-  $right: var(--app-menu-item-icon-gap),
-  $size: var(--app-menu-item-icon-size)
-) {
+@mixin menu-hover-style {
+  background-color: var(--menu-hover-bg-color);
+}
+
+@mixin menu-icon($type, $right: var(--menu-item-icon-gap), $size: var(--menu-item-icon-size)) {
   @if $type == 'sub' {
     .menu-sub-i {
       margin-right: $right;
@@ -40,15 +41,14 @@
 }
 
 ul.el-menu.basic-menu {
-  --el-menu-text-color: var(--app-menu-item-text-color);
-  --el-menu-active-color: var(--app-menu-item-text-color-active);
-  --el-menu-bg-color: var(--app-sidebar-bg-color);
-  --el-menu-hover-bg-color: var(--app-menu-item-bg-color-active);
-  --el-menu-item-height: var(--app-base-item-height);
-  --el-menu-sub-item-height: var(--app-base-item-height);
-  --el-menu-horizontal-sub-item-height: var(--app-base-item-height);
-  --el-menu-item-hover-fill: var(--app-menu-item-bg-color-active);
-  --el-menu-level-padding: var(--app-menu-item-level-padding);
+  --el-menu-text-color: var(--menu-text-color);
+  --el-menu-active-color: var(--menu-text-color);
+  --el-menu-bg-color: var(--sidebar-bg-color);
+  --el-menu-hover-bg-color: var(--menu-active-bg-color);
+  --el-menu-item-height: var(--size-32);
+  --el-menu-sub-item-height: var(--size-32);
+  --el-menu-item-hover-fill: var(--menu-active-bg-color);
+  --el-menu-level-padding: var(--menu-item-level-spacing);
 
   &.el-menu--vertical {
     border-right: unset;
@@ -58,11 +58,12 @@ ul.el-menu.basic-menu {
       @include menu-icon('item');
 
       &.is-active {
-        @include menu-item-active;
+        // @include menu-item-active;
+        @include menu-active-style;
       }
 
       &:hover {
-        @include menu-item-active;
+        @include menu-hover-style;
       }
     }
 
@@ -72,26 +73,29 @@ ul.el-menu.basic-menu {
         @include menu-icon('sub');
 
         &:hover {
-          @include menu-item-active;
+          @include menu-hover-style;
         }
       }
 
       &.is-active {
         .el-sub-menu__title {
-          color: var(--app-menu-item-text-color-active);
+          color: var(--menu-text-color);
         }
       }
     }
   }
 
   &.el-menu--collapse {
-    width: var(--app-base-item-height);
+    width: var(--size-32);
 
     & .el-sub-menu {
-      border-radius: var(--app-round);
+      border-radius: var(--radius);
 
       &.is-active {
-        @include menu-item-active;
+        // @include menu-active-style;
+        .el-sub-menu__title {
+          @include menu-active-style;
+        }
       }
 
       .el-sub-menu__title {
@@ -99,7 +103,7 @@ ul.el-menu.basic-menu {
         padding: 0;
 
         &:hover {
-          @include menu-item-active;
+          @include menu-hover-style;
         }
 
         @include menu-icon('sub', 0, 16px);
@@ -110,11 +114,11 @@ ul.el-menu.basic-menu {
       padding: 0;
 
       &:hover {
-        @include menu-item-active;
+        @include menu-hover-style;
       }
 
       &.is-active {
-        @include menu-item-active;
+        @include menu-active-style;
       }
 
       & > div.el-menu-tooltip__trigger {
@@ -130,127 +134,81 @@ ul.el-menu.basic-menu {
     gap: 0 4px;
     border-bottom: unset;
 
-    --el-menu-horizontal-height: var(--app-base-item-height);
+    --el-menu-horizontal-height: var(--size-32);
 
     .el-sub-menu {
       @include menu-icon('sub', 6px);
 
       &__title {
         border-bottom: unset;
-        border-radius: var(--app-round);
+        border-radius: var(--radius);
       }
 
       &.is-active .el-sub-menu__title {
         border-bottom: unset;
 
-        @include menu-item-active;
+        // @include menu-active-style;
+        @include menu-hover-style;
       }
 
       &:hover .el-sub-menu__title {
-        @include menu-item-active;
+        @include menu-hover-style;
 
-        color: var(--app-menu-item-text-color-active);
+        color: var(--menu-text-color);
       }
     }
 
     .el-menu-item {
       @include menu-icon('item', 6px);
 
-      --el-menu-active-color: var(--app-menu-item-text-color-active);
-      --el-menu-hover-text-color: var(--app-menu-item-text-color-active);
+      --el-menu-active-color: var(--menu-active-text-color);
+      --el-menu-hover-text-color: var(--menu-text-color);
 
       border-bottom: unset;
-      border-radius: var(--app-round);
+      border-radius: var(--radius);
 
       &.is-active {
-        @include menu-item-active;
+        @include menu-active-style;
       }
 
       &:not(.is-disabled) {
         &:hover {
-          background-color: var(--app-menu-item-bg-color-active);
+          background-color: var(--menu-hover-bg-color);
         }
 
         &:focus {
-          background-color: var(--app-menu-item-bg-color-active);
+          background-color: var(--menu-hover-bg-color);
         }
       }
     }
   }
-
-  // &.el-menu--horizontal {
-  //   gap: 0 4px;
-  //   border-bottom: unset;
-
-  //   --el-menu-horizontal-height: var(--app-base-item-height);
-
-  //   .el-sub-menu {
-  //     @include menu-icon('sub', 6px);
-
-  //     &__title {
-  //       border-bottom: unset;
-  //       border-radius: var(--app-round);
-  //     }
-
-  //     &.is-active .el-sub-menu__title {
-  //       @include menu-item-active;
-  //     }
-
-  //     &:hover .el-sub-menu__title {
-  //       @include menu-item-active;
-  //     }
-  //   }
-
-  //   .el-menu-item {
-  //     @include menu-icon('item', 6px);
-
-  //     border-bottom: unset;
-  //     border-radius: var(--app-round);
-
-  //     --el-menu-active-color: var(--app-menu-item-text-color-active);
-  //     --el-menu-hover-text-color: var(--app-menu-item-text-color-active);
-
-  //     &.is-active {
-  //       border-bottom: unset;
-
-  //       @include menu-item-active;
-  //     }
-
-  //     &:not(.is-disabled) {
-  //       &:hover {
-  //         background-color: var(--app-menu-item-bg-color-active);
-  //       }
-
-  //       &:focus {
-  //         background-color: var(--app-menu-item-bg-color-active);
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 div.basic-menu.el-popper {
-  border-radius: var(--app-round);
+  border-radius: var(--radius);
+
+  --el-menu-horizontal-sub-item-height: var(--size-32);
+  --el-menu-item-height: var(--size-32);
 
   .el-menu.el-menu--popup {
     display: flex;
     flex-direction: column;
     gap: 4px 0;
     padding: 4px;
-    border-radius: var(--app-round);
+    border-radius: var(--radius);
 
     .el-menu-item {
       @include menu-item(0);
       @include menu-icon('item');
 
       &.is-active {
-        color: var(--app-menu-item-text-color-active);
-        background-color: var(--app-menu-item-bg-color-active);
+        @include menu-active-style;
       }
 
       &:hover {
-        color: var(--app-menu-item-text-color-active);
-        background-color: var(--app-menu-item-bg-color-active);
+        color: var(--menu-text-color);
+
+        @include menu-hover-style;
       }
     }
 

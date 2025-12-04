@@ -22,7 +22,7 @@ withDefaults(defineProps<BasicToolbarProps>(), {
 </script>
 
 <template>
-  <div class="flex items-center gap-x-2">
+  <div class="flex items-center gap-x-2.5">
     <ReloadView />
     <AppLocale />
     <AppTheme />

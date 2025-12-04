@@ -141,7 +141,7 @@ $height: 24px;
 
         &::before {
           left: -1px;
-          border-left-color: var(--el-bg-color);
+          border-left-color: var(--background);
         }
 
         &::after {

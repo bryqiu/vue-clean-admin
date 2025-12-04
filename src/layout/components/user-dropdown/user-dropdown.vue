@@ -16,7 +16,7 @@ const getPopoverProps = computed(() => {
   const defaultProps: Partial<PopoverProps> = {
     width: 250,
     showArrow: false,
-    popperStyle: { borderRadius: 'var(--app-round)' },
+    popperStyle: { borderRadius: 'var(--radius)' },
     popperClass: 'user-dropdown',
   };
 
