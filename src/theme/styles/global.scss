@@ -1,3 +1,5 @@
+/* 全局样式 */
+
 #app {
   width: 100%;
   height: 100%;
@@ -5,11 +7,11 @@
 }
 
 /* 灰色模式 */
-.gray-mode {
+:root.gray-mode {
   filter: grayscale(1);
 }
 
 /* 色弱模式 */
-.weak-mode {
+:root.weak-mode {
   filter: invert(80%);
 }

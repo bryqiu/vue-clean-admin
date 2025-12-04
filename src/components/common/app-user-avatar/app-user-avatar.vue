@@ -132,7 +132,7 @@ const getElImageProps = computed(() => {
       v-if="showLoginStatus"
       :class="
         cn(
-          'border-[var(--el-bg-color-overlay)]  absolute right-0 bottom-0 size-3 rounded-full border-2',
+          'absolute right-0 bottom-0 size-3 rounded-full border-2 border-background',
           getLoginStatusDotColor,
           getSizeStyle.dot,
         )

@@ -21,3 +21,6 @@ export const EL_BG_WEIGHT = ['page', 'overlay'];
 
 /** Element Plus 填充权重 */
 export const EL_FILL_WEIGHT = [...EL_BORDER_WEIGHT, 'blank'];
+
+/* 系统主题色 */
+export const PRIMARY_COLOR = '#3b82f6';

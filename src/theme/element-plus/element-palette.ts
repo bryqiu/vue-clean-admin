@@ -6,8 +6,8 @@ import {
   EL_FILL_WEIGHT,
   EL_PRIMARY_COLOR_WEIGHT,
   EL_TEXT_WEIGHT,
-} from './constants';
-import { getWeightValue } from './helpers';
+} from '../constants';
+import { getWeightValue } from '../helpers';
 
 /**
  * 生成 Element Plus 主色、辅助色-色阶(primary、success、warning、danger、info)
@@ -15,24 +15,24 @@ import { getWeightValue } from './helpers';
  * @param weights 权重
  * @returns 颜色色阶
  */
-export function generateElPrimaryScale(
+function generateElPrimaryPalette(
   colorType: ElColorType = 'primary',
   weights: number[],
 ): Record<number | string, string> {
-  const colorVariableScale: Record<number | string, string> = {};
+  const colorVariablePalette: Record<number | string, string> = {};
 
-  colorVariableScale.DEFAULT = `var(--el-color-${colorType})`;
+  colorVariablePalette.DEFAULT = `var(--el-color-${colorType})`;
 
-  colorVariableScale['dark-200'] = `var(--el-color-${colorType}-dark-2)`;
+  colorVariablePalette['dark-200'] = `var(--el-color-${colorType}-dark-2)`;
 
   weights.forEach((weight) => {
-    colorVariableScale[weight] = `var(--el-color-${colorType}-light-${getWeightValue(weight)})`;
+    colorVariablePalette[weight] = `var(--el-color-${colorType}-light-${getWeightValue(weight)})`;
   });
 
-  return colorVariableScale;
+  return colorVariablePalette;
 }
 
-interface ThemeScaleOptions {
+interface ElThemeOptions {
   /**
    * 是否包含默认值
    * @default true
@@ -56,10 +56,10 @@ interface ThemeScaleOptions {
  * @param options 配置项
  * @returns 颜色色阶
  */
-export function generateElThemeScale(
+function generateElThemePalette(
   colorType: string,
   weights: number[] | string[],
-  options?: ThemeScaleOptions,
+  options?: ElThemeOptions,
 ): Record<number | string, string> {
   const { hasDefault = true, format, defaultKey = 'DEFAULT' } = options || {};
 
@@ -68,17 +68,17 @@ export function generateElThemeScale(
 
   const currentFormatFn = format || defaultFormat;
 
-  const colorVariableScale: Record<number | string, string> = {};
+  const colorVariablePalette: Record<number | string, string> = {};
 
   if (hasDefault) {
-    colorVariableScale[defaultKey] = currentFormatFn(colorType, '');
+    colorVariablePalette[defaultKey] = currentFormatFn(colorType, '');
   }
 
   weights.forEach((weight) => {
-    colorVariableScale[weight] = currentFormatFn(colorType, weight);
+    colorVariablePalette[weight] = currentFormatFn(colorType, weight);
   });
 
-  return colorVariableScale;
+  return colorVariablePalette;
 }
 
 /**
@@ -91,46 +91,33 @@ function addKeyPrefix<T extends Record<string, any>>(obj: T, prefix: string): Re
   return Object.fromEntries(Object.entries(obj).map(([key, value]) => [`${prefix}${key}`, value]));
 }
 
-/** 圆角色阶 */
-const roundScales = {
-  none: '0px',
-  sm: 'var(--app-round-sm) /* 2px */',
-  DEFAULT: 'var(--app-round) /* 8px */',
-  md: 'var(--app-round-md) /* 4px */',
-  lg: 'var(--app-round) /* 8px */',
-  xl: 'var(--app-round-xl) /* 12px */',
-  '2xl': 'var(--app-round-2xl) /* 16px */',
-  '3xl': 'var(--app-round-3xl) /* 24px */',
-  full: '9999px',
-};
-
-export const tailwindThemeConfig: Config['theme'] = {
+export const elThemePalette: Config['theme'] = {
   extend: {
     colors: {
       /** 主题色 */
-      'el-primary': generateElPrimaryScale('primary', EL_PRIMARY_COLOR_WEIGHT),
+      'el-primary': generateElPrimaryPalette('primary', EL_PRIMARY_COLOR_WEIGHT),
       /** 成功色 */
-      'el-success': generateElPrimaryScale('success', EL_ASSISTANT_COLOR_WEIGHT),
+      'el-success': generateElPrimaryPalette('success', EL_ASSISTANT_COLOR_WEIGHT),
       /** 警告色 */
-      'el-warning': generateElPrimaryScale('warning', EL_ASSISTANT_COLOR_WEIGHT),
+      'el-warning': generateElPrimaryPalette('warning', EL_ASSISTANT_COLOR_WEIGHT),
       /** 危险色 */
-      'el-danger': generateElPrimaryScale('danger', EL_ASSISTANT_COLOR_WEIGHT),
+      'el-danger': generateElPrimaryPalette('danger', EL_ASSISTANT_COLOR_WEIGHT),
       /** 信息色 */
-      'el-info': generateElPrimaryScale('info', EL_ASSISTANT_COLOR_WEIGHT),
+      'el-info': generateElPrimaryPalette('info', EL_ASSISTANT_COLOR_WEIGHT),
     },
     textColor: {
       /** 文本色阶 */
-      'el-text': generateElThemeScale('text', EL_TEXT_WEIGHT, { hasDefault: false }),
+      'el-text': generateElThemePalette('text', EL_TEXT_WEIGHT, { hasDefault: false }),
       'el-text-disabled': 'var(--el-text-color-placeholder)',
     },
     borderColor: {
       /** 边框色阶 */
-      'el-border': generateElThemeScale('border', EL_BORDER_WEIGHT),
+      'el-border': generateElThemePalette('border', EL_BORDER_WEIGHT),
       'el-border-disabled': 'var(--el-disabled-border-color)',
     },
     fill: {
       /** 填充色阶 */
-      'el-fill': generateElThemeScale('fill', EL_FILL_WEIGHT),
+      'el-fill': generateElThemePalette('fill', EL_FILL_WEIGHT),
     },
     boxShadow: {
       /** 阴影色阶 */
@@ -144,18 +131,11 @@ export const tailwindThemeConfig: Config['theme'] = {
         /** 填充色阶 */
         ...theme('fill'),
         /** 背景色阶 */
-        'el-bg': generateElThemeScale('bg', EL_BG_WEIGHT),
+        'el-bg': generateElThemePalette('bg', EL_BG_WEIGHT),
         'el-bg-disabled': 'var(--el-disabled-bg-color)',
         'el-bg-mask': 'var(--el-mask-color)',
         'el-bg-mask-extra-light': 'var(--el-mask-color-extra-light)',
       };
     },
-    height: {
-      item: 'var(--app-base-item-height)',
-    },
-    width: {
-      item: 'var(--app-base-item-height)',
-    },
   },
-  borderRadius: roundScales,
 };

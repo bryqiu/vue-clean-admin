@@ -23,7 +23,7 @@ withDefaults(defineProps<AuthContainerProps>(), {
 
 <template>
   <div
-    class="flex flex-col gap-y-4 p-6 border border-solid border-el-border-light bg-el-fill-blank dark:bg-el-bg-overlay shadow rounded-lg"
+    class="flex flex-col gap-y-4 p-6 border border-el-border-light bg-background shadow rounded-lg"
   >
     <div class="flex flex-col gap-y-1">
       <span :class="cn('text-base font-semibold', titleClass)">{{ title }}</span>

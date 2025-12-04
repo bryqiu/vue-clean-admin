@@ -1,8 +1,10 @@
 div.app-dialog {
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   &.el-dialog {
-    border-radius: var(--app-round);
+    border-radius: var(--radius);
 
     --el-dialog-padding-primary: 0px;
     --app-dialog-padding: 10px;
@@ -16,6 +18,7 @@ div.app-dialog {
     }
 
     .el-dialog__body {
+      flex: 1;
       padding: var(--app-dialog-padding-y) var(--app-dialog-padding-x);
     }
 

@@ -1,8 +1,8 @@
-import { EL_PRIMARY_COLOR_WEIGHT } from './constants';
-import { getDarkColor, getLightColor, getWeightValue, setHtmlProperty } from './helpers';
+import { EL_PRIMARY_COLOR_WEIGHT } from '../constants';
+import { getDarkColor, getLightColor, getWeightValue, setHtmlProperty } from '../helpers';
 
 /**
- * 处理 Element Plus 主题颜色
+ * 设置 Element Plus 主题颜色
  * @param color 主题颜色
  * @param isDark 是否暗黑模式
  */

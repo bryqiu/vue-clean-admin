@@ -30,11 +30,11 @@ const goToAuthMode = (value: RouteNames) => {
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+  <div class="grid grid-cols-2 gap-x-4 gap-y-2">
     <div
       v-for="item in authModeList"
       :key="item.routeName"
-      class="h-8 rounded-lg border border-solid border-el-border flex items-center justify-center flex-1 gap-2 cursor-pointer hover:bg-el-fill-light duration-300 text-el-text-primary"
+      class="h-item rounded-lg border border-solid border-el-border flex items-center justify-center flex-1 gap-2 cursor-pointer hover:bg-el-fill-light duration-300 text-el-text-primary"
       @click="goToAuthMode(item.routeName)"
     >
       <IconifyIcon v-if="item.icon" :name="item.icon" class="text-base" />

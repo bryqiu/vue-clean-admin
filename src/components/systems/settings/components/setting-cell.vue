@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<WidgetCellProps>(), {
 
 const getDisabledStyle = computed(() => {
   if (props.disabled) {
-    return 'cursor-not-allowed opacity-80 bg-el-bg-disabled border-el-border-disabled';
+    return 'cursor-not-allowed opacity-80 bg-background-disabled border-el-border-disabled';
   }
   return '';
 });

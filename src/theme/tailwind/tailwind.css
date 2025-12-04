@@ -1,0 +1,128 @@
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+
+/* @import "tailwindcss/preflight.css" layer(base); */
+
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@config "./tailwind.config.js";
+
+:root {
+  --size-32: 32px;
+  --radius: 0.5rem;
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: oklch(0% 0 0deg);
+  --shadow-2xs: 0 1px 3px 0px hsl(0deg 0% 0% / 5%);
+  --shadow-xs: 0 1px 3px 0px hsl(0deg 0% 0% / 5%);
+  --shadow-sm: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 1px 2px -1px hsl(0deg 0% 0% / 10%);
+  --shadow: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 1px 2px -1px hsl(0deg 0% 0% / 10%);
+  --shadow-md: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 2px 4px -1px hsl(0deg 0% 0% / 10%);
+  --shadow-lg: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 4px 6px -1px hsl(0deg 0% 0% / 10%);
+  --shadow-xl: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 8px 10px -1px hsl(0deg 0% 0% / 10%);
+  --shadow-2xl: 0 1px 3px 0px hsl(0deg 0% 0% / 25%);
+  --background: oklch(100% 0 0deg);
+
+  /* zinc 调色板 */
+  --zinc-50: oklch(98.5% 0 0deg);
+  --zinc-100: oklch(96.7% 0.001 286.375deg);
+  --zinc-200: oklch(92% 0.004 286.32deg);
+  --zinc-300: oklch(87.1% 0.006 286.286deg);
+  --zinc-400: oklch(70.5% 0.015 286.067deg);
+  --zinc-500: oklch(55.2% 0.016 285.938deg);
+  --zinc-600: oklch(44.2% 0.017 285.786deg);
+  --zinc-700: oklch(37% 0.013 285.805deg);
+  --zinc-800: oklch(27.4% 0.006 286.033deg);
+  --zinc-900: oklch(21% 0.006 285.885deg);
+  --zinc-950: oklch(14.1% 0.005 285.823deg);
+
+  /* 容器背景颜色 */
+  --container-color: var(--zinc-50);
+
+  /* 侧边栏背景颜色 */
+  --sidebar-bg-color: transparent;
+
+  /* 菜单整体文本颜色 */
+  --menu-text-color: var(--zinc-900);
+
+  /* 菜单激活项背景颜色 */
+  --menu-active-bg-color: var(--el-color-primary);
+
+  /* 菜单激活项文本颜色 */
+  --menu-active-text-color: var(--el-color-white);
+
+  /* 菜单悬停项背景颜色 */
+  --menu-hover-bg-color: var(--zinc-200);
+
+  /* 菜单项文本与图标的间距 */
+  --menu-item-icon-gap: 8px;
+
+  /* 菜单项图标大小 */
+  --menu-item-icon-size: 16px;
+
+  /* 菜单level项水平缩进像素 */
+  --menu-item-level-spacing: calc(var(--menu-item-icon-gap) + var(--menu-item-icon-size));
+}
+
+.dark {
+  --shadow-color: oklch(0% 0 0deg);
+  --shadow-2xs: 0 1px 3px 0px hsl(0deg 0% 0% / 5%);
+  --shadow-xs: 0 1px 3px 0px hsl(0deg 0% 0% / 5%);
+  --shadow-sm: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 1px 2px -1px hsl(0deg 0% 0% / 10%);
+  --shadow: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 1px 2px -1px hsl(0deg 0% 0% / 10%);
+  --shadow-md: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 2px 4px -1px hsl(0deg 0% 0% / 10%);
+  --shadow-lg: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 4px 6px -1px hsl(0deg 0% 0% / 10%);
+  --shadow-xl: 0 1px 3px 0px hsl(0deg 0% 0% / 10%), 0 8px 10px -1px hsl(0deg 0% 0% / 10%);
+  --shadow-2xl: 0 1px 3px 0px hsl(0deg 0% 0% / 25%);
+  --background: var(--zinc-50);
+
+  /* zinc 调色板 */
+  --zinc-50: oklch(14.1% 0.005 285.823deg);
+  --zinc-100: oklch(21% 0.006 285.885deg);
+  --zinc-200: oklch(27.4% 0.006 286.033deg);
+  --zinc-300: oklch(37% 0.013 285.805deg);
+  --zinc-400: oklch(44.2% 0.017 285.786deg);
+  --zinc-500: oklch(55.2% 0.016 285.938deg);
+  --zinc-600: oklch(70.5% 0.015 286.067deg);
+  --zinc-700: oklch(87.1% 0.006 286.286deg);
+  --zinc-800: oklch(92% 0.004 286.32deg);
+  --zinc-900: oklch(96.7% 0.001 286.375deg);
+  --zinc-950: oklch(98.5% 0 0deg);
+
+  /* 容器背景颜色 */
+  --container-color: var(--zinc-100);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+  --color-container-color: var(--container-color);
+
+  /* zinc 调色板 */
+  --color-zinc-50: var(--zinc-50);
+  --color-zinc-100: var(--zinc-100);
+  --color-zinc-200: var(--zinc-200);
+  --color-zinc-300: var(--zinc-300);
+  --color-zinc-400: var(--zinc-400);
+  --color-zinc-500: var(--zinc-500);
+  --color-zinc-600: var(--zinc-600);
+  --color-zinc-700: var(--zinc-700);
+  --color-zinc-800: var(--zinc-800);
+  --color-zinc-900: var(--zinc-900);
+  --color-zinc-950: var(--zinc-950);
+
+  /* 统一宽高 */
+  --width-item: var(--size-32);
+  --height-item: var(--size-32);
+}

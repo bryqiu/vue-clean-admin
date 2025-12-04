@@ -12,6 +12,10 @@ export default {
       {
         ignoreAtRules: [
           'tailwind',
+          'config',
+          'custom-variant',
+          'theme',
+          'source',
           'apply',
           'variants',
           'responsive',

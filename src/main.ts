@@ -2,7 +2,8 @@ import { createApp } from 'vue';
 import { initStore } from '@/store';
 import { initRouter } from '@/router';
 import { initI18n, registerComponents, registerPlugins } from '@/plugins';
-import '@/styles/index.scss';
+import '@/theme/tailwind/tailwind.css';
+import '@/theme/styles/index.scss';
 import '@/plugins/resource';
 
 import App from './app.vue';

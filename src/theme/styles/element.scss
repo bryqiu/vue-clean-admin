@@ -1,18 +1,18 @@
-/* 针对Element Plus组件样式的重写、美化 */
+/* Element Plus 全局组件样式美化 */
 
 /* ======================== el-card 卡片样式 ======================== */
 
 div.el-card:not(.not-style) {
-  --el-card-border-radius: var(--app-round);
+  --el-card-border-radius: var(--radius);
   --el-card-padding: 16px;
-  --el-card-bg-color: var(--el-bg-color);
+  --el-card-bg-color: var(--background);
 
   & > .el-card__header {
     padding: 8px 16px;
   }
 
   &.is-always-shadow {
-    @apply shadow-sm;
+    box-shadow: var(--shadow);
   }
 
   & > .el-card__body {
@@ -25,9 +25,9 @@ div.el-card:not(.not-style) {
 
 div.el-segmented:not(.not-style) {
   --el-segmented-item-selected-color: var(--el-text-color-primary);
-  --el-segmented-item-selected-bg-color: var(--el-bg-color);
-  --el-segmented-item-selected-disabled-bg-color: var(--el-bg-color);
-  --el-border-radius-base: var(--app-round);
+  --el-segmented-item-selected-bg-color: var(--background);
+  --el-segmented-item-selected-disabled-bg-color: var(--background);
+  --el-border-radius-base: var(--radius);
   --el-segmented-item-bg-color: var(--el-fill-color);
   --el-segmented-padding: 3px;
 
@@ -38,10 +38,7 @@ div.el-segmented:not(.not-style) {
 
     &.is-selected {
       font-weight: 500;
-
-      @apply shadow;
+      box-shadow: var(--shadow-sm);
     }
   }
 }
-
-/* ======================== plusProComponents 样式 ======================== */

@@ -12,6 +12,7 @@ import { compressionPluginConfig } from './compress';
 import { autoImportPluginConfig } from './auto-import';
 import { mockPluginConfig } from './mock';
 import { consolePluginConfig } from './console';
+import tailwindcss from '@tailwindcss/vite';
 
 /**
  * 配置 Vite 插件
@@ -23,6 +24,7 @@ export const getPlugins = (env: ImportMetaEnv) => {
   const plugins: PluginOption[] = [
     vue(),
     vueJsx(),
+    tailwindcss(),
     // eslint()
 
     // pluginConfig,

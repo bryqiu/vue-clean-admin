@@ -25,7 +25,7 @@ const updateLocale = (locale: SupportedLocales) => {
   <ElPopover
     trigger="click"
     :show-arrow="false"
-    :popper-style="{ borderRadius: 'var(--app-round)' }"
+    :popper-style="{ borderRadius: 'var(--radius)' }"
     placement="bottom-end"
     popper-class="app-locale-popover"
     width="140"
