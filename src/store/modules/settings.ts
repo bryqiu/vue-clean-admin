@@ -6,7 +6,7 @@ import { defaultSettings, storeModulesNames } from '@/store/config';
 import { enableStoreHMR } from '@/store/helpers';
 import { usePreferredDark } from '@vueuse/core';
 import type { Settings } from '@/store/types';
-import { setElementPrimaryColor } from '@/theme';
+import { setElementPrimaryColor } from '@/theme/element-plus';
 
 const createSettingsStore = defineStore(
   storeModulesNames.settings,
