@@ -13,12 +13,12 @@ export const supportLocaleOptions: (BaseOptions<SupportedLocales> & { icon: stri
   {
     label: '简体中文',
     value: 'zh-CN',
-    icon: 'flag:cn-4x3',
+    icon: 'circle-flags:cn',
   },
   {
     label: 'English',
     value: 'en',
-    icon: 'flag:us-4x3',
+    icon: 'circle-flags:us',
   },
 ];
 
