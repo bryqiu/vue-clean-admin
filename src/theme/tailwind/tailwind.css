@@ -41,7 +41,7 @@
   --zinc-950: oklch(14.1% 0.005 285.823deg);
 
   /* 容器背景颜色 */
-  --container-color: var(--zinc-50);
+  --container-color: var(--zinc-100);
 
   /* 侧边栏背景颜色 */
   --sidebar-bg-color: transparent;
@@ -92,9 +92,6 @@
   --zinc-800: oklch(92% 0.004 286.32deg);
   --zinc-900: oklch(96.7% 0.001 286.375deg);
   --zinc-950: oklch(98.5% 0 0deg);
-
-  /* 容器背景颜色 */
-  --container-color: var(--zinc-100);
 }
 
 @theme inline {

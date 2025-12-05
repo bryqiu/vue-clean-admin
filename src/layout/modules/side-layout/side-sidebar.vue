@@ -54,7 +54,7 @@ const getVisibleMenuRoutes = computed(() => {
     <div>
       <UserDropdownSidebar
         :hide-text="isMenuCollapse"
-        user-dropdown-side-class="hover:bg-el-fill-dark"
+        user-dropdown-side-class="hover:bg-zinc-200"
       />
     </div>
   </ElAside>

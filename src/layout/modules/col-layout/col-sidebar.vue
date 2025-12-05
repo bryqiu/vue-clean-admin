@@ -74,12 +74,9 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
 </script>
 
 <template>
-  <ElAside
-    :width="`${getCurrentColSidebarWidth}px`"
-    class="!overflow-x-hidden duration-300 flex bg-background"
-  >
+  <ElAside :width="`${getCurrentColSidebarWidth}px`" class="overflow-x-hidden! duration-300 flex">
     <div
-      class="flex flex-col h-full border-r border-solid border-el-border-light"
+      class="flex flex-col h-full border-r border-el-border"
       :style="{ width: `${getCurrentSidebarCollapseWidth}px` }"
     >
       <div
@@ -97,8 +94,8 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
             :class="
               cn(
                 'h-item rounded-lg flex flex-col gap-y-1 items-center justify-center cursor-pointer duration-300',
-                `hover:bg-el-fill-dark`,
-                isActiveMenu(menu.path) && activeMenuItemStyle,
+                `hover:bg-zinc-300`,
+                isActiveMenu(menu.path) && 'bg-zinc-300',
               )
             "
             @click="handleTopLevelMenuClick(menu)"
@@ -112,20 +109,20 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
         </div>
 
         <div>
-          <UserDropdownSidebar :hide-text="true" user-dropdown-side-class="hover:bg-el-fill-dark" />
+          <UserDropdownSidebar :hide-text="true" user-dropdown-side-class="hover:bg-zinc-200" />
         </div>
       </div>
     </div>
 
     <div
-      class="flex-1 flex flex-col h-full border-r border-el-border-light"
+      class="flex-1 flex flex-col h-full bg-container-color"
       :style="{ width: `${getCurrentColSubSidebarWidth}px` }"
     >
       <div
         class="flex items-center justify-center"
         :style="{ height: `${getCurrentHeaderHeight}px` }"
       >
-        <span class="text-lg font-semibold text-el-text-primary">{{ appTitle }}</span>
+        <span class="text-base font-semibold text-el-text-primary">{{ appTitle }}</span>
       </div>
       <div class="flex-1 p-2">
         <BasicMenu>
