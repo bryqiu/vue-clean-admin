@@ -1,68 +1,29 @@
 <script setup lang="ts">
-import { BaseContainer } from '../components';
 import { onMounted, ref } from 'vue';
 import type { EChartsOption } from 'echarts';
 import { echarts } from '@/plugins/echarts';
+import { ElCard } from 'element-plus';
 
 defineOptions({
   name: 'ProductTrendChart',
 });
 
+// 定义数据类型
 interface Trend {
   month: string;
-  amount: number;
+  product1: number;
+  product2: number;
 }
 
+// 1. 简单粗暴的写死数据 (近6个月)
 const getTrendData = (): Trend[] => {
   return [
-    {
-      month: '1月',
-      amount: 250,
-    },
-    {
-      month: '2月',
-      amount: 320,
-    },
-    {
-      month: '3月',
-      amount: 300,
-    },
-    {
-      month: '4月',
-      amount: 350,
-    },
-    {
-      month: '5月',
-      amount: 380,
-    },
-    {
-      month: '6月',
-      amount: 600,
-    },
-    {
-      month: '7月',
-      amount: 400,
-    },
-    {
-      month: '8月',
-      amount: 490,
-    },
-    {
-      month: '9月',
-      amount: 450,
-    },
-    {
-      month: '10月',
-      amount: 500,
-    },
-    {
-      month: '11月',
-      amount: 520,
-    },
-    {
-      month: '12月',
-      amount: 550,
-    },
+    { month: '6月', product1: 1200, product2: 2000 },
+    { month: '7月', product1: 1400, product2: 4000 },
+    { month: '8月', product1: 2000, product2: 2400 },
+    { month: '9月', product1: 6000, product2: 2300 },
+    { month: '10月', product1: 4600, product2: 3500 },
+    { month: '11月', product1: 8000, product2: 4100 },
   ];
 };
 
@@ -71,7 +32,7 @@ const createGradient = (color: string) => {
   return new echarts.graphic.LinearGradient(0, 0, 0, 1, [
     {
       offset: 0,
-      color: `rgba(${color}, 0.08)`,
+      color: `rgba(${color}, 0.1)`,
     },
     {
       offset: 1,
@@ -85,25 +46,33 @@ const getOptions = (): EChartsOption => {
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'cross',
+        type: 'line',
         lineStyle: {
           type: 'dashed',
         },
       },
     },
     grid: {
-      left: 0,
-      right: 0,
+      left: 5,
+      right: 5,
       bottom: 0,
-      top: 20,
+      top: 30,
       containLabel: true,
     },
     legend: {
-      show: false,
+      type: 'plain',
+      show: true,
+      right: 0,
+      top: 0,
+      itemWidth: 8,
+      itemHeight: 8,
+      icon: 'circle',
+      data: ['旗舰产品 Pro', '标准版 Lite'],
     },
     xAxis: {
       type: 'category',
       data: getTrendData().map((item) => item.month),
+      boundaryGap: false,
       splitLine: {
         show: false,
       },
@@ -124,18 +93,42 @@ const getOptions = (): EChartsOption => {
       },
     },
 
-    series: {
-      name: '交易额',
-      type: 'line',
-      showSymbol: false,
-      smooth: true,
-      lineStyle: { width: 2 },
-      itemStyle: { color: '#1890FF' },
-      areaStyle: {
-        color: createGradient('99, 102, 241'),
+    series: [
+      {
+        name: '旗舰产品 Pro',
+        type: 'line',
+        showSymbol: false,
+        smooth: true,
+        lineStyle: {
+          width: 2,
+          color: '#1890FF',
+        },
+        itemStyle: {
+          color: '#1890FF',
+        },
+        areaStyle: {
+          color: createGradient('24, 144, 255'),
+        },
+        data: getTrendData().map((item) => item.product1),
       },
-      data: getTrendData().map((item) => item.amount),
-    },
+      {
+        name: '标准版 Lite',
+        type: 'line',
+        showSymbol: false,
+        smooth: true,
+        lineStyle: {
+          width: 2,
+          color: '#d4d7de',
+        },
+        itemStyle: {
+          color: '#d4d7de',
+        },
+        areaStyle: {
+          color: createGradient('245, 247, 250'),
+        },
+        data: getTrendData().map((item) => item.product2),
+      },
+    ],
   };
 };
 
@@ -148,9 +141,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <BaseContainer title="月度总销售额趋势">
-    <div ref="chartInstance" class="w-full h-56 2xl:h-64" />
-  </BaseContainer>
+  <ElCard>
+    <span class="text-sm font-semibold">产品销售额（单位：元）</span>
+    <div ref="chartInstance" class="w-full h-72 2xl:h-80" />
+  </ElCard>
 </template>
 
 <style scoped lang="scss"></style>

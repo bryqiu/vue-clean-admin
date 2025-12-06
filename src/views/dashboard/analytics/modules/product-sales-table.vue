@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ElProgress, ElTable, ElTableColumn } from 'element-plus';
 import { ref } from 'vue';
-import { BaseContainer } from '../components';
 
 defineOptions({
   name: 'ProductSalesTable',
@@ -16,8 +15,6 @@ interface ProductData {
   sales: number;
   targetSales: number;
   earnings: number;
-  profitMargin: number;
-  marketShare: number;
   rating: number;
   status: 'hot' | 'normal' | 'low';
 }
@@ -32,8 +29,6 @@ const productData = ref<ProductData[]>([
     sales: 1250,
     targetSales: 1500,
     earnings: 1248750,
-    profitMargin: 25.5,
-    marketShare: 18.2,
     rating: 4.8,
     status: 'hot',
   },
@@ -46,8 +41,6 @@ const productData = ref<ProductData[]>([
     sales: 680,
     targetSales: 800,
     earnings: 1699320,
-    profitMargin: 22.8,
-    marketShare: 12.5,
     rating: 4.9,
     status: 'hot',
   },
@@ -60,8 +53,6 @@ const productData = ref<ProductData[]>([
     sales: 890,
     targetSales: 1000,
     earnings: 444110,
-    profitMargin: 15.2,
-    marketShare: 8.7,
     rating: 4.6,
     status: 'normal',
   },
@@ -74,8 +65,6 @@ const productData = ref<ProductData[]>([
     sales: 720,
     targetSales: 900,
     earnings: 863280,
-    profitMargin: 20.1,
-    marketShare: 15.3,
     rating: 4.7,
     status: 'normal',
   },
@@ -88,8 +77,6 @@ const productData = ref<ProductData[]>([
     sales: 420,
     targetSales: 600,
     earnings: 461580,
-    profitMargin: 18.9,
-    marketShare: 6.8,
     rating: 4.8,
     status: 'normal',
   },
@@ -102,8 +89,6 @@ const productData = ref<ProductData[]>([
     sales: 180,
     targetSales: 300,
     earnings: 233820,
-    profitMargin: 16.5,
-    marketShare: 4.2,
     rating: 4.5,
     status: 'low',
   },
@@ -116,8 +101,6 @@ const productData = ref<ProductData[]>([
     sales: 1560,
     targetSales: 1800,
     earnings: 544440,
-    profitMargin: 12.8,
-    marketShare: 9.1,
     rating: 4.4,
     status: 'normal',
   },
@@ -130,8 +113,6 @@ const productData = ref<ProductData[]>([
     sales: 2100,
     targetSales: 2500,
     earnings: 522900,
-    profitMargin: 35.2,
-    marketShare: 22.1,
     rating: 4.6,
     status: 'hot',
   },
@@ -144,15 +125,16 @@ const stockPercentage = (stocks: number, totalStocks: number) => {
 </script>
 
 <template>
-  <BaseContainer title="产品销售详情">
+  <div class="flex flex-col gap-y-4">
+    <span class="text-sm font-semibold">产品销售详情表</span>
     <ElTable
       :data="productData"
       height="400px"
       :header-cell-style="{
-        fontWeight: '400',
+        fontWeight: '500',
         color: 'var(--el-text-color-primary)',
+        backgroundColor: 'var(--el-fill-color-light)',
       }"
-      stripe
     >
       <ElTableColumn prop="product" label="产品名称" show-overflow-tooltip width="180" fixed="left">
         <template #default="{ row }">
@@ -177,18 +159,6 @@ const stockPercentage = (stocks: number, totalStocks: number) => {
         </template>
       </ElTableColumn>
 
-      <ElTableColumn label="利润率" align="center">
-        <template #default="{ row }">
-          <span>{{ row.profitMargin }}%</span>
-        </template>
-      </ElTableColumn>
-
-      <ElTableColumn label="市场份额" align="center">
-        <template #default="{ row }">
-          <span>{{ row.marketShare }}%</span>
-        </template>
-      </ElTableColumn>
-
       <ElTableColumn label="库存情况" align="center">
         <template #default="{ row }">
           <div class="flex flex-col items-center gap-1">
@@ -205,7 +175,7 @@ const stockPercentage = (stocks: number, totalStocks: number) => {
         </template>
       </ElTableColumn>
     </ElTable>
-  </BaseContainer>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

@@ -1,7 +1,4 @@
-export { default as SalesRevenueCard } from './sales-revenue-card.vue';
-export { default as ProductSalesCard } from './product-sales-card.vue';
-export { default as ConversionRateCard } from './conversion-rate-card.vue';
-export { default as ProfitMarginCard } from './profit-margin-card.vue';
+export { default as MetricsData } from './metrics-data.vue';
 
 export { default as ProductTrendChart } from './product-trend-chart.vue';
 

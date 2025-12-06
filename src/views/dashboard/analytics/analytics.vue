@@ -1,58 +1,26 @@
 <script setup lang="ts">
-import {
-  ConversionRateCard,
-  ProductSalesCard,
-  ProductSalesTable,
-  ProductTrendChart,
-  ProfitMarginCard,
-  SalesRevenueCard,
-} from './modules';
-import { h } from 'vue';
-import { IconifyIcon } from '@/components/common/app-icon';
+import { MetricsData, ProductSalesTable, ProductTrendChart } from './modules';
+import { ref } from 'vue';
+import { ElSegmented } from 'element-plus';
 
 defineOptions({
   name: 'Analytics',
 });
 
-const filterIcon = h(IconifyIcon, {
-  name: 'ri:filter-2-line',
-});
-
-const exportIcon = h(IconifyIcon, {
-  name: 'ri:download-2-line',
-});
+const segmentedOptions = ['近12月', '近6月', '本月', '本周', '当日'];
+const selectedSegment = ref(segmentedOptions[1]);
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-4">
-    <div class="flex items-center justify-between">
-      <div class="flex flex-col">
-        <span class="text-el-text-primary text-2xl font-bold">analytics</span>
-      </div>
-      <div>
-        <ElButton plain :icon="filterIcon">
-          <span>筛选</span>
-        </ElButton>
-        <ElButton plain :icon="exportIcon">
-          <span>导出数据</span>
-        </ElButton>
-      </div>
+  <div>
+    <div class="flex items-center justify-between pb-4">
+      <span class="text-el-text-primary text-2xl font-bold">analytics</span>
+      <ElSegmented v-model="selectedSegment" :options="segmentedOptions" />
     </div>
-
-    <div class="w-full grid grid-cols-6 gap-4">
-      <div class="col-span-6 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <SalesRevenueCard />
-        <ProductSalesCard />
-        <ConversionRateCard />
-        <ProfitMarginCard />
-      </div>
-      <div class="col-span-6 lg:col-span-3">
-        <ProductTrendChart class="col-span-8" />
-      </div>
-    </div>
-
-    <div class="grid grid-cols-10 gap-4">
-      <ProductSalesTable class="col-span-10" />
+    <div class="flex flex-col gap-y-4">
+      <MetricsData />
+      <ProductTrendChart />
+      <ProductSalesTable />
     </div>
   </div>
 </template>
