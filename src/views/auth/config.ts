@@ -26,18 +26,13 @@ export const AUTH_INFO_MAP = {
 
 export const AUTH_MODE_LIST: AuthModeProps['authModeList'] = [
   {
-    label: '短信',
+    label: '短信登录',
     routeName: ROUTE_NAMES.SMS_LOGIN,
     icon: 'ri:chat-smile-ai-line',
   },
   {
-    label: '二维码',
+    label: '扫码登录',
     routeName: ROUTE_NAMES.QR_LOGIN,
     icon: 'ri:qr-code-line',
-  },
-  {
-    label: '邮箱',
-    routeName: ROUTE_NAMES.EMAIL_LOGIN,
-    icon: 'ri:mail-ai-line',
   },
 ];

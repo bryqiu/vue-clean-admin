@@ -39,8 +39,6 @@ export const ROUTE_NAMES = {
   SMS_LOGIN: 'SmsLogin',
   /** 扫码登录 */
   QR_LOGIN: 'QrLogin',
-  /** 邮箱登录 */
-  EMAIL_LOGIN: 'EmailLogin',
   /** 忘记密码 */
   FORGOT_PASSWORD: 'ForgotPassword',
   /** 注册 */
