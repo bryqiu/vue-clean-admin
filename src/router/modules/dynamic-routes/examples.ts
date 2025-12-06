@@ -31,29 +31,29 @@ const examplesRoutes: CustomRouteRecordRaw = {
       },
     },
     {
-      path: 'icon 图标方案',
+      path: 'icon',
       name: 'Icon',
-      // component: () => import('@/views/examples/icon.vue'),
+      component: () => import('@/views/examples/icon.vue'),
       meta: {
         title: '图标方案',
         menuIcon: 'mingcute:live-location-line',
       },
     },
     {
-      path: 'translate',
-      name: 'Translate',
-      // component: () => import('@/views/examples/i18n.vue'),
+      path: 'i18n',
+      name: 'I18n',
+      component: () => import('@/views/examples/i18n.vue'),
       meta: {
         title: 'i18n 国际化',
         menuIcon: 'ri:translate-2',
       },
     },
     {
-      path: 'crud',
-      name: 'Crud',
-      // component: () => import('@/views/examples/crud.vue'),
+      path: 'list',
+      name: 'List',
+      component: () => import('@/views/examples/list.vue'),
       meta: {
-        title: 'CRUD 表格',
+        title: '列表管理',
         menuIcon: 'ri:table-3',
       },
     },
