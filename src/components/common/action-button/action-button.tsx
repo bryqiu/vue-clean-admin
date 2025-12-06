@@ -1,8 +1,7 @@
-import { type PropType, computed, defineComponent, ref, useAttrs } from 'vue';
+import { type PropType, computed, defineComponent, ref } from 'vue';
 import { ElButton, ElTooltip } from 'element-plus';
 import type { ButtonInstance, ButtonProps, ElTooltipProps, TooltipInstance } from 'element-plus';
-import { isEmpty } from '@/utils';
-import { twMerge } from 'tailwind-merge';
+import { cn, isEmpty } from '@/utils';
 import type { IconifyIconProps, LocalIconProps } from '@/components/common/app-icon';
 import { omit } from 'lodash-es';
 import { SizeEnum } from '@/enums';
@@ -11,43 +10,6 @@ import './action-button.scss';
 
 type OmitLocalIconProps = Omit<LocalIconProps, 'name'>;
 type OmitIconifyIconProps = Omit<IconifyIconProps, 'name'>;
-
-export interface ActionButtonProps {
-  /**
-   * 图标名称
-   */
-  icon: string;
-  /**
-   * 图标类型
-   * @default 'iconify'
-   */
-  iconType?: IconComponent;
-  /**
-   * 本地图标属性
-   */
-  localIconProps?: OmitLocalIconProps;
-  /**
-   * iconify 图标属性
-   */
-  iconifyIconProps?: OmitIconifyIconProps;
-  /**
-   * iconify class 样式
-   */
-  iconifyClass?: string;
-  /**
-   * 提示框属性
-   */
-  tipProps?: Partial<ElTooltipProps>;
-  /**
-   * 按钮属性
-   */
-  btnProps?: Partial<ButtonProps>;
-  /**
-   * 按钮大小
-   * @default 'default'
-   */
-  size?: GetObjectValues<typeof SizeEnum>;
-}
 
 export default defineComponent({
   name: 'ActionButton',
@@ -80,6 +42,10 @@ export default defineComponent({
       type: Object as PropType<Partial<ButtonProps>>,
       default: undefined,
     },
+    btnClass: {
+      type: String,
+      default: '',
+    },
     size: {
       type: String as PropType<GetObjectValues<typeof SizeEnum>>,
       default: 'default',
@@ -90,9 +56,9 @@ export default defineComponent({
     const btnSizeStyleMap: {
       [key in GetObjectValues<typeof SizeEnum>]: string;
     } = {
-      large: 'size-9',
-      default: 'size-8',
-      small: 'size-7',
+      large: 'size-8!',
+      default: 'size-7!',
+      small: 'size-6!',
     };
 
     /** 是否是本地图标 */
@@ -104,7 +70,7 @@ export default defineComponent({
     const getIconifyIconProps = computed(() => {
       const defaultProps: Partial<OmitIconifyIconProps> = {};
       const iconifyProps = omit(props.iconifyIconProps || {}, ['name']);
-      const iconifyClass = { class: twMerge('text-base', props.iconifyClass) };
+      const iconifyClass = { class: cn('text-base', props.iconifyClass) };
       console.log({ ...defaultProps, ...iconifyProps, ...iconifyClass }, 'iconifyProps');
 
       return { ...defaultProps, ...iconifyProps, ...iconifyClass };
@@ -169,14 +135,10 @@ export default defineComponent({
 
     /** 渲染按钮内容 */
     const renderButtonContent = () => {
-      return (
-        <div class={twMerge('flex items-center')}>
-          {!isLocalIcon.value ? (
-            <IconifyIcon name={props.icon} {...getIconifyIconProps.value} />
-          ) : (
-            <LocalIcon name={props.icon} {...getLocalIconProps.value} />
-          )}
-        </div>
+      return !isLocalIcon.value ? (
+        <IconifyIcon name={props.icon} {...getIconifyIconProps.value} />
+      ) : (
+        <LocalIcon name={props.icon} {...getLocalIconProps.value} />
       );
     };
 
@@ -186,7 +148,7 @@ export default defineComponent({
         <ElButton
           ref={buttonInstance}
           {...getBtnProps.value}
-          class={twMerge('action-button', getCurrentBtnStyle.value)}
+          class={cn('action-button', getCurrentBtnStyle.value, props.btnClass)}
         >
           {{
             default: () => renderButtonContent(),
