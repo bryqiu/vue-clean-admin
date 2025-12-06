@@ -16,7 +16,7 @@ interface BasicContainerProps {
 const { pageTransitionName } = useThemeSettings();
 const { getCurrentLoadViewStatus } = useLoadView();
 const { breadcrumbStyleType } = useShareSettings();
-const { isTopLayout } = useLayoutSettings();
+const { isTopLayout, getCurrentHeaderHeight, getCurrentContentSpace } = useLayoutSettings();
 
 withDefaults(defineProps<BasicContainerProps>(), {
   containerClass: '',
@@ -24,11 +24,18 @@ withDefaults(defineProps<BasicContainerProps>(), {
 </script>
 
 <template>
-  <ElContainer :class="cn('flex-col! relative p-2', containerClass)">
+  <ElContainer
+    :class="cn('flex-col! relative', containerClass)"
+    :style="{ padding: `${getCurrentContentSpace}px` }"
+  >
     <div
       class="flex-1 flex flex-col rounded-xl bg-background overflow-y-auto shadow-xs border border-el-border"
     >
-      <div v-if="!isTopLayout" class="w-full flex items-center justify-between py-2 px-3">
+      <div
+        v-if="!isTopLayout"
+        class="w-full flex items-center justify-between px-3"
+        :style="{ height: `${getCurrentHeaderHeight}px` }"
+      >
         <div class="flex items-center">
           <MenuCollapse />
           <ElDivider direction="vertical" />

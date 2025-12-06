@@ -19,15 +19,13 @@ const {
   getCurrentColSubSidebarWidth,
   getCurrentHeaderHeight,
   getCurrentColSidebarWidth,
+  getCurrentContentSpace,
 } = useLayoutSettings();
 
 /** 获取最上层菜单列表 */
 const getTopLevelMenuList = computed(() => {
   return menuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
-
-/** 激活的菜单样式 */
-const activeMenuItemStyle = 'bg-el-fill-dark';
 
 const currentTopMenuPath = ref(route.matched[0].path);
 
@@ -81,7 +79,10 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
     >
       <div
         class="flex items-center justify-center"
-        :style="{ height: `${getCurrentHeaderHeight}px` }"
+        :style="{
+          height: `${getCurrentHeaderHeight}px`,
+          paddingTop: `${getCurrentContentSpace}px`,
+        }"
       >
         <AppLogo />
       </div>
@@ -120,11 +121,14 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
     >
       <div
         class="flex items-center justify-center"
-        :style="{ height: `${getCurrentHeaderHeight}px` }"
+        :style="{
+          height: `${getCurrentHeaderHeight}px`,
+          paddingTop: `${getCurrentContentSpace}px`,
+        }"
       >
         <span class="text-base font-semibold text-el-text-primary">{{ appTitle }}</span>
       </div>
-      <div class="flex-1 p-2">
+      <div class="flex-1 pr-0!" :style="{ padding: `${getCurrentContentSpace}px` }">
         <BasicMenu>
           <template v-for="menu in getSubMenuList" :key="menu.path">
             <BasicMenuSubItem :menu="menu" :parent-path="currentTopMenuPath" />

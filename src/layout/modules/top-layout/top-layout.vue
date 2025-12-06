@@ -16,12 +16,14 @@ defineOptions({
 const getVisibleMenuRoutes = computed(() => {
   return menuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
+
+const { getCurrentContentSpace } = useLayoutSettings();
 </script>
 
 <template>
   <ElContainer class="h-full flex-col!">
     <div
-      class="p-4 flex items-center justify-between gap-x-4 bg-background border-b border-el-border-light"
+      class="py-3 px-2 flex items-center justify-between gap-x-4 bg-background border-b border-el-border-light"
     >
       <AppLogo show-title />
       <div class="flex-1 min-w-0 flex items-center">
@@ -35,7 +37,11 @@ const getVisibleMenuRoutes = computed(() => {
       </div>
       <BasicToolbar :show-user-dropdown="true" />
     </div>
-    <div class="mt-4 ml-4">
+    <div
+      :style="{
+        margin: `${getCurrentContentSpace * 2}px ${getCurrentContentSpace}px ${getCurrentContentSpace}px`,
+      }"
+    >
       <Breadcrumb />
     </div>
     <BasicContainer container-class="overflow-y-auto p-3" />

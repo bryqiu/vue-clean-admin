@@ -5,10 +5,6 @@
   border-radius: var(--radius);
 }
 
-@mixin menu-item-active {
-  background-color: var(--menu-active-bg-color);
-}
-
 @mixin menu-active-style {
   color: var(--menu-active-text-color) !important;
   background-color: var(--menu-active-bg-color) !important;
@@ -58,7 +54,6 @@ ul.el-menu.basic-menu {
       @include menu-icon('item');
 
       &.is-active {
-        // @include menu-item-active;
         @include menu-active-style;
       }
 
@@ -92,7 +87,6 @@ ul.el-menu.basic-menu {
       border-radius: var(--radius);
 
       &.is-active {
-        // @include menu-active-style;
         .el-sub-menu__title {
           @include menu-active-style;
         }
@@ -147,7 +141,6 @@ ul.el-menu.basic-menu {
       &.is-active .el-sub-menu__title {
         border-bottom: unset;
 
-        // @include menu-active-style;
         @include menu-hover-style;
       }
 
@@ -161,7 +154,7 @@ ul.el-menu.basic-menu {
     .el-menu-item {
       @include menu-icon('item', 6px);
 
-      --el-menu-active-color: var(--menu-active-text-color);
+      // --el-menu-active-color: var(--menu-active-text-color);
       --el-menu-hover-text-color: var(--menu-text-color);
 
       border-bottom: unset;

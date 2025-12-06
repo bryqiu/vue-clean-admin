@@ -13,6 +13,7 @@ defineOptions({
 
 const settingsStore = useSettingsStore();
 const { isMenuCollapse } = useLayoutSettings();
+const { getCurrentContentSpace, getCurrentHeaderHeight } = useLayoutSettings();
 
 /** 左侧边栏宽度 */
 const sidebarWidth = computed(() => {
@@ -30,14 +31,16 @@ const getVisibleMenuRoutes = computed(() => {
 <template>
   <ElAside
     :width="`${sidebarWidth}px`"
-    class="overflow-x-hidden! duration-300 flex flex-col gap-y-2 bg-container-color py-2 pl-2"
+    class="overflow-x-hidden! duration-300 flex flex-col gap-y-2 bg-container-color pr-0!"
+    :style="{ padding: `${getCurrentContentSpace}px` }"
   >
     <div
       :class="
-        cn('w-full flex items-center py-2', [
+        cn('w-full flex items-center justify-start', [
           isMenuCollapse ? 'justify-center' : 'pl-(--el-menu-base-level-padding)',
         ])
       "
+      :style="{ height: `${getCurrentHeaderHeight}px` }"
     >
       <AppLogo :show-title="!isMenuCollapse" />
     </div>

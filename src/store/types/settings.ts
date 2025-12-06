@@ -61,9 +61,14 @@ export interface Layout {
   colSidebarWidth: number;
   /**
    * 头部高度
-   * @default 56px
+   * @default 46px
    */
   headerHeight: number;
+  /**
+   * 内容区域间距
+   * @default 8px
+   */
+  contentSpace: number;
 }
 
 /** 共享设置 */

@@ -76,6 +76,11 @@ export const useLayoutSettings = () => {
     return getLayoutSettings.headerHeight;
   });
 
+  /** 获取当前内容区域间距 */
+  const getCurrentContentSpace = computed(() => {
+    return getLayoutSettings.contentSpace;
+  });
+
   return {
     isMenuCollapse,
     isMenuAccordion,
@@ -85,6 +90,7 @@ export const useLayoutSettings = () => {
     getCurrentColSubSidebarWidth,
     getCurrentColSidebarWidth,
     getCurrentHeaderHeight,
+    getCurrentContentSpace,
     currentLayoutMode,
     isSideLayout,
     isTopLayout,
