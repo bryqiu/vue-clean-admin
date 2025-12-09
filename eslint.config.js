@@ -377,6 +377,7 @@ export default [
     plugins: {
       'check-file': pluginCheckFile,
     },
+    ignores: ['src/locale/langs/*.{json,json5,yaml}'],
     rules: {
       'check-file/no-index': 'off',
       'check-file/filename-naming-convention': [
@@ -388,7 +389,6 @@ export default [
           ignoreMiddleExtensions: true,
         },
       ],
-
       'check-file/folder-naming-convention': [
         'error',
         {
