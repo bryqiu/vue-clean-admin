@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ExampleCell, type Feature, Features, Introduce } from './components';
+import { Introduce, IntroduceProps } from './widgets';
 import {
   ElAlert,
   ElCard,
@@ -25,16 +25,17 @@ defineOptions({
   name: 'ElementPlus',
 });
 
-const features: Feature[] = [
+const features: IntroduceProps['features'] = [
   {
     text: '全局美化部分 Element Plus 组件样式，比如卡片、菜单、分段控制器等',
+    slotName: 'style',
   },
   {
-    text: '在主题系统中，丰富 Element Plus 主题色阶，写入 Tailwind Css 配置以保持视觉统一',
-    textSlot: 'feature2',
+    text: '以 Element plus 主题系统为主，构建项目整体色彩，将 Element Plus 色彩融入 Tailwind Css 配置以允许原子化写法',
   },
   {
-    textSlot: 'feature1',
+    text: '专栏文章',
+    slotName: 'feature1',
   },
 ];
 
@@ -63,58 +64,64 @@ const form = reactive({
           text: '查看官方文档',
         },
       ]"
+      :features
     >
-      <div class="flex flex-col gap-y-2 text-sm">
-        <span>
-          Clean Admin 使用 Element Plus 组件库，这是一套基于 Vue 3，面向设计师和开发者的企业级组件库
-        </span>
-
-        <span>在组件库的基础上，Clean Admin 做了部分扩展</span>
-
-        <Features class="pl-4" :features="features">
-          <template #feature1>
-            <span>专栏相关文章：</span>
-            <ElLink type="primary" target="_blank" href="https://github.com/bryqiu/Blog/issues/12">
-              《一篇文章实现 Element Plus 动态切换主题色》
-            </ElLink>
-            <ElLink type="primary" target="_blank" href="https://github.com/bryqiu/Blog/issues/15">
-              《Tailwind Css 中使用 Element Plus 主题系统的方案与实现》
-            </ElLink>
-          </template>
-        </Features>
-      </div>
+      <span>
+        Clean Admin 使用 Element Plus 组件库，这是一套基于 Vue 3，面向设计师和开发者的企业级组件库
+        <br />
+        在组件库的基础上，Clean Admin 做了部分扩展：
+      </span>
+      <template #style="{ text }">
+        {{ text }}，样式文件：<ElLink
+          type="primary"
+          target="_blank"
+          href="https://github.com/bryqiu/vue-clean-admin/tree/main/src/theme/styles/element.scss"
+        >
+          element.scss
+        </ElLink>
+      </template>
+      <template #feature1>
+        <span>专栏相关文章：</span>
+        <ElLink type="primary" target="_blank" href="https://github.com/bryqiu/Blog/issues/12">
+          《一篇文章实现 Element Plus 动态切换主题色》
+        </ElLink>
+        <ElLink type="primary" target="_blank" href="https://github.com/bryqiu/Blog/issues/15">
+          《Tailwind Css 中使用 Element Plus 主题系统的方案与实现》
+        </ElLink>
+      </template>
     </Introduce>
     <ElCard header="按钮">
-      <div class="flex flex-col gap-y-4">
-        <div class="flex gap-x-4">
-          <ExampleCell title="大小按钮">
-            <ElButton type="primary" size="large">按钮</ElButton>
-            <ElButton type="primary">按钮</ElButton>
-            <ElButton type="primary" size="small">按钮</ElButton>
-          </ExampleCell>
-          <ExampleCell title="按钮类型">
-            <ElButton>Default</ElButton>
-            <ElButton type="primary">Primary</ElButton>
-            <ElButton type="success">Success</ElButton>
-            <ElButton type="info">Info</ElButton>
-            <ElButton type="warning">Warning</ElButton>
-          </ExampleCell>
-        </div>
+      <template #header>
+        <span class="text-sm font-medium">Button 按钮</span>
+      </template>
+      <div class="flex gap-y-4">
+        <ElButton type="primary">Primary</ElButton>
+        <ElButton type="success">Success</ElButton>
+        <ElButton type="info">Info</ElButton>
+        <ElButton type="warning">Warning</ElButton>
+        <ElButton>default</ElButton>
       </div>
     </ElCard>
 
-    <ElCard header="Segmented 分段控制器">
-      <div class="flex items-center w-full gap-x-4">
-        <ExampleCell title="默认分段器">
-          <ElSegmented v-model="segmentValue" class="not-style" :options="segmentOptions" block />
-        </ExampleCell>
-        <ExampleCell title="简约-分段器(默认样式)">
-          <ElSegmented v-model="segmentValue" :options="segmentOptions" block />
-        </ExampleCell>
+    <ElCard>
+      <template #header>
+        <span class="text-sm font-medium">Segmented 分段控制器</span>
+      </template>
+      <div class="flex items-center gap-x-4">
+        <ElSegmented
+          v-model="segmentValue"
+          class="not-style w-full"
+          :options="segmentOptions"
+          block
+        />
+        <ElSegmented v-model="segmentValue" :options="segmentOptions" block class="w-full" />
       </div>
     </ElCard>
 
-    <ElCard header="表单控件">
+    <ElCard>
+      <template #header>
+        <span class="text-sm font-medium">Form 表单</span>
+      </template>
       <ElForm :model="form">
         <ElFormItem label="Activity name">
           <ElInput v-model="form.name" />
@@ -170,7 +177,10 @@ const form = reactive({
       </ElForm>
     </ElCard>
 
-    <ElCard header="Alert 提示">
+    <ElCard>
+      <template #header>
+        <span class="text-sm font-medium">Alert 提示</span>
+      </template>
       <div class="flex flex-col gap-y-2">
         <ElAlert title="Success alert" type="success" show-icon />
         <ElAlert title="Info alert" type="info" show-icon />
