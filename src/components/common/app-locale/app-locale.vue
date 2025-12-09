@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ElPopover } from 'element-plus';
-import ActionButton from '../action-button/action-button.vue';
 import { loadLocaleMessages } from '@/plugins/i18n';
 import { supportLocaleOptions } from '@/locale';
 
@@ -28,7 +27,7 @@ const updateLocale = (locale: SupportedLocales) => {
     :popper-style="{ borderRadius: 'var(--radius)' }"
     placement="bottom-end"
     popper-class="app-locale-popover"
-    width="140"
+    width="150"
     :popper-options="{
       modifiers: [
         {
@@ -56,7 +55,7 @@ const updateLocale = (locale: SupportedLocales) => {
         >
           <div class="flex items-center justify-between gap-x-2 w-full">
             <div class="flex items-center gap-x-2">
-              <IconifyIcon :name="item.icon" class="text-sm" />
+              <IconifyIcon :name="item.icon" class="rounded-full" />
               <span class="text-sm line-clamp-1">{{ item.label }}</span>
             </div>
             <IconifyIcon
