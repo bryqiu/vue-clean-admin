@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useFullscreen } from '@vueuse/core';
-const { isFullscreen, toggle } = useFullscreen();
+const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
 
 interface FullScreenInfo {
   /** 图标名称 */
@@ -21,6 +21,6 @@ const fullScreenInfo = computed((): FullScreenInfo => {
   <ActionButton
     :icon="fullScreenInfo.icon"
     :tip-props="{ content: fullScreenInfo.tipContent }"
-    @click="toggle"
+    @click="toggleFullscreen"
   />
 </template>
