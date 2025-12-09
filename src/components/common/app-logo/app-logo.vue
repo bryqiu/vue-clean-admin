@@ -45,7 +45,7 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
 const getLocalIconProps = computed(() => {
   const defaultProps: LocalIconProps = {
     name: 'logo',
-    size: 28,
+    size: 20,
   };
   const localIconProps = omit(props.localIconProps, ['name']);
   return { ...defaultProps, ...localIconProps };
@@ -54,11 +54,13 @@ const getLocalIconProps = computed(() => {
 
 <template>
   <div :class="cn('flex items-center gap-x-2', clickable && 'cursor-pointer', logoClass)">
-    <LocalIcon v-bind="getLocalIconProps" />
+    <div class="border border-el-border rounded size-7 flex items-center justify-center">
+      <LocalIcon v-bind="getLocalIconProps" />
+    </div>
     <Transition :name="PageTransitionEnum.NONE">
       <span
         v-show="showTitle"
-        :class="cn('text-lg font-semibold inline-block truncate text-el-text-primary', textClass)"
+        :class="cn('text-base font-semibold inline-block truncate text-el-text-primary', textClass)"
         >{{ appTitle }}</span
       >
     </Transition>
