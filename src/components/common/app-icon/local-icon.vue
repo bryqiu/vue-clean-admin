@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { getFlipStyle, getRotateStyle, getSizeStyle } from './helper';
 import { isBoolean, isString } from '@/utils';
 import type { CSSProperties } from 'vue';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'LocalIcon',
@@ -17,7 +18,7 @@ export interface LocalIconProps {
   /**
    * 图标类名
    */
-  class?: string;
+  iconClass?: string;
   /**
    * 图标名称
    */
@@ -63,10 +64,6 @@ const props = withDefaults(defineProps<LocalIconProps>(), {
   rotate: 0,
   horizontalFlip: false,
   verticalFlip: false,
-});
-
-const getIconClass = computed(() => {
-  return ['svg-icon', props.class];
 });
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`);
@@ -123,7 +120,7 @@ const getIconStyle = computed(() => {
 
 <template>
   <svg
-    :class="getIconClass"
+    :class="cn('svg-icon', iconClass)"
     :style="getIconStyle"
     aria-hidden="true"
     role="img"
