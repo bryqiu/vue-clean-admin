@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { SettingBox, SettingCell, SettingModeItem } from '../components';
-import { ElSwitch } from 'element-plus';
 import { layoutModeOptions } from '@/dict';
 import { LayoutModeEnum } from '@/enums';
 

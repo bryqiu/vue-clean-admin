@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElDivider } from 'element-plus';
 import { MenuCollapse } from '../menu-collapse';
 import { Breadcrumb } from '../breadcrumb';
 import { BasicToolbar } from '../basic-toolbar';

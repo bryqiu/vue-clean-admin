@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { ElButton, ElForm, ElFormItem, ElInput } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
 import { AuthContainer, AuthPolicy } from '../components';
 import { AUTH_INFO_MAP } from '../config';

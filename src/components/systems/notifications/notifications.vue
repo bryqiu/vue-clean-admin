@@ -2,7 +2,6 @@
 import { AppDrawer } from '@/components/common/app-drawer';
 import AppUserAvatar from '@/components/common/app-user-avatar/app-user-avatar.vue';
 import UserAvatar from '@/assets/images/user-avatar.jpg';
-import { ElSegmented, ElTag } from 'element-plus';
 import { ref } from 'vue';
 import { isObject } from '@/utils';
 import dayjs from 'dayjs';

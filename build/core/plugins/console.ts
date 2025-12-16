@@ -7,12 +7,11 @@ import TurboConsole from 'unplugin-turbo-console/vite';
  * @see https://utc.yuy1n.io/
  */
 
-export const consolePluginConfig = (): PluginOption => {
+export const configConsolePlugin = (): PluginOption => {
   return TurboConsole({
     /** 是否禁止启动编辑器 */
     disableLaunchEditor: true,
     /** 是否禁用日志功能 */
     disablePassLogs: true,
-    // prefix: "====输出结果↓↓↓====",
   });
 };

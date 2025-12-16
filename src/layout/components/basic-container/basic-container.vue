@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElContainer, ElDivider } from 'element-plus';
 import { MenuCollapse } from '../menu-collapse';
 import { Breadcrumb } from '../breadcrumb';
 import { cn } from '@/utils';
@@ -29,7 +28,7 @@ withDefaults(defineProps<BasicContainerProps>(), {
     :style="{ padding: `${getCurrentContentSpace}px` }"
   >
     <div
-      class="flex-1 flex flex-col rounded-xl bg-background overflow-y-auto shadow-xs border border-el-border"
+      class="flex-1 flex flex-col rounded-xl bg-background overflow-y-auto border border-el-border"
     >
       <div
         v-if="!isTopLayout"

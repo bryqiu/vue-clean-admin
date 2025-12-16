@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElMenu } from 'element-plus';
 import type { MenuProps } from 'element-plus';
 import { useRoute } from 'vue-router';
 import { computed, h, useAttrs } from 'vue';

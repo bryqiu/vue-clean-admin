@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { MetricsData, ProductSalesTable, ProductTrendChart } from './modules';
 import { ref } from 'vue';
-import { ElSegmented } from 'element-plus';
 
 defineOptions({
   name: 'Analytics',

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElDivider } from 'element-plus';
 import { DirectionEnum } from '@/enums';
 import { computed } from 'vue';
 import { cn } from '@/utils';

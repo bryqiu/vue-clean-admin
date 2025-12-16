@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElAside } from 'element-plus';
 import { AppLogo } from '@/components/common/app-logo';
 import { computed, ref, watch } from 'vue';
 import { UserDropdownSidebar } from '@/layout/components/user-dropdown';

@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { themeModeOptions } from '@/dict';
 import { ThemeModeEnum } from '@/enums';
-import { ElPopover } from 'element-plus';
 
 defineOptions({
   name: 'AppTheme',

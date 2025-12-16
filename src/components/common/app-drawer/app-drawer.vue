@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ElDrawer } from 'element-plus';
 import type { AppDrawerProps } from './typing';
 import { cn } from '@/utils';
 import { computed, ref, useAttrs } from 'vue';
 import { omit } from 'lodash-es';
-import type { DrawerProps } from 'element-plus';
+import type { DrawerProps, ElDrawer } from 'element-plus';
 
 defineOptions({
   name: 'AppDrawer',

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElButton, ElDivider } from 'element-plus';
 import { useRouter } from 'vue-router';
 import { ROUTE_NAMES } from '@/router/config';
 import { AuthContainer, AuthPolicy } from '../components';

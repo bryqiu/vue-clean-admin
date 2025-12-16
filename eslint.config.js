@@ -446,6 +446,8 @@ export default [
       '**/__snapshots__',
       '**/auto-import?(s).d.ts',
       '.eslintrc-auto-import.mjs',
+      'src/typings/components.d.ts',
+      'src/typings/auto-imports.d.ts',
     ],
   },
 ];

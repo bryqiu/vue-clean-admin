@@ -1,24 +1,6 @@
 <script setup lang="ts">
 import { Introduce, IntroduceProps } from './widgets';
-import {
-  ElAlert,
-  ElCard,
-  ElCheckbox,
-  ElCheckboxGroup,
-  ElCol,
-  ElDatePicker,
-  ElForm,
-  ElFormItem,
-  ElInput,
-  ElLink,
-  ElOption,
-  ElRadio,
-  ElRadioGroup,
-  ElSegmented,
-  ElSelect,
-  ElSwitch,
-  ElTimePicker,
-} from 'element-plus';
+
 import { reactive, ref } from 'vue';
 
 defineOptions({

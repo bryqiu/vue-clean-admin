@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { presetPrimaryColorOptions } from '@/dict';
-import { ElDivider } from 'element-plus';
 import { ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 

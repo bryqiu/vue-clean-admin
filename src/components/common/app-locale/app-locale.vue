@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElPopover } from 'element-plus';
 import { loadLocaleMessages } from '@/plugins/i18n';
 import { supportLocaleOptions } from '@/locale';
 

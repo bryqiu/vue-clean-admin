@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElBreadcrumb, ElBreadcrumbItem } from 'element-plus';
 import { useRoute } from 'vue-router';
 import type { RouteLocationMatched } from 'vue-router';
 

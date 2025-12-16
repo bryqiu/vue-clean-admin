@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElProgress, ElTable, ElTableColumn } from 'element-plus';
 import { ref } from 'vue';
 
 defineOptions({

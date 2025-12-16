@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElDivider, ElInput } from 'element-plus';
 import { IconifyIcon } from '@/components/common/app-icon';
 import { h } from 'vue';
 

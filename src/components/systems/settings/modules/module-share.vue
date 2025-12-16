@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { SettingCell, SettingCellGroup } from '../components';
 import { breadcrumbStyleOptions } from '@/dict';
-import { ElOption, ElSelect, ElSwitch } from 'element-plus';
 
 defineOptions({
   name: 'ModuleShare',

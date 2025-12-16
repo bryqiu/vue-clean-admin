@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElContainer } from 'element-plus';
 import { default as Sidebar } from './side-sidebar.vue';
 import { BasicContainer } from '@/layout/components/basic-container';
 

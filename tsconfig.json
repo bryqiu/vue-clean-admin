@@ -20,7 +20,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["vite/client"],
+    "types": ["vite/client", "element-plus/global", "plus-pro-components/global"],
     "baseUrl": ".", // 使用相对路径，当前根目录
     "paths": {
       "@/*": ["src/*"],
@@ -34,6 +34,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "typings/**/*.d.ts",
-    "typings/**/*.ts"
+    "typings/**/*.ts",
+    "build/**/*.ts"
   ]
 }

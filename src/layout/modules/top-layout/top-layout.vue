@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElContainer } from 'element-plus';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { AppLogo } from '@/components/common/app-logo';
 import { computed } from 'vue';

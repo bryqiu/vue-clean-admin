@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue';
 import type { EChartsOption } from 'echarts';
 import { echarts } from '@/plugins/echarts';
-import { ElCard } from 'element-plus';
 
 defineOptions({
   name: 'ProductTrendChart',

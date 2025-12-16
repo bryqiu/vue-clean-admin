@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElPopover } from 'element-plus';
 import { AppUserAvatar } from '@/components/common/app-user-avatar';
 import userAvatar from '@/assets/images/user-avatar.jpg';
 import { MenuCell, MenuGroup } from './widgets';

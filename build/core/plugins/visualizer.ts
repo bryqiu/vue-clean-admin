@@ -1,8 +1,7 @@
 import { visualizer } from 'rollup-plugin-visualizer';
 import type { PluginOption } from 'vite';
 
-/** 包分析可视化 */
-export const visualizerPluginConfig = (): PluginOption => {
+export const configVisualizerPlugin = (): PluginOption => {
   return visualizer({
     open: true, // build后，是否自动打开分析页面，默认false
     gzipSize: true, // 是否分析gzip大小

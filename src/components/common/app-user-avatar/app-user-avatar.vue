@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElImage } from 'element-plus';
 import type { ImageProps } from 'element-plus';
 import { omit } from 'lodash-es';
 import { computed, useAttrs } from 'vue';

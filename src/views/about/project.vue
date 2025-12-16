@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ElCard, ElDescriptions, ElDescriptionsItem, ElLink } from 'element-plus';
-
 defineOptions({
   name: 'Project',
 });

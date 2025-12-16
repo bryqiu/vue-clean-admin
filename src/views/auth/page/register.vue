@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import { AuthContainer } from '../components';
 import { AUTH_INFO_MAP } from '../config';
 import type { FormInstance, FormRules } from 'element-plus';
-import { ElForm, ElFormItem, ElInput } from 'element-plus';
 import { ROUTE_NAMES } from '@/router/config';
 import { useRouter } from 'vue-router';
 

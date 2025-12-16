@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElCard, ElLink } from 'element-plus';
 import { Introduce, type IntroduceProps } from './widgets';
 import { EL_PRIMARY_COLOR_WEIGHT } from '@/theme/constants';
 import { cn } from '@/utils';

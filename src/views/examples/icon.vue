@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Introduce, type IntroduceProps } from './widgets';
 import { ref } from 'vue';
-import { ElCard } from 'element-plus';
 
 defineOptions({
   name: 'Icon',

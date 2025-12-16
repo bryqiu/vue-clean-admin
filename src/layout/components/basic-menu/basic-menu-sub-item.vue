@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElMenuItem, ElSubMenu } from 'element-plus';
 import type { MenuItemProps, SubMenuProps } from 'element-plus';
 
 import { computed, h } from 'vue';

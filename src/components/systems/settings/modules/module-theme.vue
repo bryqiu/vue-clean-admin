@@ -2,7 +2,6 @@
 import { SettingBox, SettingCell, SettingModeItem } from '../components';
 import { WidgetPageTransition, WidgetPrimaryColor } from '../widgets';
 import { visualModeOptions } from '@/dict';
-import { ElOption, ElSelect } from 'element-plus';
 import { themeModeOptions } from '@/dict';
 import { ThemeModeEnum } from '@/enums';
 

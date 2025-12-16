@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElAside, ElScrollbar } from 'element-plus';
 import { AppLogo } from '@/components/common/app-logo';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { computed } from 'vue';

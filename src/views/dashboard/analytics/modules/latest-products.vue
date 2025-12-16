@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ElCard, ElImage } from 'element-plus';
-
 defineOptions({
   name: 'LatestProduct',
 });

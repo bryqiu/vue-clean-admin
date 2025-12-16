@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { ElConfigProvider } from 'element-plus';
 
 import { Settings } from '../settings';
 import { Notifications } from '../notifications';

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElCard, ElDivider, ElLink } from 'element-plus';
 import type { LinkProps } from 'element-plus';
 import { computed } from 'vue';
 import { cn } from '@/utils';

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Introduce, type IntroduceProps } from './widgets';
 import { ref } from 'vue';
-import { ElCard } from 'element-plus';
 import { loadLocaleMessages } from '@/plugins/i18n';
 import { supportLocaleOptions } from '@/locale';
 

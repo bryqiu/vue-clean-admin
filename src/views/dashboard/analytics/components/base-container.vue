@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { cn } from '@/utils';
-import { ElCard } from 'element-plus';
 
 defineOptions({
   name: 'BaseContainer',

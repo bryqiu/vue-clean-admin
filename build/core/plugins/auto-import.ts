@@ -1,8 +1,9 @@
 import AutoImport from 'unplugin-auto-import/vite';
-import { pathResolve } from '../utils';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import type { PluginOption } from 'vite';
+import { pathResolve } from '../helpers';
 
-/** 按需自动导入Api */
-export const autoImportPluginConfig = () => {
+export const configAutoImportPlugin = (): PluginOption => {
   return AutoImport({
     imports: [
       {
@@ -13,10 +14,11 @@ export const autoImportPluginConfig = () => {
       },
     ],
     dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/store/hooks')}`],
-    dts: `src/typings/auto-imports.d.ts`, // 生成相应.d.ts文件的文件路径
+    dts: `src/typings/auto-imports.d.ts`, // 自定义生成 auto-imports.d.ts 文件路径
+    resolvers: [ElementPlusResolver()],
     eslintrc: {
       enabled: true,
-      filepath: './.eslintrc-auto-import.mjs',
+      filepath: `${pathResolve('.eslintrc-auto-import.mjs')}`,
       globalsPropValue: true,
     },
   });

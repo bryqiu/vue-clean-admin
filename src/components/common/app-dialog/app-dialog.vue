@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, useAttrs } from 'vue';
-import { type DialogProps, ElDialog } from 'element-plus';
 import { AppDialogEmits, AppDialogProps } from './typing';
-import { DialogInstance } from 'element-plus';
 import { omit } from 'lodash-es';
-import type { ButtonProps } from 'element-plus';
+import type { ButtonProps, DialogInstance, DialogProps } from 'element-plus';
 import { cn } from '@/utils';
 
 defineOptions({

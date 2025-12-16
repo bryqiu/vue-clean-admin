@@ -5,7 +5,6 @@ import { AppLocale } from '@/components/common/app-locale';
 import { ReloadView } from '../reload-view';
 import { Notification } from '../notification';
 import { Settings } from '../settings';
-import { ElDivider } from 'element-plus';
 import { UserDropdownHeader } from '../user-dropdown';
 
 defineOptions({

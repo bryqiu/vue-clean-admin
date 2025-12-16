@@ -2,7 +2,6 @@
 import dayjs from 'dayjs';
 import { isArray, isEmpty } from '@/utils';
 import { computed } from 'vue';
-import { ElLink } from 'element-plus';
 import { twMerge } from 'tailwind-merge';
 
 defineOptions({
