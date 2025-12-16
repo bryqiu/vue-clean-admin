@@ -71,7 +71,6 @@ export default defineComponent({
       const defaultProps: Partial<OmitIconifyIconProps> = {};
       const iconifyProps = omit(props.iconifyIconProps || {}, ['name']);
       const iconifyClass = { class: cn('text-base', props.iconifyClass) };
-      console.log({ ...defaultProps, ...iconifyProps, ...iconifyClass }, 'iconifyProps');
 
       return { ...defaultProps, ...iconifyProps, ...iconifyClass };
     });
