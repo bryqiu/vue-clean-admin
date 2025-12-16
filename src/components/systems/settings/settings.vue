@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElScrollbar } from 'element-plus';
 import { AppDialog } from '@/components/common/app-dialog';
 import { computed, ref } from 'vue';
 import { settingOptions } from '@/dict';
@@ -28,7 +27,7 @@ const setActiveSettingValue = (value: GetObjectValues<typeof SettingModuleEnum>)
 <template>
   <AppDialog
     :model-value="getDialogVisible"
-    width="850px"
+    width="950px"
     top="6vh"
     hide-footer
     @update:model-value="closeSettingDialog"
@@ -45,7 +44,7 @@ const setActiveSettingValue = (value: GetObjectValues<typeof SettingModuleEnum>)
             :key="item.value"
             :class="
               cn(
-                'w-full px-3 py-1.5 flex items-center rounded-lg gap-x-2 text-el-text-primary cursor-pointer hover:bg-el-fill',
+                'w-full h-item px-4 flex items-center rounded-lg gap-x-2 text-el-text-primary cursor-pointer hover:bg-el-fill',
                 {
                   'bg-el-fill': item.value === activeSettingValue,
                 },
@@ -73,17 +72,4 @@ const setActiveSettingValue = (value: GetObjectValues<typeof SettingModuleEnum>)
   </AppDialog>
 </template>
 
-<style lang="scss">
-.settings-drawer.el-drawer {
-  & > .el-drawer__header {
-    padding: 16px;
-    margin-bottom: 0;
-    color: var(--el-text-color-primary);
-    border-bottom: 1px solid var(--el-border-color-light);
-  }
-
-  & > .el-drawer__body {
-    padding: 12px 16px;
-  }
-}
-</style>
+<style lang="scss"></style>
