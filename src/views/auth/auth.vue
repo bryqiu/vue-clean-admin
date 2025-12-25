@@ -14,11 +14,15 @@ const { getCurrentLoadViewStatus } = useLoadView();
 </script>
 
 <template>
-  <div class="size-full flex flex-col p-4 relative bg-container-color auth-bg-decor">
-    <div class="triangle1" />
-    <div class="triangle2" />
-    <div class="triangle3" />
-    <div class="circle1" />
+  <div class="size-full flex flex-col p-4 relative isolate overflow-hidden auth-bg-decor">
+    <div class="decor-layer">
+      <div class="shape-top-left" />
+      <div class="shape-bottom-right" />
+      <div class="shape-center-accent" />
+      <div class="shape-top-right-triangle" />
+      <div class="shape-bottom-left-diamond" />
+      <div class="shape-top-center-hollow" />
+    </div>
 
     <div class="flex items-center justify-between absolute top-4 left-4 right-4 z-50">
       <AppLogo :clickable="false" show-title text-class="text-lg" />
@@ -29,10 +33,8 @@ const { getCurrentLoadViewStatus } = useLoadView();
       </div>
     </div>
 
-    <!--内容-->
     <div class="flex-1 flex flex-col justify-center items-center z-40">
       <div class="w-[400px] flex flex-col justify-center">
-        <!-- 路由视图 -->
         <RouterView v-slot="{ Component }">
           <Transition :name="PageTransitionEnum.FADE_RIGHT" mode="out-in">
             <component :is="Component" v-if="getCurrentLoadViewStatus" />
@@ -41,47 +43,84 @@ const { getCurrentLoadViewStatus } = useLoadView();
       </div>
     </div>
 
-    <!--底部-->
     <AppCopyright owner="Bryan qiu" />
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .auth-bg-decor {
-  &::before {
-    content: '';
+  .decor-layer {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
 
-    @apply absolute z-[1] top-20 left-10 size-40 bg-el-fill rotate-12 rounded-lg;
-  }
+    > div {
+      position: absolute;
+      opacity: 0.5;
+    }
 
-  &::after {
-    content: '';
+    .shape-top-left {
+      top: 15%;
+      left: 5%;
+      width: 10rem;
+      height: 10rem;
+      background-color: var(--color-zinc-100);
+      border-radius: var(--radius-lg);
+      transform: rotate(12deg);
+    }
 
-    @apply absolute z-[1] bottom-40 right-8 size-40 bg-el-fill-dark -rotate-6 opacity-65 rounded-lg;
-  }
+    .shape-bottom-right {
+      right: 8%;
+      bottom: 15%;
+      width: 8rem;
+      height: 8rem;
+      background-color: var(--color-zinc-100);
+      border-radius: 50%;
+      opacity: 0.7;
+    }
 
-  .triangle1::before {
-    content: '';
+    .shape-center-accent {
+      top: 65%;
+      left: 15%;
+      width: 2rem;
+      height: 2rem;
+      border: 2px solid var(--color-zinc-200);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
 
-    @apply absolute z-[1] top-32 right-20 w-0 h-0 border-l-[20px] border-l-transparent border-b-[35px] border-el-border-dark border-r-[20px] border-r-transparent transform rotate-45;
-  }
+    .shape-top-right-triangle {
+      top: 18%;
+      right: 20%;
+      width: 3rem;
+      height: 3rem;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      background-color: var(--color-zinc-100);
+      transform: rotate(-120deg);
+    }
 
-  .triangle2::before {
-    content: '';
+    .shape-bottom-left-diamond {
+      bottom: 25%;
+      left: 10%;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: var(--color-zinc-200);
+      border-radius: 4px;
+      opacity: 0.4;
+      transform: rotate(45deg);
+    }
 
-    @apply absolute z-[1] top-1/2 left-1/4 w-0 h-0 border-l-[12px] border-l-transparent border-b-[20px] border-el-border-light border-r-[12px] border-r-transparent transform rotate-[15deg];
-  }
-
-  .triangle3::before {
-    content: '';
-
-    @apply absolute z-[1] bottom-32 left-16 w-0 h-0 border-l-[15px] border-l-transparent border-b-[25px] border-el-border-dark border-r-[15px] border-r-transparent transform -rotate-[30deg];
-  }
-
-  .circle1::before {
-    content: '';
-
-    @apply absolute z-[1] bottom-10 right-1/3 bg-el-fill-dark size-16  rounded-full opacity-60;
+    .shape-top-center-hollow {
+      top: 12%;
+      left: 45%;
+      width: 3rem;
+      height: 3rem;
+      border: 2px solid var(--color-zinc-100);
+      border-radius: var(--radius-md);
+      opacity: 0.5;
+      transform: rotate(20deg);
+    }
   }
 }
 </style>

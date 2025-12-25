@@ -66,7 +66,7 @@ export interface Layout {
   headerHeight: number;
   /**
    * 内容区域间距
-   * @default 8px
+   * @default 12px
    */
   contentSpace: number;
 }

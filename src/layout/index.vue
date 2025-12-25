@@ -10,7 +10,7 @@ const currentLayoutComponent = computed(() => {
 </script>
 
 <template>
-  <div class="size-full bg-container-color">
+  <div class="size-full bg-background">
     <component :is="currentLayoutComponent" />
   </div>
 </template>

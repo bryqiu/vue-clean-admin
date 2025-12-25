@@ -40,7 +40,7 @@ const defaultLayout: Layout = {
   sidebarCollapseWidth: 60, // 左侧边栏收缩时的宽度
   colSidebarWidth: 262, // 双栏布局-侧边栏宽度
   headerHeight: 46, // 头部高度
-  contentSpace: 8, // 内容区域间距
+  contentSpace: 12, // 内容区域间距
   isMenuAccordion: false, // 控制菜单是否使用手风琴模式
 } as const;
 

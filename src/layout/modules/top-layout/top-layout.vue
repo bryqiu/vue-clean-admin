@@ -3,9 +3,8 @@ import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { AppLogo } from '@/components/common/app-logo';
 import { computed } from 'vue';
 import { menuRoutes } from '@/router';
-import { BasicContainer } from '@/layout/components/basic-container';
 import { BasicToolbar } from '../../components/basic-toolbar';
-import { Breadcrumb } from '../../components/breadcrumb';
+import { BasicMain } from '../../components/basic-main';
 
 defineOptions({
   name: 'TopLayout',
@@ -16,13 +15,14 @@ const getVisibleMenuRoutes = computed(() => {
   return menuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 
-const { getCurrentContentSpace } = useLayoutSettings();
+const { getCurrentContentSpace, getCurrentHeaderHeight } = useLayoutSettings();
 </script>
 
 <template>
   <ElContainer class="h-full flex-col!">
     <div
-      class="py-3 px-2 flex items-center justify-between gap-x-4 bg-background border-b border-el-border-light"
+      class="flex items-center justify-between gap-x-4 bg-background border-b border-el-border-light"
+      :style="{ padding: `0 ${getCurrentContentSpace}px`, height: `${getCurrentHeaderHeight}px` }"
     >
       <AppLogo show-title />
       <div class="flex-1 min-w-0 flex items-center">
@@ -37,12 +37,10 @@ const { getCurrentContentSpace } = useLayoutSettings();
       <BasicToolbar :show-user-dropdown="true" />
     </div>
     <div
-      :style="{
-        margin: `${getCurrentContentSpace * 2}px ${getCurrentContentSpace}px ${getCurrentContentSpace}px`,
-      }"
+      class="flex-1 overflow-auto overflow-x-hidden"
+      :style="{ padding: `${getCurrentContentSpace}px` }"
     >
-      <Breadcrumb />
+      <BasicMain />
     </div>
-    <BasicContainer container-class="overflow-y-auto p-3" />
   </ElContainer>
 </template>

@@ -12,7 +12,7 @@ div.el-card:not(.not-style) {
   }
 
   &.is-always-shadow {
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-xs);
   }
 
   & > .el-card__body {

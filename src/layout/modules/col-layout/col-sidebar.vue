@@ -3,7 +3,7 @@ import { AppLogo } from '@/components/common/app-logo';
 import { computed, ref, watch } from 'vue';
 import { UserDropdownSidebar } from '@/layout/components/user-dropdown';
 import { cn } from '@/utils';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { menuRoutes } from '@/router';
 
@@ -94,8 +94,8 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
             :class="
               cn(
                 'h-item rounded-lg flex flex-col gap-y-1 items-center justify-center cursor-pointer duration-300',
-                `hover:bg-zinc-300`,
-                isActiveMenu(menu.path) && 'bg-zinc-300',
+                `hover:bg-(--menu-hover-bg-color)`,
+                isActiveMenu(menu.path) && 'bg-(--menu-hover-bg-color)',
               )
             "
             @click="handleTopLevelMenuClick(menu)"
@@ -109,13 +109,16 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
         </div>
 
         <div>
-          <UserDropdownSidebar :hide-text="true" user-dropdown-side-class="hover:bg-zinc-200" />
+          <UserDropdownSidebar
+            :hide-text="true"
+            user-dropdown-side-class="hover:bg-(--menu-hover-bg-color)"
+          />
         </div>
       </div>
     </div>
 
     <div
-      class="flex-1 flex flex-col h-full bg-container-color"
+      class="flex-1 flex flex-col h-full border-r border-el-border-light"
       :style="{ width: `${getCurrentColSubSidebarWidth}px` }"
     >
       <div
@@ -127,7 +130,7 @@ const appTitle = import.meta.env.VITE_APP_TITLE;
       >
         <span class="text-base font-semibold text-el-text-primary">{{ appTitle }}</span>
       </div>
-      <div class="flex-1 pr-0!" :style="{ padding: `${getCurrentContentSpace}px` }">
+      <div class="flex-1" :style="{ padding: `${getCurrentContentSpace}px` }">
         <BasicMenu>
           <template v-for="menu in getSubMenuList" :key="menu.path">
             <BasicMenuSubItem :menu="menu" :parent-path="currentTopMenuPath" />

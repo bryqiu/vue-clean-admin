@@ -32,7 +32,7 @@ withDefaults(defineProps<UserDropdownSidebarProps>(), {
     <div
       :class="
         cn(
-          'flex w-full items-center gap-x-2 overflow-hidden p-2 rounded-lg cursor-pointer',
+          'flex w-full items-center gap-x-2 overflow-hidden  p-2 rounded-lg cursor-pointer',
           hideText && 'justify-center',
           userDropdownSideClass,
         )

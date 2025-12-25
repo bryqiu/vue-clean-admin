@@ -8,13 +8,19 @@ defineOptions({
 });
 
 const { breadcrumbStyleType } = useShareSettings();
+const { getCurrentHeaderHeight, isColLayout, getCurrentContentSpace } = useLayoutSettings();
 </script>
 
 <template>
-  <div class="w-full flex items-center justify-between px-3 py-1 border-b border-el-border-light">
+  <div
+    class="w-full flex items-center justify-between"
+    :style="{ height: `${getCurrentHeaderHeight}px`, padding: `0 ${getCurrentContentSpace}px` }"
+  >
     <div class="flex items-center">
-      <MenuCollapse />
-      <ElDivider direction="vertical" />
+      <template v-if="!isColLayout">
+        <MenuCollapse />
+        <ElDivider direction="vertical" />
+      </template>
       <Breadcrumb :style-type="breadcrumbStyleType" />
     </div>
     <BasicToolbar />
