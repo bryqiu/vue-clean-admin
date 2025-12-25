@@ -1,10 +1,11 @@
 {
   // 文件折叠
-  "explorer.fileNesting.enabled": false,
+  "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "*.env": ".env.*",
-    "eslint.config.js": ".prettierrc.*, stylelint.*, .editorconfig, .prettierignore, .stylelintignore"
+    ".env": "*.env, .env.*, .envrc, env.d.ts",
+    "eslint.config.js": ".prettierrc.*, stylelint.*, .editorconfig, .prettierignore, .stylelintignore,lint-staged.config.*,commitlint.config.*,.eslintrc-auto-import.*",
+    "package.json": ".gitignore,.npmrc,.nvmrc,pnpm-lock.yaml,tsconfig.json,LICENSE,index.html"
   },
 
   // eslint
