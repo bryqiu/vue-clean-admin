@@ -1,6 +1,6 @@
 /** @type {import('stylelint').Config} */
 export default {
-  extends: ['stylelint-config-standard', 'stylelint-config-recess-order', 'stylelint-config-html'],
+  extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
   plugins: ['stylelint-prettier'],
   rules: {
     'prettier/prettier': true,
