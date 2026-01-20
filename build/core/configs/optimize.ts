@@ -1,10 +1,12 @@
 import type { DepOptimizationOptions } from 'vite';
-import { getElementPlusStyleIncludes } from '../scripts/el-style-path';
+import { extractLibStyleIncludes } from '../scripts/el-style-path';
 
 export const createOptimizeConfig = (): DepOptimizationOptions => {
   const include: string[] = [
     'element-plus/es',
-    ...getElementPlusStyleIncludes(),
+    ...extractLibStyleIncludes('element-plus', 'sass'),
+    'plus-pro-components/es',
+    ...extractLibStyleIncludes('plus-pro-components'),
     'echarts',
     '@vueuse/core',
     'nprogress',

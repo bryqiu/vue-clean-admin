@@ -1,33 +1,45 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const getElementPlusStyleIncludes = (): string[] => {
-  // node_modules 中的 element-plus 组件目录
-  const componentPath = path.resolve(process.cwd(), 'node_modules/element-plus/es/components');
+/**
+ * 提取组件库的样式包含路径
+ * @param lib 库名称
+ * @param styleType 样式类型：'sass' (对应 style/index) 或 'css' (对应 style/css)
+ */
+export const extractLibStyleIncludes = (
+  lib: 'element-plus' | 'plus-pro-components' = 'element-plus',
+  styleType: 'sass' | 'css' = 'css',
+): string[] => {
+  // 映射不同的样式入口目录
+  const styleDirName = styleType === 'sass' ? 'index' : 'css';
 
-  // 如果还没安装依赖，直接返回空，避免报错
+  // node_modules 中的组件目录 (ES 模块路径)
+  const componentPath = path.resolve(process.cwd(), `node_modules/${lib}/es/components`);
+
   if (!fs.existsSync(componentPath)) return [];
 
-  // 遍历目录
   const components = fs.readdirSync(componentPath);
   const stylePaths: string[] = [];
 
   components.forEach((item) => {
-    if (item.startsWith('.') || !fs.statSync(path.resolve(componentPath, item)).isDirectory()) {
+    const itemPath = path.resolve(componentPath, item);
+
+    // 排除隐藏文件和非目录
+    if (item.startsWith('.') || !fs.statSync(itemPath).isDirectory()) {
       return;
     }
 
-    // 检查 style/index 文件是否存在
-    const styleFolderPath = path.resolve(componentPath, item, 'style');
-    const styleIndexPath = path.resolve(styleFolderPath, 'index.mjs'); // 首选 mjs
-    const styleIndexJsPath = path.resolve(styleFolderPath, 'index.js'); // 备选 js
+    // 目标样式文件路径，例如: element-plus/es/components/button/style/css.mjs
+    const styleFolderPath = path.resolve(itemPath, 'style');
+    const targetFileBase = path.resolve(styleFolderPath, styleDirName);
 
-    // 只要 style 文件夹存在，且里面有 index 文件，就加入路径
-    if (
-      fs.existsSync(styleFolderPath) &&
-      (fs.existsSync(styleIndexPath) || fs.existsSync(styleIndexJsPath))
-    ) {
-      stylePaths.push(`element-plus/es/components/${item}/style/index`);
+    // 检查是否存在对应的入口文件 (.mjs 或 .js)
+    const hasStyleFile =
+      fs.existsSync(`${targetFileBase}.mjs`) || fs.existsSync(`${targetFileBase}.js`);
+
+    if (fs.existsSync(styleFolderPath) && hasStyleFile) {
+      // 保持引用路径的清洁，不带后缀名
+      stylePaths.push(`${lib}/es/components/${item}/style/${styleDirName}`);
     }
   });
 
