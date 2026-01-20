@@ -11,18 +11,18 @@ div.app-dialog {
     --app-dialog-padding-x: calc(var(--app-dialog-padding) * 2);
     --app-dialog-padding-y: calc(var(--app-dialog-padding));
 
-    .el-dialog__header {
+    .el-dialog__header.app-dialog-header {
       position: relative;
       padding: var(--app-dialog-padding-y) var(--app-dialog-padding-x);
       border-bottom: 1px solid var(--el-border-color);
     }
 
-    .el-dialog__body {
+    .el-dialog__body.app-dialog-body {
       flex: 1;
       padding: var(--app-dialog-padding-y) var(--app-dialog-padding-x);
     }
 
-    .el-dialog__footer {
+    .el-dialog__footer.app-dialog-footer {
       padding: var(--app-dialog-padding-y) var(--app-dialog-padding-x);
       border-top: 1px solid var(--el-border-color);
     }

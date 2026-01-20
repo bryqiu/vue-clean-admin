@@ -29,33 +29,41 @@ const dialogVisible = defineModel<boolean>({
  * 是否存在 ActionBtns
  */
 const isActionBtns = computed(() => {
-  console.log(props.actionBtns, 'props.actionBtns');
   return props.actionBtns && Array.isArray(props.actionBtns) && props.actionBtns.length;
 });
 
-const dialogInstance = ref<Nullable<DialogInstance>>();
+const elDialogInstance = ref<Nullable<DialogInstance>>(null);
 
 /**
  * 获取 el-dialog 实例
  */
-const getDialogInstance = computed(() => {
-  return dialogInstance.value;
+const getElDialogInstance = computed(() => {
+  return elDialogInstance.value;
 });
 
 /**
- * el-dialog 属性
+ * app-dialog 属性
  */
-const dialogAttrs = computed(() => {
+const dialogProps = computed(() => {
   const attrs = useAttrs();
 
-  // 要省略的属性
-  const elDialogAttrs = omit(attrs, ['show-color', 'title']);
+  // 要忽略的属性
+  const elDialogProps = omit(attrs, ['show-close', 'title', 'close-icon']);
 
-  const defaultAttrs: Partial<DialogProps> = {
+  const defaultElDialogProps: Partial<DialogProps> = {
     showClose: false,
+    top: '10vh',
+    draggable: true,
+    width: '550px',
   };
 
-  return { ...elDialogAttrs, ...defaultAttrs };
+  const innateProps: Pick<DialogProps, 'headerClass' | 'bodyClass' | 'footerClass'> = {
+    headerClass: cn('app-dialog-header', props.headerClass),
+    bodyClass: cn('app-dialog-body', props.bodyClass),
+    footerClass: cn('app-dialog-footer', props.footerClass),
+  };
+
+  return { ...defaultElDialogProps, ...elDialogProps, ...innateProps };
 });
 
 /**
@@ -84,34 +92,36 @@ const confirmBtnAttrs = computed(() => {
  * 确认按钮点击事件
  */
 const handleConfirm = () => {
-  emits('handleConfirm');
+  emits('onConfirm');
 };
 
 /**
  * 取消按钮点击事件
  */
 const handleCancel = () => {
-  emits('handleCancel');
+  emits('onCancel');
 };
 
 defineExpose({
-  getDialogInstance,
+  getElDialogInstance,
 });
 </script>
 
 <template>
   <ElDialog
-    ref="dialogInstance"
+    ref="elDialogInstance"
     v-model="dialogVisible"
     :class="cn('app-dialog', dialogClass)"
-    v-bind="dialogAttrs"
+    v-bind="dialogProps"
   >
     <!-- 头部插槽 -->
     <template #header>
-      <slot v-if="$slots.header" name="header" />
-      <div v-else :class="cn(headerClass)">
-        <span class="text-base font-medium">{{ title }}</span>
-      </div>
+      <template v-if="$slots.header">
+        <slot name="header" />
+      </template>
+      <template v-else>
+        <span :class="cn('app-dialog-title text-base font-medium ', titleClass)">{{ title }}</span>
+      </template>
       <div v-if="showCloseIcon" class="absolute right-5 top-2">
         <ActionButton
           icon="mingcute:close-line"
@@ -127,13 +137,10 @@ defineExpose({
 
     <!-- 底部插槽 -->
     <template v-if="!hideFooter" #footer>
-      <div v-if="$slots.footer" :class="cn('dialog-footer', footerClass)">
+      <div v-if="$slots.footer">
         <slot name="footer" />
       </div>
-      <div
-        v-else-if="isActionBtns"
-        :class="cn('dialog-footer flex justify-end items-center', footerClass)"
-      >
+      <div v-else-if="isActionBtns" class="flex justify-end items-center">
         <template v-for="(btn, index) in actionBtns" :key="index">
           <ElButton v-bind="omit(btn, 'btnText')" @click="btn.onClick">
             {{ btn.btnText }}
@@ -141,7 +148,7 @@ defineExpose({
         </template>
       </div>
 
-      <div v-else :class="cn('dialog-footer flex justify-end items-center', footerClass)">
+      <div v-else class="flex justify-end items-center">
         <ElButton v-if="showCancelBtn" v-bind="cancelBtnAttrs" @click="handleCancel">
           {{ cancelBtnText }}
         </ElButton>

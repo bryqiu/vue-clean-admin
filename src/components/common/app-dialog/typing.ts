@@ -3,36 +3,7 @@ interface ActionBtn extends Partial<ButtonProps> {
   btnText: string;
   onClick: () => void;
 }
-
-export interface AppDialogProps {
-  /**
-   * 标题
-   * @default '标题'
-   */
-  title?: string;
-
-  /**
-   * Dialog 类名
-   */
-  dialogClass?: string;
-
-  /**
-   * 头部类名
-   */
-  headerClass?: string;
-
-  /**
-   * 底部类名
-   */
-  footerClass?: string;
-
-  /**
-   * 是否隐藏底部模块
-   * @default false
-   */
-
-  hideFooter?: boolean;
-
+export interface DialogFooterBtnProps {
   /**
    * 是否显示取消按钮
    * @default true
@@ -65,6 +36,44 @@ export interface AppDialogProps {
    * 操作按钮-配置项
    */
   actionBtns?: ActionBtn[];
+}
+export interface DialogProps {
+  /**
+   * 标题
+   * @default '标题'
+   */
+  title?: string;
+
+  /**
+   * Dialog 类名
+   */
+  dialogClass?: ClsxClassValues;
+
+  /**
+   * 标题类名
+   */
+  titleClass?: ClsxClassValues;
+
+  /**
+   * 头部类名
+   */
+  headerClass?: ClsxClassValues;
+
+  /**
+   * 内容类名
+   */
+  bodyClass?: ClsxClassValues;
+
+  /**
+   * 底部类名
+   */
+  footerClass?: ClsxClassValues;
+
+  /**
+   * 是否隐藏底部模块
+   * @default false
+   */
+  hideFooter?: boolean;
   /**
    * 是否显示右上角关闭图标
    * @default true
@@ -72,13 +81,15 @@ export interface AppDialogProps {
   showCloseIcon?: boolean;
 }
 
+export type AppDialogProps = DialogProps & DialogFooterBtnProps;
+
 export type AppDialogEmits = {
   /**
-   * 点击关闭按钮的回调
+   * 点击关闭按钮的回调事件
    */
-  (e: 'handleCancel'): void;
+  (e: 'onCancel'): void;
   /**
-   * 点击确定按钮的回调
+   * 点击确定按钮的回调事件
    */
-  (e: 'handleConfirm'): void;
+  (e: 'onConfirm'): void;
 };
