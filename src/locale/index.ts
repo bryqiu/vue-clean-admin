@@ -1,6 +1,5 @@
 import { formatStoreKey } from '@/store/helpers';
 import { storeModulesNames } from '@/store/config';
-import type { Language } from 'element-plus/es/locales';
 
 /** 默认语言 */
 export const DEFAULT_LOCALE: SupportedLocales = 'zh-CN';
@@ -35,7 +34,7 @@ export const dayLocaleMessageMap: DayjsLocaleMap = {
 };
 
 type ElLocaleMap = {
-  [key in SupportedLocales]: Promise<{ default: Language }>;
+  [key in SupportedLocales]: Promise<{ default: ElLanguage }>;
 };
 
 /** Element Plus 语言包映射 */
@@ -45,11 +44,24 @@ export const elLocaleMessageMap: ElLocaleMap = {
   'zh-HK': import('element-plus/es/locale/lang/zh-hk'),
 };
 
+type PlusProComponentsLocaleMap = {
+  [key in SupportedLocales]: Promise<{
+    default: PlusLanguage;
+  }>;
+};
+
+/** PlusProComponents 语言包映射 */
+export const plusProComponentsLocaleMessageMap: PlusProComponentsLocaleMap = {
+  'zh-CN': import('plus-pro-components/es/locale/lang/zh-cn'),
+  en: import('plus-pro-components/es/locale/lang/en'),
+  'zh-HK': import('plus-pro-components/es/locale/lang/zh-tw'),
+};
+
 /**
  * 获取 Element Plus 默认语言包（异步）
  * @returns Promise<Language>
  */
-export async function getElementDefaultLocale(): Promise<Language> {
+export async function getElementDefaultLocale(): Promise<ElLanguage> {
   const module = await elLocaleMessageMap[DEFAULT_LOCALE];
   return module.default;
 }

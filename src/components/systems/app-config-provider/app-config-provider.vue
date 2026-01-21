@@ -3,7 +3,7 @@ import { onMounted } from 'vue';
 
 import { Settings } from '../settings';
 import { Notifications } from '../notifications';
-import { elLocaleMessage } from '@/plugins/i18n';
+import { elLocaleMessage, plusLocaleMessage } from '@/plugins/i18n';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <ElConfigProvider :locale="elLocaleMessage">
+  <ElConfigProvider :locale="Object.assign({}, elLocaleMessage, plusLocaleMessage)">
     <Settings />
     <Notifications />
     <slot />

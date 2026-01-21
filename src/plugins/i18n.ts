@@ -5,11 +5,11 @@ import {
   loadAppLocaleMessages,
   loadDayjsLocaleMessages,
   loadElementLocaleMessages,
+  loadPlusProComponentsLocaleMessages,
   setHtmlLang,
   setLocaleStorage,
 } from '@/locale/helpers';
 import { DEFAULT_LOCALE } from '@/locale';
-import type { Language } from 'element-plus/es/locale';
 import { ref } from 'vue';
 
 // 创建i18n实例
@@ -25,7 +25,9 @@ const i18nInstance = createI18n({
   silentFallbackWarn: true,
 });
 
-const elLocaleMessage = ref<Language>();
+const elLocaleMessage = ref<ElLanguage>();
+
+const plusLocaleMessage = ref<PlusLanguage>();
 
 // 动态加载语言包
 export async function loadLocaleMessages(locale: SupportedLocales) {
@@ -37,6 +39,9 @@ export async function loadLocaleMessages(locale: SupportedLocales) {
 
   // 加载 Element Plus 语言包
   loadElementLocaleMessages(locale, elLocaleMessage);
+
+  // 加载 PlusProComponents 语言包
+  loadPlusProComponentsLocaleMessages(locale, plusLocaleMessage);
 
   // 设置语言
   setI18nLanguage(locale);
@@ -68,4 +73,4 @@ export const initI18n = async (app: App<Element>) => {
   await loadLocaleMessages(locale);
 };
 
-export { i18nInstance, elLocaleMessage };
+export { i18nInstance, elLocaleMessage, plusLocaleMessage };

@@ -1,9 +1,14 @@
 import { has, isEmpty } from 'lodash-es';
-import { DEFAULT_LOCALE, dayLocaleMessageMap, elLocaleMessageMap, localeStorageKey } from './index';
+import {
+  DEFAULT_LOCALE,
+  dayLocaleMessageMap,
+  elLocaleMessageMap,
+  localeStorageKey,
+  plusProComponentsLocaleMessageMap,
+} from './index';
 import dayjs from 'dayjs';
 import type { I18n } from 'vue-i18n';
 import type { Ref } from 'vue';
-import type { Language } from 'element-plus/es/locale';
 
 /**
  * 获取语言模块本地存储数据
@@ -92,13 +97,27 @@ export const loadDayjsLocaleMessages = async (locale: SupportedLocales) => {
 /** 加载 Element Plus 语言包 */
 export const loadElementLocaleMessages = async (
   locale: SupportedLocales,
-  elLocaleMessage: Ref<Language | undefined>,
+  elLocaleMessage: Ref<ElLanguage | undefined>,
 ) => {
   try {
     const elementPlusLocaleMessage = (await elLocaleMessageMap[locale]).default;
     elLocaleMessage.value = elementPlusLocaleMessage;
   } catch (error) {
     console.error(`Element Plus ${locale}语言包加载失败`, error);
+  }
+};
+
+/** 加载 PlusProComponents 语言包 */
+export const loadPlusProComponentsLocaleMessages = async (
+  locale: SupportedLocales,
+  plusLocaleMessage: Ref<PlusLanguage | undefined>,
+) => {
+  try {
+    const plusProComponentsLocaleMessage = (await plusProComponentsLocaleMessageMap[locale])
+      .default;
+    plusLocaleMessage.value = plusProComponentsLocaleMessage;
+  } catch (error) {
+    console.error(`PlusProComponents ${locale}语言包加载失败`, error);
   }
 };
 
