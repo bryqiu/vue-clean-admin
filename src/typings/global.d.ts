@@ -1,6 +1,7 @@
 import { PropType as propType } from 'vue';
 import type { ClassValue } from 'clsx';
 import { supportLocales } from '@/locale';
+import type { Language, TranslatePair } from 'element-plus/es/locale';
 
 declare global {
   /** 对齐模式 */
@@ -29,6 +30,11 @@ declare global {
 
   /** 支持的区域语言 */
   type SupportedLocales = 'zh-CN' | 'en' | 'zh-HK';
+
+  /** Element Plus 语言包类型 */
+  type ElLanguage = Language;
+  /** PlusProComponents 语言包类型 */
+  type PlusLanguage = PlusLanguage & { el?: TranslatePair };
 
   /** 字典基本结构 */
   interface BaseOptions<T = string> {
