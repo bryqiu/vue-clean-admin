@@ -6,6 +6,9 @@ export * from './settings';
 export * from './layout';
 export * from './size';
 export * from './permission';
+export * from './status';
+export * from './gender';
+export * from './form';
 
 // 全局枚举
 export enum SortModeEnum {
