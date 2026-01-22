@@ -2,7 +2,6 @@
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { AppLogo } from '@/components/common/app-logo';
 import { computed } from 'vue';
-import { menuRoutes } from '@/router';
 import { BasicToolbar } from '../../components/basic-toolbar';
 import { BasicMain } from '../../components/basic-main';
 
@@ -10,9 +9,11 @@ defineOptions({
   name: 'TopLayout',
 });
 
+const { getMenuRoutes } = useUserStore();
+
 /** 获取可见的菜单路由 */
 const getVisibleMenuRoutes = computed(() => {
-  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
+  return getMenuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 
 const { getCurrentContentSpace, getCurrentHeaderHeight } = useLayoutSettings();

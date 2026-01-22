@@ -5,27 +5,26 @@ import { AuthContainer, AuthMode, AuthPolicy } from '../components';
 import { AUTH_INFO_MAP, AUTH_MODE_LIST } from '../config';
 import { ROUTE_NAMES } from '@/router/config';
 import { useRouter } from 'vue-router';
+import { userService } from '@/services/api';
+import type { LoginParams, LoginResult } from '#/type';
+import { ElMessage } from 'element-plus';
 
 defineOptions({
   name: 'AccountLogin',
 });
 
-interface FormData {
-  userName: string;
-  password: string;
-}
-
 const { push } = useRouter();
+const { setAccessToken, setRefreshToken } = useUserStore();
 
 const formInstance = ref<FormInstance>();
 
-const formData = ref<FormData>({
-  userName: '',
-  password: '',
+const formData = ref<LoginParams>({
+  username: 'admin',
+  password: '123456',
 });
 
 const rules = reactive<FormRules>({
-  userName: [{ required: true, message: '请输入账号', trigger: 'blur' }],
+  username: [{ required: true, message: '请输入账号', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 });
 
@@ -43,11 +42,34 @@ const goToForgetPassword = () => {
   });
 };
 
+/** 登录成功后的操作 */
+const loginAfterHandle = (loginResult: LoginResult) => {
+  const { accessToken } = loginResult;
+  // 把 Token 存入本地
+  setAccessToken(accessToken);
+  // 最后，走一遍路由拦截
+  push('/');
+};
+
+const authLoading = ref(false);
+
+/** 登录 */
 const handleLogin = async () => {
-  if (!formInstance.value) return;
-  const valid = await formInstance.value.validate();
-  if (!valid) return;
-  console.log('登录表单数据：', formData.value);
+  try {
+    // 校验表单
+    await formInstance.value?.validate();
+    // 设置为加载中状态
+    authLoading.value = true;
+    // 调用登录接口
+    const res = await userService.login(formData.value);
+    // 登录成功后的操作
+    res && loginAfterHandle(res);
+  } catch (error: any) {
+    const errorMessage = error?.message || error?.msg || '登录失败，请检查账号密码';
+    ElMessage.error(errorMessage);
+  } finally {
+    authLoading.value = false;
+  }
 };
 </script>
 
@@ -60,8 +82,8 @@ const handleLogin = async () => {
       label-width="auto"
       label-position="top"
     >
-      <ElFormItem prop="userName" label="账号">
-        <ElInput v-model="formData.userName" placeholder="请输入账号" clearable class="h-9" />
+      <ElFormItem prop="username" label="账号">
+        <ElInput v-model="formData.username" placeholder="请输入账号" clearable class="h-9" />
       </ElFormItem>
       <ElFormItem prop="password" class="password-form-item">
         <template #label>
@@ -86,7 +108,7 @@ const handleLogin = async () => {
 
     <div class="w-full flex flex-col gap-y-2 mt-4">
       <div>
-        <ElButton class="w-full h-9" type="primary" @click="handleLogin">
+        <ElButton class="w-full h-9" type="primary" :loading="authLoading" @click="handleLogin">
           <span class="tracking-[0.4em]">登录</span>
         </ElButton>
       </div>

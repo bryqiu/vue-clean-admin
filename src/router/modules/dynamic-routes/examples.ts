@@ -1,10 +1,10 @@
-import { APP_LAYOUT } from '@/router/config';
+import { LAYOUT_COMPONENT } from '@/router/config';
 
 const examplesRoutes: CustomRouteRecordRaw = {
   id: 1,
   path: '/examples',
   redirect: '/examples/element-plus',
-  component: APP_LAYOUT,
+  component: LAYOUT_COMPONENT,
   name: 'Examples',
   meta: {
     title: '示例简介',
@@ -46,15 +46,6 @@ const examplesRoutes: CustomRouteRecordRaw = {
       meta: {
         title: 'i18n 国际化',
         menuIcon: 'ri:translate-2',
-      },
-    },
-    {
-      path: 'list',
-      name: 'List',
-      component: () => import('@/views/examples/list.vue'),
-      meta: {
-        title: '列表管理',
-        menuIcon: 'ri:table-3',
       },
     },
     {

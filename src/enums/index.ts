@@ -5,6 +5,7 @@ export * from './transition';
 export * from './settings';
 export * from './layout';
 export * from './size';
+export * from './permission';
 
 // 全局枚举
 export enum SortModeEnum {

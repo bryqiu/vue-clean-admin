@@ -5,7 +5,6 @@ import { UserDropdownSidebar } from '@/layout/components/user-dropdown';
 import { cn } from '@/utils';
 import { useRoute } from 'vue-router';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
-import { menuRoutes } from '@/router';
 
 defineOptions({
   name: 'ColSidebar',
@@ -21,9 +20,11 @@ const {
   getCurrentContentSpace,
 } = useLayoutSettings();
 
+const { getMenuRoutes } = useUserStore();
+
 /** 获取最上层菜单列表 */
 const getTopLevelMenuList = computed(() => {
-  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
+  return getMenuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 
 const currentTopMenuPath = ref(route.matched[0].path);
@@ -51,7 +52,7 @@ const getSubMenuList = computed(() => {
   if (!currentTopMenuPath.value) return [];
 
   // 查找对应的菜单项
-  const targetMenu = menuRoutes.find((menu) => menu.path === currentTopMenuPath.value);
+  const targetMenu = getMenuRoutes.find((menu) => menu.path === currentTopMenuPath.value);
 
   // 返回子菜单列表，如果没有子菜单则返回空数组
   return targetMenu?.children || [];

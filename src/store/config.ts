@@ -1,12 +1,12 @@
 import type { PluginOptions } from 'pinia-plugin-persistedstate';
-import type { Layout, Settings, Share, Theme } from '@/store/types';
+import type { Layout, Settings, Share, Theme } from './types';
 import { LayoutModeEnum, PageTransitionEnum, ThemeModeEnum, VisualModeEnum } from '@/enums/index';
 import { PRIMARY_COLOR } from '@/theme/constants';
+import { formatStoreKey } from './helpers';
 
 /** 默认持久化存储配置 */
 export const defaultStoreOptions: PluginOptions = {
-  key: (id) =>
-    `__${import.meta.env.VITE_STORE_PREFIX}__${id}__${import.meta.env.VITE_APP_VERSION}`.toUpperCase(),
+  key: (id) => formatStoreKey(id),
   storage: localStorage,
 } as const;
 

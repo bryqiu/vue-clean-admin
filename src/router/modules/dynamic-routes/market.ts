@@ -1,9 +1,9 @@
-import { APP_LAYOUT } from '@/router/config';
+import { LAYOUT_COMPONENT } from '@/router/config';
 
 const marketRoutes: CustomRouteRecordRaw = {
   path: '/market',
   redirect: '/market/ai',
-  component: APP_LAYOUT,
+  component: LAYOUT_COMPONENT,
   name: 'Market',
   meta: {
     title: '物料市场',

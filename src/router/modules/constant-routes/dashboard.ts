@@ -1,9 +1,9 @@
-import { APP_LAYOUT, ROUTE_NAMES } from '@/router/config';
+import { LAYOUT_COMPONENT, ROUTE_NAMES } from '@/router/config';
 
 const dashboardRoutes: CustomRouteRecordRaw = {
   path: '/dashboard',
   redirect: `/dashboard/analytics`,
-  component: APP_LAYOUT,
+  component: LAYOUT_COMPONENT,
   name: ROUTE_NAMES.DASHBOARD,
   meta: {
     title: '仪表盘',

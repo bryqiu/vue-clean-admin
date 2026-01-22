@@ -3,7 +3,6 @@ import { AppLogo } from '@/components/common/app-logo';
 import { BasicMenu, BasicMenuSubItem } from '@/layout/components/basic-menu';
 import { computed } from 'vue';
 import { UserDropdownSidebar } from '@/layout/components/user-dropdown';
-import { menuRoutes } from '@/router';
 import { cn } from '@/utils';
 
 defineOptions({
@@ -13,17 +12,13 @@ defineOptions({
 const settingsStore = useSettingsStore();
 const { isMenuCollapse } = useLayoutSettings();
 const { getCurrentHeaderHeight } = useLayoutSettings();
+const { getMenuRoutes } = useUserStore();
 
 /** 左侧边栏宽度 */
 const sidebarWidth = computed(() => {
   return isMenuCollapse.value
     ? settingsStore.getLayoutSettings.sidebarCollapseWidth
     : settingsStore.getLayoutSettings.sidebarOpenedWidth;
-});
-
-/** 获取可见的菜单路由 */
-const getVisibleMenuRoutes = computed(() => {
-  return menuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 </script>
 
@@ -47,7 +42,7 @@ const getVisibleMenuRoutes = computed(() => {
       :view-class="cn([isMenuCollapse && 'flex justify-center'], 'h-full p-2')"
     >
       <BasicMenu :collapse="isMenuCollapse">
-        <template v-for="menu in getVisibleMenuRoutes" :key="menu.path">
+        <template v-for="menu in getMenuRoutes" :key="menu.path">
           <BasicMenuSubItem :menu :parent-path="menu.path" />
         </template>
       </BasicMenu>

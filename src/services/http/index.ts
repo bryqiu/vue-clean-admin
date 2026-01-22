@@ -6,9 +6,10 @@ import type {
   CreateAxiosDefaults,
   InternalAxiosRequestConfig,
 } from 'axios';
-import type { ResponseResult } from './typing';
 import { getBearerToken } from './helpers';
 import type { AxiosRequestConfig } from 'axios';
+import { getLocalAccessToken } from '@/utils/permission';
+import type { ResponseResult } from './typing';
 
 interface RequestInterceptor {
   onFulfilled: (
@@ -49,8 +50,8 @@ export class HttpClient {
     // 请求拦截器
     this.instance.interceptors.request.use(
       (config: InternalAxiosRequestConfig<ResponseResult>) => {
-        const { accessToken } = useUserStore();
-
+        const { getAccessToken } = useUserStore();
+        const accessToken = getAccessToken || getLocalAccessToken();
         if (accessToken) {
           config.headers.Authorization = getBearerToken(accessToken);
         }
@@ -62,8 +63,6 @@ export class HttpClient {
     // 响应拦截器
     this.instance.interceptors.response.use(
       (response: AxiosResponse) => {
-        const data = response.data as ResponseResult;
-        console.log(data, 'data');
         return response.data;
       },
       (error: AxiosError) => {
@@ -102,8 +101,6 @@ export class HttpClient {
   async post<T = any>(config?: AxiosRequestConfig) {
     const mergedConfig = { ...(config || {}), method: 'POST' };
     const res = await this.instance.request<T>(mergedConfig);
-    console.log(res, 'res');
-
     return res.data;
   }
 

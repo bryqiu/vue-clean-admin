@@ -11,21 +11,20 @@ const exceptionRoutes: CustomRouteRecordRaw = {
   },
   children: [
     {
-      path: 'notFound',
-      name: ROUTE_NAMES.NOT_FOUND,
-      component: () => import('@/views/exceptions/not-found.vue'),
-      meta: {
-        title: '无页面(404)',
-        menuIcon: 'ri:file-search-line',
-      },
-    },
-    {
       path: 'forbidden',
       name: ROUTE_NAMES.FORBIDDEN,
       component: () => import('@/views/exceptions/forbidden.vue'),
       meta: {
         title: '访问受限(403)',
         menuIcon: 'ri:forbid-line',
+      },
+    },
+    {
+      path: 'xxxx',
+      component: () => import('@/views/exceptions/not-found.vue'),
+      meta: {
+        title: '无页面(404)',
+        menuIcon: 'ri:file-search-line',
       },
     },
     {

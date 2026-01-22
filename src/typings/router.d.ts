@@ -1,19 +1,10 @@
-import { type RouteMeta, type RouteRecordRaw } from 'vue-router';
+import type { RouteMeta, RouteRecordRaw, RouteRecordRedirectOption } from 'vue-router';
 import type { Component } from 'vue';
 import type { DefineComponent } from 'vue';
-
-export {};
+import type { RouteType } from '#/type';
 
 declare global {
   export interface CustomRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
-    /**
-     * 路由ID
-     */
-    id?: number;
-    /**
-     * 路由父ID
-     */
-    parentId?: number;
     /**
      * 路由地址
      */
@@ -25,16 +16,22 @@ declare global {
     /**
      * 重定向路径
      */
-    redirect?: string;
+    redirect?: RouteRecordRedirectOption;
     /**
      * 组件
      */
-    component?: Component | DefineComponent | string;
+    component?: Component | DefineComponent | (() => Promise<unknown>);
     /**
      * 子路由信息
      */
     children?: CustomRouteRecordRaw[];
-    /** 元信息 */
+    /**
+     * 路由类型
+     */
+    type?: RouteType;
+    /**
+     * 元信息
+     */
     meta: {
       /**
        * 菜单标题
@@ -49,17 +46,46 @@ declare global {
        */
       sort?: number;
       /**
-       * 是否隐藏菜单
+       * 是否在侧边栏菜单中隐藏
+       * @default false
        */
       hideMenu?: boolean;
       /**
-       * 是否隐藏面包屑
+       * 是否在面包屑中隐藏
+       * @default false
        */
       hideBreadcrumb?: boolean;
       /**
        * 当只有一个子菜单时，是否隐藏父级菜单直接显示子菜单内容
+       * @default false
        */
       hideParentIfSingleChild?: boolean;
     };
   }
+
+  /**
+   * 后端返回的权限路由类型定义
+   */
+  export type PermissionRoute = Omit<CustomRouteRecordRaw, 'component' | 'children' | 'type'> & {
+    /**
+     * 路由ID
+     */
+    id?: number;
+    /**
+     * 路由父ID
+     */
+    parentId?: number;
+    /**
+     * 组件路径（后端返回时为字符串，前端处理后为组件）
+     */
+    component: string;
+    /**
+     * 子路由信息
+     */
+    children?: PermissionRoute[];
+    /**
+     * 路由类型
+     */
+    type: RouteType;
+  };
 }

@@ -1,9 +1,9 @@
-import { APP_LAYOUT, ROUTE_NAMES } from '@/router/config';
+import { LAYOUT_COMPONENT, ROUTE_NAMES } from '@/router/config';
 
 const aboutRoutes: CustomRouteRecordRaw = {
   path: '/about',
   redirect: `/about/index`,
-  component: APP_LAYOUT,
+  component: LAYOUT_COMPONENT,
   name: ROUTE_NAMES.ABOUT,
   meta: {
     title: '关于',
