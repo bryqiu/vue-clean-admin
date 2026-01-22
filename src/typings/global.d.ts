@@ -47,7 +47,7 @@ declare global {
   /** 分页请求参数 */
   interface PaginationParams {
     /** 当前页码 */
-    currentPage: number;
+    page: number;
     /** 每页显示条数 */
     pageSize: number;
   }
