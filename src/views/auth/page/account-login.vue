@@ -7,7 +7,6 @@ import { ROUTE_NAMES } from '@/router/config';
 import { useRouter } from 'vue-router';
 import { userService } from '@/services/api';
 import type { LoginParams, LoginResult } from '#/type';
-import { ElMessage } from 'element-plus';
 
 defineOptions({
   name: 'AccountLogin',

@@ -13,7 +13,6 @@ import { StatusEnum } from '@/enums';
 import { ref, useTemplateRef } from 'vue';
 import type { Role } from '#/type';
 import { PermissionAssignDialog, RoleFormDialog } from './widgets';
-import { ElMessage, ElMessageBox } from 'element-plus';
 
 defineOptions({
   name: 'Role',

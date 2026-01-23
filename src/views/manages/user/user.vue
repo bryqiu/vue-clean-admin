@@ -13,7 +13,6 @@ import { GenderEnum, StatusEnum } from '@/enums';
 import { onMounted, ref, useTemplateRef } from 'vue';
 import type { Dept, UserInfo } from '#/type';
 import { AssignRole, UserFormDialog } from './widgets';
-import { ElMessage, ElMessageBox } from 'element-plus';
 
 defineOptions({
   name: 'User',

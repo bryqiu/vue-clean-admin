@@ -13,7 +13,6 @@ import { StatusEnum } from '@/enums';
 import { ref, useTemplateRef } from 'vue';
 import { DeptFormDialog } from './widgets';
 import type { Dept } from '#/type';
-import { ElMessage, ElMessageBox } from 'element-plus';
 
 defineOptions({
   name: 'Dept',

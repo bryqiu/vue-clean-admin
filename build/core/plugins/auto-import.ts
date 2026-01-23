@@ -11,6 +11,7 @@ export const configAutoImportPlugin = (): PluginOption => {
         '@/store/modules/user': ['useUserStore'],
         '@/components/systems/settings/use-setting-state': ['useSettingState'],
         '@/components/systems/notifications/use-notification-state': ['useNotificationState'],
+        'element-plus': ['ElMessage', 'ElMessageBox', 'ElLoading'],
       },
     ],
     dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/store/hooks')}`],

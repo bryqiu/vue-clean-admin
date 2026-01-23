@@ -4,7 +4,6 @@ import { useDebounceFn } from '@vueuse/core';
 import { InputInstance, PopoverInstance } from 'element-plus';
 import type { IconifyInfo, IconifyJSON } from '@iconify/types';
 import { cn } from '@/utils';
-import { ElMessage } from 'element-plus';
 
 interface IconPickerProps {
   /**
