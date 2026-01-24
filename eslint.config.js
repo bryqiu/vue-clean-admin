@@ -43,6 +43,9 @@ export default [
         Direction: true,
         ClsxClassValues: true,
         SupportedLocales: true,
+        PermissionRoute: true,
+        ElLanguage: true,
+        PlusLanguage: true,
         ...autoImport.globals,
       },
     },
@@ -373,7 +376,7 @@ export default [
   },
   // 文件命名配置
   {
-    files: ['src/**/*', 'build/**/*', 'mock/**/*'],
+    files: ['src/**/*', 'build/**/*'],
     plugins: {
       'check-file': pluginCheckFile,
     },
