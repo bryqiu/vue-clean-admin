@@ -29,28 +29,45 @@ declare module 'vue' {
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
+    ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElImage: typeof import('element-plus/es')['ElImage']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElLink: typeof import('element-plus/es')['ElLink']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElOption: typeof import('element-plus/es')['ElOption']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     ElProgress: typeof import('element-plus/es')['ElProgress']
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
+    ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSegmented: typeof import('element-plus/es')['ElSegmented']
     ElSelect: typeof import('element-plus/es')['ElSelect']
+    ElSelectV2: typeof import('element-plus/es')['ElSelectV2']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElTag: typeof import('element-plus/es')['ElTag']
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
+    ElTree: typeof import('element-plus/es')['ElTree']
+    ElTreeSelect: typeof import('element-plus/es')['ElTreeSelect']
+    PlusDescriptions: typeof import('plus-pro-components/es')['PlusDescriptions']
+    PlusDialog: typeof import('plus-pro-components/es')['PlusDialog']
+    PlusDialogForm: typeof import('plus-pro-components/es')['PlusDialogForm']
+    PlusForm: typeof import('plus-pro-components/es')['PlusForm']
+    PlusPage: typeof import('plus-pro-components/es')['PlusPage']
+    PlusTable: typeof import('plus-pro-components/es')['PlusTable']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+  }
+  export interface GlobalDirectives {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
 
@@ -73,26 +90,40 @@ declare global {
   const ElDialog: (typeof import('element-plus/es'))['ElDialog'];
   const ElDivider: (typeof import('element-plus/es'))['ElDivider'];
   const ElDrawer: (typeof import('element-plus/es'))['ElDrawer'];
+  const ElEmpty: (typeof import('element-plus/es'))['ElEmpty'];
   const ElForm: (typeof import('element-plus/es'))['ElForm'];
   const ElFormItem: (typeof import('element-plus/es'))['ElFormItem'];
+  const ElIcon: (typeof import('element-plus/es'))['ElIcon'];
   const ElImage: (typeof import('element-plus/es'))['ElImage'];
   const ElInput: (typeof import('element-plus/es'))['ElInput'];
   const ElLink: (typeof import('element-plus/es'))['ElLink'];
   const ElMenu: (typeof import('element-plus/es'))['ElMenu'];
   const ElMenuItem: (typeof import('element-plus/es'))['ElMenuItem'];
   const ElOption: (typeof import('element-plus/es'))['ElOption'];
+  const ElPagination: (typeof import('element-plus/es'))['ElPagination'];
   const ElPopover: (typeof import('element-plus/es'))['ElPopover'];
   const ElProgress: (typeof import('element-plus/es'))['ElProgress'];
   const ElRadio: (typeof import('element-plus/es'))['ElRadio'];
   const ElRadioGroup: (typeof import('element-plus/es'))['ElRadioGroup'];
+  const ElRow: (typeof import('element-plus/es'))['ElRow'];
   const ElScrollbar: (typeof import('element-plus/es'))['ElScrollbar'];
   const ElSegmented: (typeof import('element-plus/es'))['ElSegmented'];
   const ElSelect: (typeof import('element-plus/es'))['ElSelect'];
+  const ElSelectV2: (typeof import('element-plus/es'))['ElSelectV2'];
   const ElSubMenu: (typeof import('element-plus/es'))['ElSubMenu'];
   const ElSwitch: (typeof import('element-plus/es'))['ElSwitch'];
   const ElTable: (typeof import('element-plus/es'))['ElTable'];
   const ElTableColumn: (typeof import('element-plus/es'))['ElTableColumn'];
+  const ElTag: (typeof import('element-plus/es'))['ElTag'];
   const ElTimePicker: (typeof import('element-plus/es'))['ElTimePicker'];
+  const ElTree: (typeof import('element-plus/es'))['ElTree'];
+  const ElTreeSelect: (typeof import('element-plus/es'))['ElTreeSelect'];
+  const PlusDescriptions: (typeof import('plus-pro-components/es'))['PlusDescriptions'];
+  const PlusDialog: (typeof import('plus-pro-components/es'))['PlusDialog'];
+  const PlusDialogForm: (typeof import('plus-pro-components/es'))['PlusDialogForm'];
+  const PlusForm: (typeof import('plus-pro-components/es'))['PlusForm'];
+  const PlusPage: (typeof import('plus-pro-components/es'))['PlusPage'];
+  const PlusTable: (typeof import('plus-pro-components/es'))['PlusTable'];
   const RouterLink: (typeof import('vue-router'))['RouterLink'];
   const RouterView: (typeof import('vue-router'))['RouterView'];
 }
