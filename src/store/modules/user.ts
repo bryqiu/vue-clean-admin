@@ -192,6 +192,8 @@ const createUserStore = defineStore(
       setAccessToken,
       setRefreshToken,
       setUserBasicInfo,
+      getPermissionCodes,
+      setPermissionCodes,
     };
   },
   {

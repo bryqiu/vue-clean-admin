@@ -35,6 +35,7 @@ const menuFormDialogInstance = ref<InstanceType<typeof FormDialog> | null>(null)
 /** 获取初始化表单数据 */
 const getInitialFormData = (): MenuFormData => ({
   type: PermissionRouteTypeEnum.DIR,
+  permissionCode: '',
   name: '',
   path: '',
   component: '',
@@ -90,6 +91,7 @@ const menuOptions = ref<MenuOption[]>([]);
 const menuTypeOptions = [
   { label: '目录', value: PermissionRouteTypeEnum.DIR },
   { label: '菜单', value: PermissionRouteTypeEnum.MENU },
+  { label: '按钮', value: PermissionRouteTypeEnum.BUTTON },
 ];
 
 /** 动态表单列配置 */
@@ -97,6 +99,10 @@ const columns = computed((): PlusColumn[] => {
   const { type } = formData.value;
   const isDir = type === PermissionRouteTypeEnum.DIR;
   const isMenu = type === PermissionRouteTypeEnum.MENU;
+  const isButton = type === PermissionRouteTypeEnum.BUTTON;
+  const titleLabel = isButton ? '按钮名称' : '菜单标题';
+  const titlePlaceholder = isButton ? '请输入按钮名称(meta.title)' : '请输入菜单标题(meta.title)';
+  const titleMessage = isButton ? '请输入按钮名称' : '请输入菜单标题';
 
   return [
     // ========== 基础信息 ==========
@@ -115,15 +121,27 @@ const columns = computed((): PlusColumn[] => {
       },
     },
     {
-      label: '菜单标题',
+      label: titleLabel,
       prop: 'meta.title',
       valueType: 'input',
       fieldProps: {
-        placeholder: '请输入菜单标题(meta.title)',
+        placeholder: titlePlaceholder,
       },
       formItemProps: {
-        rules: [{ required: true, message: '请输入菜单标题' }],
+        rules: [{ required: true, message: titleMessage }],
       },
+    },
+    {
+      label: '权限码',
+      prop: 'permissionCode',
+      valueType: 'input',
+      fieldProps: {
+        placeholder: '请输入权限码',
+      },
+      formItemProps: {
+        rules: [{ required: true, message: '请输入权限码' }],
+      },
+      hideInForm: !isButton,
     },
     {
       label: '路由地址',
@@ -135,6 +153,7 @@ const columns = computed((): PlusColumn[] => {
       formItemProps: {
         rules: [{ required: true, message: '请输入路由地址' }],
       },
+      hideInForm: isButton,
     },
     {
       label: '路由名称',
@@ -157,7 +176,7 @@ const columns = computed((): PlusColumn[] => {
       formItemProps: {
         rules: isMenu ? [{ required: true, message: '请输入组件地址' }] : [],
       },
-      hideInForm: isDir,
+      hideInForm: isDir || isButton,
     },
     {
       label: '重定向',
@@ -174,6 +193,7 @@ const columns = computed((): PlusColumn[] => {
       label: '菜单图标',
       prop: 'menuIcon',
       colProps: { span: 12 },
+      hideInForm: isButton,
     },
     {
       label: '排序',
@@ -186,6 +206,7 @@ const columns = computed((): PlusColumn[] => {
       prop: 'hideMenu',
       tooltip: '在侧边栏菜单中隐藏',
       colProps: { span: 12 },
+      hideInForm: isButton,
     },
     {
       label: '隐藏面包屑',

@@ -1,7 +1,7 @@
 import type { RouteMeta, RouteRecordRaw, RouteRecordRedirectOption } from 'vue-router';
 import type { Component } from 'vue';
 import type { DefineComponent } from 'vue';
-import type { RouteType } from '#/type';
+import type { PermissionCode, RouteType } from '#/type';
 
 declare global {
   export interface CustomRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
@@ -87,5 +87,9 @@ declare global {
      * 路由类型
      */
     type: RouteType;
+    /**
+     * 权限码
+     */
+    permissionCode?: PermissionCode;
   };
 }

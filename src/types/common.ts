@@ -35,3 +35,8 @@ export type FormType = GetObjectValues<typeof FormTypeEnum>;
  * 如果后端返回 19 位雪花算法ID时，可改为 string（使用 number 会导致精度丢失）
  */
 export type ID = number;
+
+/**
+ * 状态码类型
+ */
+export type PermissionCode<T = string | string[]> = T;

@@ -1,4 +1,4 @@
-import type { Gender, ID, Status } from './common';
+import type { Gender, ID, PermissionCode } from './common';
 
 export interface LoginParams {
   /** 用户名 */
@@ -67,7 +67,7 @@ export interface User {
   /**
    * 权限码
    */
-  permissionCodes: string[];
+  permissionCodes: PermissionCode<string[]>;
   /**
    * 权限路由
    */

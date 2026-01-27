@@ -30,10 +30,17 @@ export interface Role {
 }
 
 export interface MenuFormData {
-  /** 菜单ID */
+  /**
+   * 菜单ID
+   */
   id: PermissionRoute['id'];
-
-  /** 组件路径 */
+  /**
+   * 权限码
+   */
+  permissionCode?: PermissionRoute['permissionCode'];
+  /**
+   * 组件
+   */
   component?: PermissionRoute['component'];
   /**
    * 路由元信息

@@ -4,6 +4,7 @@ import type { Component, DefineComponent } from 'vue';
 import { ActionButton } from '@/components/common/action-button';
 import { IconifyIcon, LocalIcon } from '@/components/common/app-icon';
 import { ElLoading, ElMessage, ElMessageBox } from 'element-plus';
+import { AppAuth } from '@/components/common/app-auth';
 
 interface RegisterComponent {
   name: string;
@@ -23,6 +24,10 @@ const globalAppComponents: RegisterComponent[] = [
   {
     name: 'LocalIcon',
     component: LocalIcon,
+  },
+  {
+    name: 'AppAuth',
+    component: AppAuth,
   },
 ];
 
