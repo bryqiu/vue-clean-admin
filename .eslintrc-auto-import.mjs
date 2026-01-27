@@ -3,6 +3,7 @@ export default {
     "ElLoading": true,
     "ElMessage": true,
     "ElMessageBox": true,
+    "useAuth": true,
     "useEcharts": true,
     "useI18n": true,
     "useLayoutSettings": true,
