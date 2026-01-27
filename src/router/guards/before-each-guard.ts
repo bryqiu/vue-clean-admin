@@ -1,6 +1,5 @@
 import { ROUTE_NAMES } from '../config';
 import type { RouteRecordNameGeneric, RouteRecordRaw, Router } from 'vue-router';
-import { getLocalAccessToken } from '@/utils/permission';
 import { userService } from '@/services/api';
 import { nprogress } from './helpers';
 import { storeToRefs } from 'pinia';
@@ -28,6 +27,8 @@ export function beforeEachGuard(router: Router) {
     const userStore = useUserStore();
     const { getAccessToken, getRoutesAddStatus, registerRoutes } = storeToRefs(userStore);
     const { setRoutesAddStatus, setUserInfo, logout } = userStore;
+
+    const { getLocalAccessToken } = useAuth();
 
     /** 访问令牌 */
     const accessToken = getAccessToken.value || getLocalAccessToken();

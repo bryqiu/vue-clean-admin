@@ -8,7 +8,6 @@ import type {
 } from 'axios';
 import { getBearerToken } from './helpers';
 import type { AxiosRequestConfig } from 'axios';
-import { getLocalAccessToken } from '@/utils/permission';
 import type { ResponseResult } from './typing';
 
 interface RequestInterceptor {
@@ -51,6 +50,7 @@ export class HttpClient {
     this.instance.interceptors.request.use(
       (config: InternalAxiosRequestConfig<ResponseResult>) => {
         const { getAccessToken } = useUserStore();
+        const { getLocalAccessToken } = useAuth();
         const accessToken = getAccessToken || getLocalAccessToken();
         if (accessToken) {
           config.headers.Authorization = getBearerToken(accessToken);
