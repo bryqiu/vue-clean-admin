@@ -174,7 +174,7 @@ const columns = computed((): PlusColumn[] => {
         placeholder: '请输入组件路径(component)，如：/views/home/index.vue',
       },
       formItemProps: {
-        rules: isMenu ? [{ required: true, message: '请输入组件地址' }] : [],
+        rules: [{ required: false, message: '请输入组件地址' }],
       },
       hideInForm: isDir || isButton,
     },
@@ -320,6 +320,7 @@ defineExpose({
     :form-props="{
       columns: columns,
       disabled: isDetailForm,
+      labelWidth: '100px',
     }"
     @close-dialog="dialogVisible = false"
     @on-reset-form="resetForm"

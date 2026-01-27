@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import type { ButtonsCallBackParams, PageInfo, PlusColumn } from 'plus-pro-components';
+import type {
+  ButtonsCallBackParams,
+  PageInfo,
+  PlusColumn,
+  PlusPageInstance,
+} from 'plus-pro-components';
 import { menuService } from '@/services/api';
 import { useTable } from 'plus-pro-components';
 import { viewIcon } from '@/constants';
 import { MenuFormDialog } from './widgets';
-import { useTemplateRef } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import type { MenuFormData } from '#/type';
 import { omit } from 'lodash-es';
+import { PermissionRouteTypeEnum } from '@/enums';
 
 defineOptions({
   name: 'Menus',
@@ -14,13 +20,32 @@ defineOptions({
 
 const { buttons } = useTable();
 
+type MenuTableRow = PermissionRoute & { children?: MenuTableRow[] };
+
+const plusPageInstance = ref<Nullable<PlusPageInstance>>();
+const tableData = ref<MenuTableRow[]>([]);
+
+const menuTypeTagMap = {
+  [PermissionRouteTypeEnum.DIR]: { label: '目录', type: 'info' },
+  [PermissionRouteTypeEnum.MENU]: { label: '菜单', type: 'success' },
+  [PermissionRouteTypeEnum.BUTTON]: { label: '按钮', type: 'warning' },
+  [PermissionRouteTypeEnum.LINK]: { label: '外链', type: 'danger' },
+} as const;
+
+type PermissionRouteType = GetObjectValues<typeof PermissionRouteTypeEnum>;
+
 const tableConfig: PlusColumn[] = [
   {
     label: '菜单名称',
     prop: 'meta.title',
+    width: 150,
     tableColumnProps: {
       showOverflowTooltip: true,
     },
+  },
+  {
+    label: '类型',
+    prop: 'type',
   },
   {
     label: '路由名称',
@@ -32,10 +57,21 @@ const tableConfig: PlusColumn[] = [
   {
     label: '路由路径',
     prop: 'path',
+    tableColumnProps: {
+      showOverflowTooltip: true,
+    },
   },
   {
     label: '组件地址',
     prop: 'component',
+    tableColumnProps: {
+      showOverflowTooltip: true,
+    },
+  },
+  {
+    label: '权限码',
+    prop: 'permissionCode',
+    width: 150,
     tableColumnProps: {
       showOverflowTooltip: true,
     },
@@ -92,21 +128,48 @@ const getMenuData = async (query: Partial<PageInfo>) => {
 
   const res = await menuService.getMenuList(params);
 
+  tableData.value = res.list || [];
   return { data: res.list, total: res.total };
+};
+
+const isTreeExpanded = ref(false);
+
+const handleToggleExpand = () => {
+  const table = plusPageInstance.value?.plusTableInstance?.tableInstance;
+  if (!table?.toggleRowExpansion) return;
+  const nextExpanded = !isTreeExpanded.value;
+
+  const toggleRows = (rows: MenuTableRow[]) => {
+    rows.forEach((row) => {
+      table.toggleRowExpansion?.(row, nextExpanded);
+      if (Array.isArray(row.children) && row.children.length) {
+        toggleRows(row.children);
+      }
+    });
+  };
+  toggleRows(tableData.value);
+
+  isTreeExpanded.value = nextExpanded;
 };
 </script>
 
 <template>
   <div class="h-full">
     <PlusPage
+      ref="plusPageInstance"
       :table="{
-        actionBar: { buttons, width: 250 },
+        actionBar: { buttons, width: 220 },
         border: false,
       }"
       :columns="tableConfig"
       :request="getMenuData"
       :is-card="false"
     >
+      <template #plus-cell-type="{ value }">
+        <ElTag :type="menuTypeTagMap[value as PermissionRouteType]?.type || 'info'">
+          {{ menuTypeTagMap[value as PermissionRouteType]?.label || value || '-' }}
+        </ElTag>
+      </template>
       <template #table-title>
         <ElRow class="button-row">
           <ElButton
@@ -116,6 +179,9 @@ const getMenuData = async (query: Partial<PageInfo>) => {
             @click="menuFormDialogInstance?.open('add')"
           >
             添加
+          </ElButton>
+          <ElButton type="primary" plain @click="handleToggleExpand">
+            {{ `${isTreeExpanded ? '折叠' : '展开'}全部` }}
           </ElButton>
         </ElRow>
       </template>
