@@ -165,9 +165,9 @@ const open = async (type: DeptFormType, row?: Dept) => {
 
 const handleSubmit = async () => {
   try {
-    isAddForm.value || isAddChildForm.value
-      ? await deptService.addDept(formData.value)
-      : await deptService.updateDept(formData.value);
+    // isAddForm.value || isAddChildForm.value
+    //   ? await deptService.addDept(formData.value)
+    //   : await deptService.updateDept(formData.value);
     dialogVisible.value = false;
     emits('refresh');
   } catch (error) {

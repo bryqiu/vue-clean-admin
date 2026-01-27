@@ -22,6 +22,7 @@ const { buttons } = useTable();
 const deptFormDialogInstance =
   useTemplateRef<InstanceType<typeof DeptFormDialog>>('deptFormDialogInstance');
 const plusPageInstance = ref<Nullable<PlusPageInstance>>();
+const tableData = ref<Dept[]>([]);
 
 const tableConfig: PlusColumn[] = [
   {
@@ -72,7 +73,7 @@ const handleDelete = async (row: Dept) => {
     await ElMessageBox.confirm('确认删除该部门吗？', '提示', {
       type: 'warning',
     });
-    await deptService.deleteDept(row.id);
+    // await deptService.deleteDept(row.id);
     ElMessage.success('删除成功');
     plusPageInstance.value?.getList();
   } catch (error) {
@@ -124,11 +125,32 @@ const getDeptData = async (query: Partial<PageInfo>) => {
 
   const res = await deptService.getDeptList(params);
 
+  tableData.value = res?.list ?? [];
   return { data: res?.list ?? [], total: res?.total ?? 0 };
 };
 
 const handleAdd = () => {
   deptFormDialogInstance.value?.open('add');
+};
+
+const isTreeExpanded = ref(false);
+
+const handleToggleExpand = () => {
+  const table = plusPageInstance.value?.plusTableInstance?.tableInstance;
+  if (!table?.toggleRowExpansion) return;
+  const nextExpanded = !isTreeExpanded.value;
+
+  const toggleRows = (rows: Dept[]) => {
+    rows.forEach((row) => {
+      table.toggleRowExpansion?.(row, nextExpanded);
+      if (Array.isArray(row.children) && row.children.length) {
+        toggleRows(row.children);
+      }
+    });
+  };
+  toggleRows(tableData.value);
+
+  isTreeExpanded.value = nextExpanded;
 };
 </script>
 
@@ -147,6 +169,9 @@ const handleAdd = () => {
       <template #table-title>
         <ElRow class="button-row">
           <ElButton type="primary" plain :icon="viewIcon" @click="handleAdd">{{ '添加' }}</ElButton>
+          <ElButton type="primary" plain @click="handleToggleExpand">
+            {{ `${isTreeExpanded ? '折叠' : '展开'}全部` }}
+          </ElButton>
         </ElRow>
       </template>
     </PlusPage>
