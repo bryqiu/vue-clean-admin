@@ -1,5 +1,9 @@
 import type { DialogFooterBtnProps, DialogProps } from '@/components/common/app-dialog';
-import type { PlusFormProps } from 'plus-pro-components';
+import type {
+  ElementPlusFormProps,
+  IntrinsicAttributes,
+  PlusFormSelfProps,
+} from 'plus-pro-components';
 import type { ButtonProps, DialogProps as ElementDialogProps } from 'element-plus';
 
 export interface FormDialogProps {
@@ -30,5 +34,5 @@ export interface FormDialogProps {
   /**
    * form 属性
    */
-  formProps?: Omit<PlusFormProps, 'modelValue'>;
+  formProps?: PlusFormSelfProps & Partial<ElementPlusFormProps> & IntrinsicAttributes;
 }
