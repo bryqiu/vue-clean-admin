@@ -10,19 +10,17 @@ defineOptions({
 // 定义数据类型
 interface Trend {
   month: string;
-  product1: number;
-  product2: number;
+  total: number;
 }
 
-// 1. 简单粗暴的写死数据 (近6个月)
 const getTrendData = (): Trend[] => {
   return [
-    { month: '6月', product1: 1200, product2: 2000 },
-    { month: '7月', product1: 1400, product2: 4000 },
-    { month: '8月', product1: 2000, product2: 2400 },
-    { month: '9月', product1: 6000, product2: 2300 },
-    { month: '10月', product1: 4600, product2: 3500 },
-    { month: '11月', product1: 8000, product2: 4100 },
+    { month: '6月', total: 1800 },
+    { month: '7月', total: 4000 },
+    { month: '8月', total: 3400 },
+    { month: '9月', total: 8000 },
+    { month: '10月', total: 4600 },
+    { month: '11月', total: 8000 },
   ];
 };
 
@@ -53,20 +51,10 @@ const getOptions = (): EChartsOption => {
     },
     grid: {
       left: 5,
-      right: 5,
+      right: 10,
       bottom: 0,
       top: 30,
       containLabel: true,
-    },
-    legend: {
-      type: 'plain',
-      show: true,
-      right: 0,
-      top: 0,
-      itemWidth: 8,
-      itemHeight: 8,
-      icon: 'circle',
-      data: ['旗舰产品 Pro', '标准版 Lite'],
     },
     xAxis: {
       type: 'category',
@@ -94,7 +82,7 @@ const getOptions = (): EChartsOption => {
 
     series: [
       {
-        name: '旗舰产品 Pro',
+        name: '全部产品',
         type: 'line',
         showSymbol: false,
         smooth: true,
@@ -108,24 +96,7 @@ const getOptions = (): EChartsOption => {
         areaStyle: {
           color: createGradient('24, 144, 255'),
         },
-        data: getTrendData().map((item) => item.product1),
-      },
-      {
-        name: '标准版 Lite',
-        type: 'line',
-        showSymbol: false,
-        smooth: true,
-        lineStyle: {
-          width: 2,
-          color: '#d4d7de',
-        },
-        itemStyle: {
-          color: '#d4d7de',
-        },
-        areaStyle: {
-          color: createGradient('245, 247, 250'),
-        },
-        data: getTrendData().map((item) => item.product2),
+        data: getTrendData().map((item) => item.total),
       },
     ],
   };
@@ -142,7 +113,7 @@ onMounted(() => {
 <template>
   <ElCard>
     <span class="text-sm font-semibold">产品销售额（单位：元）</span>
-    <div ref="chartInstance" class="w-full h-72 2xl:h-80" />
+    <div ref="chartInstance" class="w-full h-64 2xl:h-72" />
   </ElCard>
 </template>
 
