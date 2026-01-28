@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MetricsData, ProductSalesTable, ProductTrendChart } from './modules';
+import { MetricsData, ProductSalesChart, ProductSalesTable, ProductTrendChart } from './modules';
 import { ref } from 'vue';
 
 defineOptions({
@@ -18,7 +18,10 @@ const selectedSegment = ref(segmentedOptions[1]);
     </div>
     <div class="flex flex-col gap-y-4">
       <MetricsData />
-      <ProductTrendChart />
+      <div class="grid grid-cols-2 gap-4">
+        <ProductTrendChart class="col-span-2 md:col-span-1" />
+        <ProductSalesChart class="col-span-2 md:col-span-1" />
+      </div>
       <ProductSalesTable />
     </div>
   </div>
