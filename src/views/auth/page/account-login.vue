@@ -12,14 +12,19 @@ defineOptions({
   name: 'AccountLogin',
 });
 
+const AUTH_USER_INFO = {
+  USERNAME: 'admin',
+  PASSWORD: '123456',
+};
+
 const { push } = useRouter();
 const { setAccessToken, setRefreshToken } = useUserStore();
 
 const formInstance = ref<FormInstance>();
 
 const formData = ref<LoginParams>({
-  username: 'admin',
-  password: '123456',
+  username: AUTH_USER_INFO.USERNAME,
+  password: AUTH_USER_INFO.PASSWORD,
 });
 
 const rules = reactive<FormRules>({
@@ -57,6 +62,14 @@ const handleLogin = async () => {
   try {
     // 校验表单
     await formInstance.value?.validate();
+    // 模拟登录，由于 ApiFox Mock 数据，演示环境下使用给定的账号才有正确数据
+    if (
+      formData.value.username !== AUTH_USER_INFO.USERNAME ||
+      formData.value.password !== AUTH_USER_INFO.PASSWORD
+    ) {
+      ElMessage.error('演示环境，请使用 admin 账号登录');
+      return;
+    }
     // 设置为加载中状态
     authLoading.value = true;
     // 调用登录接口
