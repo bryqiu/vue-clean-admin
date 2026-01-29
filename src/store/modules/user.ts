@@ -2,13 +2,30 @@ import { computed, ref } from 'vue';
 import { store } from '@/store';
 import { defineStore } from 'pinia';
 import { storeModulesNames } from '@/store/config';
-import { enableStoreHMR } from '@/store/helpers';
+import { enableStoreHMR, formatStoreKey } from '@/store/helpers';
 import type { User, UserInfo } from '#/type';
 import { generateRoutes, getVisibleMenuRoutes } from '@/router/helpers';
 import { generateSortRoutes } from '@/router/helpers';
 import { staticRoutes } from '@/router';
 import exceptionRoutes from '@/router/modules/system-routes/exception';
 import { NOT_FOUND_ROUTE } from '@/router/config';
+
+const createDefaultUserInfo = (): User => ({
+  basicInfo: {
+    avatar: '',
+    email: '',
+    gender: 0,
+    phone: '',
+    remark: '',
+    id: null,
+    nickname: '',
+    account: null,
+    deptId: null,
+    roles: [],
+  },
+  permissionCodes: [],
+  permissionRoutes: [],
+});
 
 const createUserStore = defineStore(
   storeModulesNames.user,
@@ -61,29 +78,14 @@ const createUserStore = defineStore(
     };
 
     /** 用户信息 */
-    const userInfo = ref<User>({
-      basicInfo: {
-        avatar: '',
-        email: '',
-        gender: 0,
-        phone: '',
-        remark: '',
-        id: null,
-        nickname: '',
-        account: null,
-        deptId: null,
-        roles: [],
-      },
-      permissionCodes: [],
-      permissionRoutes: [],
-    });
+    const userInfo = ref<User>(createDefaultUserInfo());
 
     /**
      * 写入用户信息
      * @param data 用户信息
      */
     const setUserInfo = (data: User) => {
-      userInfo.value = data || {};
+      userInfo.value = data || createDefaultUserInfo();
     };
 
     /** 获取用户基本信息 */
@@ -153,25 +155,12 @@ const createUserStore = defineStore(
       setAccessToken('');
       // 刷新令牌置空
       setRefreshToken('');
-      // 重置用户基本信息
-      setUserBasicInfo({
-        gender: 0,
-        phone: '',
-        remark: '',
-        id: null,
-        nickname: '',
-        account: null,
-        deptId: null,
-        roles: [],
-        avatar: '',
-        email: '',
-      });
+      // 重置用户信息与权限
+      setUserInfo(createDefaultUserInfo());
+      // 清除持久化缓存
+      localStorage.removeItem(formatStoreKey(storeModulesNames.user));
       // 重置路由添加状态
       setRoutesAddStatus(false);
-      // 重置权限码
-      setPermissionCodes([]);
-      // 重置权限路由
-      setPermissionRoutes([]);
     };
 
     return {
