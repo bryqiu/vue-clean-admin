@@ -4,6 +4,10 @@ import userAvatar from '@/assets/images/user-avatar.jpg';
 import { MenuCell, MenuGroup } from './widgets';
 import { computed, useAttrs } from 'vue';
 import type { PopoverProps } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
+import { useRouter } from 'vue-router';
+import { ROUTE_NAMES } from '@/router/config';
+import { storeToRefs } from 'pinia';
 
 defineOptions({
   name: 'UserDropdown',
@@ -22,7 +26,35 @@ const getPopoverProps = computed(() => {
   return { ...defaultProps, ...attrs };
 });
 
+const router = useRouter();
+const userStore = useUserStore();
+const { registerRoutes } = storeToRefs(userStore);
+
 const openLink = (url: string) => window.open(url, '_blank');
+
+const removeDynamicRoutes = () => {
+  registerRoutes.value.forEach((route) => {
+    if (!route.name) return;
+    if (router.hasRoute(route.name)) {
+      router.removeRoute(route.name);
+    }
+  });
+};
+
+const handleLogout = async () => {
+  try {
+    await ElMessageBox.confirm('确认退出登录？', '提示', {
+      type: 'warning',
+      confirmButtonText: '退出登录',
+      cancelButtonText: '取消',
+    });
+  } catch (error) {}
+
+  removeDynamicRoutes();
+  userStore.logout();
+  await router.replace({ name: ROUTE_NAMES.ACCOUNT_LOGIN });
+  ElMessage.success('已退出登录');
+};
 </script>
 
 <template>
@@ -82,7 +114,12 @@ const openLink = (url: string) => window.open(url, '_blank');
           </MenuCell>
         </MenuGroup>
         <MenuGroup class="p-2 border-t border-el-border-light">
-          <MenuCell title="退出登录" icon="ri:logout-box-r-line" text-class="text-red-500" />
+          <MenuCell
+            title="退出登录"
+            icon="ri:logout-box-r-line"
+            text-class="text-red-500"
+            @click="handleLogout"
+          />
         </MenuGroup>
       </div>
     </template>
