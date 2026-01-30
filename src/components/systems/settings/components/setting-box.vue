@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { DirectionEnum } from '@/enums';
 import { computed } from 'vue';
 import { cn } from '@/utils';
 
@@ -26,7 +25,7 @@ interface WidgetBoxProps {
    * 方向
    * @default horizontal
    */
-  direction?: GetObjectValues<typeof DirectionEnum>;
+  direction?: Direction;
 }
 
 const props = withDefaults(defineProps<WidgetBoxProps>(), {
@@ -35,7 +34,7 @@ const props = withDefaults(defineProps<WidgetBoxProps>(), {
   direction: 'horizontal',
 });
 
-const isVertical = computed(() => props.direction === DirectionEnum.VERTICAL);
+const isVertical = computed(() => props.direction === 'vertical');
 </script>
 
 <template>
