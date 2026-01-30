@@ -423,6 +423,7 @@ export default [
           extensions: ['.js', '.ts', '.vue', '.tsx'],
         },
       ],
+      '@intlify/vue-i18n/no-raw-text': 'off',
     },
     settings: {
       'vue-i18n': {
