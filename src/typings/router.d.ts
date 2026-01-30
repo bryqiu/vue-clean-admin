@@ -8,7 +8,7 @@ declare global {
     /**
      * 路由地址
      */
-    path?: string;
+    path: string;
     /**
      * 路由名称
      */
