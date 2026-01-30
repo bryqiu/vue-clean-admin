@@ -42,3 +42,28 @@ div.el-segmented:not(.not-style) {
     }
   }
 }
+
+/* ======================== PlusProComponents Page 组件样式 ======================== */
+.plus-page:not(.not-style) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .plus-page__table_wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    & .plus-table {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      .el-table {
+        --el-table-header-text-color: var(--el-text-color-regular);
+
+        flex: 1;
+      }
+    }
+  }
+}
