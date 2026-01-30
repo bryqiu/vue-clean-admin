@@ -25,4 +25,3 @@ cache
 # other
 visualizer.html
 package-lock.json
-src/typings/auto-imports.d.ts
