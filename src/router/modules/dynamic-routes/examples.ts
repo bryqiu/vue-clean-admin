@@ -1,7 +1,6 @@
 import { LAYOUT_COMPONENT } from '@/router/config';
 
 const examplesRoutes: CustomRouteRecordRaw = {
-  id: 1,
   path: '/examples',
   redirect: '/examples/element-plus',
   component: LAYOUT_COMPONENT,
