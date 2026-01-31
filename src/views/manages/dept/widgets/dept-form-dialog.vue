@@ -154,9 +154,8 @@ const open = async (type: DeptFormType, row?: Dept) => {
   dialogVisible.value = true;
   getDeptOptions();
 
-  // 如果是添加子级表单，且有 id (作为parentId)，则回显 parentId
-  if (isAddChildForm.value && row?.parentId) {
-    resetForm({ parentId: row.parentId });
+  if (isAddChildForm.value && row?.id) {
+    resetForm({ parentId: row.id });
     return;
   }
 
