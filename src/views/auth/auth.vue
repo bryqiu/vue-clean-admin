@@ -34,7 +34,7 @@ const { getCurrentLoadViewStatus } = useLoadView();
     </div>
 
     <div class="flex-1 flex flex-col justify-center items-center z-40">
-      <div class="w-[400px] flex flex-col justify-center">
+      <div class="w-[420px] flex flex-col justify-center">
         <RouterView v-slot="{ Component }">
           <Transition :name="PageTransitionEnum.FADE_RIGHT" mode="out-in">
             <component :is="Component" v-if="getCurrentLoadViewStatus" />

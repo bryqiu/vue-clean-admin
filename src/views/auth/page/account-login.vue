@@ -102,7 +102,7 @@ const handleLogin = async () => {
           <div class="w-full flex items-end justify-between">
             <span>密码</span>
             <span
-              class="text-el-text-placeholder text-xs cursor-pointer underline"
+              class="text-el-text-placeholder text-sm cursor-pointer underline"
               @click="goToForgetPassword"
               >忘记密码?</span
             >
@@ -118,12 +118,10 @@ const handleLogin = async () => {
       </ElFormItem>
     </ElForm>
 
-    <div class="w-full flex flex-col gap-y-2 mt-4">
-      <div>
-        <ElButton class="w-full h-9" type="primary" :loading="authLoading" @click="handleLogin">
-          <span class="tracking-[0.4em]">登录</span>
-        </ElButton>
-      </div>
+    <div class="w-full flex flex-col gap-y-2 mt-6">
+      <ElButton class="w-full" type="primary" :loading="authLoading" @click="handleLogin">
+        <span class="tracking-[0.4em]">登录</span>
+      </ElButton>
     </div>
 
     <AuthPolicy class="mt-2" />

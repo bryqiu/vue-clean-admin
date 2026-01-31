@@ -23,12 +23,12 @@ withDefaults(defineProps<AuthContainerProps>(), {
 
 <template>
   <div
-    class="flex flex-col gap-y-4 p-6 border border-el-border-light bg-background shadow rounded-lg"
+    class="flex flex-col gap-y-6 p-6 border border-el-border-light bg-background shadow rounded-lg"
   >
     <div class="flex flex-col gap-y-1">
       <span :class="cn('text-base font-semibold', titleClass)">{{ title }}</span>
       <slot v-if="$slots.subTitle" name="subTitle" />
-      <span v-else-if="subTitle" :class="cn('text-xs text-el-text-secondary', subTitleClass)">{{
+      <span v-else-if="subTitle" :class="cn('text-sm text-el-text-secondary', subTitleClass)">{{
         subTitle
       }}</span>
     </div>

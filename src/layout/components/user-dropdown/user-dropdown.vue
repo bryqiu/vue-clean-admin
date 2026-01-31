@@ -69,8 +69,8 @@ const handleLogout = async () => {
           <div class="flex items-center gap-x-3">
             <AppUserAvatar :src="userAvatar" size="large" />
             <div class="flex flex-col flex-1">
-              <span class="text-el-text-primary text-sm font-semibold line-clamp-1">Fifteen</span>
-              <span class="text-el-text-secondary text-xs line-clamp-1">bryanqiu.me@gmail.com</span>
+              <span class="text-el-text-primary text-base font-semibold line-clamp-1">Fifteen</span>
+              <span class="text-el-text-secondary text-sm line-clamp-1">bryanqiu.me@gmail.com</span>
             </div>
           </div>
           <!--登录时间-->

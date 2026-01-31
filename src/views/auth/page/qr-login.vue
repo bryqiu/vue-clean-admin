@@ -26,10 +26,10 @@ const goToAccountLogin = () => {
       </div>
     </div>
 
-    <ElDivider border-style="dashed" class="!mt-8">
+    <ElDivider border-style="dashed" class="mt-8!">
       <span class="text-xs text-el-text-secondary">其他操作</span>
     </ElDivider>
-    <ElButton class="w-full h-9" plain @click="goToAccountLogin"> 返回 </ElButton>
+    <ElButton class="w-full" plain @click="goToAccountLogin"> 返回 </ElButton>
 
     <AuthPolicy class="mt-2" />
   </AuthContainer>

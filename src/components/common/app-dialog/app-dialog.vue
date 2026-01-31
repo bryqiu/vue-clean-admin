@@ -52,7 +52,6 @@ const dialogProps = computed(() => {
 
   const defaultElDialogProps: Partial<DialogProps> = {
     showClose: false,
-    top: '10vh',
     draggable: true,
     width: '550px',
   };

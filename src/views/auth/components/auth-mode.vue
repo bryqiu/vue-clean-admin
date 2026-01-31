@@ -38,7 +38,7 @@ const goToAuthMode = (value: RouteNames) => {
       @click="goToAuthMode(item.routeName)"
     >
       <IconifyIcon v-if="item.icon" :name="item.icon" class="text-base" />
-      <span class="text-xs">{{ item.label }}</span>
+      <span class="text-sm">{{ item.label }}</span>
     </div>
   </div>
 </template>

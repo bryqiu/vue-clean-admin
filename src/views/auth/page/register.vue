@@ -74,12 +74,12 @@ const goToAccount = () => {
 
     <div class="mt-4 flex flex-col gap-y-2">
       <div>
-        <ElButton class="w-full h-9" type="primary" @click="handleRegister">
+        <ElButton class="w-full" type="primary" @click="handleRegister">
           <span class="tracking-[0.4em]">注册</span>
         </ElButton>
       </div>
       <div>
-        <ElButton class="w-full h-9" plain @click="goToAccount">
+        <ElButton class="w-full" plain @click="goToAccount">
           <span>已有账号？返回登录</span>
         </ElButton>
       </div>

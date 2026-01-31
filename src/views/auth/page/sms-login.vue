@@ -84,15 +84,15 @@ const handleLogin = async () => {
 
     <div class="w-full flex flex-col gap-y-2 mt-6">
       <div>
-        <ElButton class="w-full h-9" type="primary" @click="handleLogin">
+        <ElButton class="w-full" type="primary" @click="handleLogin">
           <span class="tracking-[0.4em]">登录</span>
         </ElButton>
       </div>
       <div>
-        <ElButton plain class="w-full h-9" @click="goToAccountLogin"> 返回 </ElButton>
+        <ElButton plain class="w-full" @click="goToAccountLogin"> 返回 </ElButton>
       </div>
-      <AuthPolicy class="mt-2" />
     </div>
+    <AuthPolicy class="mt-2" />
   </AuthContainer>
 </template>
 

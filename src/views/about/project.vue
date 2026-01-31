@@ -77,11 +77,11 @@ const openLink = (link: string) => {
 
     <div class="mt-4 space-y-2">
       <span class="text-sm font-semibold">主要技术生态</span>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
         <div
           v-for="stack in techStack"
           :key="stack.category"
-          class="p-3 rounded-lg bg-el-fill-light"
+          class="p-3 rounded-lg border border-el-border-lighter bg-el-fill-lighter"
         >
           <div class="text-xs mb-2 text-el-text-secondary">
             {{ stack.category }}

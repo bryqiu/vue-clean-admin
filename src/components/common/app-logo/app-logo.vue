@@ -60,7 +60,7 @@ const getLocalIconProps = computed(() => {
     <Transition :name="PageTransitionEnum.NONE">
       <span
         v-show="showTitle"
-        :class="cn('text-base font-semibold inline-block truncate text-el-text-primary', textClass)"
+        :class="cn('text-lg font-semibold inline-block truncate text-el-text-primary', textClass)"
         >{{ appTitle }}</span
       >
     </Transition>
