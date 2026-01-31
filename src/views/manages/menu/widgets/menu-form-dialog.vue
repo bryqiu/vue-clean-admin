@@ -273,9 +273,8 @@ const open = async (type: MenuFormType, row?: MenuFormData) => {
   dialogVisible.value = true;
   getMenuOptions();
 
-  // 如果是添加子菜单表单，且有 parentId，则回显 parentId
-  if (isAddChildForm.value && has(row, 'parentId')) {
-    resetForm({ parentId: row.parentId });
+  if (isAddChildForm.value && row?.id) {
+    resetForm({ parentId: row.id });
     return;
   }
 
