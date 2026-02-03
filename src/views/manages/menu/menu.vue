@@ -28,7 +28,7 @@ const tableData = ref<MenuTableRow[]>([]);
 const menuTypeTagMap = {
   [PermissionRouteTypeEnum.DIR]: { label: '目录', type: 'info' },
   [PermissionRouteTypeEnum.MENU]: { label: '菜单', type: 'success' },
-  [PermissionRouteTypeEnum.BUTTON]: { label: '按钮', type: 'warning' },
+  [PermissionRouteTypeEnum.ACTION]: { label: '操作', type: 'warning' },
   [PermissionRouteTypeEnum.LINK]: { label: '外链', type: 'danger' },
 } as const;
 

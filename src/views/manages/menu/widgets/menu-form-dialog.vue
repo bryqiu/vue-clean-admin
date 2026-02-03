@@ -91,7 +91,7 @@ const menuOptions = ref<MenuOption[]>([]);
 const menuTypeOptions = [
   { label: '目录', value: PermissionRouteTypeEnum.DIR },
   { label: '菜单', value: PermissionRouteTypeEnum.MENU },
-  { label: '按钮', value: PermissionRouteTypeEnum.BUTTON },
+  { label: '操作', value: PermissionRouteTypeEnum.ACTION },
 ];
 
 /** 动态表单列配置 */
@@ -99,10 +99,10 @@ const columns = computed((): PlusColumn[] => {
   const { type } = formData.value;
   const isDir = type === PermissionRouteTypeEnum.DIR;
   const isMenu = type === PermissionRouteTypeEnum.MENU;
-  const isButton = type === PermissionRouteTypeEnum.BUTTON;
-  const titleLabel = isButton ? '按钮名称' : '菜单标题';
-  const titlePlaceholder = isButton ? '请输入按钮名称(meta.title)' : '请输入菜单标题(meta.title)';
-  const titleMessage = isButton ? '请输入按钮名称' : '请输入菜单标题';
+  const isButton = type === PermissionRouteTypeEnum.ACTION;
+  const titleLabel = isButton ? '操作名称' : '菜单标题';
+  const titlePlaceholder = isButton ? '请输入操作名称(meta.title)' : '请输入菜单标题(meta.title)';
+  const titleMessage = isButton ? '请输入操作名称' : '请输入菜单标题';
 
   return [
     // ========== 基础信息 ==========

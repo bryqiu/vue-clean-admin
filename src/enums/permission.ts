@@ -3,8 +3,8 @@ export const PermissionRouteTypeEnum = {
   DIR: 'dir',
   /** 菜单 */
   MENU: 'menu',
-  /** 按钮 */
-  BUTTON: 'button',
+  /** 操作 */
+  ACTION: 'action',
   /** 外部链接 */
   LINK: 'link',
 } as const;
