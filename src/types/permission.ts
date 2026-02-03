@@ -1,6 +1,9 @@
 import type { ID, Status } from './common';
 
-export type MenuOption = Pick<PermissionRoute, 'id' | 'parentId' | 'type' | 'children' | 'meta'>;
+export type MenuOption = Pick<
+  PermissionRoute,
+  'id' | 'parentId' | 'type' | 'children' | 'meta' | 'permissionCode'
+>;
 
 export interface Role {
   /**
