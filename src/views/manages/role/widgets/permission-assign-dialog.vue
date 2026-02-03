@@ -5,6 +5,7 @@ import type { MenuOption, Role } from '#/type';
 import { menuService, roleService } from '@/services/api';
 import type { PlusColumn } from 'plus-pro-components';
 import { TreeInstance } from 'element-plus';
+import { PermissionRouteTypeEnum } from '@/enums';
 
 defineOptions({
   name: 'PermissionAssignDialog',
@@ -116,6 +117,10 @@ const handleCollapseAll = () => {
   isCollapsed.value = !isCollapsed.value;
 };
 
+const ACTION_DEFAULT_ICON = 'mingcute:cursor-3-line';
+
+const isActionPermission = (data: MenuOption) => data.type === PermissionRouteTypeEnum.ACTION;
+
 defineExpose({
   open,
 });
@@ -163,8 +168,13 @@ defineExpose({
             }"
           >
             <template #default="{ node, data }">
-              <div class="flex items-center gap-x-2">
-                <IconifyIcon :name="data.meta.menuIcon" />
+              <div class="flex items-center gap-x-1.5">
+                <template v-if="isActionPermission(data)">
+                  <IconifyIcon :name="ACTION_DEFAULT_ICON" />
+                </template>
+                <template v-else>
+                  <IconifyIcon :name="data.meta.menuIcon" />
+                </template>
                 <span> {{ node.label }}</span>
               </div>
             </template>
