@@ -93,14 +93,14 @@ const getLinkProps = (link: Link) => {
         </div>
       </div>
     </template>
-    <div :class="cn('text-sm/relaxed flex flex-col gap-y-1', contentClass)">
+    <div :class="cn('flex flex-col gap-y-1', contentClass)">
       <slot v-if="!textContent && $slots.default" />
       <template v-else>
         {{ textContent }}
       </template>
     </div>
     <template v-if="features.length">
-      <div class="flex flex-col gap-y-1 text-sm text-el-text-secondary mt-2 pl-4">
+      <div class="flex flex-col gap-y-1 text-sm text-el-text-secondary mt-2 pl-2">
         <div v-for="(feature, index) in features" :key="index" class="flex items-center gap-x-2">
           <IconifyIcon :name="feature.icon || 'ri:check-line'" class="text-base shrink-0" />
           <span v-if="feature.slotName">
