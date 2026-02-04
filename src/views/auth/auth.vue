@@ -43,7 +43,7 @@ const { getCurrentLoadViewStatus } = useLoadView();
       </div>
     </div>
 
-    <AppCopyright owner="Bryan qiu" />
+    <AppCopyright owner="Clean Admin" />
   </div>
 </template>
 
