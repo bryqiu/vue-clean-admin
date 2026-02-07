@@ -319,7 +319,6 @@ defineExpose({
     :form-props="{
       columns: columns,
       disabled: isDetailForm,
-      labelWidth: '100px',
     }"
     @close-dialog="dialogVisible = false"
     @on-reset-form="resetForm"
