@@ -14,17 +14,15 @@ export const extractRoutes = (routers: Record<string, ImportGlobRoutes>) => {
 };
 
 /**
- * 递归排序路由表（包括子路由）
+ * 排序路由表，只对最外层
  * @param routes 路由表
  * @param mode 排序模式，升序(asc) | 降序(desc)
  */
 export const generateSortRoutes = (
   routes: CustomRouteRecordRaw[],
   mode: SortModeEnum = SortModeEnum.ASC,
-): CustomRouteRecordRaw[] => {
-  console.log(routes, 'routes');
-
-  return routes.sort((a, b) => {
+) => {
+  return [...routes].sort((a, b) => {
     const sortA = a.meta.sort ?? 0;
     const sortB = b.meta.sort ?? 0;
     return mode === SortModeEnum.ASC ? sortA - sortB : sortB - sortA;
