@@ -12,7 +12,7 @@ export const useAuth = () => {
   /**
    * 获取本地 Access Token
    */
-  const getLocalAccessToken = () => {
+  const getLocalAccessToken = (): string => {
     const data = JSON.parse(localStorage.getItem(formatStoreKey(storeModulesNames.user)) || '{}');
     return data?.accessToken || '';
   };
@@ -20,7 +20,7 @@ export const useAuth = () => {
   /**
    * 获取本地 Refresh Token
    */
-  const getLocalRefreshToken = () => {
+  const getLocalRefreshToken = (): string => {
     const data = JSON.parse(localStorage.getItem(formatStoreKey(storeModulesNames.user)) || '{}');
     return data?.refreshToken || '';
   };
