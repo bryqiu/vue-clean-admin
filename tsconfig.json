@@ -28,13 +28,5 @@
     }
   },
 
-  "include": [
-    "vite.config.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "typings/**/*.d.ts",
-    "typings/**/*.ts",
-    "build/**/*.ts"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.d.ts", "build/**/*.ts"]
 }
