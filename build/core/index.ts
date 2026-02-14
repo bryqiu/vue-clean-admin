@@ -20,7 +20,7 @@ export const defineViteConfig = (options: ViteConfigOptions = { overrides: {} })
 
     const presetConfig: UserConfig = {
       base: VITE_BASE_PATH,
-      plugins: createVitePlugins(env),
+      plugins: createVitePlugins(env, mode),
       optimizeDeps: createOptimizeConfig(),
       resolve: {
         alias: createAliasesConfig(),

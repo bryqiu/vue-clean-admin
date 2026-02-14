@@ -7,71 +7,15 @@
     <title>%VITE_APP_TITLE%</title>
   </head>
 
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+
   <body>
-    <style>
-      .loading {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 100vh;
-      }
-
-      .content {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-      }
-
-      .content-loading {
-        box-sizing: border-box;
-        display: inline-block;
-        width: 60px;
-        height: 60px;
-        margin-top: 40vh;
-        border-top: 4px solid #e5e6eb;
-        border-right: 4px solid transparent;
-        border-radius: 50%;
-        animation: rotation 1s linear infinite;
-      }
-
-      .content-loading::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        box-sizing: border-box;
-        width: 60px;
-        height: 60px;
-        content: '';
-        border-bottom: 4px solid transparent;
-        border-left: 4px solid #2393d9;
-        border-radius: 50%;
-        animation: rotation 0.5s linear infinite reverse;
-      }
-
-      @keyframes rotation {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      .content-text {
-        font-size: 24px;
-        color: #333;
-      }
-    </style>
-    <div id="app">
-      <div class="loading">
-        <div class="content">
-          <span class="content-loading"></span>
-          <span class="content-text">Clean Admin...</span>
-        </div>
-      </div>
-    </div>
+    <div id="app"><%- appLoadingHtml %></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
