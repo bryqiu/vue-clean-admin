@@ -73,7 +73,7 @@ onMounted(() => {
 
 <template>
   <ElCard>
-    <span class="text-sm font-semibold">产品类别销售额</span>
+    <span class="font-semibold">产品类别销售额</span>
     <div ref="chartInstance" class="w-full h-64 2xl:h-72" />
   </ElCard>
 </template>

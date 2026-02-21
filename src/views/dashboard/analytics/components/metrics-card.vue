@@ -52,9 +52,9 @@ const trendIcon = computed(() => {
   <div
     class="size-full bg-background rounded-lg shadow-xs border border-solid border-el-border-light flex flex-col gap-y-4 md:gap-y-6 p-4"
   >
-    <div class="flex justify-between items-center text-xs text-el-text-secondary">
+    <div class="flex justify-between items-center text-sm text-el-text-secondary">
       <span>{{ text }}</span>
-      <IconifyIcon v-if="icon" :name="icon" class="text-sm" />
+      <IconifyIcon v-if="icon" :name="icon" />
     </div>
     <div class="flex justify-between items-center">
       <span class="text-xl text-el-text-primary font-semibold truncate">{{ currentValue }}</span>

@@ -125,7 +125,7 @@ const stockPercentage = (stocks: number, totalStocks: number) => {
 
 <template>
   <div class="flex flex-col gap-y-4">
-    <span class="text-sm font-semibold">产品销售详情表</span>
+    <span class="font-semibold">产品销售详情表</span>
     <ElTable
       :data="productData"
       height="400px"
