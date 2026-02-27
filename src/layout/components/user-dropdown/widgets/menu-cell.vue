@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'MenuCell',
@@ -18,7 +18,7 @@ withDefaults(defineProps<MenuCellProps>(), {});
   <div
     class="w-full px-2 py-1.5 flex items-center justify-between hover:bg-el-fill rounded-lg cursor-pointer duration-300"
   >
-    <div :class="twMerge('flex items-center gap-x-2 text-el-text-primary text-sm', textClass)">
+    <div :class="cn('flex items-center gap-x-2 text-el-text-primary text-sm', textClass)">
       <IconifyIcon :name="icon" class="text-sm" />
       <span>{{ title }}</span>
     </div>

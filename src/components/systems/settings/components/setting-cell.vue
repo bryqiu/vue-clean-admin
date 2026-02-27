@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
 import { computed } from 'vue';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'WidgetCell',
@@ -45,7 +45,7 @@ const getDisabledStyle = computed(() => {
 <template>
   <div
     :class="
-      twMerge(
+      cn(
         'flex items-center p-2 border border-el-border-light rounded-lg duration-300 max-w-xl',
         getDisabledStyle,
         cellClass,
@@ -57,7 +57,7 @@ const getDisabledStyle = computed(() => {
         <span class="text-el-text-primary text-sm font-medium line-clamp-1">{{ title }}</span>
         <span class="text-el-text-placeholder text-xs line-clamp-1">{{ desc }}</span>
       </div>
-      <div :class="twMerge('flex justify-end', disabled && 'pointer-events-none', actionClass)">
+      <div :class="cn('flex justify-end', disabled && 'pointer-events-none', actionClass)">
         <slot />
       </div>
     </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PageTransitionOptions } from '@/dict';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 import { PageTransitionEnum } from '@/enums';
 
 defineOptions({
@@ -31,7 +31,7 @@ const setPageTransitionName = (name: PageTransitionEnum) => {
           <div
             class=""
             :class="
-              twMerge(
+              cn(
                 'h-12 w-16 border border-el-border-light p-1 rounded-lg cursor-pointer',
                 transitionItem.value === pageTransitionName && 'border-el-primary',
               )

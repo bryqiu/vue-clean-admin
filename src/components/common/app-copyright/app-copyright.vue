@@ -2,7 +2,7 @@
 import dayjs from 'dayjs';
 import { isArray, isEmpty } from '@/utils';
 import { computed } from 'vue';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'AppCopyright',
@@ -52,7 +52,7 @@ const formatYearValue = computed(() => {
 </script>
 
 <template>
-  <div :class="twMerge('text-xs text-el-text-secondary w-full text-center', textClass)">
+  <div :class="cn('text-xs text-el-text-secondary w-full text-center', textClass)">
     <span class="pr-1.5">Copyright © {{ formatYearValue }}</span>
     <span v-if="isEmpty(link)">{{ owner }}</span>
     <ElLink v-else type="primary" :href="link" target="_blank" v-bind="$attrs" class="!text-xs">

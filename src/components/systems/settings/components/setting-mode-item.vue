@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
 import type { LocalIconProps } from '@/components/common/app-icon';
 import { computed } from 'vue';
 import { omit } from 'lodash-es';
@@ -78,7 +77,7 @@ const getModeItemProps = computed(() => {
   <div>
     <div
       :class="
-        twMerge(
+        cn(
           'flex-1 flex flex-col border border-el-border-light rounded-lg cursor-pointer duration-300 hover:border-el-primary relative',
           isActiveItem && 'border-el-primary',
           modeItemClass,
@@ -92,7 +91,7 @@ const getModeItemProps = computed(() => {
       />
       <div
         :class="
-          twMerge(
+          cn(
             'flex-1 flex items-center justify-center bg-el-fill-dark p-2 rounded-lg',
             modeContentClass,
           )

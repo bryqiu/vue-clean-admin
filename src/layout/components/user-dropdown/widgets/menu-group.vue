@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 defineOptions({
   name: 'MenuGroup',
@@ -14,7 +14,7 @@ withDefaults(defineProps<MenuGroupProps>(), {});
 </script>
 
 <template>
-  <div :class="twMerge('p-2', groupClass)">
+  <div :class="cn('p-2', groupClass)">
     <div v-if="categoryName" class="text-xs text-el-text-placeholder mb-1 w-full px-2">
       {{ categoryName }}
     </div>
