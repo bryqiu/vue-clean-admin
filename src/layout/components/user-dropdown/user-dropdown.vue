@@ -42,14 +42,11 @@ const removeDynamicRoutes = () => {
 };
 
 const handleLogout = async () => {
-  try {
     await ElMessageBox.confirm('确认退出登录？', '提示', {
       type: 'warning',
       confirmButtonText: '退出登录',
       cancelButtonText: '取消',
     });
-  } catch (error) {}
-
   removeDynamicRoutes();
   userStore.logout();
   await router.replace({ name: ROUTE_NAMES.ACCOUNT_LOGIN });
