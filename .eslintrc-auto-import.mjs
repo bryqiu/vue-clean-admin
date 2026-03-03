@@ -6,14 +6,12 @@ export default {
     "useAuth": true,
     "useEcharts": true,
     "useI18n": true,
-    "useLayoutSettings": true,
     "useLoadView": true,
     "useNotificationState": true,
+    "usePreferences": true,
+    "usePreferencesStore": true,
     "useSettingState": true,
-    "useSettingsStore": true,
-    "useShareSettings": true,
     "useTheme": true,
-    "useThemeSettings": true,
     "useUserStore": true
   }
 }

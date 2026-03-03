@@ -7,7 +7,7 @@ defineOptions({
   name: 'ColLayout',
 });
 
-const { getCurrentContentSpace } = useLayoutSettings();
+const { getCurrentContentSpace } = usePreferences();
 </script>
 
 <template>

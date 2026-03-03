@@ -18,7 +18,7 @@ const {
   getCurrentHeaderHeight,
   getCurrentColSidebarWidth,
   getCurrentContentSpace,
-} = useLayoutSettings();
+} = usePreferences();
 
 const { getMenuRoutes } = useUserStore();
 

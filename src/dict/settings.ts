@@ -1,51 +1,18 @@
 import {
+  AccessibilityModeEnum,
   LayoutModeEnum,
   PageTransitionEnum,
   SettingModuleEnum,
   ThemeModeEnum,
-  VisualModeEnum,
 } from '@/enums';
-import { Layout, Share, Theme } from '@/components/systems/settings/modules';
 import { ColLayout, SideLayout, TopLayout } from '@/layout/modules';
 import type { Component } from 'vue';
-import { defaultSettings } from '@/store/config';
-import type { SettingModeItemProps } from '@/components/systems/settings/components';
-
-/* ======================== 设置 ======================== */
-
-interface SettingOption extends BaseOptions<GetObjectValues<typeof SettingModuleEnum>> {
-  component: Component;
-  icon: string;
-  description?: string;
-  disabled?: boolean;
-}
-
-export const settingOptions: SettingOption[] = [
-  {
-    label: '主题偏好',
-    value: SettingModuleEnum.THEME,
-    icon: 'ri:color-filter-ai-line',
-    component: Theme,
-  },
-  {
-    label: '布局管理',
-    value: SettingModuleEnum.LAYOUT,
-    icon: 'ri:layout-3-line',
-    component: Layout,
-  },
-  {
-    label: '共享设置',
-    value: SettingModuleEnum.SHARE,
-    icon: 'ri:share-line',
-    component: Share,
-  },
-];
-
-/* ======================== 布局 ======================== */
+import { defaultPreferences } from '@/store/config';
+import type { SettingModeProps } from '@/components/systems/settings/widgets/setting-mode.vue';
 
 interface LayoutModeOption
   extends Pick<
-    SettingModeItemProps<GetObjectValues<typeof LayoutModeEnum>>,
+    SettingModeProps<GetObjectValues<typeof LayoutModeEnum>>,
     'label' | 'modeIcon' | 'value'
   > {
   component: Component;
@@ -78,7 +45,7 @@ type PageTransition = {
 };
 
 /** 页面转场动画 */
-export const PageTransitionOptions: PageTransition[] = [
+export const pageTransitionOptions: PageTransition[] = [
   {
     label: '无动画',
     options: [
@@ -141,9 +108,7 @@ export const PageTransitionOptions: PageTransition[] = [
   },
 ];
 
-/* ======================== 主题 ======================== */
-
-interface ModeOption extends Pick<SettingModeItemProps<ThemeModeEnum>, 'label' | 'value'> {
+interface ModeOption extends Pick<SettingModeProps<ThemeModeEnum>, 'label' | 'value'> {
   enLabel: string;
   icon: string;
   modeIcon: string;
@@ -174,28 +139,28 @@ export const themeModeOptions: ModeOption[] = [
   },
 ];
 
-interface VisualModeOption extends BaseOptions<VisualModeEnum> {
+interface AccessibilityModeOption extends BaseOptions<AccessibilityModeEnum> {
   style?: string;
   class?: string;
 }
 
 /** 视觉模式 */
-export const visualModeOptions: VisualModeOption[] = [
+export const accessibilityModeOptions: AccessibilityModeOption[] = [
   {
-    label: '灰色模式',
-    value: VisualModeEnum.GRAY,
+    label: '灰度',
+    value: AccessibilityModeEnum.GRAY,
     style: 'filter: grayscale(1)',
     class: 'gray-mode',
   },
   {
-    label: '色弱模式',
-    value: VisualModeEnum.WEAK,
+    label: '色弱',
+    value: AccessibilityModeEnum.WEAK,
     style: 'filter: invert(80%)',
     class: 'weak-mode',
   },
   {
-    label: '标准模式',
-    value: VisualModeEnum.NORMAL,
+    label: '标准',
+    value: AccessibilityModeEnum.NORMAL,
     style: '',
     class: '',
   },
@@ -204,7 +169,7 @@ export const visualModeOptions: VisualModeOption[] = [
 export const presetPrimaryColorOptions: BaseOptions<string>[] = [
   {
     label: '默认品牌色',
-    value: defaultSettings.theme.primaryColor,
+    value: defaultPreferences.appearance.primaryColor,
   },
   {
     label: '竹绿',
@@ -240,10 +205,8 @@ export const presetPrimaryColorOptions: BaseOptions<string>[] = [
   },
 ];
 
-/* ======================== 共享 ======================== */
-
 /** 面包屑样式 */
-export const breadcrumbStyleOptions: BaseOptions<BreadcrumbStyleType>[] = [
+export const breadcrumbStyleOptions: BaseOptions<BreadcrumbStyle>[] = [
   {
     label: '文本',
     value: 'default',

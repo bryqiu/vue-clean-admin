@@ -3,7 +3,7 @@ defineOptions({
   name: 'BasicMain',
 });
 
-const { pageTransitionName } = useThemeSettings();
+const { pageTransitionName } = usePreferences();
 const { getCurrentLoadViewStatus } = useLoadView();
 </script>
 

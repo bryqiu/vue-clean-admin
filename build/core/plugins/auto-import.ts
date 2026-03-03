@@ -7,14 +7,14 @@ export const configAutoImportPlugin = (): PluginOption => {
   return AutoImport({
     imports: [
       {
-        '@/store/modules/settings': ['useSettingsStore'],
+        '@/store/modules/preferences': ['usePreferencesStore'],
         '@/store/modules/user': ['useUserStore'],
         '@/components/systems/settings/use-setting-state': ['useSettingState'],
         '@/components/systems/notifications/use-notification-state': ['useNotificationState'],
         'element-plus': ['ElMessage', 'ElMessageBox', 'ElLoading'],
       },
     ],
-    dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/store/hooks')}`],
+    dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/composables')}`],
     dts: `src/typings/auto-imports.d.ts`, // 自定义生成 auto-imports.d.ts 文件路径
     resolvers: [ElementPlusResolver()],
     eslintrc: {

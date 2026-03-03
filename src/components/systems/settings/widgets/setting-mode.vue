@@ -5,10 +5,10 @@ import { omit } from 'lodash-es';
 import { cn } from '@/utils';
 
 defineOptions({
-  name: 'SettingModeItem',
+  name: 'SettingMode',
 });
 
-export interface SettingModeItemProps<T = any> {
+export interface SettingModeProps<T = any> {
   /**
    * 是否显示选中图标
    * @default false
@@ -49,7 +49,7 @@ export interface SettingModeItemProps<T = any> {
   isActiveItem: boolean;
 }
 
-const props = withDefaults(defineProps<SettingModeItemProps>(), {
+const props = withDefaults(defineProps<SettingModeProps>(), {
   showCheckIcon: false,
   isActiveItem: false,
 });
@@ -57,10 +57,7 @@ const props = withDefaults(defineProps<SettingModeItemProps>(), {
 /** 获取模式图标属性 */
 const getModeItemProps = computed(() => {
   const defaultProps: LocalIconProps = {
-    style: {
-      width: '90px',
-      height: '64px',
-    },
+    iconClass: 'w-18! h-14!',
     name: props.modeIcon,
   };
 
@@ -74,42 +71,29 @@ const getModeItemProps = computed(() => {
 </script>
 
 <template>
-  <div>
+  <div
+    :class="
+      cn(
+        'flex-1 flex flex-col border border-el-border-light rounded cursor-pointer duration-300 hover:border-el-primary relative',
+        isActiveItem && 'border-el-primary',
+        modeItemClass,
+      )
+    "
+  >
+    <IconifyIcon
+      v-show="isActiveItem"
+      name="ri:checkbox-circle-fill"
+      class="text-sm absolute bottom-0.5 right-0.5 text-el-primary"
+    />
     <div
       :class="
         cn(
-          'flex-1 flex flex-col border border-el-border-light rounded-lg cursor-pointer duration-300 hover:border-el-primary relative',
-          isActiveItem && 'border-el-primary',
-          modeItemClass,
+          'flex-1 flex items-center justify-center bg-el-fill-dark p-1.5 rounded-lg',
+          modeContentClass,
         )
       "
     >
-      <IconifyIcon
-        v-show="isActiveItem"
-        name="ri:checkbox-circle-fill"
-        class="absolute bottom-1 right-1 text-base text-el-primary"
-      />
-      <div
-        :class="
-          cn(
-            'flex-1 flex items-center justify-center bg-el-fill-dark p-2 rounded-lg',
-            modeContentClass,
-          )
-        "
-      >
-        <LocalIcon v-bind="getModeItemProps" />
-      </div>
-    </div>
-
-    <div
-      :class="
-        cn('flex items-center justify-center gap-x-2 text-sm text-el-text-secondary pt-1', {
-          'text-el-text-primary': isActiveItem,
-        })
-      "
-    >
-      <IconifyIcon v-if="icon" :name="icon" />
-      <span>{{ label || '--' }}</span>
+      <LocalIcon v-bind="getModeItemProps" />
     </div>
   </div>
 </template>

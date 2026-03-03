@@ -27,7 +27,7 @@ interface BreadcrumbProps {
    * 面包屑样式
    * @default default
    */
-  styleType?: BreadcrumbStyleType;
+  styleType?: BreadcrumbStyle;
 }
 
 interface BreadcrumbEmits {
@@ -35,7 +35,7 @@ interface BreadcrumbEmits {
 }
 
 type BreadcrumbStyleMap = {
-  [key in BreadcrumbStyleType]: string;
+  [key in BreadcrumbStyle]: string;
 };
 
 const props = withDefaults(defineProps<BreadcrumbProps>(), {

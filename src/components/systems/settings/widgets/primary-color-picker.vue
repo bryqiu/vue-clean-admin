@@ -4,10 +4,10 @@ import { ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 
 defineOptions({
-  name: 'WidgetPrimaryColor',
+  name: 'PrimaryColorPicker',
 });
 
-const { currentPrimaryColor } = useThemeSettings();
+const { currentPrimaryColor } = usePreferences();
 
 /** 设置主题色 */
 const setPrimaryColor = (color: string) => {
@@ -20,8 +20,6 @@ const colorPickerInstance = ref<Nullable<HTMLInputElement>>(null);
 /** 颜色选择器值变化时 */
 const colorPickerChange = useDebounceFn((e: Event) => {
   const target = e.target as HTMLInputElement;
-  console.log(e, 'e');
-
   currentPrimaryColor.value = target.value;
 }, 600);
 </script>

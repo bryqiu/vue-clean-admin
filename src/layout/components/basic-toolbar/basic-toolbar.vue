@@ -18,15 +18,23 @@ interface BasicToolbarProps {
 withDefaults(defineProps<BasicToolbarProps>(), {
   showUserDropdown: false,
 });
+
+const {
+  enableReloadViewWidget,
+  enableLocaleWidget,
+  enableThemeWidget,
+  enableFullscreenWidget,
+  enableNotificationWidget,
+} = usePreferences();
 </script>
 
 <template>
   <div class="flex items-center gap-x-3">
-    <ReloadView />
-    <AppLocale />
-    <AppTheme />
-    <Notification />
-    <AppFullScreen />
+    <ReloadView v-if="enableReloadViewWidget" />
+    <AppLocale v-if="enableLocaleWidget" />
+    <AppTheme v-if="enableThemeWidget" />
+    <Notification v-if="enableNotificationWidget" />
+    <AppFullScreen v-if="enableFullscreenWidget" />
     <Settings />
     <template v-if="showUserDropdown">
       <ElDivider direction="vertical" />

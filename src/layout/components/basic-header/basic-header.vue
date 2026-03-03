@@ -7,8 +7,14 @@ defineOptions({
   name: 'BasicHeader',
 });
 
-const { breadcrumbStyleType } = useShareSettings();
-const { getCurrentHeaderHeight, isColLayout, getCurrentContentSpace } = useLayoutSettings();
+const {
+  getCurrentHeaderHeight,
+  isColLayout,
+  getCurrentContentSpace,
+  breadcrumbStyle,
+  enableMenuCollapseWidget,
+  showBreadcrumb,
+} = usePreferences();
 </script>
 
 <template>
@@ -17,11 +23,12 @@ const { getCurrentHeaderHeight, isColLayout, getCurrentContentSpace } = useLayou
     :style="{ height: `${getCurrentHeaderHeight}px`, padding: `0 ${getCurrentContentSpace}px` }"
   >
     <div class="flex items-center">
-      <template v-if="!isColLayout">
-        <MenuCollapse />
-        <ElDivider direction="vertical" />
-      </template>
-      <Breadcrumb :style-type="breadcrumbStyleType" />
+      <MenuCollapse v-if="!isColLayout && enableMenuCollapseWidget" />
+      <ElDivider
+        v-if="!isColLayout && enableMenuCollapseWidget && showBreadcrumb"
+        direction="vertical"
+      />
+      <Breadcrumb v-if="showBreadcrumb" :style-type="breadcrumbStyle" />
     </div>
     <BasicToolbar />
   </div>

@@ -6,7 +6,7 @@ defineOptions({
   name: 'MenuCollapse',
 });
 
-const { isMenuCollapse } = useLayoutSettings();
+const { isMenuCollapse } = usePreferences();
 
 const getMenuCollapseIcon = computed(() => {
   return isMenuCollapse.value ? 'ri:arrow-right-s-line' : 'ri:arrow-left-s-line';

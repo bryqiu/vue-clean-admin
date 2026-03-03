@@ -16,7 +16,7 @@ const getVisibleMenuRoutes = computed(() => {
   return getMenuRoutes.filter((menu) => !menu.meta.hideMenu);
 });
 
-const { getCurrentContentSpace, getCurrentHeaderHeight } = useLayoutSettings();
+const { getCurrentContentSpace, getCurrentHeaderHeight } = usePreferences();
 </script>
 
 <template>

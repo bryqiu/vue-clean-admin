@@ -7,7 +7,7 @@ export enum ThemeModeEnum {
   SYSTEM = 'system',
 }
 
-export enum VisualModeEnum {
+export enum AccessibilityModeEnum {
   /** 灰色模式 */
   GRAY = 'gray',
   /** 色弱模式 */

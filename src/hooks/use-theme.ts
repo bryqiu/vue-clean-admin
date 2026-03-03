@@ -1,6 +1,6 @@
 import { useDark, usePreferredDark } from '@vueuse/core';
-import { ThemeModeEnum, VisualModeEnum } from '@/enums';
-import { visualModeOptions } from '@/dict';
+import { AccessibilityModeEnum, ThemeModeEnum } from '@/enums';
+import { accessibilityModeOptions } from '@/dict';
 import { computed } from 'vue';
 
 export const useTheme = () => {
@@ -42,27 +42,30 @@ export const useTheme = () => {
     }
   };
 
-  /** 添加视觉样式 */
-  const addVisualStyle = (mode: VisualModeEnum) => {
+  /**
+   * 添加无障碍样式
+   */
+  const addAccessibilityStyle = (mode: AccessibilityModeEnum) => {
     const element = document.documentElement;
 
-    // 移除所有视觉模式类
-    visualModeOptions.forEach((option) => {
+    accessibilityModeOptions.forEach((option) => {
       if (option.class) {
         element.classList.remove(option.class);
       }
     });
 
-    // 找到对应的模式
-    const visualModeValue = visualModeOptions.find((option) => option.value === mode);
+    // 找到对应的模式值
+    const accessibilityModeValue = accessibilityModeOptions.find((option) => option.value === mode);
 
-    visualModeValue && visualModeValue.class && element.classList.add(visualModeValue.class);
+    accessibilityModeValue &&
+      accessibilityModeValue.class &&
+      element.classList.add(accessibilityModeValue.class);
   };
 
   return {
     getThemeMode,
     setThemeMode,
-    addVisualStyle,
+    addAccessibilityStyle,
     isDarkMode,
   };
 };

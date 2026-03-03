@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { layoutModeOptions } from '@/dict';
 
-const { currentLayoutMode } = useLayoutSettings();
+const { currentLayoutMode } = usePreferences();
 
 const currentLayoutComponent = computed(() => {
   return layoutModeOptions.find((item) => item.value === currentLayoutMode.value)?.component;

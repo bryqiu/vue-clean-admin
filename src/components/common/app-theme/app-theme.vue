@@ -7,7 +7,7 @@ defineOptions({
   name: 'AppTheme',
 });
 
-const { currentThemeMode } = useThemeSettings();
+const { currentThemeMode } = usePreferences();
 
 const getCurrentThemeModeOption = computed(() => {
   return (

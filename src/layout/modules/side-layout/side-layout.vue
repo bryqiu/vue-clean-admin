@@ -6,7 +6,7 @@ import { BasicMain } from '../../components/basic-main';
 defineOptions({
   name: 'SideLayout',
 });
-const { getCurrentContentSpace } = useLayoutSettings();
+const { getCurrentContentSpace } = usePreferences();
 </script>
 
 <template>

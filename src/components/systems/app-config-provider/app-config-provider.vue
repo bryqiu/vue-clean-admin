@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 
-import { Settings } from '../settings';
+import Settings from '../settings/settings.vue';
 import { Notifications } from '../notifications';
 import { elLocaleMessage, plusLocaleMessage } from '@/plugins/i18n';
 import dayjs from 'dayjs';
@@ -13,12 +13,17 @@ defineOptions({
   name: 'AppConfigProvider',
 });
 
-const { getThemeSettings, setVisualMode, setPrimaryColor } = useSettingsStore();
+const {
+  getAppearancePreferences,
+  getAccessibilityPreferences,
+  setAccessibilityMode,
+  setPrimaryColor,
+} = usePreferencesStore();
 
 /** 初始化主题配置 */
 const initThemeConfig = () => {
-  setVisualMode(getThemeSettings.visualMode);
-  setPrimaryColor(getThemeSettings.primaryColor);
+  setAccessibilityMode(getAccessibilityPreferences.accessibilityMode);
+  setPrimaryColor(getAppearancePreferences.primaryColor);
 };
 
 onMounted(() => {

@@ -11,7 +11,7 @@ declare global {
   type Direction = 'horizontal' | 'vertical';
 
   /** 面包屑样式类型 */
-  type BreadcrumbStyleType = 'default' | 'arrow' | 'parallelogram';
+  type BreadcrumbStyle = 'default' | 'arrow' | 'parallelogram';
 
   /** 颜色类型 */
   type ElColorType = 'primary' | 'success' | 'warning' | 'danger' | 'info';

@@ -32,7 +32,7 @@ export default [
         RegisterComponentList: true,
         BaseOptions: true,
         AlignMode: true,
-        BreadcrumbStyleType: true,
+        BreadcrumbStyle: true,
         ElColorType: true,
         PaginationParams: true,
         PaginationResult: true,

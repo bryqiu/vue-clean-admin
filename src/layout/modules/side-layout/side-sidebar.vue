@@ -9,17 +9,15 @@ defineOptions({
   name: 'SideSidebar',
 });
 
-const settingsStore = useSettingsStore();
-const { isMenuCollapse } = useLayoutSettings();
-const { getCurrentHeaderHeight } = useLayoutSettings();
+const { isMenuCollapse, getCurrentSidebarWidth, getCurrentHeaderHeight } = usePreferences();
 const { getMenuRoutes } = useUserStore();
 
 /** 左侧边栏宽度 */
 const sidebarWidth = computed(() => {
-  return isMenuCollapse.value
-    ? settingsStore.getLayoutSettings.sidebarCollapseWidth
-    : settingsStore.getLayoutSettings.sidebarOpenedWidth;
+  return getCurrentSidebarWidth.value;
 });
+
+console.log(sidebarWidth.value, 'sidebarWidth');
 </script>
 
 <template>

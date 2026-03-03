@@ -5,7 +5,7 @@ import { h } from 'vue';
 defineOptions({
   name: 'RouteSearch',
 });
-const { isMenuCollapse } = useLayoutSettings();
+const { isMenuCollapse } = usePreferences();
 
 const searchIcon = h(IconifyIcon, { name: 'ri:search-line' });
 </script>

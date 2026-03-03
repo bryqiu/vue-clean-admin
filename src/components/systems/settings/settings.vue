@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { AppDialog } from '@/components/common/app-dialog';
 import { computed, ref } from 'vue';
-import { settingOptions } from '@/dict';
-import { SettingModuleEnum } from '@/enums';
 import { PageTransitionEnum } from '@/enums';
+import { About, Preferences, Shortcut } from './modules';
 import { cn } from '@/utils';
-import { AppVersion } from '@/components/common/app-version';
 
 defineOptions({
   name: 'Settings',
@@ -13,63 +11,96 @@ defineOptions({
 
 const { getDialogVisible, closeSettingDialog } = useSettingState();
 
-const activeSettingValue = ref<GetObjectValues<typeof SettingModuleEnum>>(SettingModuleEnum.THEME);
+type settingModuleKey = 'preference' | 'shortcut' | 'about';
 
-const getActiveSettingOption = computed(() => {
-  return settingOptions.find((item) => item.value === activeSettingValue.value);
+const settingModules = [
+  {
+    key: 'preference',
+    label: '个人偏好',
+    icon: 'ri:settings-3-line',
+    component: Preferences,
+  },
+  {
+    key: 'shortcut',
+    label: '快捷方式',
+    icon: 'ri:keyboard-box-line',
+    component: Shortcut,
+  },
+  {
+    key: 'about',
+    label: '关于系统',
+    icon: 'ri:copyright-line',
+    component: About,
+  },
+] as const;
+
+const activeSettingKey = ref<settingModuleKey>('preference');
+
+const activeSettingOption = computed(() => {
+  return settingModules.find((item) => item.key === activeSettingKey.value) ?? settingModules[0];
 });
 
-const setActiveSettingValue = (value: GetObjectValues<typeof SettingModuleEnum>) => {
-  activeSettingValue.value = value;
+const setActiveSettingKey = (key: settingModuleKey) => {
+  activeSettingKey.value = key;
 };
 </script>
 
 <template>
   <AppDialog
     :model-value="getDialogVisible"
-    width="950px"
-    top="6vh"
     hide-footer
+    fullscreen
+    dialog-class="setting-dialog"
+    body-class="flex flex-col min-h-0 overflow-hidden"
     @update:model-value="closeSettingDialog"
   >
     <template #header>
-      <span class="text-base font-bold">系统设置</span>
+      <div class="flex items-center justify-between w-full">
+        <span class="text-base font-semibold">系统设置</span>
+      </div>
     </template>
 
-    <div class="flex flex-col size-full">
-      <div class="flex-1 flex gap-x-4">
-        <div class="w-56 rounded-lg py-4 space-y-1">
+    <div class="flex flex-1 min-h-0">
+      <div class="grid grid-cols-10 gap-x-6 flex-1 min-h-0">
+        <aside class="col-span-2 rounded space-y-1 min-h-0">
           <div
-            v-for="item in settingOptions"
-            :key="item.value"
+            v-for="item in settingModules"
+            :key="item.key"
             :class="
               cn(
                 'w-full h-item px-4 flex items-center rounded-lg gap-x-2 text-el-text-primary cursor-pointer hover:bg-el-fill',
                 {
-                  'bg-el-fill': item.value === activeSettingValue,
+                  'bg-el-fill': item.key === activeSettingKey,
                 },
               )
             "
-            @click="setActiveSettingValue(item.value)"
+            @click="setActiveSettingKey(item.key)"
           >
             <IconifyIcon :name="item.icon" class="text-base" />
             <span class="text-sm">{{ item.label }}</span>
           </div>
-        </div>
+        </aside>
 
-        <div class="w-full">
-          <ElScrollbar height="500px" view-class="p-4 h-full">
+        <section class="col-span-8 min-h-0">
+          <ElScrollbar class="h-full" view-class="max-w-3xl xl:max-w-4xl min-h-full">
             <Transition :name="PageTransitionEnum.FADE_RIGHT" mode="out-in" appear>
-              <component :is="getActiveSettingOption?.component" />
+              <div :key="activeSettingOption.key" class="min-h-full">
+                <component :is="activeSettingOption.component" />
+              </div>
             </Transition>
           </ElScrollbar>
-        </div>
-      </div>
-      <div>
-        <AppVersion abbreviated />
+        </section>
       </div>
     </div>
   </AppDialog>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.setting-dialog.app-dialog.el-dialog {
+  border-radius: 0;
+
+  .el-dialog__body.app-dialog-body {
+    padding: 24px;
+  }
+}
+</style>

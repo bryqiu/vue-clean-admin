@@ -4,10 +4,10 @@ defineOptions({
   name: 'MenuAccordion',
 });
 
-const { isMenuAccordion } = useLayoutSettings();
+const { enableMenuAccordion } = usePreferences();
 
 const menuAccordionInfo = computed(() => {
-  return isMenuAccordion.value
+  return enableMenuAccordion.value
     ? { icon: 'ri:list-radio', tipText: '单击允许所有子菜单展开' }
     : { icon: 'ri:list-check-3', tipText: '单击只允许展开一个子菜单' };
 });
@@ -17,7 +17,7 @@ const menuAccordionInfo = computed(() => {
   <ActionButton
     :icon="menuAccordionInfo.icon"
     :tip-props="{ placement: 'bottom', content: menuAccordionInfo.tipText }"
-    @click="isMenuAccordion = !isMenuAccordion"
+    @click="enableMenuAccordion = !enableMenuAccordion"
   />
 </template>
 
