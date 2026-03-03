@@ -42,11 +42,11 @@ const removeDynamicRoutes = () => {
 };
 
 const handleLogout = async () => {
-    await ElMessageBox.confirm('确认退出登录？', '提示', {
-      type: 'warning',
-      confirmButtonText: '退出登录',
-      cancelButtonText: '取消',
-    });
+  await ElMessageBox.confirm('确认退出登录？', '提示', {
+    type: 'warning',
+    confirmButtonText: '退出登录',
+    cancelButtonText: '取消',
+  });
   removeDynamicRoutes();
   userStore.logout();
   await router.replace({ name: ROUTE_NAMES.ACCOUNT_LOGIN });
@@ -67,17 +67,17 @@ const handleLogout = async () => {
             <AppUserAvatar :src="userAvatar" size="large" />
             <div class="flex flex-col flex-1">
               <span class="text-el-text-primary text-base font-semibold line-clamp-1">Fifteen</span>
-              <span class="text-el-text-secondary text-sm line-clamp-1">bryanqiu.me@gmail.com</span>
+              <span class="text-el-text-secondary text-xs line-clamp-1">bryanqiu.me@gmail.com</span>
             </div>
           </div>
           <!--登录时间-->
-          <!-- <div
-            class="flex items-center p-2 bg-el-primary-900 rounded-lg text-xs text-el-primary w-full truncate mt-3 mb-1"
+          <div
+            class="flex items-center py-1.5 px-2 bg-el-primary-900 rounded-lg text-xs text-el-primary w-full truncate mt-3 mb-1"
           >
             <IconifyIcon name="ri:time-line" class="text-sm mr-1 shrink-0" />
             <span>上次登录：</span>
             <span>{{ '2025/07/21 14:21:53' }}</span>
-          </div> -->
+          </div>
         </div>
         <MenuGroup category-name="关于账号" class="border-t border-el-border-light">
           <MenuCell title="个人资料" icon="ri:user-line" />
