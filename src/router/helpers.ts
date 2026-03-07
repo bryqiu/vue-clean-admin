@@ -61,11 +61,11 @@ function loadComponent(route: PermissionRoute) {
     return PARENT_LAYOUT;
   }
 
-  const key = `../views/${componentPath}.vue`;
+  const key = `/src/views/${componentPath}.vue`;
 
-  const nameKey = `../views/${componentPath}/${componentPath}.vue`;
+  const nameKey = `/src/views/${componentPath}/${componentPath}.vue`;
 
-  const indexKey = `../views/${componentPath}/index.vue`;
+  const indexKey = `/src/views/${componentPath}/index.vue`;
 
   const currentComponent = VIEWS_MODULES[key] || VIEWS_MODULES[nameKey] || VIEWS_MODULES[indexKey];
 
