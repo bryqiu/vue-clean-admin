@@ -1,3 +1,4 @@
 public
 src/assets
 .eslintrc-auto-import.mjs
+pnpm-lock.yaml
