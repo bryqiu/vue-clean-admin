@@ -1,4 +1,4 @@
-import { storeModulesNames } from '@/store/config';
+import { STORAGE_KEY } from '@/shared';
 import { formatStoreKey } from '@/store/helpers';
 import { useUserStore } from '@/store/modules/user';
 import { PermissionCode } from '#/type';
@@ -8,12 +8,13 @@ import { isEmpty } from '@/utils';
 export const useAuth = () => {
   const userStore = useUserStore();
   const { getPermissionCodes } = storeToRefs(userStore);
+  const userStoreKey = formatStoreKey(STORAGE_KEY.USER);
 
   /**
    * 获取本地 Access Token
    */
   const getLocalAccessToken = (): string => {
-    const data = JSON.parse(localStorage.getItem(formatStoreKey(storeModulesNames.user)) || '{}');
+    const data = JSON.parse(localStorage.getItem(userStoreKey) || '{}');
     return data?.accessToken || '';
   };
 
@@ -21,7 +22,7 @@ export const useAuth = () => {
    * 获取本地 Refresh Token
    */
   const getLocalRefreshToken = (): string => {
-    const data = JSON.parse(localStorage.getItem(formatStoreKey(storeModulesNames.user)) || '{}');
+    const data = JSON.parse(localStorage.getItem(userStoreKey) || '{}');
     return data?.refreshToken || '';
   };
 

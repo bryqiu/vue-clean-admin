@@ -2,7 +2,7 @@
 import { Introduce, type IntroduceProps } from './widgets';
 import { computed, ref } from 'vue';
 import { loadLocaleMessages } from '@/plugins/i18n';
-import { localeStorageKey, supportLocaleOptions } from '@/locale';
+import { SUPPORT_LOCAL_OPTION } from '@/shared';
 import { getLocaleStorage } from '@/locale/helpers';
 import { AppLocale } from '@/components/common/app-locale';
 import dayjs from 'dayjs';
@@ -32,7 +32,7 @@ const { t, getCurrentLocale } = useI18n();
 const dateValue = ref<Date | null>(null);
 
 const localeLabel = computed(() => {
-  return supportLocaleOptions.find((item) => item.value === getCurrentLocale.value)?.label || '-';
+  return SUPPORT_LOCAL_OPTION.find((item) => item.value === getCurrentLocale.value)?.label || '-';
 });
 
 const htmlLang = computed(() => {
@@ -69,7 +69,7 @@ const dayjsSamples = computed(() => {
 
         <div class="flex flex-wrap gap-2">
           <ElButton
-            v-for="locale in supportLocaleOptions"
+            v-for="locale in SUPPORT_LOCAL_OPTION"
             :key="locale.value"
             plain
             @click="loadLocaleMessages(locale.value)"

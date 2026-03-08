@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { loadLocaleMessages } from '@/plugins/i18n';
-import { supportLocaleOptions } from '@/locale';
+import { SUPPORT_LOCAL_OPTION } from '@/shared';
 
 defineOptions({
   name: 'AppLocale',
@@ -46,7 +46,7 @@ const updateLocale = (locale: SupportedLocales) => {
     <template #default>
       <div class="flex flex-col gap-y-1">
         <div
-          v-for="item in supportLocaleOptions"
+          v-for="item in SUPPORT_LOCAL_OPTION"
           :key="item.value"
           class="flex items-center rounded-lg px-2 py-1.5 text-el-text-primary cursor-pointer hover:bg-el-fill"
           :class="{ 'bg-el-fill': item.value === getCurrentLocale }"

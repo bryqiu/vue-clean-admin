@@ -5,15 +5,16 @@ defineOptions({
   name: 'AuthContainer',
 });
 
-export interface AuthHeaderProps {
+export interface AuthInfo {
   title: string;
-  titleClass?: string;
   subTitle?: string;
+}
+
+interface AuthContainerProps extends AuthInfo {
+  titleClass?: string;
   subTitleClass?: string;
   isShowSubTitle?: boolean;
 }
-
-interface AuthContainerProps extends AuthHeaderProps {}
 
 withDefaults(defineProps<AuthContainerProps>(), {
   title: '标题',

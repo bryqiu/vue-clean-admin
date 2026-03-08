@@ -1,4 +1,4 @@
-import { LAYOUT_COMPONENT } from '@/router/config';
+import { LAYOUT_COMPONENT } from '@/shared';
 
 const marketRoutes: CustomRouteRecordRaw = {
   path: '/market',

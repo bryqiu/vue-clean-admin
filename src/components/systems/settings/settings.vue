@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { AppDialog } from '@/components/common/app-dialog';
 import { computed, ref } from 'vue';
-import { PageTransitionEnum } from '@/enums';
-import { About, Preferences, Shortcut } from './modules';
+import { PAGE_TRANSITION_ENUM, SETTING_MODULES } from '@/shared';
 import { cn } from '@/utils';
 
 defineOptions({
@@ -11,36 +10,17 @@ defineOptions({
 
 const { getDialogVisible, closeSettingDialog } = useSettingState();
 
-type settingModuleKey = 'preference' | 'shortcut' | 'about';
+type SettingModuleKey = (typeof SETTING_MODULES)[number]['value'];
 
-const settingModules = [
-  {
-    key: 'preference',
-    label: '个人偏好',
-    icon: 'ri:settings-3-line',
-    component: Preferences,
-  },
-  {
-    key: 'shortcut',
-    label: '快捷方式',
-    icon: 'ri:keyboard-box-line',
-    component: Shortcut,
-  },
-  {
-    key: 'about',
-    label: '关于系统',
-    icon: 'ri:copyright-line',
-    component: About,
-  },
-] as const;
-
-const activeSettingKey = ref<settingModuleKey>('preference');
+const activeSettingKey = ref<SettingModuleKey>('preference');
 
 const activeSettingOption = computed(() => {
-  return settingModules.find((item) => item.key === activeSettingKey.value) ?? settingModules[0];
+  return (
+    SETTING_MODULES.find((item) => item.value === activeSettingKey.value) ?? SETTING_MODULES[0]
+  );
 });
 
-const setActiveSettingKey = (key: settingModuleKey) => {
+const setActiveSettingKey = (key: SettingModuleKey) => {
   activeSettingKey.value = key;
 };
 </script>
@@ -64,17 +44,17 @@ const setActiveSettingKey = (key: settingModuleKey) => {
       <div class="grid grid-cols-10 gap-x-6 flex-1 min-h-0">
         <aside class="col-span-2 rounded space-y-1 min-h-0">
           <div
-            v-for="item in settingModules"
-            :key="item.key"
+            v-for="item in SETTING_MODULES"
+            :key="item.value"
             :class="
               cn(
                 'w-full h-item px-4 flex items-center rounded-lg gap-x-2 text-el-text-primary cursor-pointer hover:bg-el-fill',
                 {
-                  'bg-el-fill': item.key === activeSettingKey,
+                  'bg-el-fill': item.value === activeSettingKey,
                 },
               )
             "
-            @click="setActiveSettingKey(item.key)"
+            @click="setActiveSettingKey(item.value)"
           >
             <IconifyIcon :name="item.icon" class="text-base" />
             <span class="text-sm">{{ item.label }}</span>
@@ -83,8 +63,8 @@ const setActiveSettingKey = (key: settingModuleKey) => {
 
         <section class="col-span-8 min-h-0">
           <ElScrollbar class="h-full" view-class="max-w-3xl xl:max-w-4xl min-h-full">
-            <Transition :name="PageTransitionEnum.FADE_RIGHT" mode="out-in" appear>
-              <div :key="activeSettingOption.key" class="min-h-full">
+            <Transition :name="PAGE_TRANSITION_ENUM.FADE_RIGHT" mode="out-in" appear>
+              <div :key="activeSettingOption.value" class="min-h-full">
                 <component :is="activeSettingOption.component" />
               </div>
             </Transition>

@@ -3,40 +3,25 @@ import { createReusableTemplate } from '@vueuse/core';
 import { PrimaryColorPicker, SettingCell, SettingMode } from '../widgets';
 import { computed, ref } from 'vue';
 import type { Component } from 'vue';
-import { LayoutModeEnum, PageTransitionEnum } from '@/enums';
 import {
-  accessibilityModeOptions,
-  breadcrumbStyleOptions,
-  layoutModeOptions,
-  pageTransitionOptions,
-  themeModeOptions,
-  whetherOptions,
-} from '@/dict';
+  ACCESSIBILITY_MODE_OPTION,
+  BREADCRUMB_STYLE_OPTION,
+  LAYOUT_MODE_OPTION,
+  PAGE_TRANSITION_OPTION,
+  PREFERENCE_CONTAINERS,
+  SUPPORT_LOCAL_OPTION,
+  THEME_MODE_OPTION,
+  WHETHER_OPTION,
+} from '@/shared';
+import type { LayoutModeEnumValue, PageTransitionEnumValue, ThemeModeEnumValue } from '@/shared';
 import { loadLocaleMessages } from '@/plugins/i18n';
 import { cn } from '@/utils';
-import { ThemeModeEnum } from '@/enums';
-import { supportLocaleOptions } from '@/locale';
 
 defineOptions({
   name: 'Preferences',
 });
 
-type PreferenceContainerKey =
-  | 'appearance'
-  | 'navigation'
-  | 'motion'
-  | 'accessibility'
-  | 'i18n'
-  | 'widgets';
-
-const preferenceContainers = [
-  { key: 'appearance', label: '外观', desc: '主题、色彩与水印' },
-  { key: 'navigation', label: '导航与布局', desc: '布局、菜单与面包屑' },
-  { key: 'motion', label: '动效', desc: '页面切换与动效' },
-  { key: 'accessibility', label: '无障碍', desc: '视觉辅助与可读性' },
-  { key: 'i18n', label: '语言与地区', desc: '界面语言与区域' },
-  { key: 'widgets', label: '小部件', desc: '快捷组件显示控制' },
-] as const;
+type PreferenceContainerKey = (typeof PREFERENCE_CONTAINERS)[number]['value'];
 
 const activePreferenceKey = ref<PreferenceContainerKey>('appearance');
 
@@ -47,7 +32,7 @@ const [DefineAccessibilityContainer, AccessibilityContainer] = createReusableTem
 const [DefineI18nContainer, I18nContainer] = createReusableTemplate();
 const [DefineWidgetsContainer, WidgetsContainer] = createReusableTemplate();
 const [DefineTransitionMotionContainer, TransitionMotionContainer] = createReusableTemplate<{
-  pageTransition: BaseOptions<PageTransitionEnum>;
+  pageTransition: BaseOptions<PageTransitionEnumValue>;
 }>();
 
 const preferenceContainerComponents: Record<PreferenceContainerKey, Component> = {
@@ -89,7 +74,7 @@ const { getCurrentLocale } = useI18n();
  * 设置页面过渡动画
  * @param name 动画名称
  */
-const setPageTransitionName = (name: PageTransitionEnum) => {
+const setPageTransitionName = (name: PageTransitionEnumValue) => {
   pageTransitionName.value = name;
 };
 
@@ -97,7 +82,7 @@ const setPageTransitionName = (name: PageTransitionEnum) => {
  * 设置主题模式
  * @param mode 主题模式值
  */
-const setThemeMode = (mode: GetObjectValues<typeof ThemeModeEnum>) => {
+const setThemeMode = (mode: ThemeModeEnumValue) => {
   currentThemeMode.value = mode;
 };
 
@@ -105,7 +90,7 @@ const setThemeMode = (mode: GetObjectValues<typeof ThemeModeEnum>) => {
  * 设置布局模式
  * @param value 布局值：左侧导航栏 / 顶部导航栏 / 双列导航栏
  */
-const setCurrentLayoutMode = (value: GetObjectValues<typeof LayoutModeEnum>) => {
+const setCurrentLayoutMode = (value: LayoutModeEnumValue) => {
   currentLayoutMode.value = value;
 };
 
@@ -124,7 +109,7 @@ const setCurrentLocale = (locale: SupportedLocales) => {
       <SettingCell title="主题模式" desc="明暗或跟随系统">
         <div class="flex gap-x-2">
           <SettingMode
-            v-for="themeMode in themeModeOptions"
+            v-for="themeMode in THEME_MODE_OPTION"
             :key="themeMode.value"
             :label="themeMode.label"
             :value="themeMode.value"
@@ -139,7 +124,7 @@ const setCurrentLocale = (locale: SupportedLocales) => {
         <PrimaryColorPicker />
       </SettingCell>
       <SettingCell title="是否显示水印" desc="是否全屏展示水印">
-        <ElSegmented v-model="showWatermark" :options="whetherOptions" block />
+        <ElSegmented v-model="showWatermark" :options="WHETHER_OPTION" block />
       </SettingCell>
       <SettingCell title="水印内容" desc="全屏水印展示的内容">
         <ElInput v-model="watermarkText" :disabled="!showWatermark" />
@@ -150,7 +135,7 @@ const setCurrentLocale = (locale: SupportedLocales) => {
       <SettingCell title="侧边栏布局" desc="左侧导航栏 / 顶部导航栏 / 双列导航栏">
         <div class="flex gap-x-2">
           <SettingMode
-            v-for="item in layoutModeOptions"
+            v-for="item in LAYOUT_MODE_OPTION"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -161,25 +146,25 @@ const setCurrentLocale = (locale: SupportedLocales) => {
         </div>
       </SettingCell>
       <SettingCell title="是否折叠导航栏">
-        <ElSegmented v-model="isMenuCollapse" :options="whetherOptions" />
+        <ElSegmented v-model="isMenuCollapse" :options="WHETHER_OPTION" />
       </SettingCell>
       <SettingCell title="是否启用菜单手风琴" desc="每次只允许展开一个菜单项">
-        <ElSegmented v-model="enableMenuAccordion" :options="whetherOptions" />
+        <ElSegmented v-model="enableMenuAccordion" :options="WHETHER_OPTION" />
       </SettingCell>
       <SettingCell title="是否显示面包屑">
-        <ElSegmented v-model="showBreadcrumb" :options="whetherOptions" block />
+        <ElSegmented v-model="showBreadcrumb" :options="WHETHER_OPTION" block />
       </SettingCell>
       <SettingCell title="是否显示面包屑图标">
         <ElSegmented
           v-model="showBreadcrumbIcon"
-          :options="whetherOptions"
+          :options="WHETHER_OPTION"
           :disabled="!showBreadcrumb"
         />
       </SettingCell>
       <SettingCell title="面包屑样式" desc="默认样式 / 箭头样式 / 平行四边形样式">
         <ElRadioGroup v-model="breadcrumbStyle" :disabled="!showBreadcrumb">
           <ElRadioButton
-            v-for="item in breadcrumbStyleOptions"
+            v-for="item in BREADCRUMB_STYLE_OPTION"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -223,7 +208,7 @@ const setCurrentLocale = (locale: SupportedLocales) => {
           </template>
           <div class="grid grid-cols-1 gap-4">
             <div
-              v-for="(item, index) in pageTransitionOptions"
+              v-for="(item, index) in PAGE_TRANSITION_OPTION"
               :key="index"
               class="flex flex-col gap-y-1"
             >
@@ -247,7 +232,7 @@ const setCurrentLocale = (locale: SupportedLocales) => {
       <SettingCell title="无障碍模式" desc="无障碍模式下的视觉辅助效果">
         <ElRadioGroup v-model="accessibilityMode">
           <ElRadioButton
-            v-for="item in accessibilityModeOptions"
+            v-for="item in ACCESSIBILITY_MODE_OPTION"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -260,7 +245,7 @@ const setCurrentLocale = (locale: SupportedLocales) => {
       <SettingCell title="语言" desc="界面显示语言">
         <ElSelect :model-value="getCurrentLocale" class="w-32!" @change="setCurrentLocale">
           <ElOption
-            v-for="item in supportLocaleOptions"
+            v-for="item in SUPPORT_LOCAL_OPTION"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -298,17 +283,17 @@ const setCurrentLocale = (locale: SupportedLocales) => {
       <div class="text-xs text-el-text-secondary">用户个性化偏好设置</div>
       <div class="flex flex-wrap gap-2 pt-2">
         <div
-          v-for="item in preferenceContainers"
-          :key="item.key"
+          v-for="item in PREFERENCE_CONTAINERS"
+          :key="item.value"
           :class="
             cn(
               'px-3 py-1 rounded-full text-xs cursor-pointer border border-el-border-light text-el-text-secondary hover:text-el-text-primary',
               {
-                'bg-el-fill text-el-text-primary': item.key === activePreferenceKey,
+                'bg-el-fill text-el-text-primary': item.value === activePreferenceKey,
               },
             )
           "
-          @click="activePreferenceKey = item.key"
+          @click="activePreferenceKey = item.value"
         >
           {{ item.label }}
         </div>

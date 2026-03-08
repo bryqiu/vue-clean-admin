@@ -1,25 +1,8 @@
 import { formatStoreKey } from '@/store/helpers';
-import { storeModulesNames } from '@/store/config';
-
-/** 默认语言 */
-export const DEFAULT_LOCALE: SupportedLocales = 'zh-CN';
+import { DEFAULT_LOCALE, STORAGE_KEY } from '@/shared';
 
 /** 语言模块本地存储 Key */
-export const localeStorageKey = formatStoreKey(storeModulesNames.locale);
-
-/** 支持的语言选项 */
-export const supportLocaleOptions: (BaseOptions<SupportedLocales> & { icon: string })[] = [
-  {
-    label: '简体中文',
-    value: 'zh-CN',
-    icon: 'circle-flags:cn',
-  },
-  {
-    label: 'English',
-    value: 'en',
-    icon: 'circle-flags:us',
-  },
-];
+export const localeStorageKey = formatStoreKey(STORAGE_KEY.LOCALE);
 
 /** dayjs 语言包映射类型 */
 export type DayjsLocaleMap = {

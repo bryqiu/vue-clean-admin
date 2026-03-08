@@ -7,9 +7,7 @@ import type {
 } from 'plus-pro-components';
 import { deptService } from '@/services/api';
 import { useTable } from 'plus-pro-components';
-import { viewIcon } from '@/constants';
-import { statusOptions } from '@/dict';
-import { StatusEnum } from '@/enums';
+import { STATUS_ENUM, STATUS_OPTION, TREE_FORM_TYPE_ENUM, VIEW_ICON } from '@/shared';
 import { ref, useTemplateRef } from 'vue';
 import { DeptFormDialog } from './widgets';
 import type { Dept } from '#/type';
@@ -40,12 +38,12 @@ const tableConfig: PlusColumn[] = [
     label: '状态',
     prop: 'status',
     valueType: 'select',
-    options: statusOptions,
+    options: STATUS_OPTION,
     fieldProps: {
       placeholder: '请选择状态',
     },
     renderText: (value: number) => {
-      return value === StatusEnum.ENABLE ? '开启' : '关闭';
+      return value === STATUS_ENUM.ENABLE ? '开启' : '关闭';
     },
   },
   {
@@ -87,7 +85,7 @@ buttons.value = [
     code: 'view',
     props: { type: 'info', size: 'small' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      deptFormDialogInstance.value?.open('detail', row as Dept);
+      deptFormDialogInstance.value?.open(TREE_FORM_TYPE_ENUM.DETAIL, row as Dept);
     },
   },
   {
@@ -95,7 +93,7 @@ buttons.value = [
     code: 'update',
     props: { type: 'primary' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      deptFormDialogInstance.value?.open('edit', row as Dept);
+      deptFormDialogInstance.value?.open(TREE_FORM_TYPE_ENUM.EDIT, row as Dept);
     },
   },
   {
@@ -103,7 +101,7 @@ buttons.value = [
     code: 'addChild',
     props: { type: 'primary' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      deptFormDialogInstance.value?.open('addChild', row as Dept);
+      deptFormDialogInstance.value?.open(TREE_FORM_TYPE_ENUM.ADD_CHILD, row as Dept);
     },
   },
   {
@@ -168,7 +166,9 @@ const handleToggleExpand = () => {
     >
       <template #table-title>
         <ElRow class="button-row">
-          <ElButton type="primary" plain :icon="viewIcon" @click="handleAdd">{{ '添加' }}</ElButton>
+          <ElButton type="primary" plain :icon="VIEW_ICON" @click="handleAdd">
+            {{ '添加' }}
+          </ElButton>
           <ElButton type="primary" plain @click="handleToggleExpand">
             {{ `${isTreeExpanded ? '折叠' : '展开'}全部` }}
           </ElButton>

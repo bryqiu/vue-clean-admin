@@ -1,4 +1,5 @@
-import type { ID, Status } from './common';
+import type { ID } from './common';
+import type { StatusEnumValue } from '@/shared';
 
 export type MenuOption = Pick<
   PermissionRoute,
@@ -17,7 +18,7 @@ export interface Role {
   /**
    * 状态
    */
-  status: Status;
+  status: StatusEnumValue;
   /**
    * 创建时间
    */

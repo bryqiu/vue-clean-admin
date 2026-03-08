@@ -2,8 +2,8 @@
 import { reactive, ref } from 'vue';
 import type { FormInstance, FormRules } from 'element-plus';
 import { AuthContainer, AuthPolicy } from '../components';
-import { AUTH_INFO_MAP } from '../config';
-import { ROUTE_NAMES } from '@/router/config';
+import { AUTH_INFO } from '@/shared';
+import { ROUTE_NAMES } from '@/shared';
 import { useRouter } from 'vue-router';
 
 defineOptions({
@@ -56,7 +56,7 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <AuthContainer v-bind="AUTH_INFO_MAP.SMS">
+  <AuthContainer v-bind="AUTH_INFO.SMS">
     <ElForm
       ref="formInstance"
       :model="formData"

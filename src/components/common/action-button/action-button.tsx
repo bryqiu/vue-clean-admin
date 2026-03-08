@@ -4,7 +4,7 @@ import type { ButtonInstance, ButtonProps, ElTooltipProps, TooltipInstance } fro
 import { cn, isEmpty } from '@/utils';
 import type { IconifyIconProps, LocalIconProps } from '@/components/common/app-icon';
 import { omit } from 'lodash-es';
-import { SizeEnum } from '@/enums';
+import type { SizeEnumValue } from '@/shared';
 import { IconifyIcon, LocalIcon } from '@/components/common/app-icon';
 import './action-button.scss';
 
@@ -47,14 +47,14 @@ export default defineComponent({
       default: '',
     },
     size: {
-      type: String as PropType<GetObjectValues<typeof SizeEnum>>,
+      type: String as PropType<SizeEnumValue>,
       default: 'default',
     },
   },
   setup(props, { expose, attrs }) {
     /** 按钮大小样式映射 */
     const btnSizeStyleMap: {
-      [key in GetObjectValues<typeof SizeEnum>]: string;
+      [key in SizeEnumValue]: string;
     } = {
       large: 'size-8!',
       default: 'size-7!',

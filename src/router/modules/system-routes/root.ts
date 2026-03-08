@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
-import { ROOT_PATH, ROUTE_NAMES } from '@/router/config';
+import { ROOT_PATH, ROUTE_NAMES } from '@/shared';
 
 const rootRoutes: RouteRecordRaw = {
   path: '/',

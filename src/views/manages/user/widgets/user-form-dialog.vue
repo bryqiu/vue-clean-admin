@@ -4,7 +4,7 @@ import { computed, ref } from 'vue';
 import type { Dept, UserInfo } from '#/type';
 import type { PlusColumn } from 'plus-pro-components';
 import { deptService, userService } from '@/services/api';
-import { FormTypeEnum, GenderEnum } from '@/enums';
+import { FORM_TYPE_ENUM, FormTypeEnumValue, GENDER_OPTION } from '@/shared';
 import { merge } from 'lodash-es';
 
 defineOptions({
@@ -31,27 +31,21 @@ const getUserInitFormData = (): UserInfo => ({
   roles: [],
 });
 
-const UserFormTypeEnum = {
-  ...FormTypeEnum,
-} as const;
-
-type UserFormType = GetObjectValues<typeof UserFormTypeEnum>;
-
 /** 表单类型 */
-const formType = ref<UserFormType>(UserFormTypeEnum.ADD);
+const formType = ref<FormTypeEnumValue>(FORM_TYPE_ENUM.ADD);
 
 /** 是否新增表单 */
-const isAddForm = computed(() => formType.value === UserFormTypeEnum.ADD);
+const isAddForm = computed(() => formType.value === FORM_TYPE_ENUM.ADD);
 /** 是否编辑表单 */
-const isEditForm = computed(() => formType.value === UserFormTypeEnum.EDIT);
+const isEditForm = computed(() => formType.value === FORM_TYPE_ENUM.EDIT);
 /** 是否详情表单 */
-const isDetailForm = computed(() => formType.value === UserFormTypeEnum.DETAIL);
+const isDetailForm = computed(() => formType.value === FORM_TYPE_ENUM.DETAIL);
 
 const title = computed(() => {
   const titleMap = {
-    [UserFormTypeEnum.ADD]: `新增${SUBJECT}`,
-    [UserFormTypeEnum.EDIT]: `编辑${SUBJECT}`,
-    [UserFormTypeEnum.DETAIL]: `${SUBJECT}详情`,
+    [FORM_TYPE_ENUM.ADD]: `新增${SUBJECT}`,
+    [FORM_TYPE_ENUM.EDIT]: `编辑${SUBJECT}`,
+    [FORM_TYPE_ENUM.DETAIL]: `${SUBJECT}详情`,
   };
   return titleMap[formType.value];
 });
@@ -117,10 +111,7 @@ const columns = computed((): PlusColumn[] => {
       label: '性别',
       prop: 'gender',
       valueType: 'radio',
-      options: [
-        { label: '男', value: GenderEnum.MALE },
-        { label: '女', value: GenderEnum.FEMALE },
-      ],
+      options: [...GENDER_OPTION],
     },
     {
       label: '所属部门',
@@ -160,7 +151,7 @@ const resetForm = async (data: Partial<UserInfo> = {}) => {
   formDialogInstance.value?.getElementFormInstance()?.resetFields();
 };
 
-const open = async (type: UserFormType, row?: UserInfo) => {
+const open = async (type: FormTypeEnumValue, row?: UserInfo) => {
   formType.value = type;
   dialogVisible.value = true;
   getDeptOptions();

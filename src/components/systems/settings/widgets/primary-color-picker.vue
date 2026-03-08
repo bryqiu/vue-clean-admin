@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { presetPrimaryColorOptions } from '@/dict';
+import { PRESET_PRIMARY_COLOR_OPTION } from '@/shared';
 import { ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 
@@ -28,7 +28,7 @@ const colorPickerChange = useDebounceFn((e: Event) => {
   <div class="flex items-center">
     <div class="flex items-center gap-x-1">
       <div
-        v-for="item in presetPrimaryColorOptions"
+        v-for="item in PRESET_PRIMARY_COLOR_OPTION"
         :key="item.value"
         class="size-6 rounded-lg flex items-center justify-center cursor-pointer"
         :style="{ backgroundColor: item.value }"

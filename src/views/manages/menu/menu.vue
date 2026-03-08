@@ -7,12 +7,11 @@ import type {
 } from 'plus-pro-components';
 import { menuService } from '@/services/api';
 import { useTable } from 'plus-pro-components';
-import { viewIcon } from '@/constants';
+import { PERMISSION_ROUTE_TYPE_ENUM, TREE_FORM_TYPE_ENUM, VIEW_ICON } from '@/shared';
 import { MenuFormDialog } from './widgets';
 import { ref, useTemplateRef } from 'vue';
 import type { MenuFormData } from '#/type';
 import { omit } from 'lodash-es';
-import { PermissionRouteTypeEnum } from '@/enums';
 
 defineOptions({
   name: 'Menus',
@@ -26,13 +25,13 @@ const plusPageInstance = ref<Nullable<PlusPageInstance>>();
 const tableData = ref<MenuTableRow[]>([]);
 
 const menuTypeTagMap = {
-  [PermissionRouteTypeEnum.DIR]: { label: '目录', type: 'info' },
-  [PermissionRouteTypeEnum.MENU]: { label: '菜单', type: 'success' },
-  [PermissionRouteTypeEnum.ACTION]: { label: '操作', type: 'warning' },
-  [PermissionRouteTypeEnum.LINK]: { label: '外链', type: 'danger' },
+  [PERMISSION_ROUTE_TYPE_ENUM.DIR]: { label: '目录', type: 'info' },
+  [PERMISSION_ROUTE_TYPE_ENUM.MENU]: { label: '菜单', type: 'success' },
+  [PERMISSION_ROUTE_TYPE_ENUM.ACTION]: { label: '操作', type: 'warning' },
+  [PERMISSION_ROUTE_TYPE_ENUM.LINK]: { label: '外链', type: 'danger' },
 } as const;
 
-type PermissionRouteType = GetObjectValues<typeof PermissionRouteTypeEnum>;
+type PermissionRouteType = GetObjectValues<typeof PERMISSION_ROUTE_TYPE_ENUM>;
 
 const tableConfig: PlusColumn[] = [
   {
@@ -92,7 +91,10 @@ buttons.value = [
     code: 'view',
     props: { type: 'info', size: 'small' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      menuFormDialogInstance.value?.open('detail', omit(row, ['children']) as MenuFormData);
+      menuFormDialogInstance.value?.open(
+        TREE_FORM_TYPE_ENUM.DETAIL,
+        omit(row, ['children']) as MenuFormData,
+      );
     },
   },
   {
@@ -100,7 +102,10 @@ buttons.value = [
     code: 'update',
     props: { type: 'primary' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      menuFormDialogInstance.value?.open('edit', omit(row, ['children']) as MenuFormData);
+      menuFormDialogInstance.value?.open(
+        TREE_FORM_TYPE_ENUM.EDIT,
+        omit(row, ['children']) as MenuFormData,
+      );
     },
   },
   {
@@ -108,7 +113,10 @@ buttons.value = [
     code: 'addChild',
     props: { type: 'primary' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      menuFormDialogInstance.value?.open('addChild', omit(row, ['children']) as MenuFormData);
+      menuFormDialogInstance.value?.open(
+        TREE_FORM_TYPE_ENUM.ADD_CHILD,
+        omit(row, ['children']) as MenuFormData,
+      );
     },
   },
   {
@@ -175,7 +183,7 @@ const handleToggleExpand = () => {
           <ElButton
             type="primary"
             plain
-            :icon="viewIcon"
+            :icon="VIEW_ICON"
             @click="menuFormDialogInstance?.open('add')"
           >
             添加

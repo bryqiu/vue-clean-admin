@@ -2,12 +2,11 @@
 import { FormDialog } from '@/components/business/form-dialog';
 import { computed, ref } from 'vue';
 import type { PlusColumn } from 'plus-pro-components';
-import { FormTypeEnum } from '@/enums/form';
-import { statusOptions } from '@/dict';
+import { FORM_TYPE_ENUM, type FormTypeEnumValue, STATUS_OPTION } from '@/shared';
 import { cloneDeep, merge } from 'lodash-es';
 import { roleService } from '@/services/api';
 import type { Role } from '#/type';
-import { StatusEnum } from '@/enums';
+import { STATUS_ENUM } from '@/shared';
 
 defineOptions({
   name: 'RoleFormDialog',
@@ -20,23 +19,21 @@ const emits = defineEmits<{ (e: 'refresh'): void }>();
 const dialogVisible = ref(false);
 const formDialogInstance = ref<InstanceType<typeof FormDialog> | null>(null);
 
-type RoleFormType = GetObjectValues<typeof FormTypeEnum>;
-
 /** 表单类型 */
-const formType = ref<RoleFormType>(FormTypeEnum.ADD);
+const formType = ref<FormTypeEnumValue>(FORM_TYPE_ENUM.ADD);
 
 /** 是否新增表单 */
-const isAddForm = computed(() => formType.value === FormTypeEnum.ADD);
+const isAddForm = computed(() => formType.value === FORM_TYPE_ENUM.ADD);
 /** 是否编辑表单 */
-const isEditForm = computed(() => formType.value === FormTypeEnum.EDIT);
+const isEditForm = computed(() => formType.value === FORM_TYPE_ENUM.EDIT);
 /** 是否详情表单 */
-const isDetailForm = computed(() => formType.value === FormTypeEnum.DETAIL);
+const isDetailForm = computed(() => formType.value === FORM_TYPE_ENUM.DETAIL);
 
 const title = computed(() => {
   const titleMap = {
-    [FormTypeEnum.ADD]: `新增${SUBJECT}`,
-    [FormTypeEnum.EDIT]: `编辑${SUBJECT}`,
-    [FormTypeEnum.DETAIL]: `${SUBJECT}详情`,
+    [FORM_TYPE_ENUM.ADD]: `新增${SUBJECT}`,
+    [FORM_TYPE_ENUM.EDIT]: `编辑${SUBJECT}`,
+    [FORM_TYPE_ENUM.DETAIL]: `${SUBJECT}详情`,
   };
   return titleMap[formType.value];
 });
@@ -45,7 +42,7 @@ const title = computed(() => {
 const getRoleInitData = () => ({
   id: 0,
   name: '',
-  status: StatusEnum.ENABLE,
+  status: STATUS_ENUM.ENABLE,
   sort: 0,
   remark: '',
 });
@@ -72,7 +69,7 @@ const columns = computed((): PlusColumn[] => {
       label: '状态',
       prop: 'status',
       valueType: 'select',
-      options: statusOptions,
+      options: STATUS_OPTION,
       fieldProps: {
         placeholder: '请选择状态',
         disabled: isDetailForm.value,
@@ -111,7 +108,7 @@ const resetForm = async (data: Partial<Role> = {}) => {
   formDialogInstance.value?.getElementFormInstance()?.resetFields();
 };
 
-const open = async (type: RoleFormType, row?: Role) => {
+const open = async (type: FormTypeEnumValue, row?: Role) => {
   formType.value = type;
   dialogVisible.value = true;
   resetForm(row);

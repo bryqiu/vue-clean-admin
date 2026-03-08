@@ -9,7 +9,7 @@ import {
   setHtmlLang,
   setLocaleStorage,
 } from '@/locale/helpers';
-import { DEFAULT_LOCALE } from '@/locale';
+import { DEFAULT_LOCALE } from '@/shared';
 import { ref } from 'vue';
 
 // 创建i18n实例

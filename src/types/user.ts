@@ -1,4 +1,5 @@
-import type { Gender, ID, PermissionCode } from './common';
+import type { ID, PermissionCode } from './common';
+import type { GenderEnumValue } from '@/shared';
 
 export interface LoginParams {
   /** 用户名 */
@@ -44,7 +45,7 @@ export interface UserInfo {
   /**
    * 性别
    */
-  gender: Gender;
+  gender: GenderEnumValue;
   /**
    * 备注
    */

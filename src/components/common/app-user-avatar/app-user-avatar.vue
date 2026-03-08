@@ -3,7 +3,7 @@ import type { ImageProps } from 'element-plus';
 import { omit } from 'lodash-es';
 import { computed, useAttrs } from 'vue';
 import { cn } from '@/utils';
-import { SizeEnum } from '@/enums';
+import { SIZE_ENUM } from '@/shared';
 
 defineOptions({
   name: 'AppUserAvatar',
@@ -20,15 +20,15 @@ const shapeMap = {
 } as const;
 
 const sizeMap = {
-  [SizeEnum.small]: {
+  [SIZE_ENUM.SMALL]: {
     avatar: 'size-7',
     dot: 'size-2',
   },
-  [SizeEnum.default]: {
+  [SIZE_ENUM.DEFAULT]: {
     avatar: 'size-9',
     dot: 'size-2.5',
   },
-  [SizeEnum.large]: {
+  [SIZE_ENUM.LARGE]: {
     avatar: 'size-11',
     dot: 'size-3',
   },

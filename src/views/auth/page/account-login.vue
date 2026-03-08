@@ -2,8 +2,8 @@
 import { reactive, ref } from 'vue';
 import type { FormInstance, FormRules } from 'element-plus';
 import { AuthContainer, AuthMode, AuthPolicy } from '../components';
-import { AUTH_INFO_MAP, AUTH_MODE_LIST } from '../config';
-import { ROUTE_NAMES } from '@/router/config';
+import { AUTH_INFO } from '@/shared';
+import { ROUTE_NAMES } from '@/shared';
 import { useRouter } from 'vue-router';
 import { userService } from '@/services/api';
 import type { LoginParams, LoginResult } from '#/type';
@@ -86,7 +86,7 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <AuthContainer v-bind="AUTH_INFO_MAP.ACCOUNT">
+  <AuthContainer v-bind="AUTH_INFO.ACCOUNT">
     <ElForm
       ref="formInstance"
       :model="formData"
@@ -130,7 +130,7 @@ const handleLogin = async () => {
       <span class="text-xs text-el-text-placeholder font-normal">其他登录方式</span>
     </ElDivider>
 
-    <AuthMode :auth-mode-list="AUTH_MODE_LIST" />
+    <AuthMode />
 
     <div class="flex items-center justify-center text-xs mt-6">
       <span class="text-el-text-secondary">还没有账号？</span>

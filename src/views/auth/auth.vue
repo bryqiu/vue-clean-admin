@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AppCopyright } from '@/components/common/app-copyright';
-import { PageTransitionEnum } from '@/enums';
+import { PAGE_TRANSITION_ENUM } from '@/shared';
 import { AppLogo } from '@/components/common/app-logo';
 import { AppTheme } from '@/components/common/app-theme';
 import { AppFullScreen } from '@/components/common/app-full-screen';
@@ -36,7 +36,7 @@ const { getCurrentLoadViewStatus } = useLoadView();
     <div class="flex-1 flex flex-col justify-center items-center z-40">
       <div class="w-[420px] flex flex-col justify-center">
         <RouterView v-slot="{ Component }">
-          <Transition :name="PageTransitionEnum.FADE_RIGHT" mode="out-in">
+          <Transition :name="PAGE_TRANSITION_ENUM.FADE_RIGHT" mode="out-in">
             <component :is="Component" v-if="getCurrentLoadViewStatus" />
           </Transition>
         </RouterView>

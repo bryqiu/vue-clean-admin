@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { layoutModeOptions } from '@/dict';
+import { LAYOUT_MODE_OPTION } from '@/shared';
 
 const { currentLayoutMode } = usePreferences();
 
 const currentLayoutComponent = computed(() => {
-  return layoutModeOptions.find((item) => item.value === currentLayoutMode.value)?.component;
+  return LAYOUT_MODE_OPTION.find((item) => item.value === currentLayoutMode.value)?.component;
 });
 </script>
 

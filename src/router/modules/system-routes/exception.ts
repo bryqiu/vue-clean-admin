@@ -1,4 +1,4 @@
-import { ROUTE_NAMES } from '@/router/config';
+import { ROUTE_NAMES } from '@/shared';
 
 const exceptionRoutes: CustomRouteRecordRaw = {
   path: '/exception',

@@ -1,4 +1,4 @@
-import { LAYOUT_COMPONENT, ROUTE_NAMES } from '@/router/config';
+import { LAYOUT_COMPONENT, ROUTE_NAMES } from '@/shared';
 
 const aboutRoutes: CustomRouteRecordRaw = {
   path: '/about',

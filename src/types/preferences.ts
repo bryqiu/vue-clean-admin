@@ -1,4 +1,9 @@
-import { AccessibilityModeEnum, LayoutModeEnum, PageTransitionEnum, ThemeModeEnum } from '@/enums';
+import type {
+  AccessibilityModeEnumValue,
+  LayoutModeEnumValue,
+  PageTransitionEnumValue,
+  ThemeModeEnumValue,
+} from '@/shared';
 
 /** 外观偏好 */
 export interface AppearancePreferences {
@@ -6,7 +11,7 @@ export interface AppearancePreferences {
    * 主题模式
    * @default light
    */
-  themeMode: ThemeModeEnum;
+  themeMode: ThemeModeEnumValue;
   /**
    * 主色调
    * @default #3b82f6
@@ -77,7 +82,7 @@ export interface NavigationPreferences {
    * 布局模式
    * @default side
    */
-  layoutMode: GetObjectValues<typeof LayoutModeEnum>;
+  layoutMode: LayoutModeEnumValue;
   /**
    * 控制菜单是否折叠
    * @default false
@@ -113,7 +118,7 @@ export interface MotionPreferences {
    * 页面过渡动画
    * @default fade-right
    */
-  pageTransition: PageTransitionEnum;
+  pageTransition: PageTransitionEnumValue;
 }
 
 /** 无障碍偏好 */
@@ -122,7 +127,7 @@ export interface AccessibilityPreferences {
    * 无障碍模式
    * @default 'normal'
    */
-  accessibilityMode: AccessibilityModeEnum;
+  accessibilityMode: AccessibilityModeEnumValue;
 }
 
 /** 小部件 */

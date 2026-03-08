@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { AuthContainer } from '../components';
-import { AUTH_INFO_MAP } from '../config';
+import { AUTH_INFO } from '@/shared';
 import type { FormInstance, FormRules } from 'element-plus';
-import { ROUTE_NAMES } from '@/router/config';
+import { ROUTE_NAMES } from '@/shared';
 import { useRouter } from 'vue-router';
 
 defineOptions({
@@ -48,7 +48,7 @@ const goToAccount = () => {
 </script>
 
 <template>
-  <AuthContainer v-bind="AUTH_INFO_MAP.REGISTER">
+  <AuthContainer v-bind="AUTH_INFO.REGISTER">
     <div>
       <ElForm
         ref="formInstance"

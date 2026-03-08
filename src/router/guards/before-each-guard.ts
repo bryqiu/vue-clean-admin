@@ -1,4 +1,4 @@
-import { ROUTE_NAMES } from '../config';
+import { ROUTE_NAMES } from '@/shared';
 import type { RouteRecordNameGeneric, RouteRecordRaw, Router } from 'vue-router';
 import { userService } from '@/services/api';
 import { nprogress } from './helpers';

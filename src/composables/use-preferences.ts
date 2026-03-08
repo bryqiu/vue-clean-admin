@@ -1,5 +1,6 @@
 import { computed } from 'vue';
-import { LayoutModeEnum, PageTransitionEnum, ThemeModeEnum } from '@/enums';
+import { LAYOUT_MODE_ENUM, PAGE_TRANSITION_ENUM, THEME_MODE_ENUM } from '@/shared';
+import type { LayoutModeEnumValue, PageTransitionEnumValue, ThemeModeEnumValue } from '@/shared';
 import { usePreferencesStore } from '@/store/modules/preferences';
 
 export const usePreferences = () => {
@@ -10,7 +11,7 @@ export const usePreferences = () => {
    */
   const currentThemeMode = computed({
     get: () => preferencesStore.getAppearancePreferences.themeMode,
-    set: (val: ThemeModeEnum) => preferencesStore.toggleThemeMode(val),
+    set: (val: ThemeModeEnumValue) => preferencesStore.toggleThemeMode(val),
   });
 
   /**
@@ -33,7 +34,7 @@ export const usePreferences = () => {
    * 是否为系统模式
    */
   const isSystemThemeMode = computed(() => {
-    return currentThemeMode.value === ThemeModeEnum.SYSTEM;
+    return currentThemeMode.value === THEME_MODE_ENUM.SYSTEM;
   });
 
   /**
@@ -41,14 +42,14 @@ export const usePreferences = () => {
    */
   const pageTransitionName = computed({
     get: () => preferencesStore.getMotionPreferences.pageTransition,
-    set: (val: PageTransitionEnum) => preferencesStore.togglePageTransition(val),
+    set: (val: PageTransitionEnumValue) => preferencesStore.togglePageTransition(val),
   });
 
   /**
    * 是否有路由动画
    */
   const hasPageTransition = computed(() => {
-    return pageTransitionName.value !== PageTransitionEnum.NONE;
+    return pageTransitionName.value !== PAGE_TRANSITION_ENUM.NONE;
   });
 
   /**
@@ -108,28 +109,28 @@ export const usePreferences = () => {
    */
   const currentLayoutMode = computed({
     get: () => preferencesStore.getNavigationPreferences.layoutMode,
-    set: (val: GetObjectValues<typeof LayoutModeEnum>) => preferencesStore.setLayoutMode(val),
+    set: (val: LayoutModeEnumValue) => preferencesStore.setLayoutMode(val),
   });
 
   /**
    * 是否侧边栏布局
    */
   const isSideLayout = computed(() => {
-    return preferencesStore.getNavigationPreferences.layoutMode === LayoutModeEnum.SIDE;
+    return preferencesStore.getNavigationPreferences.layoutMode === LAYOUT_MODE_ENUM.SIDE;
   });
 
   /**
    * 是否顶部布局
    */
   const isTopLayout = computed(() => {
-    return preferencesStore.getNavigationPreferences.layoutMode === LayoutModeEnum.TOP;
+    return preferencesStore.getNavigationPreferences.layoutMode === LAYOUT_MODE_ENUM.TOP;
   });
 
   /**
    * 是否双栏布局
    */
   const isColLayout = computed(() => {
-    return preferencesStore.getNavigationPreferences.layoutMode === LayoutModeEnum.COL;
+    return preferencesStore.getNavigationPreferences.layoutMode === LAYOUT_MODE_ENUM.COL;
   });
 
   /** 获取当前侧边栏宽度 */

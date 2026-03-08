@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { AppDialog } from '@/components/common/app-dialog';
 import { FormDialogProps } from './typing';
-import { FormTypeEnum } from '@/enums';
 import { computed, ref, useTemplateRef } from 'vue';
 import type { FieldValues, PlusColumn, PlusFormInstance } from 'plus-pro-components';
 import type { ButtonProps, FormItemProp } from 'element-plus';
+import type { FormTypeEnumValue } from '@/shared';
 
 defineOptions({
   name: 'FormDialog',
 });
-
-type FormType = GetObjectValues<typeof FormTypeEnum>;
 
 const props = withDefaults(defineProps<FormDialogProps>(), {
   dialogProps: () => ({}),
@@ -21,7 +19,7 @@ const props = withDefaults(defineProps<FormDialogProps>(), {
 const emits = defineEmits<{
   onChangeForm: [values: FieldValues, column: PlusColumn];
   onValidateForm: [prop: FormItemProp, isValid: boolean, message: string];
-  onOpenDialog: [type?: FormType];
+  onOpenDialog: [type?: FormTypeEnumValue];
   onBeforeCloseDialog: [];
   onCloseDialog: [];
   onResetForm: [];

@@ -1,17 +1,24 @@
 import { computed, ref, watch } from 'vue';
 import { store } from '@/store';
 import { defineStore } from 'pinia';
-import { AccessibilityModeEnum, LayoutModeEnum, PageTransitionEnum, ThemeModeEnum } from '@/enums';
-import { defaultPreferences, storeModulesNames } from '@/store/config';
+import {
+  AccessibilityModeEnumValue,
+  DEFAULT_PREFERENCES,
+  LayoutModeEnumValue,
+  PageTransitionEnumValue,
+  STORAGE_KEY,
+  THEME_MODE_ENUM,
+  ThemeModeEnumValue,
+} from '@/shared';
 import { enableStoreHMR } from '@/store/helpers';
 import { usePreferredDark } from '@vueuse/core';
 import type { Preferences } from '#/preferences';
 import { setElementPrimaryColor } from '@/theme/element-plus';
 
 const createPreferencesStore = defineStore(
-  storeModulesNames.preferences,
+  STORAGE_KEY.PREFERENCES,
   () => {
-    const preferences = ref<Preferences>(structuredClone(defaultPreferences));
+    const preferences = ref<Preferences>(structuredClone(DEFAULT_PREFERENCES));
 
     /** 获取偏好配置 */
     const getPreferences = computed(() => preferences.value);
@@ -56,7 +63,7 @@ const createPreferencesStore = defineStore(
      * 切换页面过渡动画
      * @param name 页面过渡动画名称
      */
-    const togglePageTransition = (name: PageTransitionEnum) => {
+    const togglePageTransition = (name: PageTransitionEnumValue) => {
       getMotionPreferences.value.pageTransition = name;
     };
 
@@ -64,7 +71,7 @@ const createPreferencesStore = defineStore(
      * 切换布局模式
      * @param mode 布局模式
      */
-    const setLayoutMode = (mode: GetObjectValues<typeof LayoutModeEnum>) => {
+    const setLayoutMode = (mode: LayoutModeEnumValue) => {
       if (getNavigationPreferences.value.layoutMode === mode) return;
       getNavigationPreferences.value.layoutMode = mode;
     };
@@ -179,7 +186,7 @@ const createPreferencesStore = defineStore(
      * 设置无障碍模式
      * @param val 无障碍模式
      */
-    const setAccessibilityMode = (val: AccessibilityModeEnum) => {
+    const setAccessibilityMode = (val: AccessibilityModeEnumValue) => {
       addAccessibilityStyle(val);
       getAccessibilityPreferences.value.accessibilityMode = val;
     };
@@ -197,7 +204,7 @@ const createPreferencesStore = defineStore(
      * 切换主题模式
      * @param mode 主题模式
      */
-    const toggleThemeMode = (mode: ThemeModeEnum) => {
+    const toggleThemeMode = (mode: ThemeModeEnumValue) => {
       setThemeMode(mode);
       setElementPrimaryColor(getAppearancePreferences.value.primaryColor, isDarkMode.value);
       getAppearancePreferences.value.themeMode = mode;
@@ -207,8 +214,8 @@ const createPreferencesStore = defineStore(
 
     // 监听系统主题变化
     watch(systemDark, () => {
-      if (getAppearancePreferences.value.themeMode === ThemeModeEnum.SYSTEM) {
-        setThemeMode(ThemeModeEnum.SYSTEM);
+      if (getAppearancePreferences.value.themeMode === THEME_MODE_ENUM.SYSTEM) {
+        setThemeMode(THEME_MODE_ENUM.SYSTEM);
         setElementPrimaryColor(getAppearancePreferences.value.primaryColor, isDarkMode.value);
       }
     });

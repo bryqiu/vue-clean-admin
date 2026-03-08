@@ -1,11 +1,10 @@
 import { has, isEmpty } from 'lodash-es';
 import {
-  DEFAULT_LOCALE,
   dayLocaleMessageMap,
   elLocaleMessageMap,
-  localeStorageKey,
   plusProComponentsLocaleMessageMap,
 } from './index';
+import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY } from '@/shared';
 import dayjs from 'dayjs';
 import type { I18n } from 'vue-i18n';
 import type { Ref } from 'vue';
@@ -15,7 +14,7 @@ import type { Ref } from 'vue';
  * @returns 反序列化后的语言Storage数据
  */
 export const getLocaleStorage = () => {
-  const localeStore = localStorage.getItem(localeStorageKey);
+  const localeStore = localStorage.getItem(LOCALE_STORAGE_KEY);
   return localeStore ? JSON.parse(localeStore) : {};
 };
 
@@ -27,7 +26,7 @@ export const setLocaleStorage = (locale: SupportedLocales) => {
   const localeStorage = getLocaleStorage();
 
   localStorage.setItem(
-    localeStorageKey,
+    LOCALE_STORAGE_KEY,
     JSON.stringify({
       ...localeStorage,
       currentLocale: locale,

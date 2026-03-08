@@ -5,7 +5,7 @@ import type { MenuOption, Role } from '#/type';
 import { menuService, roleService } from '@/services/api';
 import type { PlusColumn } from 'plus-pro-components';
 import { TreeInstance } from 'element-plus';
-import { PermissionRouteTypeEnum } from '@/enums';
+import { PERMISSION_ROUTE_TYPE_ENUM } from '@/shared';
 
 defineOptions({
   name: 'PermissionAssignDialog',
@@ -119,7 +119,7 @@ const handleCollapseAll = () => {
 
 const ACTION_DEFAULT_ICON = 'mingcute:cursor-3-line';
 
-const isActionPermission = (data: MenuOption) => data.type === PermissionRouteTypeEnum.ACTION;
+const isActionPermission = (data: MenuOption) => data.type === PERMISSION_ROUTE_TYPE_ENUM.ACTION;
 
 defineExpose({
   open,

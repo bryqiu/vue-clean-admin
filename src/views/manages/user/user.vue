@@ -7,9 +7,7 @@ import type {
   PlusPageInstance,
 } from 'plus-pro-components';
 import { useTable } from 'plus-pro-components';
-import { viewIcon } from '@/constants';
-import { statusOptions } from '@/dict';
-import { GenderEnum, StatusEnum } from '@/enums';
+import { FORM_TYPE_ENUM, GENDER_OPTION, VIEW_ICON } from '@/shared';
 import { onMounted, ref, useTemplateRef } from 'vue';
 import type { Dept, UserInfo } from '#/type';
 import { AssignRole, UserFormDialog } from './widgets';
@@ -17,17 +15,6 @@ import { AssignRole, UserFormDialog } from './widgets';
 defineOptions({
   name: 'User',
 });
-
-const genderOptions = [
-  {
-    label: '男',
-    value: GenderEnum.MALE,
-  },
-  {
-    label: '女',
-    value: GenderEnum.FEMALE,
-  },
-];
 
 const { buttons } = useTable();
 
@@ -121,7 +108,7 @@ buttons.value = [
     code: 'view',
     props: { type: 'info', size: 'small' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      userFormDialogInstance.value?.open('detail', row as UserInfo);
+      userFormDialogInstance.value?.open(FORM_TYPE_ENUM.DETAIL, row as UserInfo);
     },
   },
   {
@@ -129,7 +116,7 @@ buttons.value = [
     code: 'update',
     props: { type: 'primary' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      userFormDialogInstance.value?.open('edit', row as UserInfo);
+      userFormDialogInstance.value?.open(FORM_TYPE_ENUM.EDIT, row as UserInfo);
     },
   },
 
@@ -252,11 +239,11 @@ onMounted(() => {
         :is-card="false"
       >
         <template #plus-cell-gender="{ value }">
-          <ElTag>{{ genderOptions.find((item) => item.value === value)?.label || '未知' }}</ElTag>
+          <ElTag>{{ GENDER_OPTION.find((item) => item.value === value)?.label || '未知' }}</ElTag>
         </template>
         <template #table-title>
           <ElRow>
-            <ElButton type="primary" plain :icon="viewIcon" @click="handleAdd">添加</ElButton>
+            <ElButton type="primary" plain :icon="VIEW_ICON" @click="handleAdd">添加</ElButton>
           </ElRow>
         </template>
       </PlusPage>

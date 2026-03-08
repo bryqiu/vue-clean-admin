@@ -1,4 +1,5 @@
-import { CreateTime, ID, Status } from './common';
+import { CreateTime, ID } from './common';
+import type { StatusEnumValue } from '@/shared';
 
 export interface Dept {
   /**
@@ -25,7 +26,7 @@ export interface Dept {
   /**
    * 状态 (0禁用 1启用)
    */
-  status: Status;
+  status: StatusEnumValue;
 
   /**
    * 备注

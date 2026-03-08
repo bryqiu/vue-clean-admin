@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PageTransitionEnum } from '@/enums';
+import { PAGE_TRANSITION_ENUM } from '@/shared';
 import type { LocalIconProps } from '@/components/common/app-icon';
 import { computed } from 'vue';
 import { omit } from 'lodash-es';
@@ -57,7 +57,7 @@ const getLocalIconProps = computed(() => {
     <div class="border border-el-border rounded size-7 flex items-center justify-center">
       <LocalIcon v-bind="getLocalIconProps" />
     </div>
-    <Transition :name="PageTransitionEnum.NONE">
+    <Transition :name="PAGE_TRANSITION_ENUM.NONE">
       <span
         v-show="showTitle"
         :class="cn('text-lg font-semibold inline-block truncate text-el-text-primary', textClass)"

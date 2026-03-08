@@ -1,4 +1,4 @@
-import { REGEX } from '@/constants';
+import { REGEX } from '@/shared';
 
 export type DataType =
   | 'String'

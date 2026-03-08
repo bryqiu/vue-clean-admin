@@ -1,14 +1,13 @@
 import { computed, ref } from 'vue';
 import { store } from '@/store';
 import { defineStore } from 'pinia';
-import { storeModulesNames } from '@/store/config';
 import { enableStoreHMR, formatStoreKey } from '@/store/helpers';
 import type { User, UserInfo } from '#/type';
 import { generateRoutes, getVisibleMenuRoutes } from '@/router/helpers';
 import { generateSortRoutes } from '@/router/helpers';
 import { staticRoutes } from '@/router';
 import exceptionRoutes from '@/router/modules/system-routes/exception';
-import { NOT_FOUND_ROUTE } from '@/router/config';
+import { NOT_FOUND_ROUTE, STORAGE_KEY } from '@/shared';
 
 const createDefaultUserInfo = (): User => ({
   basicInfo: {
@@ -28,7 +27,7 @@ const createDefaultUserInfo = (): User => ({
 });
 
 const createUserStore = defineStore(
-  storeModulesNames.user,
+  STORAGE_KEY.USER,
   () => {
     /** 访问令牌 */
     const accessToken = ref<string>('');
@@ -158,7 +157,7 @@ const createUserStore = defineStore(
       // 重置用户信息与权限
       setUserInfo(createDefaultUserInfo());
       // 清除持久化缓存
-      localStorage.removeItem(formatStoreKey(storeModulesNames.user));
+      localStorage.removeItem(formatStoreKey(STORAGE_KEY.USER));
       // 重置路由添加状态
       setRoutesAddStatus(false);
     };

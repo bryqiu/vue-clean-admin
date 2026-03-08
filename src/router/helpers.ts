@@ -1,8 +1,14 @@
 import type { ImportGlobRoutes } from './typing';
-import { SortModeEnum } from '@/enums/index';
-import { LAYOUT_COMPONENT, NOT_COMPONENT, PARENT_LAYOUT, VIEWS_MODULES } from './config';
+import { type SortModeEnumValue } from '@/shared';
+import {
+  LAYOUT_COMPONENT,
+  NOT_COMPONENT,
+  PARENT_LAYOUT,
+  PERMISSION_ROUTE_TYPE_ENUM,
+  SORT_MODE_ENUM,
+  VIEWS_MODULES,
+} from '@/shared';
 import { isString } from '@/utils';
-import { PermissionRouteTypeEnum } from '@/enums';
 
 /**
  * 处理通过 import.meta.glob 导出的路由
@@ -20,12 +26,12 @@ export const extractRoutes = (routers: Record<string, ImportGlobRoutes>) => {
  */
 export const generateSortRoutes = (
   routes: CustomRouteRecordRaw[],
-  mode: SortModeEnum = SortModeEnum.ASC,
+  mode: SortModeEnumValue = SORT_MODE_ENUM.ASC,
 ) => {
   return [...routes].sort((a, b) => {
     const sortA = a.meta.sort ?? 0;
     const sortB = b.meta.sort ?? 0;
-    return mode === SortModeEnum.ASC ? sortA - sortB : sortB - sortA;
+    return mode === SORT_MODE_ENUM.ASC ? sortA - sortB : sortB - sortA;
   });
 };
 
@@ -54,7 +60,7 @@ function loadComponent(route: PermissionRoute) {
   if (!isString(componentPath)) return NOT_COMPONENT;
 
   // route.parentId 为 0，并且 type 类型为目录，才返回 Layout 组件
-  if (type === PermissionRouteTypeEnum.DIR) {
+  if (type === PERMISSION_ROUTE_TYPE_ENUM.DIR) {
     // 顶级目录（parentId = 0），返回 Layout 组件
     if (!parentId) return LAYOUT_COMPONENT;
     // 子级目录，返回 ParentLayout 组件
@@ -117,7 +123,7 @@ export function generateRoutes(routes: PermissionRoute[]): CustomRouteRecordRaw[
     };
 
     // 是目录数据，设置重定向路径
-    if (type === PermissionRouteTypeEnum.DIR) {
+    if (type === PERMISSION_ROUTE_TYPE_ENUM.DIR) {
       baseRoute.redirect = redirect || getRedirectPath(route);
     }
     // 递归处理子路由

@@ -1,39 +1,13 @@
 <script setup lang="ts">
 import { LocalIcon } from '@/components/common/app-icon';
 import { AppCopyright } from '@/components/common/app-copyright';
+import { RESOURCE_ITEMS } from '@/shared';
 
 defineOptions({
   name: 'About',
 });
 
 const appVersion = import.meta.env.VITE_APP_VERSION;
-
-const resourceItems = [
-  {
-    label: '代码仓库',
-    text: 'github.com/bryqiu/vue-clean-admin',
-    desc: '获取源码与版本信息',
-    url: 'https://github.com/bryqiu/vue-clean-admin',
-  },
-  {
-    label: '问题反馈',
-    text: 'Issues',
-    desc: '提交问题与功能建议',
-    url: 'https://github.com/bryqiu/vue-clean-admin/issues/new',
-  },
-  {
-    label: '更新日志',
-    text: 'Releases',
-    desc: '查看更新日志与版本历史',
-    url: 'https://github.com/bryqiu/vue-clean-admin/releases',
-  },
-  {
-    label: '建设指南',
-    text: '《中后台系统建设指南专栏》',
-    desc: '落地思路与最佳实践',
-    url: 'https://github.com/bryqiu/Blog',
-  },
-];
 </script>
 
 <template>
@@ -82,7 +56,7 @@ const resourceItems = [
       </div>
       <div class="mt-4 flex flex-col gap-3">
         <div
-          v-for="item in resourceItems"
+          v-for="item in RESOURCE_ITEMS"
           :key="item.label"
           class="flex flex-col gap-y-1 rounded border border-el-border-lighter p-3"
         >

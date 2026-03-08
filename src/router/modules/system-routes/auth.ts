@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
-import { AUTH_LAYOUT, ROUTE_NAMES } from '@/router/config';
+import { AUTH_LAYOUT, ROUTE_NAMES } from '@/shared';
 
 const authRoutes: RouteRecordRaw = {
   path: '/auth',

@@ -6,7 +6,7 @@ import { computed, useAttrs } from 'vue';
 import type { PopoverProps } from 'element-plus';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { useRouter } from 'vue-router';
-import { ROUTE_NAMES } from '@/router/config';
+import { ROUTE_NAMES } from '@/shared';
 import { storeToRefs } from 'pinia';
 
 defineOptions({

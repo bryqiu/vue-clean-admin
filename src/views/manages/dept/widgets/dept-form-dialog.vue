@@ -2,12 +2,11 @@
 import { FormDialog } from '@/components/business/form-dialog';
 import { computed, ref } from 'vue';
 import type { PlusColumn } from 'plus-pro-components';
-import { FormTypeEnum } from '@/enums/form';
-import { statusOptions } from '@/dict';
+import { STATUS_ENUM, STATUS_OPTION, TREE_FORM_TYPE_ENUM } from '@/shared';
+import type { TreeFormTypeEnumValue } from '@/shared';
 import { merge } from 'lodash-es';
 import { deptService } from '@/services/api';
 import type { Dept } from '#/type';
-import { StatusEnum } from '@/enums';
 
 defineOptions({
   name: 'DeptFormDialog',
@@ -27,7 +26,7 @@ const ROOT_DEPT: DeptFormData[] = [
     id: 0,
     name: '无',
     sort: 0,
-    status: StatusEnum.ENABLE,
+    status: STATUS_ENUM.ENABLE,
   },
 ];
 
@@ -35,31 +34,24 @@ const dialogVisible = ref(false);
 const formDialogInstance = ref<InstanceType<typeof FormDialog> | null>(null);
 const deptOptions = ref<DeptFormData[]>([]);
 
-const DeptFormTypeEnum = {
-  ...FormTypeEnum,
-  ADD_CHILD: 'addChild',
-} as const;
-
-type DeptFormType = GetObjectValues<typeof DeptFormTypeEnum>;
-
 /** 表单类型 */
-const formType = ref<DeptFormType>(DeptFormTypeEnum.ADD);
+const formType = ref<TreeFormTypeEnumValue>(TREE_FORM_TYPE_ENUM.ADD);
 
 /** 是否新增表单 */
-const isAddForm = computed(() => formType.value === DeptFormTypeEnum.ADD);
+const isAddForm = computed(() => formType.value === TREE_FORM_TYPE_ENUM.ADD);
 /** 是否编辑表单 */
-const isEditForm = computed(() => formType.value === DeptFormTypeEnum.EDIT);
+const isEditForm = computed(() => formType.value === TREE_FORM_TYPE_ENUM.EDIT);
 /** 是否详情表单 */
-const isDetailForm = computed(() => formType.value === DeptFormTypeEnum.DETAIL);
+const isDetailForm = computed(() => formType.value === TREE_FORM_TYPE_ENUM.DETAIL);
 /** 是否新增子级表单 */
-const isAddChildForm = computed(() => formType.value === DeptFormTypeEnum.ADD_CHILD);
+const isAddChildForm = computed(() => formType.value === TREE_FORM_TYPE_ENUM.ADD_CHILD);
 
 const title = computed(() => {
   const titleMap = {
-    [DeptFormTypeEnum.ADD]: `新增${SUBJECT}`,
-    [DeptFormTypeEnum.EDIT]: `编辑${SUBJECT}`,
-    [DeptFormTypeEnum.DETAIL]: `${SUBJECT}详情`,
-    [DeptFormTypeEnum.ADD_CHILD]: `新增子${SUBJECT}`,
+    [TREE_FORM_TYPE_ENUM.ADD]: `新增${SUBJECT}`,
+    [TREE_FORM_TYPE_ENUM.EDIT]: `编辑${SUBJECT}`,
+    [TREE_FORM_TYPE_ENUM.DETAIL]: `${SUBJECT}详情`,
+    [TREE_FORM_TYPE_ENUM.ADD_CHILD]: `新增子${SUBJECT}`,
   };
   return titleMap[formType.value];
 });
@@ -69,7 +61,7 @@ const getInitialFormData = (): DeptFormData => ({
   name: '',
   parentId: undefined,
   sort: 1,
-  status: StatusEnum.ENABLE,
+  status: STATUS_ENUM.ENABLE,
   remark: '',
 });
 
@@ -98,7 +90,7 @@ const columns = computed((): PlusColumn[] => {
       label: '状态',
       prop: 'status',
       valueType: 'select',
-      options: statusOptions,
+      options: STATUS_OPTION,
       fieldProps: {
         placeholder: '请选择状态',
       },
@@ -149,7 +141,7 @@ const resetForm = async (data: Partial<DeptFormData> = {}) => {
   formDialogInstance.value?.getElementFormInstance()?.resetFields();
 };
 
-const open = async (type: DeptFormType, row?: Dept) => {
+const open = async (type: TreeFormTypeEnumValue, row?: Dept) => {
   formType.value = type;
   dialogVisible.value = true;
   getDeptOptions();

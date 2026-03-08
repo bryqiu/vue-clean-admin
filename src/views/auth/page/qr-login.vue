@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { ROUTE_NAMES } from '@/router/config';
+import { ROUTE_NAMES } from '@/shared';
 import { AuthContainer, AuthPolicy } from '../components';
 
-import { AUTH_INFO_MAP } from '../config';
+import { AUTH_INFO } from '@/shared';
 
 defineOptions({
   name: 'QrLogin',
@@ -17,7 +17,7 @@ const goToAccountLogin = () => {
 </script>
 
 <template>
-  <AuthContainer v-bind="AUTH_INFO_MAP.QR">
+  <AuthContainer v-bind="AUTH_INFO.QR">
     <div class="flex flex-col gap-y-2 items-center justify-center">
       <div
         class="size-44 rounded-lg border border-solid border-el-border-light flex items-center justify-center p-3"

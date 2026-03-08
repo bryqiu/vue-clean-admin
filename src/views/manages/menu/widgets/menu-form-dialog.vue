@@ -2,13 +2,12 @@
 import { FormDialog } from '@/components/business/form-dialog';
 import { computed, ref } from 'vue';
 import type { MenuFormData, MenuOption } from '#/type';
-import { PermissionRouteTypeEnum } from '@/enums';
-import { FormTypeEnum } from '@/enums/form';
+import { PERMISSION_ROUTE_TYPE_ENUM, TREE_FORM_TYPE_ENUM, WHETHER_OPTION } from '@/shared';
 import type { PlusColumn } from 'plus-pro-components';
-import { whetherOptions } from '@/dict';
 import { default as IconPicker } from './icon-picker.vue';
 import { menuService } from '@/services/api';
 import { has, merge } from 'lodash-es';
+import type { TreeFormTypeEnumValue } from '@/shared';
 
 defineOptions({
   name: 'MenuFormDialog',
@@ -21,7 +20,7 @@ const emits = defineEmits<{ (e: 'refresh'): void }>();
 const ROOT_MENU: MenuOption[] = [
   {
     id: 0,
-    type: PermissionRouteTypeEnum.DIR,
+    type: PERMISSION_ROUTE_TYPE_ENUM.DIR,
     meta: {
       title: '根目录',
       menuIcon: 'ri:list-check',
@@ -34,7 +33,7 @@ const menuFormDialogInstance = ref<InstanceType<typeof FormDialog> | null>(null)
 
 /** 获取初始化表单数据 */
 const getInitialFormData = (): MenuFormData => ({
-  type: PermissionRouteTypeEnum.DIR,
+  type: PERMISSION_ROUTE_TYPE_ENUM.DIR,
   permissionCode: '',
   name: '',
   path: '',
@@ -52,31 +51,24 @@ const getInitialFormData = (): MenuFormData => ({
   },
 });
 
-const MenuFormTypeEnum = {
-  ...FormTypeEnum,
-  ADD_CHILD: 'addChild',
-} as const;
-
-type MenuFormType = GetObjectValues<typeof MenuFormTypeEnum>;
-
 /** 表单类型 */
-const formType = ref<MenuFormType>(MenuFormTypeEnum.ADD);
+const formType = ref<TreeFormTypeEnumValue>(TREE_FORM_TYPE_ENUM.ADD);
 
 /** 是否新增表单 */
-const isAddForm = computed(() => formType.value === MenuFormTypeEnum.ADD);
+const isAddForm = computed(() => formType.value === TREE_FORM_TYPE_ENUM.ADD);
 /** 是否编辑表单 */
-const isEditForm = computed(() => formType.value === MenuFormTypeEnum.EDIT);
+const isEditForm = computed(() => formType.value === TREE_FORM_TYPE_ENUM.EDIT);
 /** 是否详情表单 */
-const isDetailForm = computed(() => formType.value === MenuFormTypeEnum.DETAIL);
+const isDetailForm = computed(() => formType.value === TREE_FORM_TYPE_ENUM.DETAIL);
 /** 是否新增子菜单 */
-const isAddChildForm = computed(() => formType.value === MenuFormTypeEnum.ADD_CHILD);
+const isAddChildForm = computed(() => formType.value === TREE_FORM_TYPE_ENUM.ADD_CHILD);
 
 const title = computed(() => {
   const titleMap = {
-    [MenuFormTypeEnum.ADD]: `新增${SUBJECT}`,
-    [MenuFormTypeEnum.EDIT]: `编辑${SUBJECT}`,
-    [MenuFormTypeEnum.DETAIL]: `${SUBJECT}详情`,
-    [MenuFormTypeEnum.ADD_CHILD]: `新增子${SUBJECT}`,
+    [TREE_FORM_TYPE_ENUM.ADD]: `新增${SUBJECT}`,
+    [TREE_FORM_TYPE_ENUM.EDIT]: `编辑${SUBJECT}`,
+    [TREE_FORM_TYPE_ENUM.DETAIL]: `${SUBJECT}详情`,
+    [TREE_FORM_TYPE_ENUM.ADD_CHILD]: `新增子${SUBJECT}`,
   };
   return titleMap[formType.value];
 });
@@ -89,17 +81,17 @@ const menuOptions = ref<MenuOption[]>([]);
 
 /** 菜单类型选择 */
 const menuTypeOptions = [
-  { label: '目录', value: PermissionRouteTypeEnum.DIR },
-  { label: '菜单', value: PermissionRouteTypeEnum.MENU },
-  { label: '操作', value: PermissionRouteTypeEnum.ACTION },
+  { label: '目录', value: PERMISSION_ROUTE_TYPE_ENUM.DIR },
+  { label: '菜单', value: PERMISSION_ROUTE_TYPE_ENUM.MENU },
+  { label: '操作', value: PERMISSION_ROUTE_TYPE_ENUM.ACTION },
 ];
 
 /** 动态表单列配置 */
 const columns = computed((): PlusColumn[] => {
   const { type } = formData.value;
-  const isDir = type === PermissionRouteTypeEnum.DIR;
-  const isMenu = type === PermissionRouteTypeEnum.MENU;
-  const isButton = type === PermissionRouteTypeEnum.ACTION;
+  const isDir = type === PERMISSION_ROUTE_TYPE_ENUM.DIR;
+  const isMenu = type === PERMISSION_ROUTE_TYPE_ENUM.MENU;
+  const isButton = type === PERMISSION_ROUTE_TYPE_ENUM.ACTION;
   const titleLabel = isButton ? '操作名称' : '菜单标题';
   const titlePlaceholder = isButton ? '请输入操作名称(meta.title)' : '请输入菜单标题(meta.title)';
   const titleMessage = isButton ? '请输入操作名称' : '请输入菜单标题';
@@ -268,7 +260,7 @@ const fetchMenuInfo = async (id: MenuFormData['id']) => {
   }
 };
 
-const open = async (type: MenuFormType, row?: MenuFormData) => {
+const open = async (type: TreeFormTypeEnumValue, row?: MenuFormData) => {
   formType.value = type;
   dialogVisible.value = true;
   getMenuOptions();
@@ -363,17 +355,17 @@ defineExpose({
 
     <!-- 隐藏菜单 -->
     <template #plus-field-hideMenu>
-      <ElSegmented v-model="formData.meta.hideMenu" :options="whetherOptions" />
+      <ElSegmented v-model="formData.meta.hideMenu" :options="WHETHER_OPTION" />
     </template>
 
     <!-- 隐藏面包屑 -->
     <template #plus-field-hideBreadcrumb>
-      <ElSegmented v-model="formData.meta.hideBreadcrumb" :options="whetherOptions" />
+      <ElSegmented v-model="formData.meta.hideBreadcrumb" :options="WHETHER_OPTION" />
     </template>
 
     <!-- 隐藏单子菜单 -->
     <template #plus-field-hideParentIfSingleChild>
-      <ElSegmented v-model="formData.meta.hideParentIfSingleChild" :options="whetherOptions" />
+      <ElSegmented v-model="formData.meta.hideParentIfSingleChild" :options="WHETHER_OPTION" />
     </template>
 
     <template v-if="isDetailForm" #dialog-footer>

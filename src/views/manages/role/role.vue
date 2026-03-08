@@ -7,9 +7,7 @@ import type {
 } from 'plus-pro-components';
 import { roleService } from '@/services/api';
 import { useTable } from 'plus-pro-components';
-import { viewIcon } from '@/constants';
-import { statusOptions } from '@/dict';
-import { StatusEnum } from '@/enums';
+import { FORM_TYPE_ENUM, STATUS_ENUM, STATUS_OPTION, VIEW_ICON } from '@/shared';
 import { ref, useTemplateRef } from 'vue';
 import type { Role } from '#/type';
 import { PermissionAssignDialog, RoleFormDialog } from './widgets';
@@ -49,12 +47,12 @@ const tableConfig: PlusColumn[] = [
     label: '状态',
     prop: 'status',
     valueType: 'select',
-    options: statusOptions,
+    options: STATUS_OPTION,
     fieldProps: {
       placeholder: '请选择状态',
     },
     renderText: (value: number) => {
-      return value === StatusEnum.ENABLE ? '开启' : '关闭';
+      return value === STATUS_ENUM.ENABLE ? '开启' : '关闭';
     },
   },
   {
@@ -98,7 +96,7 @@ buttons.value = [
     code: 'view',
     props: { type: 'info', size: 'small' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      roleFormDialogInstance.value?.open('detail', row as Role);
+      roleFormDialogInstance.value?.open(FORM_TYPE_ENUM.DETAIL, row as Role);
     },
   },
   {
@@ -106,7 +104,7 @@ buttons.value = [
     code: 'update',
     props: { type: 'primary' },
     onClick: ({ row }: ButtonsCallBackParams) => {
-      roleFormDialogInstance.value?.open('edit', row as Role);
+      roleFormDialogInstance.value?.open(FORM_TYPE_ENUM.EDIT, row as Role);
     },
   },
   {
@@ -163,7 +161,9 @@ const handleAdd = () => {
     >
       <template #table-title>
         <ElRow class="button-row">
-          <ElButton type="primary" plain :icon="viewIcon" @click="handleAdd">{{ '添加' }}</ElButton>
+          <ElButton type="primary" plain :icon="VIEW_ICON" @click="handleAdd">
+            {{ '添加' }}
+          </ElButton>
         </ElRow>
       </template>
     </PlusPage>

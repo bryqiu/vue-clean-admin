@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { themeModeOptions } from '@/dict';
-import { ThemeModeEnum } from '@/enums';
+import { THEME_MODE_OPTION } from '@/shared';
+import type { ThemeModeEnumValue } from '@/shared';
 
 defineOptions({
   name: 'AppTheme',
@@ -11,15 +11,15 @@ const { currentThemeMode } = usePreferences();
 
 const getCurrentThemeModeOption = computed(() => {
   return (
-    themeModeOptions.find((item) => item.value === currentThemeMode.value) || themeModeOptions[0]
+    THEME_MODE_OPTION.find((item) => item.value === currentThemeMode.value) || THEME_MODE_OPTION[0]
   );
 });
 
 /**
  * 改变主题模式
- * @param value 选中的主题模式值：ThemeModeEnum
+ * @param value 选中的主题模式值
  */
-const handleChangeThemeMode = (value: ThemeModeEnum) => {
+const handleChangeThemeMode = (value: ThemeModeEnumValue) => {
   currentThemeMode.value = value;
 };
 </script>
@@ -51,7 +51,7 @@ const handleChangeThemeMode = (value: ThemeModeEnum) => {
     <template #default>
       <div class="flex flex-col gap-y-1">
         <div
-          v-for="item in themeModeOptions"
+          v-for="item in THEME_MODE_OPTION"
           :key="item.value"
           class="flex items-center rounded-lg px-2 py-1.5 text-el-text-primary cursor-pointer hover:bg-el-fill"
           :class="{ 'bg-el-fill': item.value === currentThemeMode }"

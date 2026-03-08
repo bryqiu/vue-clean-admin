@@ -1,14 +1,26 @@
 import { defineComponent, h } from 'vue';
 import { RouterView } from 'vue-router';
+import { ROUTE_NAMES } from '../enums';
 
+/** 路由默认首页 */
+export const DEFAULT_HOME_ROUTE = '/dashboard';
+
+/** 根路径-重定向路径 */
+export const ROOT_PATH = '/dashboard/analytics';
+
+/** 主布局组件 */
 export const LAYOUT_COMPONENT = () => import('@/layout/index.vue');
 
+/** 认证页布局组件 */
 export const AUTH_LAYOUT = () => import('@/views/auth/auth.vue');
 
-export const VIEWS_MODULES = import.meta.glob('../views/**/*.vue');
+/** Views 文件夹页面模块映射（用于动态路由组件解析） */
+export const VIEWS_MODULES = import.meta.glob('/src/views/**/*.vue');
 
+/** 404 页面组件 */
 export const NOT_FOUND_COMPONENT = () => import('@/views/exceptions/not-found.vue');
 
+/** 动态路由组件兜底（当 component 字段无法匹配到页面时展示） */
 export const NOT_COMPONENT = defineComponent({
   name: 'NoComponent',
   setup() {
@@ -38,7 +50,7 @@ export const NOT_COMPONENT = defineComponent({
   },
 });
 
-// <router-view /> 容器
+/** 父级路由占位组件 */
 export const PARENT_LAYOUT = defineComponent({
   name: 'ParentLayout',
   setup() {
@@ -46,49 +58,7 @@ export const PARENT_LAYOUT = defineComponent({
   },
 });
 
-/** 根路径-重定向路径 */
-export const ROOT_PATH = '/dashboard/analytics';
-
-/** 路由名称 */
-export const ROUTE_NAMES = {
-  /** 根路径 */
-  ROOT: 'Root',
-  /** 仪表盘 */
-  DASHBOARD: 'Dashboard',
-  /** 数据分析 */
-  ANALYTICS: 'Analytics',
-  /** 错误页 */
-  ERROR_PAGES: 'ErrorPages',
-  /** 404 */
-  NOT_FOUND: 'NotFound',
-  /** 403 */
-  FORBIDDEN: 'Forbidden',
-  /** 500 */
-  SERVICE_ERROR: 'ServiceError',
-  /** 关于 */
-  ABOUT: 'About',
-  /** 关于项目 */
-  ABOUT_PROJECT: 'AboutProject',
-
-  /** 示例 */
-  EXAMPLES: 'Examples',
-  /** 示例 Element Plus */
-  ELEMENT_PLUS: 'ElementPlus',
-
-  /** 登录 */
-  AUTH: 'Auth',
-  /** 账号登录 */
-  ACCOUNT_LOGIN: 'AccountLogin',
-  /** 短信登录 */
-  SMS_LOGIN: 'SmsLogin',
-  /** 扫码登录 */
-  QR_LOGIN: 'QrLogin',
-  /** 忘记密码 */
-  FORGOT_PASSWORD: 'ForgotPassword',
-  /** 注册 */
-  REGISTER: 'Register',
-} as const;
-
+/** 全局 404 路由配置 */
 export const NOT_FOUND_ROUTE = {
   path: '/:pathMatch(.*)*',
   name: ROUTE_NAMES.NOT_FOUND,
