@@ -14,7 +14,7 @@ export const configAutoImportPlugin = (): PluginOption => {
         'element-plus': ['ElMessage', 'ElMessageBox', 'ElLoading'],
       },
     ],
-    dirs: [`${pathResolve('src/hooks')}`, `${pathResolve('src/composables')}`],
+    dirs: [`${pathResolve('src/composables')}`],
     dts: `src/typings/auto-imports.d.ts`, // 自定义生成 auto-imports.d.ts 文件路径
     resolvers: [ElementPlusResolver()],
     eslintrc: {
