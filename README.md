@@ -69,16 +69,14 @@ vue-clean-admin/
 │   ├── assets/                       # 静态资源目录 (如图片、字体等)
 │   ├── components/                   # 组件封装
 │   ├── composables/                  # 组合式函数
-│   ├── constants/                    # 常量
-│   ├── dict/                         # 字典
 │   ├── directives/                   # 自定义指令
-│   ├── enums/                        # 枚举
 │   ├── hooks/                        # 自定义 Hook
 │   ├── layout/                       # 全局布局
 │   ├── locale/                       # i18n 国际化
 │   ├── plugins/                      # 插件配置
 │   ├── router/                       # 路由配置
 │   ├── services/                     # 请求与 API
+│   ├── shared/                       # 全局 const/enum/option 定义
 │   ├── store/                        # Pinia 状态管理
 │   ├── theme/                        # 主题与样式
 │   ├── types/                        # 业务类型定义
