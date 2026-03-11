@@ -1,0 +1,46 @@
+{
+  "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
+  "plugins": {
+    "release-it-pnpm": {},
+    "@release-it/conventional-changelog": {
+      "preset": "conventionalcommits",
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog",
+      "releaseCount": 0,
+      "strictSemVer": true,
+      "presetConfig": {
+        "types": [
+          { "type": "feat", "section": "✨ Features | 新功能" },
+          { "type": "fix", "section": "🐛 Bug Fixes | 问题修复" },
+          { "type": "perf", "section": "⚡ Performance | 性能优化" },
+          { "type": "refactor", "section": "♻ Refactors | 重构" },
+          { "type": "revert", "section": "⏪ Reverts | 回滚", "hidden": true },
+          { "type": "docs", "section": "📝 Documentation | 文档" },
+          { "type": "style", "section": "💎 Styles | 样式" },
+          { "type": "test", "section": "✅ Tests | 测试", "hidden": true },
+          { "type": "build", "section": "📦 Build | 构建" },
+          { "type": "ci", "section": "🎡 CI | 持续集成" },
+          { "type": "types", "section": "🏷 Types | 类型" },
+          { "type": "chore", "section": "🔧 Chores | 杂项" }
+        ]
+      },
+      "parserOpts": {
+        "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
+      },
+      "writerOpts": {
+        "commitsSort": ["scope", "subject"]
+      }
+    }
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}",
+    "requireCleanWorkingDir": false,
+    "commit": true,
+    "tag": true,
+    "push": false
+  },
+  "github": {
+    "release": false
+  }
+}
