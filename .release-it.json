@@ -1,7 +1,12 @@
 {
   "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
+  "npm": {
+    "publish": false
+  },
+  "hooks": {
+    "before:git:release": "git restore --staged . && git add CHANGELOG.md package.json"
+  },
   "plugins": {
-    "release-it-pnpm": {},
     "@release-it/conventional-changelog": {
       "preset": "conventionalcommits",
       "infile": "CHANGELOG.md",
@@ -37,6 +42,7 @@
     "tagName": "v${version}",
     "requireCleanWorkingDir": false,
     "commit": true,
+    "commitArgs": ["CHANGELOG.md", "package.json"],
     "tag": true,
     "push": false
   },
