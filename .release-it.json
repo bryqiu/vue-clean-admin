@@ -45,8 +45,5 @@
     "commitArgs": ["CHANGELOG.md", "package.json"],
     "tag": true,
     "push": false
-  },
-  "github": {
-    "release": false
   }
 }
