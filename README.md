@@ -111,8 +111,6 @@ vue-clean-admin/
 
 ## 系列专栏
 
-专栏全部文章：
-
 1. [收下这份 Vue + TS + Vite 中后台系统搭建指南，从此不再害怕建项目](https://github.com/bryqiu/Blog/issues/1)
 2. [用了这些 Vite 配置技巧，同事都以为我开挂了](https://github.com/bryqiu/Blog/issues/3)
 3. [受够了团队代码风格不统一？7千字教你从零搭建代码规范体系](https://github.com/bryqiu/Blog/issues/4)
@@ -122,6 +120,8 @@ vue-clean-admin/
 7. [一篇文章实现 Element Plus 动态切换主题色](https://github.com/bryqiu/Blog/issues/12)
 8. [Tailwind Css 中使用 Element Plus 主题系统的方案与实现](https://github.com/bryqiu/Blog/issues/15)
 9. [RBAC 权限系统实战（一）：页面级访问控制全解析](https://github.com/bryqiu/Blog/issues/17)
+10. [RBAC 权限系统实战（二）：权限信息管理的设计](https://github.com/bryqiu/Blog/issues/18)
+11. [RBAC 权限系统实战（三）：细粒度的权限控制](https://github.com/bryqiu/Blog/issues/19)
 
 ## 维护者
 
