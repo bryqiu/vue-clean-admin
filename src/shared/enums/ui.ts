@@ -1,4 +1,4 @@
-import type { ValueOf } from '../types';
+import type { ValueOf } from '#/common';
 
 /** 主题模式枚举 */
 export const THEME_MODE_ENUM = {

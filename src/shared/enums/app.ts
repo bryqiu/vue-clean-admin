@@ -1,4 +1,4 @@
-import type { ValueOf } from '../types';
+import type { ValueOf } from '#/common';
 
 /**
  * 通用状态枚举

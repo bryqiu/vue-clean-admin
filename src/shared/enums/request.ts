@@ -1,4 +1,4 @@
-import type { ValueOf } from '../types';
+import type { ValueOf } from '#/common';
 
 /** HTTP 请求方法枚举 */
 export const HTTP_METHOD = {

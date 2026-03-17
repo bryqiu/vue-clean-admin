@@ -14,7 +14,7 @@ import type {
   ThemeModeEnumValue,
 } from '../enums';
 import { DEFAULT_PRIMARY_COLOR } from '../constants';
-import type { OptionGroup, Options } from '../types';
+import type { OptionGroup, Options } from '#/common';
 import { ColLayout, SideLayout, TopLayout } from '@/layout/modules';
 import type { Component } from 'vue';
 import { About, Preferences, Shortcut } from '@/components/systems/settings/modules';

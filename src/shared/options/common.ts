@@ -1,4 +1,4 @@
-import type { Options } from '../types';
+import type { Options } from '#/common';
 import { GENDER_ENUM, ROUTE_NAMES } from '../enums';
 import type { GenderEnumValue, RouteNames } from '../enums';
 

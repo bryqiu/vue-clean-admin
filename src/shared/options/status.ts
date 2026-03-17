@@ -1,6 +1,6 @@
 import { FORM_TYPE_ENUM, STATUS_ENUM } from '../enums';
 import type { FormTypeEnumValue, StatusEnumValue } from '../enums';
-import type { Options } from '../types';
+import type { Options } from '#/common';
 
 /** 启停状态选项 */
 export const STATUS_OPTION: Options<StatusEnumValue> = [
